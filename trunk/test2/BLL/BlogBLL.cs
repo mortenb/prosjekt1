@@ -15,14 +15,18 @@ namespace DOTNETPROSJEKT1.BLL
             Console.WriteLine("BlogDAL.getBlogger()");
             //Trenger logikk for å kun hente ut tittel
             // return titler;
+            //Oppdatert: Dette gjøres i GUI
             return blogger;
         }
 
-        public static Blog getBlog(int id)
+        public static List<Blog> getBlog(int blogID)
         {
-            Blog blog = BlogDAL.getBlog(id);
+            Blog blog = BlogDAL.getBlog(blogID);
 
-            return blog;
+            List<Blog> blogger = new List<Blog>();
+            blogger.Add(blog);
+
+            return blogger;
         }
 
 
