@@ -50,6 +50,46 @@ namespace DOTNETPROSJEKT1.DAL
             return blogger;
         }
 
+        public static Blog getBloggAvEier(string eier)
+        {
+            Blog blogg = new Blog();
+
+            string query = @"
+                                SELECT *
+                                FROM blogg
+                                WHERE blogg.eier = @eier
+                            ";
+
+            using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                myConnection.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myConnection))
+                {
+                    myCommand.Parameters.AddWithValue("@eier", eier);
+                    SqlDataReader reader = myCommand.ExecuteReader();
+                    try
+                    {
+                        while (reader.Read())
+                        {
+                            blogg = BloggFraSqlReader(ref reader);
+                        }
+                    }
+                    /*
+                     * No catch block, let exceptions be handles in the higher layers.
+                     */
+                    finally
+                    {
+                        if (reader != null)
+                        {
+                            reader.Close(); /* No using on reader, we must close. */
+                        }
+                    }
+                }
+            }
+
+            return blogg;
+        }
+
         public static Blog getBlog(int id)
         {
             Blog blogg = new Blog();

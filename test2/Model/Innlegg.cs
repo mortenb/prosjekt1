@@ -28,8 +28,8 @@ namespace DOTNETPROSJEKT1.Model
             set { _tittel = value; }
         }
 
-        private Calendar _dato;
-        public Calendar Dato
+        private DateTime _dato;
+        public DateTime Dato
         {
             get { return _dato; }
             set { _dato = value; }

@@ -161,7 +161,7 @@ namespace DOTNETPROSJEKT1.DAL
 
             if (reader["dato"] != DBNull.Value)
             {
-                innlegg.Dato = (Calendar)reader["dato"];
+                innlegg.Dato = (DateTime)reader["dato"];
             }
 
             if (reader["tekst"] != DBNull.Value)

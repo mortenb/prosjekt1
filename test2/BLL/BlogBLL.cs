@@ -29,6 +29,13 @@ namespace DOTNETPROSJEKT1.BLL
             return blogger;
         }
 
+        public static Blog getBloggAvEier(string eier)
+        {
+            Blog blogg = BlogDAL.getBloggAvEier(eier);
+
+            return blogg;
+        }
+
 
     }
 }
