@@ -13,7 +13,29 @@ namespace DOTNETPROSJEKT1.DAL
     {
         public static bool slettInnlegg(int innleggID)
         {
-            return false;
+            string query = @"
+                                DELETE
+                                FROM innlegg
+                                WHERE innlegg.id = @innleggID
+                            ";
+
+            bool ok = false;
+
+            using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                myConnection.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myConnection))
+                {
+                    myCommand.Parameters.AddWithValue("@innleggID", innleggID);
+                    int result = myCommand.ExecuteNonQuery();
+                    if (result == 1)
+                    {
+                        ok = true;
+                    }
+                }
+            }
+
+            return ok;
         }
 
         public static bool nyKommentar(int innleggID, string tekst)
@@ -23,9 +45,43 @@ namespace DOTNETPROSJEKT1.DAL
 
         public static Innlegg getInnlegg(int innleggID)
         {
-            Innlegg i = new Innlegg();
+            Innlegg innlegg = new Innlegg();
 
-            return i;
+            string query = @"
+                                SELECT *
+                                FROM innlegg
+                                WHERE innlegg.id = @innleggID
+                            ";
+
+            using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                myConnection.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myConnection))
+                {
+                    // Note we can not use "using" on the reader because of the call to GetUserFromSqlReader
+                    myCommand.Parameters.AddWithValue("@innleggID", innleggID);
+                    SqlDataReader reader = myCommand.ExecuteReader();
+                    try
+                    {
+                        while (reader.Read())
+                        {
+                            innlegg = InnleggFraSqlReader(ref reader);
+                        }
+                    }
+                    /*
+                     * No catch block, let exceptions be handles in the higher layers.
+                     */
+                    finally
+                    {
+                        if (reader != null)
+                        {
+                            reader.Close(); /* No using on reader, we must close. */
+                        }
+                    }
+                }
+            }
+
+            return innlegg;
         }
 
         public static bool endreTekst(int innleggID, string tekst)
@@ -43,11 +99,11 @@ namespace DOTNETPROSJEKT1.DAL
             return false;
         }
 
-        public static List<Innlegg> getInnleggsListe()
+        public static List<Innlegg> getInnleggsListe(Blog blogg)
         {
             string query = @"
-                                SELECT *
-                                FROM innlegg
+                                SELECT innlegg.*
+                                FROM innlegg,blogg
                                 WHERE bloggID = @bloggID
                             ";
 
@@ -58,6 +114,7 @@ namespace DOTNETPROSJEKT1.DAL
                 myConnection.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                 {
+                    myCommand.Parameters.AddWithValue("@bloggID", blogg.BlogID); 
                     // Note we can not use "using" on the reader because of the call to GetUserFromSqlReader
                     SqlDataReader reader = myCommand.ExecuteReader();
                     try

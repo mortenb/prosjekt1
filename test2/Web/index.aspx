@@ -15,7 +15,13 @@
                 <asp:HyperLinkField DataTextField="tittel" DataNavigateUrlFields="eier" DataNavigateUrlFormatString="~/blogg.aspx?blog={0}" />
             </Columns>
     </asp:GridView>
-        &nbsp;
+        &nbsp;&nbsp;
+        <asp:Label ID="Label1" runat="server" Text="En enkelt blogg"></asp:Label>
+        <asp:GridView ID="GridView_blogg" AutoGenerateColumns="false" runat="server">
+        <Columns>
+            <asp:BoundField DataField="tittel" SortExpression="true" HeaderText="Bloggen" />
+        </Columns>
+        </asp:GridView>
         
     </div>
     </form>

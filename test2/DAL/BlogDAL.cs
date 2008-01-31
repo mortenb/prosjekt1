@@ -65,7 +65,7 @@ namespace DOTNETPROSJEKT1.DAL
                 myConnection.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                 {
-                    // Note we can not use "using" on the reader because of the call to GetUserFromSqlReader
+                    myCommand.Parameters.AddWithValue("@id", id);
                     SqlDataReader reader = myCommand.ExecuteReader();
                     try
                     {
