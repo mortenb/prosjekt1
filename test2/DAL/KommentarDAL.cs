@@ -10,12 +10,13 @@ namespace DOTNETPROSJEKT1.DAL
 {
     public static class KommentarDAL
     {
-        public static void nyKommentar(Kommentar kommentar)
+        public static bool nyKommentar(Kommentar kommentar)
         {
             string query = @"
                                 INSERT INTO kommentar (id, innleggID, tittel, dato, tekst, forfatter) VALUES (@id, @innleggID, @tittel, @dato, @tekst, @forfatter)
                             ";
 
+            bool ok = false;
 
             using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
@@ -27,13 +28,12 @@ namespace DOTNETPROSJEKT1.DAL
                     myCommand.Parameters.AddWithValue("@tittel", kommentar.Tittel);
                     myCommand.Parameters.AddWithValue("@dato", kommentar.Dato);
                     myCommand.Parameters.AddWithValue("@tekst", kommentar.Tekst);
-                    myCommand.Parameters.AddWithValue("@forfatter", kommentar.forfatter);
+                    myCommand.Parameters.AddWithValue("@forfatter", kommentar.Forfatter);
                     int result = myCommand.ExecuteNonQuery();
 
                     if (result == 1)
                     {
-                        myCommand.CommandText = "SELECT @@IDENTITY";
-                        blogg.BlogID = Convert.ToInt32(myCommand.ExecuteScalar());
+                        ok = true;
                     }
                     else
                     {
@@ -41,6 +41,8 @@ namespace DOTNETPROSJEKT1.DAL
                     }
                 }
             }
+
+            return ok;
         }
 
         public static bool slettKommentar(int kommentarID)
@@ -85,8 +87,8 @@ namespace DOTNETPROSJEKT1.DAL
                 myConnection.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                 {
-                    myCommand.Parameters.AddWithValue("@id", kommentar.ForeldreID);
-                    myCommand.Parameters.AddWithValue("@tekst", kommentar.Tekst);
+                    myCommand.Parameters.AddWithValue("@id", kommentarID);
+                    myCommand.Parameters.AddWithValue("@tekst", tekst);
                     int result = myCommand.ExecuteNonQuery();
 
                     if (result == 1)
@@ -125,7 +127,7 @@ namespace DOTNETPROSJEKT1.DAL
                     {
                         while (reader.Read())
                         {
-                            kommentarer.Add(InnleggFraSqlReader(ref reader));
+                            kommentarer.Add(KommentarFraSqlReader(ref reader));
                         }
                     }
                     /*
