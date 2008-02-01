@@ -9,9 +9,9 @@ namespace DOTNETPROSJEKT1.BLL
 {
     public static class KommentarBLL
     {
-        public static bool nyKommentar(int foreldreID, string tittel, string tekst)
+        public static bool nyKommentar(Kommentar kommentar)
         {
-            return KommentarDAL.nyKommentar(foreldreID, tittel, tekst);
+            return KommentarDAL.nyKommentar(kommentar);
         }
 
         public static bool slettKommentar(int kommentarID)
@@ -24,9 +24,9 @@ namespace DOTNETPROSJEKT1.BLL
             return KommentarDAL.redigerKommentar(kommentarID, tekst);
         }
 
-        public static List<Kommentar> getKommentarListe()
+        public static List<Kommentar> getKommentarListe(Innlegg innlegg)
         {
-            List<Kommentar> kommentarliste = KommentarDAL.getKommentarListe();
+            List<Kommentar> kommentarliste = KommentarDAL.getKommentarListe(innlegg);
 
             return kommentarliste;
         }
