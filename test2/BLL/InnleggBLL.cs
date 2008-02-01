@@ -27,9 +27,9 @@ namespace DOTNETPROSJEKT1.BLL
             return false;
         }
 
-        public static List<Innlegg> getInnleggsListe(Blog blogg)
+        public static List<Innlegg> getInnleggsListe(int bloggID)
         {
-            List<Innlegg> l = InnleggDAL.getInnleggsListe(blogg);
+            List<Innlegg> l = InnleggDAL.getInnleggsListe(bloggID);
 
             return l;
         }
