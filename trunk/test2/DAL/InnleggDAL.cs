@@ -13,6 +13,7 @@ namespace DOTNETPROSJEKT1.DAL
     {
         public static bool slettInnlegg(int innleggID)
         {
+            //Metode for å slette innlegg fra innleggtabellen
             string query = @"
                                 DELETE
                                 FROM innlegg
@@ -144,11 +145,11 @@ namespace DOTNETPROSJEKT1.DAL
             return ok;
         }
 
-        public static List<Innlegg> getInnleggsListe(int bloggID)
+        public static List<Innlegg> getInnleggsListe(Blog blog)
         {
             string query = @"
                                 SELECT innlegg.*
-                                FROM innlegg,blogg
+                                FROM innlegg
                                 WHERE bloggID = @bloggID
                             ";
 
@@ -159,7 +160,7 @@ namespace DOTNETPROSJEKT1.DAL
                 myConnection.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                 {
-                    myCommand.Parameters.AddWithValue("@bloggID", bloggID); 
+                    myCommand.Parameters.AddWithValue("@bloggID", blog.BlogID); 
                     // Note we can not use "using" on the reader because of the call to GetUserFromSqlReader
                     SqlDataReader reader = myCommand.ExecuteReader();
                     try
