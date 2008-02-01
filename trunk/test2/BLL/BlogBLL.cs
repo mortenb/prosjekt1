@@ -9,6 +9,10 @@ namespace DOTNETPROSJEKT1.BLL
 {
     public class BlogBLL
     {
+        public static int nyBlog(Blog b)
+        {
+            return BlogDAL.nyBlog(b);
+        }
         public static List<Blog> getBlogger()
         {
             List<Blog> blogger = BlogDAL.getBlogger();

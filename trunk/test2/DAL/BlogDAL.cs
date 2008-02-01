@@ -141,11 +141,11 @@ namespace DOTNETPROSJEKT1.DAL
             return blogg;
         } //Kommentert
 
-        public static void nyBlog(Blog blogg)
+        public static int nyBlog(Blog blogg)
         {
             //Gjør klar sql-query
             string query = @"
-                                INSERT INTO blogg (id, eier, tittel) VALUES (@id, @eier, @tittel)
+                                INSERT INTO blogg ( eier, tittel) VALUES ( @eier, @tittel)
                             ";
 
             //Gjør klar sqlconnection med connectionstring
@@ -156,7 +156,6 @@ namespace DOTNETPROSJEKT1.DAL
                 using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                 {
                     //Legger til verdier i sql-strengen
-                    myCommand.Parameters.AddWithValue("@id", blogg.BlogID);
                     myCommand.Parameters.AddWithValue("@eier", blogg.Eier);
                     myCommand.Parameters.AddWithValue("@tittel", blogg.Tittel);
                     int result = myCommand.ExecuteNonQuery();
@@ -167,13 +166,16 @@ namespace DOTNETPROSJEKT1.DAL
                     {
                         myCommand.CommandText = "SELECT @@IDENTITY";
                         blogg.BlogID = Convert.ToInt32(myCommand.ExecuteScalar());
+                        return blogg.BlogID;
                     }
                     else
-                    {
+                    {     
                         throw new ApplicationException("Tryna når jeg prøvde å lage ny bruker.. Beklager");
+                        return -1;
                     }
                 }
             }
+            
         } //Kommenter
 
         private static Blog BloggFraSqlReader(ref SqlDataReader reader) // Kommentert

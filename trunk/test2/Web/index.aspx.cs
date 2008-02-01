@@ -51,5 +51,9 @@ public partial class _Default : System.Web.UI.Page
             Trace.Warn(ex.Message);
         }
     }
+    protected void Header1_Load(object sender, EventArgs e)
+    {
+
+    }
 }
 
