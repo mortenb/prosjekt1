@@ -9,18 +9,9 @@ namespace DOTNETPROSJEKT1.BLL
 {
     public static class InnleggBLL
     {
-        public static void nyttInnlegg(Innlegg innlegg)
-        {
-            InnleggDAL.nyttInnlegg(innlegg);
-        }
         public static bool slettInnlegg(int innleggID)
         {
             return InnleggDAL.slettInnlegg(innleggID);
-        }
-
-        public static bool nyKommentar(int innleggID, string tekst)
-        {
-            return false;
         }
 
         public static Innlegg getInnlegg(int innleggID)
@@ -32,16 +23,7 @@ namespace DOTNETPROSJEKT1.BLL
 
         public static bool endreTekst(int innleggID, string tekst)
         {
-            return false;
-        }
-
-        public static bool slettKommentar(int innleggID)
-        {
-            return false;
-        }
-
-        public static bool redigerKommentar(int kommentarID, string tekst)
-        {
+            InnleggDAL.endreTekst(innleggID, tekst);
             return false;
         }
 
