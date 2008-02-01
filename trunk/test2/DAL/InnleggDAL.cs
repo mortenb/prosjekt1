@@ -60,7 +60,7 @@ namespace DOTNETPROSJEKT1.DAL
                     if (result == 1)
                     {
                         myCommand.CommandText = "SELECT @@IDENTITY";
-                        blogg.BlogID = Convert.ToInt32(myCommand.ExecuteScalar());
+                        innlegg.ID = Convert.ToInt32(myCommand.ExecuteScalar());
                     }
                     else
                     {
@@ -68,11 +68,6 @@ namespace DOTNETPROSJEKT1.DAL
                     }
                 }
             }
-        }
-
-        public static bool nyKommentar(int innleggID, string tekst)
-        {
-            return false;
         }
 
         public static Innlegg getInnlegg(int innleggID)
@@ -118,17 +113,35 @@ namespace DOTNETPROSJEKT1.DAL
 
         public static bool endreTekst(int innleggID, string tekst)
         {
-            return false;
-        }
+            string query = @"
+                                UPDATE innlegg 
+                                SET tekst = @tekst
+                                WHERE id = @innleggID
+                            ";
 
-        public static bool slettKommentar(int innleggID)
-        {
-            return false;
-        }
+            bool ok = false;
 
-        public static bool redigerKommentar(int kommentarID, string tekst)
-        {
-            return false;
+            using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                myConnection.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myConnection))
+                {
+                    myCommand.Parameters.AddWithValue("@id", innleggID);
+                    myCommand.Parameters.AddWithValue("@tekst", tekst);
+                    int result = myCommand.ExecuteNonQuery();
+
+                    if (result == 1)
+                    {
+                        ok = true;
+                    }
+                    else
+                    {
+                        throw new ApplicationException("Tryna når jeg prøvde å lage ny innlegg.. Beklager");
+                    }
+                }
+            }
+
+            return ok;
         }
 
         public static List<Innlegg> getInnleggsListe(Blog blogg)
