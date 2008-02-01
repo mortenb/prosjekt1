@@ -9,6 +9,10 @@ namespace DOTNETPROSJEKT1.BLL
 {
     public static class InnleggBLL
     {
+        public static void nyttInnlegg(Innlegg innlegg)
+        {
+            InnleggDAL.nyttInnlegg(innlegg);
+        }
         public static bool slettInnlegg(int innleggID)
         {
             return InnleggDAL.slettInnlegg(innleggID);
