@@ -38,6 +38,38 @@ namespace DOTNETPROSJEKT1.DAL
             return ok;
         }
 
+        public static void nyttInnlegg(Innlegg innlegg)
+        {
+            string query = @"
+                                INSERT INTO innlegg (id, bloggID, tittel, dato, tekst) VALUES (@id, @bloggID, @tittel, @dato, @tekst)
+                            ";
+
+
+            using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                myConnection.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myConnection))
+                {
+                    myCommand.Parameters.AddWithValue("@id", innlegg.ID);
+                    myCommand.Parameters.AddWithValue("@bloggID", innlegg.BloggID);
+                    myCommand.Parameters.AddWithValue("@tittel", innlegg.Tittel);
+                    myCommand.Parameters.AddWithValue("@dato", innlegg.Dato);
+                    myCommand.Parameters.AddWithValue("@tekst", innlegg.Tekst);
+                    int result = myCommand.ExecuteNonQuery();
+
+                    if (result == 1)
+                    {
+                        myCommand.CommandText = "SELECT @@IDENTITY";
+                        blogg.BlogID = Convert.ToInt32(myCommand.ExecuteScalar());
+                    }
+                    else
+                    {
+                        throw new ApplicationException("Tryna når jeg prøvde å lage ny bruker.. Beklager");
+                    }
+                }
+            }
+        }
+
         public static bool nyKommentar(int innleggID, string tekst)
         {
             return false;
