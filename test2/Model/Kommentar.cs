@@ -9,6 +9,20 @@ namespace DOTNETPROSJEKT1.Model
     {
         public Kommentar() { }
 
+        private int _id;
+        public int ID
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+        private int _innleggID;
+        public int InnleggID
+        {
+            get { return _innleggID; }
+            set { _innleggID = value; }
+        }
+
         private string _tittel;
         public string Tittel
         {
