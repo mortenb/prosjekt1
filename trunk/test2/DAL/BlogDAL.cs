@@ -182,12 +182,12 @@ namespace DOTNETPROSJEKT1.DAL
 
             if (reader["id"] != DBNull.Value)
             {
-                blog.ID = (int)reader["id"];
+                blog.BlogID = (int)reader["id"];
             }
 
             if (reader["eier"] != DBNull.Value)
             {
-                blog.Eier = (int)reader["eier"];
+                blog.Eier = (string)reader["eier"];
             }
 
             if (reader["tittel"] != DBNull.Value)
