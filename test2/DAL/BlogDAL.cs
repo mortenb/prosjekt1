@@ -196,8 +196,5 @@ namespace DOTNETPROSJEKT1.DAL
             }
             return blog;
         }
-
-
-
     }
 }
