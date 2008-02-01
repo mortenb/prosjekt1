@@ -52,7 +52,7 @@ namespace DOTNETPROSJEKT1.DAL
             }
 
             return blogger;
-        } //Kommentert
+        }
 
         public static Blog getBloggAvEier(string eier)
         {
@@ -177,7 +177,25 @@ namespace DOTNETPROSJEKT1.DAL
         } //Kommenter
 
         private static Blog BloggFraSqlReader(ref SqlDataReader reader) // Kommentert
+        {
+            Blog blog = new Blog();
 
+            if (reader["id"] != DBNull.Value)
+            {
+                blog.ID = (int)reader["id"];
+            }
+
+            if (reader["eier"] != DBNull.Value)
+            {
+                blog.Eier = (int)reader["eier"];
+            }
+
+            if (reader["tittel"] != DBNull.Value)
+            {
+                blog.Tittel = (string)reader["tittel"];
+            }
+            return blog;
+        }
 
 
 
