@@ -105,7 +105,7 @@ namespace DOTNETPROSJEKT1.DAL
             return ok;
         }
 
-        public static List<Kommentar> getKommentarListe(Innlegg innlegg)
+        public static List<Kommentar> getKommentarListe(int innleggID)
         {
             string query = @"
                                 SELECT kommentar.*
@@ -120,7 +120,7 @@ namespace DOTNETPROSJEKT1.DAL
                 myConnection.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                 {
-                    myCommand.Parameters.AddWithValue("@innleggID", innlegg.ID);
+                    myCommand.Parameters.AddWithValue("@innleggID", innleggID);
                     // Note we can not use "using" on the reader because of the call to GetUserFromSqlReader
                     SqlDataReader reader = myCommand.ExecuteReader();
                     try
