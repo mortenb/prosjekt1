@@ -29,7 +29,7 @@ public partial class blogg : System.Web.UI.Page
             //bloggeier ligger nå i _bloggeier[0]
             //Lage liste over innlegg
             bloggen = DOTNETPROSJEKT1.BLL.BlogBLL.getBloggAvEier(_bloggeier[0]);
-            listeoverinnlegg = DOTNETPROSJEKT1.BLL.InnleggBLL.getInnleggsListe(bloggen);
+            listeoverinnlegg = DOTNETPROSJEKT1.BLL.InnleggBLL.getInnleggsListe(bloggen.BlogID);
             PrintInnlegg(listeoverinnlegg);
 
         }
