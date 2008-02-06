@@ -11,7 +11,7 @@ namespace DOTNETPROSJEKT1.DAL
 {
     public static class InnleggDAL
     {
-        public static bool slettInnlegg(int innleggID)
+        public static void slettInnlegg(int innleggID)
         {
             //Metode for å slette innlegg fra innleggtabellen
             //Gjør klar sql-streng
@@ -20,11 +20,6 @@ namespace DOTNETPROSJEKT1.DAL
                                 FROM innlegg
                                 WHERE innlegg.id = @innleggID
                             ";
-
-            //Lager en bool som skal returneres for å si i fra til høyere lag om det gikk greit eller ikke
-            //Dette trengs kanskje ikke, for BLL kan jo bare try'e hele metoden
-            //Men da får vi kanskje ikke riktig feilmelding tilbake?
-            bool ok = false;
 
             using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
@@ -38,13 +33,14 @@ namespace DOTNETPROSJEKT1.DAL
                     if (result == 1)
                     {
                         //Hvis result er en så har alt gått bra
-                        ok = true;
+                    }
+                    else
+                    {
+                        throw new ApplicationException("Kunne ikke slette innlegg med id " + innleggID);
                     }
                 }
             }
-
-            return ok;
-        } //Kommentert
+        }
 
         public static void nyttInnlegg(Innlegg innlegg)
         {
@@ -62,7 +58,7 @@ namespace DOTNETPROSJEKT1.DAL
                 {
                     //Legger til verdier i sql-strengen
                     myCommand.Parameters.AddWithValue("@id", innlegg.ID);
-                    myCommand.Parameters.AddWithValue("@bloggID", innlegg.BloggID);
+                    myCommand.Parameters.AddWithValue("@bloggID", innlegg.ForeldreID);
                     myCommand.Parameters.AddWithValue("@tittel", innlegg.Tittel);
                     myCommand.Parameters.AddWithValue("@dato", innlegg.Dato);
                     myCommand.Parameters.AddWithValue("@tekst", innlegg.Tekst);
@@ -131,7 +127,7 @@ namespace DOTNETPROSJEKT1.DAL
             return innlegg;
         } //Kommentert
 
-        public static bool endreTekst(int innleggID, string tekst)
+        public static void endreTekst(int innleggID, string tekst)
         {
             //Metode for å redigere teksten på et innlegg
             //TODO: Bør også ha mulighet for å endre dato o.l. på ett innlegg
@@ -141,8 +137,6 @@ namespace DOTNETPROSJEKT1.DAL
                                 SET tekst = @tekst
                                 WHERE id = @innleggID
                             ";
-            //Lager en bool som sier i fra om oppdateringen har gått bra eller ikke
-            bool ok = false;
 
             using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
@@ -158,24 +152,21 @@ namespace DOTNETPROSJEKT1.DAL
                     if (result == 1)
                     {
                         //Hvis result er 1, så har alt gått bra
-                        ok = true;
                     }
                     else
                     {
-                        throw new ApplicationException("Tryna når jeg prøvde å lage ny innlegg.. Beklager");
+                        throw new ApplicationException("Nytt innlegg kunne ikke opprettes");
                     }
                 }
             }
-
-            return ok;
         } //Kommentert
 
-        public static List<Innlegg> getInnleggsListe(Blog blog)
+        public static List<Innlegg> getInnleggsListe(int bloggID)
         {
             //Metode for å hente hele innleggslista og returnere et List-objekt
             //Gjør klar sql-streng
             string query = @"
-                                SELECT innlegg.*
+                                SELECT *
                                 FROM innlegg
                                 WHERE bloggID = @bloggID
                             ";
@@ -189,7 +180,7 @@ namespace DOTNETPROSJEKT1.DAL
                 using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                 {
                     //Legger til verdier i sql-streng
-                    myCommand.Parameters.AddWithValue("@bloggID", blog.BlogID); 
+                    myCommand.Parameters.AddWithValue("@bloggID", bloggID); 
                     //Eksekverer kommando og legger radene i reader
                     SqlDataReader reader = myCommand.ExecuteReader();
                     try
@@ -227,7 +218,7 @@ namespace DOTNETPROSJEKT1.DAL
 
             if (reader["bloggID"] != DBNull.Value)
             {
-                innlegg.BloggID = (int)reader["bloggID"];
+                innlegg.ForeldreID = (int)reader["bloggID"];
             }
 
             if (reader["tittel"] != DBNull.Value)

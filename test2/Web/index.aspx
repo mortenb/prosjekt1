@@ -1,17 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeFile="index.aspx.cs" Inherits="_Default" Trace="true" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeFile="index.aspx.cs" Inherits="_Default" Trace="true"  MasterPageFile="~/master.master" Title="Hovedside" %>
 
-<%@ Register Src="header.ascx" TagName="header" TagPrefix="uc1" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title>Untitled Page</title>
-</head>
-<body>
-    <form id="form1" runat="server">
+<%@ MasterType TypeName="master" %>
+<asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server" >
     <div>
-        <uc1:header ID="Header1" runat="server" OnLoad="Header1_Load" />
         <br />
     Hvilken blogg vil du inn på?&nbsp;
     <asp:GridView ID="GridView_blogger" runat="server" AutoGenerateColumns="false">
@@ -28,6 +19,4 @@
         </asp:GridView>
         
     </div>
-    </form>
-</body>
-</html>
+    </asp:Content>

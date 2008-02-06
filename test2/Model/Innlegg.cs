@@ -7,6 +7,8 @@ namespace DOTNETPROSJEKT1.Model
 {
     public class Innlegg
     {
+        public Innlegg() { }
+
         private int _id;
         public int ID
         {
@@ -14,11 +16,11 @@ namespace DOTNETPROSJEKT1.Model
             set { _id = value; }
         }
 
-        private int _bloggID;
-        public int BloggID
+        private int _foreldreID;
+        public int ForeldreID
         {
-            get { return _bloggID; }
-            set { _bloggID = value; }
+            get { return _foreldreID; }
+            set { _foreldreID = value; }
         }
 
         private string _tittel;
@@ -40,13 +42,6 @@ namespace DOTNETPROSJEKT1.Model
         {
             get { return _tekst; }
             set { _tekst = value; }
-        }
-
-        private string _forfatter;
-        public string Forfatter
-        {
-            get { return _forfatter; }
-            set { _forfatter = value; }
         }
 
     }

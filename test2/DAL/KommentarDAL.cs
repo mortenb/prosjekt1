@@ -10,16 +10,14 @@ namespace DOTNETPROSJEKT1.DAL
 {
     public static class KommentarDAL
     {
-        public static bool nyKommentar(Kommentar kommentar)
+        public static void nyKommentar(Kommentar kommentar)
         {
             //Metode for å legge til en kommentar
             //Gjør klar sql-streng
             string query = @"
-                                INSERT INTO kommentar (id, innleggID, tittel, dato, tekst, forfatter) VALUES (@id, @innleggID, @tittel, @dato, @tekst, @forfatter)
+                                INSERT INTO kommentar (id, innleggID, tittel, dato, tekst, forfatter) 
+                                VALUES (@id, @innleggID, @tittel, @dato, @tekst, @forfatter)
                             ";
-
-            //Lager en bool som returnerer tilbake om metoden gikk bra eller ikke
-            bool ok = false;
 
             using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
@@ -36,22 +34,16 @@ namespace DOTNETPROSJEKT1.DAL
                     //Eksekverer kommandoen og legger antall rader forandret i result
                     int result = myCommand.ExecuteNonQuery();
 
-                    if (result == 1)
+                    if (result != 1)
                     {
                         //Hvis result er 1 så har alt gått bra
-                        ok = true;
-                    }
-                    else
-                    {
                         throw new ApplicationException("Tryna når jeg prøvde å lage ny bommentar.. Beklager");
                     }
                 }
             }
+        } 
 
-            return ok;
-        } //Kommentert
-
-        public static bool slettKommentar(int kommentarID)
+        public static void slettKommentar(int kommentarID)
         {
             //Metode for å slette kommentar
             //Gjør klar sql-streng
@@ -60,9 +52,6 @@ namespace DOTNETPROSJEKT1.DAL
                                 FROM kommentar
                                 WHERE kommentar.id = @kommentarID
                             ";
-
-            //Lager en bool som returnerer om metoden har gått bra eller ikke
-            bool ok = false;
 
             using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
@@ -73,18 +62,18 @@ namespace DOTNETPROSJEKT1.DAL
                     myCommand.Parameters.AddWithValue("@kommentarID", kommentarID);
                     //Eksekverer sql-streng og legger antall rader forandret i result
                     int result = myCommand.ExecuteNonQuery();
-                    if (result == 1)
+                    if (result != 1)
                     {
                         //Hvis result er 1 så har alt gått bra
-                        ok = true;
+                        throw new ApplicationException("Kunne ikke slette kommentar");
                     }
+
+
                 }
             }
+        }
 
-            return ok;
-        } //Kommentert
-
-        public static bool redigerKommentar(int kommentarID, string tekst)
+        public static void redigerKommentar(int kommentarID, string tekst)
         {
             //Metode får endre tekst på kommentar
             //Gjør klar sql-streng
@@ -95,7 +84,6 @@ namespace DOTNETPROSJEKT1.DAL
                             ";
 
             //Lager en bool som returnerer om metoden er vellykket eller ikke
-            bool ok = false;
 
             using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
@@ -108,20 +96,14 @@ namespace DOTNETPROSJEKT1.DAL
                     //Eksekverer kommandoen og legger antall rader forandret i result
                     int result = myCommand.ExecuteNonQuery();
 
-                    if (result == 1)
+                    if (result != 1)
                     {
                         //Hvis result er 1 så har alt gått bra
-                        ok = true;
-                    }
-                    else
-                    {
-                        throw new ApplicationException("Tryna når jeg prøvde å lage ny bommentar.. Beklager");
+                        throw new ApplicationException("Kunne ikke redigere kommentar");
                     }
                 }
             }
-
-            return ok;
-        } //Kommentert
+        } 
 
         public static List<Kommentar> getKommentarListe(int innleggID)
         {

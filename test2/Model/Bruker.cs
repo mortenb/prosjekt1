@@ -35,19 +35,5 @@ namespace DOTNETPROSJEKT1.Model
             get { return _etternavn; }
             set { _etternavn = value; }
         }
-
-        private string _pass;
-        public string Pass
-        {
-            get { return _pass; }
-            set { _pass = value; }
-        }
-
-        private string _rolle;
-        public string Rolle
-        {
-            get { return _rolle; }
-            set { _rolle = value; }
-        }
     }
 }

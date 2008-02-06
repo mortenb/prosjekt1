@@ -40,14 +40,14 @@ public partial class _Default : System.Web.UI.Page
     {
         try
         {
-            Response.Write("Prøver å binde data til kilden");
+            Trace.Write("Prøver å binde data til kilden");
             GridView_blogger.DataSource = DOTNETPROSJEKT1.BLL.BlogBLL.getBlogger();
             GridView_blogger.DataBind();
 
         }
         catch (Exception ex)
         {
-            Response.Write("DB'en tryna");
+            Trace.Warn("DB'en tryna");
             Trace.Warn(ex.Message);
         }
     }

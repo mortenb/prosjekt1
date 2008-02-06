@@ -20,7 +20,7 @@ namespace DOTNETPROSJEKT1.DAL
                                 FROM blogg
                             ";
 
-            //Instansiere 'blogger' som skal bli retunert til BLL
+            //Instansiere 'blogger' som skal bli returnert til BLL
             List<Blog> blogger = new List<Blog>();
 
             //Setter opp en SQLConnection, bruker "ConnectionString" som connectionstring
@@ -171,7 +171,6 @@ namespace DOTNETPROSJEKT1.DAL
                     else
                     {     
                         throw new ApplicationException("Tryna når jeg prøvde å lage ny bruker.. Beklager");
-                        return -1;
                     }
                 }
             }

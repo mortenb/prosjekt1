@@ -5,44 +5,10 @@ using System.Globalization;
 
 namespace DOTNETPROSJEKT1.Model
 {
-    public class Kommentar
+    public class Kommentar : Innlegg
     {
-        public Kommentar() { }
-
-        private int _id;
-        public int ID
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        private int _innleggID;
-        public int InnleggID
-        {
-            get { return _innleggID; }
-            set { _innleggID = value; }
-        }
-
-        private string _tittel;
-        public string Tittel
-        {
-            get { return _tittel; }
-            set { _tittel = value; }
-        }
-
-        private DateTime _dato;
-        public DateTime Dato
-        {
-            get { return _dato; }
-            set { _dato = value; }
-        }
-
-        private string _tekst;
-        public string Tekst
-        {
-            get { return _tekst; }
-            set { _tekst = value; }
-        }
+        public Kommentar() : base()
+        { }
 
         private string _forfatter;
         public string Forfatter
@@ -51,11 +17,11 @@ namespace DOTNETPROSJEKT1.Model
             set { _forfatter = value; }
         }
 
-        private int _foreldreID;
-        public int ForeldreID
+        private int _innleggID;
+        public int InnleggID
         {
-            get { return _foreldreID; }
-            set { _foreldreID = value; }
+            get { return _innleggID; }
+            set { _innleggID = value; }
         }
     }
 }
