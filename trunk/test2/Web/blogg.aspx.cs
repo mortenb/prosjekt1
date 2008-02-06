@@ -59,8 +59,6 @@ public partial class blogg : System.Web.UI.Page
         GridView1.DataSource = innlegg;
         GridView1.DataBind();
 
-        int knappTeller = 1;
-
         foreach (Innlegg inn in innlegg)
         {
             HtmlTableRow tr = new HtmlTableRow();
@@ -80,7 +78,8 @@ public partial class blogg : System.Web.UI.Page
             {
                 Button redigerKnapp = new Button();
                 redigerKnapp.Text = "Rediger";
-                redigerKnapp.ID = "redigerKnapp" + knappTeller;
+                redigerKnapp.ID = "redigerKnapp" + inn.ID;
+                redigerKnapp.PostBackUrl = "~/innlegg.aspx?ID=" + inn.ID;
                 redigerKnapp.Click += new EventHandler(RedigerKnapp_onclick);
                 tcRediger.Controls.Add(redigerKnapp);
             }
@@ -88,16 +87,13 @@ public partial class blogg : System.Web.UI.Page
             tr2.Controls.Add(tcTekst);
             tr2.Controls.Add(tcRediger);
             Table1.Rows.Add(tr2);
-            
-
-            knappTeller++;
         }
     }
 
     protected void RedigerKnapp_onclick(object sender, EventArgs e)
     {
         
-        Response.Write("Knappen ble trykket");
+        
     }
 
     protected void test(int i)
