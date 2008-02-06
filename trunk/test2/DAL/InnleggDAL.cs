@@ -81,6 +81,47 @@ namespace DOTNETPROSJEKT1.DAL
             }
         } //Kommentert
 
+        public static void redigerInnlegg(Innlegg innlegg)
+        {
+            //Får et innlegg fra øvre lag og legger det i databasen
+            //Gjør klar sql-streng
+            string query = @"
+                                UPDATE innlegg 
+                                SET tittel=@tittel, dato=@dato, tekst=@tekst
+                                WHERE id=@id
+                            ";
+
+
+            using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                myConnection.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myConnection))
+                {
+                    //Legger til verdier i sql-strengen
+                    myCommand.Parameters.AddWithValue("@id", innlegg.ID);
+                    myCommand.Parameters.AddWithValue("@bloggID", innlegg.ForeldreID);
+                    myCommand.Parameters.AddWithValue("@tittel", innlegg.Tittel);
+                    myCommand.Parameters.AddWithValue("@dato", innlegg.Dato);
+                    myCommand.Parameters.AddWithValue("@tekst", innlegg.Tekst);
+                    //Eksekverer og legger antall rader forandret i result
+                    int result = myCommand.ExecuteNonQuery();
+
+
+                    if (result == 1)
+                    {
+                        //Hvis result er 1 så har alt gått bra,
+                        //og innlegg får en ID
+                        myCommand.CommandText = "SELECT @@IDENTITY";
+                        innlegg.ID = Convert.ToInt32(myCommand.ExecuteScalar());
+                    }
+                    else
+                    {
+                        throw new ApplicationException("Tryna når jeg prøvde å lage ny bruker.. Beklager");
+                    }
+                }
+            }
+        } //Kommentert
+
         public static Innlegg getInnlegg(int innleggID)
         {
             //Hente innlegg ved hjelp av et innleggs ID

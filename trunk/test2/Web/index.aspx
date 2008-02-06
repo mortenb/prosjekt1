@@ -7,7 +7,7 @@
     Hvilken blogg vil du inn på?&nbsp;
     <asp:GridView ID="GridView_blogger" runat="server" AutoGenerateColumns="false">
         <Columns>
-                <asp:HyperLinkField DataTextField="tittel" DataNavigateUrlFields="eier" DataNavigateUrlFormatString="~/blogg.aspx?blog={0}" />
+                <asp:HyperLinkField  DataTextField="tittel" DataNavigateUrlFields="eier" DataNavigateUrlFormatString="~/blogg.aspx?blog={0}" />
             </Columns>
     </asp:GridView>
         &nbsp;&nbsp;
