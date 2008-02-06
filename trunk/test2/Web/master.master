@@ -1,0 +1,27 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="master.master.cs" Inherits="master" %>
+
+<%@ Register Src="header.ascx" TagName="header" TagPrefix="uc1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Masterside</title>
+</head>
+<body>
+    <form id="form2" runat="server">
+    <div>
+     
+        
+        <uc1:header ID="Header1" runat="server" OnLoad="Header1_Load" />
+        <br />
+        
+        <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+        </asp:contentplaceholder>
+    </div>
+    </form>
+
+       
+
+</body>
+</html>

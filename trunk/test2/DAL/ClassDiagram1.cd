@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Segoe UI" Size="9" />
+  <Class Name="DOTNETPROSJEKT1.DAL.BlogDAL">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>BlogDAL.cs</FileName>
+      <HashCode>AAAAAAAgAAABAAAAQAAAAAAAAAAAAAAAAAAAAAAAECA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DOTNETPROSJEKT1.DAL.BrukerDAL" Collapsed="true">
+    <Position X="6.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>BrukerDAL.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAQCAAAAAIAAAAAAABAAAAAAAAAEAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DOTNETPROSJEKT1.DAL.InnleggDAL">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>InnleggDAL.cs</FileName>
+      <HashCode>AACAABAAAAQAAAAAABAAAAAAAAAAAAgAAAAAAAgAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DOTNETPROSJEKT1.DAL.KommentarDAL">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>KommentarDAL.cs</FileName>
+      <HashCode>AAAAACAAAAAAACCAAAAAAAAAAAAAAAAEAAAAAAAIAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+</ClassDiagram>

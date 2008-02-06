@@ -9,9 +9,9 @@ namespace DOTNETPROSJEKT1.BLL
 {
     public static class InnleggBLL
     {
-        public static bool slettInnlegg(int innleggID)
+        public static void slettInnlegg(int innleggID)
         {
-            return InnleggDAL.slettInnlegg(innleggID);
+            InnleggDAL.slettInnlegg(innleggID);
         }
 
         public static Innlegg getInnlegg(int innleggID)
@@ -21,17 +21,21 @@ namespace DOTNETPROSJEKT1.BLL
             return i;
         }
 
-        public static bool endreTekst(int innleggID, string tekst)
+        public static void endreTekst(int innleggID, string tekst)
         {
             InnleggDAL.endreTekst(innleggID, tekst);
-            return false;
         }
 
-        public static List<Innlegg> getInnleggsListe(Blog blogg)
+        public static List<Innlegg> getInnleggsListe(int bloggID)
         {
-            List<Innlegg> l = InnleggDAL.getInnleggsListe(blogg);
+            List<Innlegg> l = InnleggDAL.getInnleggsListe(bloggID);
 
             return l;
+        }
+
+        public static void nyttInnlegg(Innlegg innlegg)
+        {
+            InnleggDAL.nyttInnlegg(innlegg);
         }
 
     }

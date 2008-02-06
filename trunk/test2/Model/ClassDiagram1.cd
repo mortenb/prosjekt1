@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Segoe UI" Size="9" />
+  <Class Name="DOTNETPROSJEKT1.Model.Blog">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Blog.cs</FileName>
+      <HashCode>AEAAAAAAAAABAAAAAEAAAACAAAIAAAAAAAAACAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DOTNETPROSJEKT1.Model.Bruker">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Bruker.cs</FileName>
+      <HashCode>ACAKAEAAAASECAAAAABAAEAAAACAAAAgAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DOTNETPROSJEKT1.Model.Innlegg">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Innlegg.cs</FileName>
+      <HashCode>AAAAAAAAAAAAgIAAAEBAAAAAAAwAEAAABAABCAAEACA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DOTNETPROSJEKT1.Model.Kommentar">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Kommentar.cs</FileName>
+      <HashCode>AAAAAAAAAAACgKAAAEBAAAAAQAxAEAAABAAACAAAACA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+</ClassDiagram>

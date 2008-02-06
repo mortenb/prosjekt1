@@ -1,15 +1,20 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="blogg.aspx.cs" Inherits="blogg" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="blogg.aspx.cs" Inherits="blogg" MasterPageFile="~/master.master" Title="Blogg" Trace="true"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ MasterType TypeName="master" %>
 
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title>Untitled Page</title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-        &nbsp;</div>
-    </form>
-</body>
-</html>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"  >
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+        <EmptyDataTemplate>
+            Ingen innlegg<br />
+        </EmptyDataTemplate>
+        <Columns>
+            <asp:BoundField DataField="tittel" />
+            <asp:BoundField DataField="tekst" />
+        </Columns>
+    </asp:GridView>
+    &nbsp;
+    <table id="Table1" runat="server">
+    </table>
+
+    
+</asp:Content>
