@@ -16,9 +16,7 @@ namespace DOTNETPROSJEKT1.BLL
 
         public static Innlegg getInnlegg(int innleggID)
         {
-            Innlegg i = new Innlegg();
-
-            return i;
+            return InnleggDAL.getInnlegg(innleggID);
         }
 
         public static void endreTekst(int innleggID, string tekst)
@@ -36,6 +34,11 @@ namespace DOTNETPROSJEKT1.BLL
         public static void nyttInnlegg(Innlegg innlegg)
         {
             InnleggDAL.nyttInnlegg(innlegg);
+        }
+
+        public static void redigerInnlegg(Innlegg innlegg)
+        {
+            InnleggDAL.redigerInnlegg(innlegg);
         }
 
     }
