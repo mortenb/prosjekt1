@@ -27,6 +27,7 @@ public partial class test : System.Web.UI.Page
     protected void CreateUserWizard1_CreatedUser1(object sender, EventArgs e)
     {
         string eier = CreateUserWizard1.UserName.ToString();
+        Roles.AddUserToRole(eier, "blogger");
         string tittel = eier + " sin blogg";
         Response.Write(tittel);
         Blog b = new Blog();
@@ -45,5 +46,9 @@ public partial class test : System.Web.UI.Page
         Response.Write(tittel + "<br/>");
         Page.Response.Redirect(Page.Request.Url.AbsoluteUri);
         Page.Response.End();
+    }
+    protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
     }
 }
