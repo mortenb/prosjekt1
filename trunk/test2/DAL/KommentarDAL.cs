@@ -15,8 +15,8 @@ namespace DOTNETPROSJEKT1.DAL
             //Metode for å legge til en kommentar
             //Gjør klar sql-streng
             string query = @"
-                                INSERT INTO kommentar (id, innleggID, tittel, dato, tekst, forfatter) 
-                                VALUES (@id, @innleggID, @tittel, @dato, @tekst, @forfatter)
+                                INSERT INTO kommentar (innleggID, tittel, dato, tekst, forfatter) 
+                                VALUES ( @innleggID, @tittel, @dato, @tekst, @forfatter)
                             ";
 
             using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
@@ -25,7 +25,7 @@ namespace DOTNETPROSJEKT1.DAL
                 using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                 {
                     //Legger til verdier i sql-strengen
-                    myCommand.Parameters.AddWithValue("@id", kommentar.ForeldreID);
+                 //   myCommand.Parameters.AddWithValue("@id", kommentar.ForeldreID);
                     myCommand.Parameters.AddWithValue("@innleggID", kommentar.InnleggID);
                     myCommand.Parameters.AddWithValue("@tittel", kommentar.Tittel);
                     myCommand.Parameters.AddWithValue("@dato", kommentar.Dato);
@@ -148,6 +148,10 @@ namespace DOTNETPROSJEKT1.DAL
 
             return kommentarer;
         } //Kommentert
+
+
+
+        
 
     private static Kommentar KommentarFraSqlReader(ref SqlDataReader reader) // Kommentert
         {
