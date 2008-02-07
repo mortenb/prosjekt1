@@ -11,13 +11,21 @@
 &nbsp;
 <asp:LoginView ID="LoginView2" runat="server">
     <RoleGroups>
-        <asp:RoleGroup Roles="blogger,admin">
+        <asp:RoleGroup Roles="blogger">
             <ContentTemplate>
-                &nbsp;<asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/index.aspx">Skriv nytt innlegg</asp:HyperLink>
+                &nbsp;<asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/innlegg.aspx?=0">Skriv nytt innlegg</asp:HyperLink>
             </ContentTemplate>
         </asp:RoleGroup>
     </RoleGroups>
 </asp:LoginView>
-&nbsp; &nbsp;&nbsp;&nbsp;
-<br />
+&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<br />
+<asp:LoginView ID="LoginView3" runat="server">
+    <RoleGroups>
+        <asp:RoleGroup Roles="admin">
+            <ContentTemplate>
+                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/admin.aspx">Administratorside</asp:HyperLink>
+            </ContentTemplate>
+        </asp:RoleGroup>
+    </RoleGroups>
+</asp:LoginView>
 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/index.aspx">Hjem</asp:HyperLink>

@@ -47,7 +47,7 @@ namespace DOTNETPROSJEKT1.DAL
             //Får et innlegg fra øvre lag og legger det i databasen
             //Gjør klar sql-streng
             string query = @"
-                                INSERT INTO innlegg (id, bloggID, tittel, dato, tekst) VALUES (@id, @bloggID, @tittel, @dato, @tekst)
+                                INSERT INTO innlegg ( bloggID, tittel, dato, tekst) VALUES ( @bloggID, @tittel, @dato, @tekst)
                             ";
 
 
@@ -57,7 +57,7 @@ namespace DOTNETPROSJEKT1.DAL
                 using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                 {
                     //Legger til verdier i sql-strengen
-                    myCommand.Parameters.AddWithValue("@id", innlegg.ID);
+                    //myCommand.Parameters.AddWithValue("@id", innlegg.ID);
                     myCommand.Parameters.AddWithValue("@bloggID", innlegg.ForeldreID);
                     myCommand.Parameters.AddWithValue("@tittel", innlegg.Tittel);
                     myCommand.Parameters.AddWithValue("@dato", innlegg.Dato);
