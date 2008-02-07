@@ -18,21 +18,6 @@ public partial class _Default : System.Web.UI.Page
         if (!IsPostBack)
         {
             GridView_blogger_Databind();
-            GridView_blogg_Databind();
-        }
-    }
-
-    protected void GridView_blogg_Databind()
-    {
-        try
-        {
-            GridView_blogg.DataSource = DOTNETPROSJEKT1.BLL.BlogBLL.getBlog(1);
-            GridView_blogg.DataBind();
-        }
-        catch (Exception ex)
-        {
-            Response.Write("DB'en tryna");
-            Response.Write(ex.Message);
         }
     }
 

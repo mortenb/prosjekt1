@@ -3,6 +3,9 @@
 <%@ MasterType TypeName="master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"  >
+    &nbsp; &nbsp; &nbsp; &nbsp;
+    <table id="Table1" runat="server">
+    </table>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
         <EmptyDataTemplate>
             Ingen innlegg<br />
@@ -12,9 +15,6 @@
             <asp:BoundField DataField="tekst" />
         </Columns>
     </asp:GridView>
-    &nbsp;
-    <table id="Table1" runat="server">
-    </table>
 
     
 </asp:Content>

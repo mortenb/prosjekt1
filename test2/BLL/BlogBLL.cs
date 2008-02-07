@@ -24,14 +24,14 @@ namespace DOTNETPROSJEKT1.BLL
             return blogger;
         }
 
-        public static List<Blog> getBlog(int blogID)
+        public static Blog getBlog(int blogID)
         {
-            Blog blog = BlogDAL.getBlog(blogID);
-
+            return BlogDAL.getBlog(blogID);
+            /*
             List<Blog> blogger = new List<Blog>();
             blogger.Add(blog);
 
-            return blogger;
+            return blogger;*/
         }
 
         public static Blog getBloggAvEier(string eier)
