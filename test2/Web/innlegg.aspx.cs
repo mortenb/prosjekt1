@@ -24,11 +24,15 @@ public partial class innlegg : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         innleggID = Convert.ToInt32(Request.QueryString.GetValues(0)[0]);
-
-        inn = DOTNETPROSJEKT1.BLL.InnleggBLL.getInnlegg(innleggID);
-
+        if (innleggID > 0)
+        {
+            inn = DOTNETPROSJEKT1.BLL.InnleggBLL.getInnlegg(innleggID);
+        }
+        else
+        {
+            inn = new Innlegg();
+        }
         PrintInnlegg();
-
     }
 
     protected void PrintInnlegg()
@@ -58,26 +62,44 @@ public partial class innlegg : System.Web.UI.Page
         Table1.Rows.Add(tr1);
 
         HtmlTableCell tcIdVerdi = new HtmlTableCell();
-        tcIdVerdi.Controls.Add(new LiteralControl(Convert.ToString(inn.ID)));
         HtmlTableCell tcBloggIDVerdi = new HtmlTableCell();
-        tcBloggIDVerdi.Controls.Add(new LiteralControl(Convert.ToString(inn.ForeldreID)));
+        if (innleggID > 0)
+        {
+            tcIdVerdi.Controls.Add(new LiteralControl(Convert.ToString(inn.ID)));
+            tcBloggIDVerdi.Controls.Add(new LiteralControl(Convert.ToString(inn.ForeldreID)));
+        }
+        else
+        {
+            tcIdVerdi.Controls.Add(new LiteralControl("nytt"));
+            tcBloggIDVerdi.Controls.Add(new LiteralControl(Convert.ToString(BlogBLL.getBloggAvEier(User.Identity.Name).BlogID)));
+        }
         HtmlTableCell tcTittelVerdi = new HtmlTableCell();
         TextBox tittel = new TextBox();
         tittel.ID = "tittel";
-        tittel.Text = inn.Tittel;
+
         tcTittelVerdi.Controls.Add(tittel);
         HtmlTableCell tcDatoVerdi = new HtmlTableCell();
         TextBox dato = new TextBox();
         dato.ID = "dato";
-        dato.Text = Convert.ToString(inn.Dato);
         tcDatoVerdi.Controls.Add(dato);
         HtmlTableCell tcTekstVerdi = new HtmlTableCell();
         TextBox tekst = new TextBox();
         tekst.TextMode = TextBoxMode.MultiLine;
         tekst.ID = "tekst";
-        tekst.Text = inn.Tekst;
+
         tcTekstVerdi.Controls.Add(tekst);
-        
+        if (innleggID > 0)
+        {
+            tittel.Text = inn.Tittel;
+            dato.Text = Convert.ToString(inn.Dato);
+            tekst.Text = inn.Tekst;
+        }
+        else
+        {
+            tittel.Text = "";
+            dato.Text = DateTime.Now.ToString();
+            tekst.Text = "";
+        }
         HtmlTableRow tr2 = new HtmlTableRow();
         tr2.Controls.Add(tcIdVerdi);
         tr2.Controls.Add(tcBloggIDVerdi);
@@ -91,8 +113,15 @@ public partial class innlegg : System.Web.UI.Page
     {
         Innlegg innleggNy = new Innlegg();
 
-        innleggNy.ID = inn.ID;
-        innleggNy.ForeldreID = inn.ForeldreID;
+        if (innleggID > 0)
+        {
+            innleggNy.ID = inn.ID;
+            innleggNy.ForeldreID = inn.ForeldreID;
+        }
+        else
+        {
+            innleggNy.ForeldreID = BlogBLL.getBloggAvEier(User.Identity.Name).BlogID;
+        }
 
         TextBox tbTittel = (TextBox)Table1.FindControl("tittel");
         TextBox tbDato = (TextBox)Table1.FindControl("dato");
@@ -100,18 +129,25 @@ public partial class innlegg : System.Web.UI.Page
         innleggNy.Tittel = tbTittel.Text;
         innleggNy.Dato = Convert.ToDateTime(tbDato.Text);
         innleggNy.Tekst = tbTekst.Text;
-
+        
         try
         {
-            DOTNETPROSJEKT1.BLL.InnleggBLL.redigerInnlegg(innleggNy);
+            if (innleggID > 0)
+            {
+                DOTNETPROSJEKT1.BLL.InnleggBLL.redigerInnlegg(innleggNy);
+            }
+            else
+            {
+                InnleggBLL.nyttInnlegg(innleggNy);
+                Response.Write("Lager nytt innlegg)");
+            }
+
         }
         catch (Exception ex)
         {
             Trace.Warn(ex.Message);
         }
-
-        Response.Redirect("~/index.aspx");
         
-     
+        Response.Redirect("~/blogg.aspx?=" + BlogBLL.getBlog(innleggNy.ForeldreID).Eier);
     }
 }
