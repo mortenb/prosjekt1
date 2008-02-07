@@ -6,13 +6,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>Untitled Page</title>
+    <title>Admin</title>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
+    
         <uc1:header ID="Header1" runat="server" />
         &nbsp;<br />
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/editRoles.aspx">Rediger roller</asp:HyperLink>
+         <asp:Panel ID="Panel1" runat="server" Height="500px" Width="400px">
         <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" LoginCreatedUser="False" RequireEmail="False" OnCreatedUser="CreateUserWizard1_CreatedUser1">
             <WizardSteps>
                 <asp:CreateUserWizardStep runat="server">
@@ -20,7 +23,7 @@
                         <table border="0">
                             <tr>
                                 <td align="center" colspan="2">
-                                    Sign Up for Your New Account</td>
+                                    Opprett en ny bruker</td>
                             </tr>
                             <tr>
                                 <td align="right">
@@ -109,17 +112,39 @@
                 </asp:CompleteWizardStep>
             </WizardSteps>
         </asp:CreateUserWizard>
+       
+        </asp:Panel>
         <br />
+        
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
-            SelectCommand="SELECT [eier], [tittel] FROM [blogg]"></asp:SqlDataSource>
+            SelectCommand="SELECT * FROM [blogg]" DeleteCommand="DELETE FROM [blogg] WHERE [id] = @id" InsertCommand="INSERT INTO [blogg] ([eier], [tittel]) VALUES (@eier, @tittel)" UpdateCommand="UPDATE [blogg] SET [eier] = @eier, [tittel] = @tittel WHERE [id] = @id">
+            <DeleteParameters>
+                <asp:Parameter Name="id" Type="Int32" />
+            </DeleteParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="eier" Type="String" />
+                <asp:Parameter Name="tittel" Type="String" />
+                <asp:Parameter Name="id" Type="Int32" />
+            </UpdateParameters>
+            <InsertParameters>
+                <asp:Parameter Name="eier" Type="String" />
+                <asp:Parameter Name="tittel" Type="String" />
+            </InsertParameters>
+        </asp:SqlDataSource>
     
     </div>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
             <Columns>
                 <asp:BoundField DataField="eier" HeaderText="eier" SortExpression="eier" />
                 <asp:BoundField DataField="tittel" HeaderText="tittel" SortExpression="tittel" />
+                <asp:CheckBoxField HeaderText="Admin"  />
+                <asp:ButtonField Text="Slett" />
             </Columns>
         </asp:GridView>
+        &nbsp;<br />
+        &nbsp;
+        
+        
     </form>
 </body>
 </html>
