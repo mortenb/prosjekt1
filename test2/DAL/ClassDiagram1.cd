@@ -19,11 +19,11 @@
     <Position X="2.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>InnleggDAL.cs</FileName>
-      <HashCode>AACAABAAAAQAAAAAABAAAAAAAAAAAAgAAAAAAAgAAAA=</HashCode>
+      <HashCode>AACAABAAAAQAAAAAABAAAAAAAAAEAAgAAAAAAAgAAAA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="DOTNETPROSJEKT1.DAL.KommentarDAL">
-    <Position X="4.25" Y="0.5" Width="1.5" />
+    <Position X="4.25" Y="0.5" Width="2" />
     <TypeIdentifier>
       <FileName>KommentarDAL.cs</FileName>
       <HashCode>AAAAACAAAAAAACCAAAAAAAAAAAAAAAAEAAAAAAAIAAA=</HashCode>

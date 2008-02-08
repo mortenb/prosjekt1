@@ -15,8 +15,8 @@ namespace DOTNETPROSJEKT1.DAL
             //Metode for å legge til en kommentar
             //Gjør klar sql-streng
             string query = @"
-                                INSERT INTO kommentar (innleggID, tittel, dato, tekst, forfatter) 
-                                VALUES ( @innleggID, @tittel, @dato, @tekst, @forfatter)
+                                INSERT INTO kommentar (innleggID, nivaa, tittel, dato, tekst, forfatter) 
+                                VALUES ( @innleggID, @nivaa, @tittel, @dato, @tekst, @forfatter)
                             ";
 
             using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
@@ -27,6 +27,7 @@ namespace DOTNETPROSJEKT1.DAL
                     //Legger til verdier i sql-strengen
                  //   myCommand.Parameters.AddWithValue("@id", kommentar.ForeldreID);
                     myCommand.Parameters.AddWithValue("@innleggID", kommentar.InnleggID);
+                    myCommand.Parameters.AddWithValue("@nivaa", kommentar.Nivaa);
                     myCommand.Parameters.AddWithValue("@tittel", kommentar.Tittel);
                     myCommand.Parameters.AddWithValue("@dato", kommentar.Dato);
                     myCommand.Parameters.AddWithValue("@tekst", kommentar.Tekst);
@@ -111,9 +112,9 @@ namespace DOTNETPROSJEKT1.DAL
             //Gjør klar sql-streng
             string query = @"
                                 SELECT kommentar.*
-                                FROM kommentar,innlegg
-                                WHERE kommentar.innleggID = @innleggID
+                                FROM kommentar where kommentar.innleggID = @innleggID order by nivaa
                             ";
+            
 
             //Oppretter liste som skal returneres
             List<Kommentar> kommentarer = new List<Kommentar>();
@@ -145,7 +146,7 @@ namespace DOTNETPROSJEKT1.DAL
                     }
                 }
             }
-
+            
             return kommentarer;
         } //Kommentert
 
@@ -167,7 +168,11 @@ namespace DOTNETPROSJEKT1.DAL
             {
                 kommentar.InnleggID = (int)reader["innleggID"];
             }
-
+            if (reader["nivaa"] != DBNull.Value)
+            {
+                kommentar.Nivaa = (int)reader["nivaa"];
+            }
+            
             if (reader["tittel"] != DBNull.Value)
             {
                 kommentar.Tittel = (string)reader["tittel"];
@@ -187,7 +192,7 @@ namespace DOTNETPROSJEKT1.DAL
             {
                 kommentar.Forfatter = (string)reader["forfatter"];
             }
-
+           
             return kommentar;
         }
 
