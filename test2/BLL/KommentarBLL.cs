@@ -27,7 +27,7 @@ namespace DOTNETPROSJEKT1.BLL
         public static List<Kommentar> getKommentarListe(int innleggID)
         {
             List<Kommentar> kommentarliste = KommentarDAL.getKommentarListe(innleggID);
-
+            
             return kommentarliste;
         }
     }
