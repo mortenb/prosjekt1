@@ -26,31 +26,33 @@ public partial class blogg : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         user = User.Identity.Name;
+        if (Request.QueryString.Count > 0) //Sjekker om vi har et argument
+        {
+            _bloggeier = Request.QueryString.GetValues(0);
+            //bloggeier ligger nå i _bloggeier[0]
+            //Lage liste over innlegg
+            try
+            {
+                bloggeier = _bloggeier[0];
+                bloggen = DOTNETPROSJEKT1.BLL.BlogBLL.getBloggAvEier(bloggeier);
 
-        _bloggeier = Request.QueryString.GetValues(0);
-        //bloggeier ligger nå i _bloggeier[0]
-        //Lage liste over innlegg
-        try
-        {
-            bloggeier = _bloggeier[0];
-            bloggen = DOTNETPROSJEKT1.BLL.BlogBLL.getBloggAvEier(bloggeier);
-            
-        }
-        catch (Exception ex)
-        {
-            Trace.Warn("Fant ikke blogg: " + ex.Message);
-        }
+            }
+            catch (Exception ex)
+            {
+                Trace.Warn("Fant ikke blogg: " + ex.Message);
+            }
 
-        try
-        {
-            listeoverinnlegg = DOTNETPROSJEKT1.BLL.InnleggBLL.getInnleggsListe(bloggen.BlogID);
-        }
-        catch (Exception ex)
-        {
-            Trace.Warn("Kunne ikke opprette liste over innlegg: " + ex.Message);
-        }
+            try
+            {
+                listeoverinnlegg = DOTNETPROSJEKT1.BLL.InnleggBLL.getInnleggsListe(bloggen.BlogID);
+            }
+            catch (Exception ex)
+            {
+                Trace.Warn("Kunne ikke opprette liste over innlegg: " + ex.Message);
+            }
 
-        PrintInnlegg(listeoverinnlegg);
+            PrintInnlegg(listeoverinnlegg);
+        }
     }
 
     //Metode for å hente ut verdier i bloggen
