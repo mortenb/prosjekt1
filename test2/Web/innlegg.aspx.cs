@@ -107,6 +107,8 @@ public partial class innlegg : System.Web.UI.Page
         tr2.Controls.Add(tcDatoVerdi);
         tr2.Controls.Add(tcTekstVerdi);
         Table1.Rows.Add(tr2);
+
+        
     }
 
     protected void Button1_Click(object sender, EventArgs e)
