@@ -58,8 +58,8 @@ public partial class blogg : System.Web.UI.Page
     //Metode for å hente ut verdier i bloggen
     protected void PrintInnlegg(List<Innlegg> innlegg)
     {
-        GridView1.DataSource = innlegg;
-        GridView1.DataBind();
+        //GridView1.DataSource = innlegg;
+        //GridView1.DataBind();
 
         foreach (Innlegg inn in innlegg)
         {
@@ -68,10 +68,11 @@ public partial class blogg : System.Web.UI.Page
             HtmlTableCell tcTittel = new HtmlTableCell();
             HtmlTableCell tcTekst = new HtmlTableCell();
             HtmlTableCell tcRediger = new HtmlTableCell();
-            
-
+            HtmlTableCell tcSlett = new HtmlTableCell();
+            HtmlTableCell tcKommentar = new HtmlTableCell();
             HtmlTableRow tr1 = new HtmlTableRow();
             HtmlTableRow tr2 = new HtmlTableRow();
+            HtmlTableRow tr3 = new HtmlTableRow();
             tcTittel.Controls.Add(new LiteralControl(inn.Tittel));
             tr1.Controls.Add(tcTittel);
             Table1.Rows.Add(tr1);
@@ -84,11 +85,28 @@ public partial class blogg : System.Web.UI.Page
                 redigerKnapp.PostBackUrl = "~/innlegg.aspx?ID=" + inn.ID;
                 redigerKnapp.Click += new EventHandler(RedigerKnapp_onclick);
                 tcRediger.Controls.Add(redigerKnapp);
+                LinkButton slettKnapp = new LinkButton();
+                slettKnapp.Text = "Slett";
+                slettKnapp.ID = "slettKnapp" + inn.ID;
+                slettKnapp.CommandArgument = inn.ID.ToString();
+                slettKnapp.Click += new EventHandler(slettKnapp_onclick);
+                tcSlett.Controls.Add(slettKnapp);
             }
             
             tr2.Controls.Add(tcTekst);
             tr2.Controls.Add(tcRediger);
+            tr2.Controls.Add(tcSlett);
             Table1.Rows.Add(tr2);
+           
+            GridView kommentarGridTest = new GridView();
+
+            kommentarGridTest.DataSource = KommentarBLL.getKommentarListe(inn.ID);
+            kommentarGridTest.DataBind();
+            tcKommentar.Controls.Add(kommentarGridTest);
+            tr3.Controls.Add(tcKommentar);
+            Table1.Rows.Add(tr3);
+
+
         }
     }
 
@@ -96,6 +114,24 @@ public partial class blogg : System.Web.UI.Page
     {
         
         
+    }
+
+    protected void slettKnapp_onclick(object sender, EventArgs e)
+    {
+        try
+        {
+            LinkButton hvilken = (LinkButton)sender;
+            int id = int.Parse(hvilken.CommandArgument);
+            InnleggBLL.slettInnlegg(id);
+            Trace.Write("slettet innlegg " + id);
+            
+        }
+        catch (Exception ex)
+        {
+            Trace.Write(ex.Message);
+
+        }
+
     }
 
     protected void test(int i)
