@@ -112,7 +112,7 @@ namespace DOTNETPROSJEKT1.DAL
             //Gjør klar sql-streng
             string query = @"
                                 SELECT kommentar.*
-                                FROM kommentar where kommentar.innleggID = @innleggID order by nivaa
+                                FROM kommentar where kommentar.innleggID = @innleggID order by id, nivaa
                             ";
             
 
