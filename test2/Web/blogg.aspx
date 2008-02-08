@@ -15,6 +15,8 @@
             <asp:BoundField DataField="tekst" />
         </Columns>
     </asp:GridView>
+    <asp:GridView ID="GridView2" runat="server">
+    </asp:GridView>
 
     
 </asp:Content>
