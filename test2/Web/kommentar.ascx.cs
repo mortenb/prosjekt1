@@ -37,8 +37,9 @@ public partial class kommentar : System.Web.UI.UserControl
     public int Nivaa
     {
         get { return _nivaa; }
-        set { 
-            _nivaa = value +1;
+        set {
+            _nivaa = value;
+            //_nivaa = value +1;
             this.lblNivaa.Text = _nivaa.ToString();
         } //øker med en i forhold til foreldre-nivået.
     }
