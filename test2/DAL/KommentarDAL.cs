@@ -104,7 +104,47 @@ namespace DOTNETPROSJEKT1.DAL
                     }
                 }
             }
-        } 
+        }
+        
+        public static Kommentar getKommentar(int kommentarID)
+        {
+            //laget av MB 9.2.08. returnerer en kommentar.
+            string query = @"
+                                SELECT kommentar.*
+                                FROM kommentar where kommentar.id = @kommentarID
+                            ";
+            Kommentar k = new Kommentar();
+            using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                myConnection.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myConnection))
+                {
+                    //Legger til verdi i sql-streng
+                    myCommand.Parameters.AddWithValue("@kommentarID", kommentarID);
+                    //Eksekverer sql-streng og legger radene i en reader
+                    SqlDataReader reader = myCommand.ExecuteReader();
+                    try
+                    {
+                        while (reader.Read())
+                        {
+                            //Leser rad for rad og legger kommentarobjekter i kommentarlista ved hjelpemetode
+                            k = KommentarFraSqlReader(ref reader);
+                        }
+                    }
+                    //Som Nils har påpekt er det øvre lag som skal håndtere exceptions
+                    finally
+                    {
+                        if (reader != null)
+                        {
+                            reader.Close(); //Lukker connection
+                        }
+                    }
+                }
+            }
+
+            return k;
+
+        }
 
         public static List<Kommentar> getKommentarListe(int innleggID)
         {
