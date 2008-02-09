@@ -7,10 +7,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>Masterside</title>
+    <link href="style1.css" rel="stylesheet" type="text/css" />
+    
 </head>
 <body>
     <form id="form2" runat="server">
-    <div>
+    <div class="container">
      
         
         <uc1:header ID="Header1" runat="server" OnLoad="Header1_Load" />
