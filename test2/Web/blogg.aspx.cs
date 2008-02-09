@@ -59,25 +59,27 @@ public partial class blogg : System.Web.UI.Page
     //Metode for å hente ut verdier i bloggen
     protected void PrintInnlegg(List<Innlegg> innlegg)
     {
-        //GridView1.DataSource = innlegg;
-        //GridView1.DataBind();
+        //henter alle innlegg i en blogg og lager tabell:
 
         foreach (Innlegg inn in innlegg)
-        {
-            HtmlTableRow tr = new HtmlTableRow();
-            
+        {   
+            //celler for tittel, tekst, rediger, slett og kommenter
             HtmlTableCell tcTittel = new HtmlTableCell();
             HtmlTableCell tcTekst = new HtmlTableCell();
             HtmlTableCell tcRediger = new HtmlTableCell();
             HtmlTableCell tcSlett = new HtmlTableCell();
             HtmlTableCell tcKommenter = new HtmlTableCell();
+            //rader for ett innlegg:
             HtmlTableRow tr1 = new HtmlTableRow();
             HtmlTableRow tr2 = new HtmlTableRow();
             HtmlTableRow tr3 = new HtmlTableRow();
+            //Få tittel og tekst fra ett innlegg inn i tabellen:
             tcTittel.Controls.Add(new LiteralControl(inn.Tittel));
             tr1.Controls.Add(tcTittel);
             Table1.Rows.Add(tr1);
+            
             tcTekst.Controls.Add(new LiteralControl(inn.Tekst));
+            //hvis bruker har rettigheter, vis rediger og sletteknapp
             if (user.Equals(bloggeier) || User.IsInRole("admin"))
             {
                 Button redigerKnapp = new Button();
@@ -108,17 +110,10 @@ public partial class blogg : System.Web.UI.Page
             Table1.Rows.Add(tr2);
             Table1.Rows.Add(tr3);
             
-            //GridView kommentarGridTest = new GridView();
-
-            //kommentarGridTest.DataSource = KommentarBLL.getKommentarListe(inn.ID);
-            //kommentarGridTest.DataBind();
-            
-            //tcKommentar.Controls.Add(kommentarGridTest);
-            
+            //hent så alle kommentarer for innlegget, løp gjennom og vis:
             kommentarer = KommentarBLL.getKommentarListe(inn.ID);
             foreach ( Kommentar k in kommentarer)
             {
-                //Table kommentarTabell = new Table();
                 int nivaa = k.Nivaa;
 
                 HtmlTableRow trKommentarOverskrift = new HtmlTableRow();
@@ -133,14 +128,10 @@ public partial class blogg : System.Web.UI.Page
                 trKommentarOverskrift.Controls.Add(tcKommentar1);
                 tcKommentar2.Controls.Add(new LiteralControl( k.Tekst));
                 trKommentarBody.Controls.Add(tcKommentar2);
-                //kommentarTabell.Controls.Add(trKommentarOverskrift);
-                //kommentarTabell.Controls.Add(trKommentarBody);
-                //TableCell tcKommentar = new TableCell();
-                //tr3.Controls.Add(kommentarTabell);
-                //tr3.Controls.Add(tcKommentar);
+                
                 Table1.Rows.Add(trKommentarOverskrift);
                 Table1.Rows.Add(trKommentarBody);
-
+                //Hvis bruker har rettigheter, vis slett og rediger-knapper
                 if (user.Equals(bloggeier) || User.IsInRole("admin"))
                 {
                     
@@ -152,6 +143,7 @@ public partial class blogg : System.Web.UI.Page
 
                     LinkButton slettButton = new LinkButton();
                     slettButton.ID = "slettKommentarButton" + k.ID;
+                    slettButton.CommandArgument = k.ID.ToString();
                     slettButton.Text = "slett";
 
                     tcAdmin1.Controls.Add(redigerButton);
@@ -159,9 +151,18 @@ public partial class blogg : System.Web.UI.Page
                     tcAdmin1.Controls.Add(slettButton);
 
                     trKommentarFooter.Controls.Add(tcAdmin1);
-                    Table1.Rows.Add(trKommentarFooter);
+                    
                 }
-
+                //sett inn kommenter-knapp på en kommentar:
+                LinkButton kommenterButton2 = new LinkButton();
+                kommenterButton2.ID = "kommenterKommentar" + k.ID;
+                kommenterButton2.Text = "kommenter";
+                kommenterButton2.CommandArgument = k.ID.ToString();
+                kommenterButton2.Click += new EventHandler(kommenterKommentarButton_onclick);
+                HtmlTableCell tcKommentarFoot = new HtmlTableCell(); 
+                tcKommentarFoot.Controls.Add(kommenterButton2);
+                trKommentarFooter.Controls.Add(tcKommentarFoot);
+                Table1.Rows.Add(trKommentarFooter);
                 
 
             }
@@ -172,13 +173,44 @@ public partial class blogg : System.Web.UI.Page
     {
         try
         {
+            
+            int nivaa;
             LinkButton hvilken = (LinkButton) sender;
             int id = int.Parse(hvilken.CommandArgument);
-            int nivaa = 0; //teller fra 0. Et innlegg har nivå 0
-            this.nykommentar1.Nivaa = nivaa;
+            nivaa = 0; //teller fra 0. Et innlegg har nivå 0
+            this.nykommentar1.Nivaa = id; //førsøker dette istedet.. 
             this.nykommentar1.InnleggID = id;
+           
             this.nykommentar1.ForeldreID = id;
             this.nykommentar1.Visible = true;
+
+
+        }
+        catch (Exception ex)
+        {
+            Trace.Warn(ex.Message);
+        }
+    }
+
+    protected void kommenterKommentarButton_onclick(object sender, EventArgs e)
+    {
+        Trace.Write("Kommenter kommentar!");
+        try
+        {
+
+            int nivaa;
+            LinkButton hvilken = (LinkButton)sender;
+            int id = int.Parse(hvilken.CommandArgument);
+            Kommentar k = KommentarBLL.getKommentar(id);
+            if (k != null)
+            {
+                nivaa = k.ID; 
+                this.nykommentar1.Nivaa = nivaa;
+                this.nykommentar1.InnleggID = k.InnleggID;
+
+                this.nykommentar1.ForeldreID = id;
+                this.nykommentar1.Visible = true;
+            }
 
 
         }
@@ -201,8 +233,11 @@ public partial class blogg : System.Web.UI.Page
         {
             LinkButton hvilken = (LinkButton)sender;
             int id = int.Parse(hvilken.CommandArgument);
-            InnleggBLL.slettInnlegg(id);
-            Trace.Write("slettet innlegg " + id);
+            
+           
+                InnleggBLL.slettInnlegg(id);
+                //må her også slette tilhørende kommentarer..Eller gjøres dette av db?
+                Trace.Write("slettet innlegg " + id);
             
         }
         catch (Exception ex)
