@@ -18,7 +18,12 @@ public partial class kommentar : System.Web.UI.UserControl
     public int InnleggID
     {
         get { return _innleggID; }
-        set { _innleggID = value; } 
+        set { 
+            _innleggID = value;
+            //av en eller annen grunn resettes denne når lagreknappen trykkes, 
+            //derfor putter jeg verdien i en skjult label... veldig grisete og teit..
+            this.lblID.Text = _innleggID.ToString(); 
+        } 
 
     }
     private int _foreldreID;
@@ -32,25 +37,37 @@ public partial class kommentar : System.Web.UI.UserControl
     public int Nivaa
     {
         get { return _nivaa; }
-        set { _nivaa = value +1; } //øker med en i forhold til foreldre-nivået.
+        set { 
+            _nivaa = value +1;
+            this.lblNivaa.Text = _nivaa.ToString();
+        } //øker med en i forhold til foreldre-nivået.
     }
 
+    protected void Page_PreRender(object sender, EventArgs e)
+    {
+        
+
+    }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
     protected void btnLagre_Click(object sender, EventArgs e)
     {
         Kommentar minKommentar = new Kommentar();
         minKommentar.Dato = DateTime.Now;
+        
         minKommentar.Tekst = this.inputTekst.Text.ToString();
         minKommentar.Tittel = this.inputTittel.Text.ToString();
         minKommentar.Forfatter = this.inputForfatter.Text.ToString();
-        minKommentar.InnleggID = _innleggID;
-        minKommentar.ForeldreID = _foreldreID;
-        minKommentar.Nivaa = _nivaa;
+        minKommentar.InnleggID = int.Parse(this.lblID.Text.ToString());
+        minKommentar.ForeldreID = minKommentar.InnleggID;
+        minKommentar.Nivaa = int.Parse(this.lblNivaa.Text.ToString());
 
         DOTNETPROSJEKT1.BLL.KommentarBLL.nyKommentar(minKommentar);
+        
+        this.Visible = false;
+        
     }
 }
