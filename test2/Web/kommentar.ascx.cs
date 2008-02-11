@@ -13,6 +13,17 @@ using DOTNETPROSJEKT1.Model;
 
 public partial class kommentar : System.Web.UI.UserControl
 {
+
+    private int _kommentarID = -1;
+    public int KommentarID
+    {
+        get { return _kommentarID; }
+        set 
+        { 
+            _kommentarID = value;
+            this.lblKommentarID.Text = _kommentarID.ToString();   
+        }
+    }
     private int _innleggID;
 
     public int InnleggID
@@ -46,7 +57,15 @@ public partial class kommentar : System.Web.UI.UserControl
 
     protected void Page_PreRender(object sender, EventArgs e)
     {
+        Kommentar finnes = KommentarBLL.getKommentar(_kommentarID);
         
+        if (finnes.ID != 0)
+        {
+            this.inputForfatter.Text = finnes.Forfatter.ToString();
+            this.inputTekst.Text = finnes.Tekst.ToString();
+            this.inputTittel.Text = finnes.Tittel.ToString();
+        }
+        this.lblKommentarID.Text = finnes.ID.ToString();
 
     }
 
@@ -65,10 +84,20 @@ public partial class kommentar : System.Web.UI.UserControl
         minKommentar.InnleggID = int.Parse(this.lblID.Text.ToString());
         minKommentar.ForeldreID = minKommentar.InnleggID;
         minKommentar.Nivaa = int.Parse(this.lblNivaa.Text.ToString());
+        minKommentar.ID = int.Parse(this.lblKommentarID.Text.ToString());
 
-        DOTNETPROSJEKT1.BLL.KommentarBLL.nyKommentar(minKommentar);
+        if (minKommentar.ID != 0)
+        {
+            KommentarBLL.redigerKommentar(minKommentar.ID, minKommentar.Tekst);
+        }
+        else
+        {
+            DOTNETPROSJEKT1.BLL.KommentarBLL.nyKommentar(minKommentar);
+        }
         
         this.Visible = false;
+        Parent.Page.Response.Redirect(Page.Request.Url.AbsoluteUri);
+        Parent.Page.Response.End();
         
     }
 }
