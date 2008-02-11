@@ -1,6 +1,5 @@
 ﻿body 
 {
-    background-color: #999999;
     background-color: #eeeeee;
     font-family: Verdana;
     font-size: medium;
@@ -30,7 +29,7 @@ div.container
 
 .x-innleggstabell
 {
-	background-color:#ffffff;
+	background-color:#eeeeee;
 	font-family:Verdana;
 	font-size:medium;
 	
@@ -38,7 +37,7 @@ div.container
 
 .x-gridview
 {
-	background-color:Blue;
+	background-color:#eeeeee;
 }
 
 .x-header
