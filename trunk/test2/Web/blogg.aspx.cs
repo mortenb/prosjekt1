@@ -233,9 +233,10 @@ public partial class blogg : System.Web.UI.Page
         {
             LinkButton hvilken = (LinkButton)sender;
             int id = int.Parse(hvilken.CommandArgument);
+
             
-           
-                InnleggBLL.slettInnlegg(id);
+                //Kaller slettInnlegg med boolean "er pålogget bruker lik bloggeier?")
+                InnleggBLL.slettInnlegg(id, user.ToString() == bloggeier);
                 //må her også slette tilhørende kommentarer..Eller gjøres dette av db?
                 Trace.Write("slettet innlegg " + id);
             
@@ -248,8 +249,4 @@ public partial class blogg : System.Web.UI.Page
 
     }
 
-    protected void test(int i)
-    {
-        Response.Write("jula jula" + i);
-    }
 }
