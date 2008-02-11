@@ -1,22 +1,9 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="admin.aspx.cs" Inherits="test" %>
-
-<%@ Register Src="header.ascx" TagName="header" TagPrefix="uc1" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title>Admin</title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-    
-        <uc1:header ID="Header1" runat="server" />
-        &nbsp;<br />
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="admin.aspx.cs" Inherits="test" MasterPageFile="~/master.master"%>
+<%@ MasterType TypeName="master" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"  >
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/editRoles.aspx">Rediger roller</asp:HyperLink>
          <asp:Panel ID="Panel1" runat="server" Height="500px" Width="400px">
-        <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" LoginCreatedUser="False" RequireEmail="False" OnCreatedUser="CreateUserWizard1_CreatedUser1">
+        <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" LoginCreatedUser="False" RequireEmail="False" OnCreatedUser="CreateUserWizard1_CreatedUser1" CreateUserButtonText="Lag ny bruker" FinishCompleteButtonText="Fullfør" FinishPreviousButtonText="Forrige" InvalidPasswordErrorMessage="Passordet må minst være på {0} tegn, og må inneholde minst {1}. ikke-alfanummerisk tegn." UnknownErrorMessage=" Kontoen ble ikke opprettet, vennligst prøv igjen.">
             <WizardSteps>
                 <asp:CreateUserWizardStep runat="server">
                     <ContentTemplate>
@@ -27,7 +14,7 @@
                             </tr>
                             <tr>
                                 <td align="right">
-                                    <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name:</asp:Label></td>
+                                    <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Brukernavn:</asp:Label></td>
                                 <td>
                                     <asp:TextBox ID="UserName" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName"
@@ -36,7 +23,7 @@
                             </tr>
                             <tr>
                                 <td align="right">
-                                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label></td>
+                                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Passord:</asp:Label></td>
                                 <td>
                                     <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password"
@@ -45,7 +32,7 @@
                             </tr>
                             <tr>
                                 <td align="right">
-                                    <asp:Label ID="ConfirmPasswordLabel" runat="server" AssociatedControlID="ConfirmPassword">Confirm Password:</asp:Label></td>
+                                    <asp:Label ID="ConfirmPasswordLabel" runat="server" AssociatedControlID="ConfirmPassword">Bekreft passord:</asp:Label></td>
                                 <td>
                                     <asp:TextBox ID="ConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="ConfirmPasswordRequired" runat="server" ControlToValidate="ConfirmPassword"
@@ -55,7 +42,7 @@
                             </tr>
                             <tr>
                                 <td align="right">
-                                    <asp:Label ID="QuestionLabel" runat="server" AssociatedControlID="Question">Security Question:</asp:Label></td>
+                                    <asp:Label ID="QuestionLabel" runat="server" AssociatedControlID="Question">Sikkerhetsspørsmål:</asp:Label></td>
                                 <td>
                                     <asp:TextBox ID="Question" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="QuestionRequired" runat="server" ControlToValidate="Question"
@@ -65,7 +52,7 @@
                             </tr>
                             <tr>
                                 <td align="right">
-                                    <asp:Label ID="AnswerLabel" runat="server" AssociatedControlID="Answer">Security Answer:</asp:Label></td>
+                                    <asp:Label ID="AnswerLabel" runat="server" AssociatedControlID="Answer">Svar på spørsmål::</asp:Label></td>
                                 <td>
                                     <asp:TextBox ID="Answer" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="AnswerRequired" runat="server" ControlToValidate="Answer"
@@ -76,7 +63,7 @@
                             <tr>
                                 <td align="center" colspan="2">
                                     <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password"
-                                        ControlToValidate="ConfirmPassword" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match."
+                                        ControlToValidate="ConfirmPassword" Display="Dynamic" ErrorMessage='Verdien i feltet "Bekreft passord" er ikke lik verdien i "Passord"'
                                         ValidationGroup="CreateUserWizard1"></asp:CompareValidator>
                                 </td>
                             </tr>
@@ -95,16 +82,16 @@
                         <table border="0">
                             <tr>
                                 <td align="center" colspan="2">
-                                    Complete</td>
+                                    Fullført</td>
                             </tr>
                             <tr>
-                                <td>
-                                    Your account has been successfully created.</td>
+                                <td style="width: 269px">
+                                    Kontoen har blitt opprettet</td>
                             </tr>
                             <tr>
                                 <td align="right" colspan="2">
                                     <asp:Button ID="ContinueButton" runat="server" CausesValidation="False" CommandName="Continue"
-                                        OnClick="ContinueButton_Click" Text="Continue" ValidationGroup="CreateUserWizard1" />
+                                        OnClick="ContinueButton_Click" Text="Fortsett" ValidationGroup="CreateUserWizard1" />
                                 </td>
                             </tr>
                         </table>
@@ -132,7 +119,6 @@
             </InsertParameters>
         </asp:SqlDataSource>
     
-    </div>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
             <Columns>
                 <asp:BoundField DataField="eier" HeaderText="eier" SortExpression="eier" />
@@ -141,10 +127,4 @@
                 <asp:ButtonField Text="Slett" />
             </Columns>
         </asp:GridView>
-        &nbsp;<br />
-        &nbsp;
-        
-        
-    </form>
-</body>
-</html>
+</asp:Content>
