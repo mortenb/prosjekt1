@@ -1,18 +1,12 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="Login" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="Login" Title="Innlogging" MasterPageFile="~/master.master" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ MasterType TypeName="master" %>
 
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title>Untitled Page</title>
-</head>
-<body>
-    <form id="form1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"  >
+
     <div>
-        <asp:Login ID="Login1" DestinationPageUrl="~/Index.aspx" runat="server">
+        <asp:Login ID="Login1" DestinationPageUrl="~/Index.aspx" runat="server" FailureText="Innloggingen fielet. Vennligst prøv igjen." LoginButtonText="Logg inn" PasswordLabelText="Passord:" RememberMeText="Husk meg neste gang." TitleText="Innlogging" UserNameLabelText="Brukernavn:">
         </asp:Login>
     
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>
