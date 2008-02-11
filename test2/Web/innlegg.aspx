@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     &nbsp;
     
-    <table id="Table1" runat="server" >
+    <table id="Table1" runat="server" class="x-innleggstabell" >
         <tbody>
         </tbody>
     </table>
