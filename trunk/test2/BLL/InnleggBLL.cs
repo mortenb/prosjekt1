@@ -14,6 +14,19 @@ namespace DOTNETPROSJEKT1.BLL
             InnleggDAL.slettInnlegg(innleggID);
         }
 
+        public static void slettInnlegg(int innleggID, bool erEier)
+        {
+            //overridet metode
+            if (erEier) //Eier av bloggen kan slette fullstendig..
+            {
+                slettInnlegg(innleggID);
+            }
+            else //Dersom en "tilfeldig" admin sletter, ikke slett, bare rediger.
+            {
+                endreTekst(innleggID, "Slettet av administrator");
+            }
+        }
+
         public static Innlegg getInnlegg(int innleggID)
         {
             return InnleggDAL.getInnlegg(innleggID);
