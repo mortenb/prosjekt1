@@ -185,7 +185,7 @@ namespace DOTNETPROSJEKT1.DAL
                 using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                 {
                     //Legger til verdier i sql-streng
-                    myCommand.Parameters.AddWithValue("@id", innleggID);
+                    myCommand.Parameters.AddWithValue("@innleggID", innleggID);
                     myCommand.Parameters.AddWithValue("@tekst", tekst);
                     //Eksekverer sql-streng og legger antall rader forandet i result
                     int result = myCommand.ExecuteNonQuery();
