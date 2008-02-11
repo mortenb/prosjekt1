@@ -1,16 +1,19 @@
 ﻿body 
 {
+    background-color: #999999;
     background-color: #eeeeee;
     font-family: Verdana;
     font-size: medium;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
-    
 }
 
 div.container
 {
+
+    background-color: #EEEEEE;
+   font-family: Verdana, Sans-Serif;
 	background-color: #eeeeee;
 	font-family: Verdana;
 	font-size: medium;
