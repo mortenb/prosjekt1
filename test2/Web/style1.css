@@ -1,11 +1,44 @@
 ﻿body 
 {
-    background-color: White;
+    background-color: #eeeeee;
+    font-family: Verdana;
+    font-size: medium;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    
 }
 
 div.container
 {
-    background-color: White;
-   
-    
+	background-color: #eeeeee;
+	font-family: Verdana;
+	font-size: medium;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	color: black;
+	table-layout:auto;
+	border-collapse:collapse;
+	border-bottom-color:Black;
+	padding-bottom:100px;
+	border-spacing:100px;
+}
+
+.x-innleggstabell
+{
+	background-color:#ffffff;
+	font-family:Verdana;
+	font-size:medium;
+	
+}
+
+.x-gridview
+{
+	background-color:Blue;
+}
+
+.x-header
+{
+	
 }
