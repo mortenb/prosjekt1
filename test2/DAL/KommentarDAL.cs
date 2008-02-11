@@ -92,7 +92,7 @@ namespace DOTNETPROSJEKT1.DAL
                 using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                 {
                     //Legger til verdier i sql-strengen
-                    myCommand.Parameters.AddWithValue("@id", kommentarID);
+                    myCommand.Parameters.AddWithValue("@kommentarID", kommentarID);
                     myCommand.Parameters.AddWithValue("@tekst", tekst);
                     //Eksekverer kommandoen og legger antall rader forandret i result
                     int result = myCommand.ExecuteNonQuery();
