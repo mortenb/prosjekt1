@@ -1,6 +1,6 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="header.ascx.cs" Inherits="header" %>
 
-<div id="x-header">
+<div class="x-header">
 <asp:LoginStatus ID="LoginStatus1" runat="server" LoginText="Logg inn" LogoutText="Logg ut" />
 <asp:LoginView ID="LoginView1" runat="server">
     <LoggedInTemplate>
