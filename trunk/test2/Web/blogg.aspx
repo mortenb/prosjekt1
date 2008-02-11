@@ -17,7 +17,7 @@
     </asp:GridView>
     <asp:GridView ID="GridView2" runat="server">
     </asp:GridView>
-    <nyKommentar:nyKommentarBox ID="nykommentar1" runat="server" Visible="false" />
+    <nyKommentar:nyKommentarBox ID="nykommentar1" runat="server" Visible="false" EnableTheming="false" />
     
     
 </asp:Content>
