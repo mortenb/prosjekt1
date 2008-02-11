@@ -1,5 +1,6 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="header.ascx.cs" Inherits="header" %>
-<asp:LoginStatus ID="LoginStatus1" runat="server" />
+<div id="x-header">
+<asp:LoginStatus ID="LoginStatus1" runat="server" LoginText="Logg inn" LogoutText="Logg ut" />
 <asp:LoginView ID="LoginView1" runat="server">
     <LoggedInTemplate>
         Velkommen &nbsp;<asp:LoginName ID="LoginName1" runat="server" />
@@ -9,7 +10,7 @@
     </AnonymousTemplate>
 </asp:LoginView>
 &nbsp;
-<asp:LoginView ID="LoginView2" runat="server">
+<asp:LoginView ID="LoginView2" runat="server" OnViewChanged="LoginView2_ViewChanged">
     <RoleGroups>
         <asp:RoleGroup Roles="blogger">
             <ContentTemplate>
@@ -29,3 +30,4 @@
     </RoleGroups>
 </asp:LoginView>
 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/index.aspx">Hjem</asp:HyperLink>
+</div>
