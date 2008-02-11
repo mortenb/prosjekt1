@@ -1,6 +1,6 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="kommentar.ascx.cs" Inherits="kommentar" %>
 
-<asp:Panel CssClass="x-kommentar" ID="Panel1" runat="server" Height="254px" Width="530px" >
+<asp:Panel CssClass="x-redigerkommentar" ID="Panel1" runat="server" Height="254px" Width="530px" >
 
     <asp:Label ID="lblID" runat="server" Text="" Visible="false"></asp:Label>
     <asp:Label ID="lblNivaa" runat="server" Text="" Visible="false"></asp:Label>
