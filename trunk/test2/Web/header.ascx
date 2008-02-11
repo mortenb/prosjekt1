@@ -1,4 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="header.ascx.cs" Inherits="header" %>
+
 <div id="x-header">
 <asp:LoginStatus ID="LoginStatus1" runat="server" LoginText="Logg inn" LogoutText="Logg ut" />
 <asp:LoginView ID="LoginView1" runat="server">
@@ -10,7 +11,7 @@
     </AnonymousTemplate>
 </asp:LoginView>
 &nbsp;
-<asp:LoginView ID="LoginView2" runat="server" OnViewChanged="LoginView2_ViewChanged">
+<asp:LoginView ID="LoginView2" runat="server">
     <RoleGroups>
         <asp:RoleGroup Roles="blogger">
             <ContentTemplate>
