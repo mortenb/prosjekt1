@@ -1,4 +1,5 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="editRoles.aspx.cs" Inherits="editRoles" MasterPageFile="~/master.master" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="editRoles.aspx.cs" Inherits="editRoles" MasterPageFile="~/master.master" Title="Rediger roller"  %>
+
 <%@ MasterType TypeName="master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"  >   
          <div>

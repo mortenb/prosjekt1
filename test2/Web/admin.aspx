@@ -1,4 +1,5 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="admin.aspx.cs" Inherits="test" MasterPageFile="~/master.master"%>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="admin.aspx.cs" Inherits="test" MasterPageFile="~/master.master" Title="Administrer bloggside" %>
+
 <%@ MasterType TypeName="master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"  >
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/editRoles.aspx">Rediger roller</asp:HyperLink>
