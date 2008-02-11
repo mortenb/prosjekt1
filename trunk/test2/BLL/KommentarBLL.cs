@@ -19,6 +19,18 @@ namespace DOTNETPROSJEKT1.BLL
            KommentarDAL.slettKommentar(kommentarID);   
         }
 
+        public static void slettKommentar(int kommentarID, bool erEier)
+        {
+            if (erEier)
+            {
+                slettKommentar(kommentarID);
+            }
+            else
+            {
+                redigerKommentar(kommentarID, "Slettet av administrator");
+            }
+        }
+
         public static void redigerKommentar(int kommentarID, string tekst)
         {
             KommentarDAL.redigerKommentar(kommentarID, tekst);
