@@ -33,7 +33,7 @@ public partial class innlegg : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            innleggID = 0;
+            Trace.Warn(ex.Message);
         }
 
         if (innleggID > 0)
