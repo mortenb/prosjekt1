@@ -20,9 +20,6 @@ public partial class test : System.Web.UI.Page
         GridView1.DataSource = DOTNETPROSJEKT1.BLL.BlogBLL.getBlogger();
         GridView1.DataBind();
     }
-//    protected void CreateUserWizard1_CreatedUser(object sender, EventArgs e)
-//    {
-//    }
 
     protected void CreateUserWizard1_CreatedUser1(object sender, EventArgs e)
     {
