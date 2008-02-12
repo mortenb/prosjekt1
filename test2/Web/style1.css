@@ -57,11 +57,17 @@ div.container
 	font-weight:bold;
 	font-size:x-small;
 	vertical-align:bottom;
-	right:5em;
+	right:5%;
     
 }
 
 .x-redigerkommentar
 {
+	position:absolute;
+	height=100px;
+	width=100px;
+	right:1px;
 	background-color: White;
+    
 }
+	
