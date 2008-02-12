@@ -14,11 +14,8 @@ Tittel:
         ErrorMessage="Forfatter må være fylt ut"></asp:RequiredFieldValidator><br />
     Tekst:<br />
     <asp:TextBox ID="inputTekst" runat="server" Height="139px"
-        Width="284px"></asp:TextBox>
+        Width="284px" TextMode="MultiLine"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="inputTekst"
         ErrorMessage="Du må skrive noe i kommentaren!"></asp:RequiredFieldValidator><br />
     <asp:Button ID="btnLagre" runat="server" OnClick="btnLagre_Click" Text="Lagre" />
-  
-</asp:Panel>
-
-
+    <asp:Button ID="Lukk" runat="server" OnClick="Lukk_Click" Text="Lukk" CausesValidation="false" /></asp:Panel>

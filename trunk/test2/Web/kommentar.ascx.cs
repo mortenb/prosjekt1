@@ -8,14 +8,17 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
+
 using DOTNETPROSJEKT1.BLL;
 using DOTNETPROSJEKT1.Model;
+using System.Text;
 
 public partial class kommentar : System.Web.UI.UserControl
 {
-    private Innlegg innlegg = new Innlegg();
+    public static Innlegg innlegg = new Innlegg();
 
-    /*
+    private Kommentar finnes;
+    
     private int _kommentarID = -1;
     public int KommentarID
     {
@@ -25,7 +28,7 @@ public partial class kommentar : System.Web.UI.UserControl
             _kommentarID = value;
             this.lblKommentarID.Text = _kommentarID.ToString();   
         }
-    }
+    }    
 
     private int _innleggID;
     public int InnleggID
@@ -57,24 +60,29 @@ public partial class kommentar : System.Web.UI.UserControl
             this.lblNivaa.Text = _nivaa.ToString();
         } //øker med en i forhold til foreldre-nivået.
     }
-     * 
-     */
 
     protected void Page_PreRender(object sender, EventArgs e)
     {
-        Kommentar finnes = DOTNETPROSJEKT1.BLL.KommentarBLL.getKommentar(_kommentarID);
+        //sjekker om kommentar finnes fra før av, da skal den redigeres
+        finnes = DOTNETPROSJEKT1.BLL.KommentarBLL.getKommentar(_kommentarID);
         
         if (finnes.ID != 0)
         {
             this.inputForfatter.Text = finnes.Forfatter.ToString();
             this.inputTekst.Text = finnes.Tekst.ToString();
-            this.inputTittel.Text = finnes.Tittel.ToString();
+            this.inputTittel.Text = "RE:" + finnes.Tittel.ToString();
         }
         else if (Page.User.Identity.IsAuthenticated)
         {
-            this.inputTittel.Text = 
+
             this.inputForfatter.Text = Page.User.Identity.Name;
             this.inputForfatter.ReadOnly = true;
+            this.inputTittel.Text = "RE: " + InnleggBLL.getInnlegg(_innleggID).Tittel;
+        }
+        else //brukeren er anonym
+        {
+            this.inputTittel.Text = "RE: " + InnleggBLL.getInnlegg(_innleggID).Tittel;
+            this.inputForfatter.Text = "Anonym Feiging";
         }
         this.lblKommentarID.Text = finnes.ID.ToString();
 
@@ -88,8 +96,13 @@ public partial class kommentar : System.Web.UI.UserControl
     {
         Kommentar minKommentar = new Kommentar();
         minKommentar.Dato = DateTime.Now;
-        
-        minKommentar.Tekst = this.inputTekst.Text.ToString();
+
+        string tempTekst = this.inputTekst.Text.ToString();
+        Trace.Warn("Før replace: " + tempTekst);
+        tempTekst.Replace("\n", "<br>");
+        Trace.Warn("Etter replace: " + tempTekst);
+
+        minKommentar.Tekst = tempTekst;
         minKommentar.Tittel = this.inputTittel.Text.ToString();
         minKommentar.Forfatter = this.inputForfatter.Text.ToString();
         minKommentar.InnleggID = int.Parse(this.lblID.Text.ToString());
@@ -110,5 +123,9 @@ public partial class kommentar : System.Web.UI.UserControl
         Parent.Page.Response.Redirect(Page.Request.Url.AbsoluteUri);
         Parent.Page.Response.End();
         
+    }
+    protected void Lukk_Click(object sender, EventArgs e)
+    {
+        this.Visible = false;       
     }
 }

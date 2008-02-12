@@ -82,32 +82,41 @@ public partial class blogg : System.Web.UI.Page
             tcTittel.Controls.Add(new LiteralControl(inn.Tittel));
             tr1.Controls.Add(tcTittel);
             Table1.Rows.Add(tr1);
-            
-            tcTekst.Controls.Add(new LiteralControl(inn.Tekst));
+
+            TextBox tb = new TextBox();
+            tb.Text = inn.Tekst;
+            tb.ReadOnly = true;
+            tb.TextMode = TextBoxMode.MultiLine;
+            tb.Width = 350;
+            tb.Height = 150;
+            tcTekst.Controls.Add(tb);
             //hvis bruker har rettigheter, vis rediger og sletteknapp
-            if (user.Equals(bloggeier) || User.IsInRole("admin"))
-            {
-                Button redigerKnapp = new Button();
-                redigerKnapp.Text = "Rediger";
-                redigerKnapp.ID = "redigerKnapp" + inn.ID;
-                redigerKnapp.PostBackUrl = "~/innlegg.aspx?ID=" + inn.ID;
-                
-                tcRediger.Controls.Add(redigerKnapp);
-                LinkButton slettKnapp = new LinkButton();
-                slettKnapp.Text = "Slett";
-                slettKnapp.ID = "slettKnapp" + inn.ID;
-                slettKnapp.CommandArgument = inn.ID.ToString();
-                slettKnapp.Click += new EventHandler(slettKnapp_onclick);
-                tcSlett.Controls.Add(slettKnapp);
-            }
             //knapp for å kommentere innlegg:
-            LinkButton kommenterButton = new LinkButton();  
+            LinkButton kommenterButton = new LinkButton();
             kommenterButton.ID = "kommenterInnlegg" + inn.ID;
             kommenterButton.Text = "kommenter dette innlegget";
             kommenterButton.CommandArgument = inn.ID.ToString();
             kommenterButton.Click += new EventHandler(kommenterButton_onclick);
 
             tcKommenter.Controls.Add(kommenterButton);
+            if (user.Equals(bloggeier) || User.IsInRole("admin"))
+            {
+                LinkButton redigerKnapp = new LinkButton();
+                redigerKnapp.Text = "Rediger";
+                redigerKnapp.ID = "redigerKnapp" + inn.ID;
+                redigerKnapp.PostBackUrl = "~/innlegg.aspx?ID=" + inn.ID;
+
+                tcKommenter.Controls.Add(new LiteralControl("      "));
+                tcKommenter.Controls.Add(redigerKnapp);
+                LinkButton slettKnapp = new LinkButton();
+                slettKnapp.Text = "Slett";
+                slettKnapp.ID = "slettKnapp" + inn.ID;
+                slettKnapp.CommandArgument = inn.ID.ToString();
+                slettKnapp.Click += new EventHandler(slettKnapp_onclick);
+                tcKommenter.Controls.Add(new LiteralControl("      "));
+                tcKommenter.Controls.Add(slettKnapp);
+            }
+            
             tr2.Controls.Add(tcTekst);
             tr2.Controls.Add(tcRediger);
             tr2.Controls.Add(tcSlett);
@@ -125,17 +134,34 @@ public partial class blogg : System.Web.UI.Page
                 HtmlTableRow trKommentarBody = new HtmlTableRow();
                 HtmlTableRow trKommentarFooter = new HtmlTableRow();
 
-                HtmlTableCell tcKommentar1 = new HtmlTableCell();
+                HtmlTableCell tcKommentarTittel = new HtmlTableCell(); //Tittel
+                HtmlTableCell tcKommentarTekst = new HtmlTableCell(); //Tekst
                 
-                HtmlTableCell tcKommentar2 = new HtmlTableCell();
-                
-                tcKommentar1.Controls.Add(new LiteralControl(k.Tittel + " skrevet av " + k.Forfatter));
-                trKommentarOverskrift.Controls.Add(tcKommentar1);
-                tcKommentar2.Controls.Add(new LiteralControl( k.Tekst));
-                trKommentarBody.Controls.Add(tcKommentar2);
+                tcKommentarTittel.Controls.Add(new LiteralControl(k.Tittel + " skrevet av " + k.Forfatter));
+                trKommentarOverskrift.Controls.Add(tcKommentarTittel);
+                TextBox tbKommentarTekst = new TextBox();
+                tbKommentarTekst.Width = 350;
+                tbKommentarTekst.Height = 150;
+                tbKommentarTekst.ReadOnly = true;
+                tbKommentarTekst.TextMode = TextBoxMode.MultiLine;
+                tbKommentarTekst.Text = k.Tekst;
+                tcKommentarTekst.Controls.Add(tbKommentarTekst);
+                trKommentarBody.Controls.Add(tcKommentarTekst);
                 
                 Table1.Rows.Add(trKommentarOverskrift);
                 Table1.Rows.Add(trKommentarBody);
+
+                //sett inn kommenter-knapp på en kommentar:
+                LinkButton kommenterButton2 = new LinkButton();
+                kommenterButton2.ID = "kommenterKommentar" + k.ID;
+                kommenterButton2.Text = "kommenter";
+                kommenterButton2.CommandArgument = k.ID.ToString();
+                kommenterButton2.Click += new EventHandler(kommenterKommentarButton_onclick);
+                HtmlTableCell tcKommentarFoot = new HtmlTableCell();
+                tcKommentarFoot.Controls.Add(kommenterButton2);
+                
+                
+
                 //Hvis bruker har rettigheter, vis slett og rediger-knapper
                 if (user.Equals(bloggeier) || User.IsInRole("admin"))
                 {
@@ -154,23 +180,18 @@ public partial class blogg : System.Web.UI.Page
                     slettButton.Text = "slett";
                     slettButton.Click += new EventHandler(slettKommentarButton_onclick);
 
-                    tcAdmin1.Controls.Add(redigerButton);
-                    tcAdmin1.Controls.Add(new LiteralControl("   ")); //whitespace mellom knappene
-                    tcAdmin1.Controls.Add(slettButton);
+                    tcKommentarFoot.Controls.Add(new LiteralControl("   "));
+                    tcKommentarFoot.Controls.Add(redigerButton);
+                    tcKommentarFoot.Controls.Add(new LiteralControl("   ")); //whitespace mellom knappene
+                    tcKommentarFoot.Controls.Add(slettButton);
 
-                    trKommentarFooter.Controls.Add(tcAdmin1);
+                    //trKommentarFooter.Controls.Add(tcAdmin1);
                     
                 }
-                //sett inn kommenter-knapp på en kommentar:
-                LinkButton kommenterButton2 = new LinkButton();
-                kommenterButton2.ID = "kommenterKommentar" + k.ID;
-                kommenterButton2.Text = "kommenter";
-                kommenterButton2.CommandArgument = k.ID.ToString();
-                kommenterButton2.Click += new EventHandler(kommenterKommentarButton_onclick);
-                HtmlTableCell tcKommentarFoot = new HtmlTableCell(); 
-                tcKommentarFoot.Controls.Add(kommenterButton2);
+
                 trKommentarFooter.Controls.Add(tcKommentarFoot);
                 Table1.Rows.Add(trKommentarFooter);
+                
                 
 
             }
@@ -181,11 +202,9 @@ public partial class blogg : System.Web.UI.Page
     {
         try
         {
-            
-            int nivaa;
             LinkButton hvilken = (LinkButton) sender;
             int id = int.Parse(hvilken.CommandArgument);
-            nivaa = 0; //teller fra 0. Et innlegg har nivå 0
+            //nivaa = 0; //teller fra 0. Et innlegg har nivå 0
             this.nykommentar1.Nivaa = id; //førsøker dette istedet.. 
             this.nykommentar1.InnleggID = id;
            
@@ -202,6 +221,7 @@ public partial class blogg : System.Web.UI.Page
 
     protected void kommenterKommentarButton_onclick(object sender, EventArgs e)
     {
+        
         Trace.Write("Kommenter kommentar!");
         try
         {
@@ -233,6 +253,7 @@ public partial class blogg : System.Web.UI.Page
         try
         {
 
+
             //int nivaa;
             LinkButton hvilken = (LinkButton)sender;
             int id = int.Parse(hvilken.CommandArgument);
@@ -241,9 +262,7 @@ public partial class blogg : System.Web.UI.Page
                 int nivaa = k.Nivaa;
                 this.nykommentar1.Nivaa = nivaa;
                 this.nykommentar1.KommentarID = k.ID;
-                this.nykommentar1.InnleggID = k.InnleggID;
-
-                
+                this.nykommentar1.InnleggID = k.InnleggID;                
                 this.nykommentar1.Visible = true;
             
 
