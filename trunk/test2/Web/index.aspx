@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeFile="index.aspx.cs" Inherits="_Default" Trace="true"  MasterPageFile="~/master.master" Title="Hovedside" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeFile="index.aspx.cs" Inherits="_Default" Trace="false"  MasterPageFile="~/master.master" Title="Hovedside" %>
 
 <%@ MasterType TypeName="master" %>
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server" >
