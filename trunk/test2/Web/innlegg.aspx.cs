@@ -39,6 +39,9 @@ public partial class innlegg : System.Web.UI.Page
         if (innleggID > 0)
         {
             inn = DOTNETPROSJEKT1.BLL.InnleggBLL.getInnlegg(innleggID);
+            Tittelfelt.Text = inn.Tittel;
+            Innleggstekst.Text = inn.Tekst;
+            Datofelt.Text = inn.Dato.ToString();
             string eier = BlogBLL.getBlog(inn.ForeldreID).Eier.Trim();
             string bruker = User.Identity.Name.Trim();
             if (  !bruker.Equals(eier) || User.IsInRole("Admin") )
@@ -46,10 +49,13 @@ public partial class innlegg : System.Web.UI.Page
         }
         else
         {
+            Tittelfelt.Text = "";
+            Innleggstekst.Text = "";
+            Datofelt.Text = DateTime.Now.ToString();
             inn = new Innlegg();
         }
 
-        PrintInnlegg();
+        //PrintInnlegg();
     }
 
     protected void PrintInnlegg()
@@ -141,14 +147,17 @@ public partial class innlegg : System.Web.UI.Page
         {
             innleggNy.ForeldreID = BlogBLL.getBloggAvEier(User.Identity.Name).BlogID;
         }
-
+        innleggNy.Tittel = this.Tittelfelt.Text.ToString();
+        innleggNy.Tekst = this.Innleggstekst.Text.ToString();
+        innleggNy.Dato = Convert.ToDateTime(this.Datofelt.Text);
+        /*
         TextBox tbTittel = (TextBox)Table1.FindControl("tittel");
         TextBox tbDato = (TextBox)Table1.FindControl("dato");
         TextBox tbTekst = (TextBox)Table1.FindControl("tekst");
         innleggNy.Tittel = tbTittel.Text;
         innleggNy.Dato = Convert.ToDateTime(tbDato.Text);
         innleggNy.Tekst = tbTekst.Text;
-
+        */
         try
         {
             if (innleggID > 0)
@@ -168,5 +177,10 @@ public partial class innlegg : System.Web.UI.Page
         }
 
         Response.Redirect("~/blogg.aspx?=" + BlogBLL.getBlog(innleggNy.ForeldreID).Eier);
+    }
+
+    protected void Innleggstekst_TextChanged(object sender, EventArgs e)
+    {
+
     }
 }
