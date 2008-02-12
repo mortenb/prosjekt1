@@ -19,19 +19,34 @@ public partial class innlegg : System.Web.UI.Page
     int innleggID;
 
     Innlegg inn;
-    
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        innleggID = Convert.ToInt32(Request.QueryString.GetValues(0)[0]);
+        try
+        {
+            innleggID = Convert.ToInt32(Request.QueryString.GetValues(0)[0]);
+        }
+        catch (Exception ex)
+        {
+            innleggID = 0;
+        }
+
         if (innleggID > 0)
         {
             inn = DOTNETPROSJEKT1.BLL.InnleggBLL.getInnlegg(innleggID);
+            string eier = BlogBLL.getBlog(inn.ForeldreID).Eier.Trim();
+            string bruker = User.Identity.Name.Trim();
+            if (  !bruker.Equals(eier) || User.IsInRole("Admin") )
+                Response.Redirect("~/blogg.aspx?=" + eier);
         }
         else
         {
+            if (!User.Identity.IsAuthenticated)
+                Page.Response.Redirect("~/index.aspx");
             inn = new Innlegg();
         }
+
         PrintInnlegg();
     }
 
@@ -108,7 +123,7 @@ public partial class innlegg : System.Web.UI.Page
         tr2.Controls.Add(tcTekstVerdi);
         Table1.Rows.Add(tr2);
 
-        
+
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -131,7 +146,7 @@ public partial class innlegg : System.Web.UI.Page
         innleggNy.Tittel = tbTittel.Text;
         innleggNy.Dato = Convert.ToDateTime(tbDato.Text);
         innleggNy.Tekst = tbTekst.Text;
-        
+
         try
         {
             if (innleggID > 0)
@@ -149,7 +164,7 @@ public partial class innlegg : System.Web.UI.Page
         {
             Trace.Warn(ex.Message);
         }
-        
+
         Response.Redirect("~/blogg.aspx?=" + BlogBLL.getBlog(innleggNy.ForeldreID).Eier);
     }
 }
