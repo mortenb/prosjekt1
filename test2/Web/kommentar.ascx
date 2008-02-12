@@ -9,7 +9,7 @@ Tittel:
     <asp:TextBox ID="inputTittel" runat="server"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="inputTittel"
         ErrorMessage="Tittel kan ikke være tom"></asp:RequiredFieldValidator><br />
-    Forfatter:<asp:TextBox ID="inputForfatter" runat="server">Anonym Feiging</asp:TextBox>
+    Forfatter:<asp:TextBox ID="inputForfatter" runat="server" Text=""></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="inputForfatter"
         ErrorMessage="Forfatter må være fylt ut"></asp:RequiredFieldValidator><br />
     Tekst:<br />

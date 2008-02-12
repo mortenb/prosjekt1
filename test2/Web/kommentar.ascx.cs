@@ -13,7 +13,9 @@ using DOTNETPROSJEKT1.Model;
 
 public partial class kommentar : System.Web.UI.UserControl
 {
+    private Innlegg innlegg = new Innlegg();
 
+    /*
     private int _kommentarID = -1;
     public int KommentarID
     {
@@ -24,8 +26,8 @@ public partial class kommentar : System.Web.UI.UserControl
             this.lblKommentarID.Text = _kommentarID.ToString();   
         }
     }
-    private int _innleggID;
 
+    private int _innleggID;
     public int InnleggID
     {
         get { return _innleggID; }
@@ -37,6 +39,7 @@ public partial class kommentar : System.Web.UI.UserControl
         } 
 
     }
+
     private int _foreldreID;
     public int ForeldreID
     {
@@ -54,16 +57,24 @@ public partial class kommentar : System.Web.UI.UserControl
             this.lblNivaa.Text = _nivaa.ToString();
         } //øker med en i forhold til foreldre-nivået.
     }
+     * 
+     */
 
     protected void Page_PreRender(object sender, EventArgs e)
     {
-        Kommentar finnes = KommentarBLL.getKommentar(_kommentarID);
+        Kommentar finnes = DOTNETPROSJEKT1.BLL.KommentarBLL.getKommentar(_kommentarID);
         
         if (finnes.ID != 0)
         {
             this.inputForfatter.Text = finnes.Forfatter.ToString();
             this.inputTekst.Text = finnes.Tekst.ToString();
             this.inputTittel.Text = finnes.Tittel.ToString();
+        }
+        else if (Page.User.Identity.IsAuthenticated)
+        {
+            this.inputTittel.Text = 
+            this.inputForfatter.Text = Page.User.Identity.Name;
+            this.inputForfatter.ReadOnly = true;
         }
         this.lblKommentarID.Text = finnes.ID.ToString();
 
