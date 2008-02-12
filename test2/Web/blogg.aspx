@@ -2,9 +2,10 @@
 
 <%@ MasterType TypeName="master" %>
 <%@ Register TagPrefix="nyKommentar" TagName="nyKommentarBox" Src="~/kommentar.ascx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"  >
     &nbsp; &nbsp; &nbsp; &nbsp;
-    <table id="Table1" runat="server">
+    <table class="x-kommentar-tabell" id="Table1" runat="server" >
     </table>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
         <EmptyDataTemplate>
