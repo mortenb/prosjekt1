@@ -97,12 +97,7 @@ public partial class kommentar : System.Web.UI.UserControl
         Kommentar minKommentar = new Kommentar();
         minKommentar.Dato = DateTime.Now;
 
-        string tempTekst = this.inputTekst.Text.ToString();
-        Trace.Warn("Før replace: " + tempTekst);
-        tempTekst.Replace("\n", "<br>");
-        Trace.Warn("Etter replace: " + tempTekst);
-
-        minKommentar.Tekst = tempTekst;
+        minKommentar.Tekst = this.inputTekst.Text.ToString();
         minKommentar.Tittel = this.inputTittel.Text.ToString();
         minKommentar.Forfatter = this.inputForfatter.Text.ToString();
         minKommentar.InnleggID = int.Parse(this.lblID.Text.ToString());
@@ -116,7 +111,7 @@ public partial class kommentar : System.Web.UI.UserControl
         }
         else
         {
-            DOTNETPROSJEKT1.BLL.KommentarBLL.nyKommentar(minKommentar);
+            KommentarBLL.nyKommentar(minKommentar);
         }
         
         this.Visible = false;
