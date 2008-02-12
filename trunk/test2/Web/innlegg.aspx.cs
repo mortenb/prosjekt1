@@ -23,6 +23,10 @@ public partial class innlegg : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        if (!User.Identity.IsAuthenticated)
+            Page.Response.Redirect("~/index.aspx");
+
         try
         {
             innleggID = Convert.ToInt32(Request.QueryString.GetValues(0)[0]);
@@ -42,8 +46,6 @@ public partial class innlegg : System.Web.UI.Page
         }
         else
         {
-            if (!User.Identity.IsAuthenticated)
-                Page.Response.Redirect("~/index.aspx");
             inn = new Innlegg();
         }
 
