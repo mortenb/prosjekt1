@@ -5,19 +5,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"  >
     &nbsp; &nbsp; &nbsp; &nbsp;
-    <table class="x-kommentar-tabell" id="Table1" runat="server" >
+    <table class="x-innlegg-tabell" id="Table1" runat="server" >
+
     </table>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
-        <EmptyDataTemplate>
-            Ingen innlegg<br />
-        </EmptyDataTemplate>
-        <Columns>
-            <asp:BoundField DataField="tittel" />
-            <asp:BoundField DataField="tekst" />
-        </Columns>
-    </asp:GridView>
-    <asp:GridView ID="GridView2" runat="server">
-    </asp:GridView>
     <nyKommentar:nyKommentarBox ID="nykommentar1" runat="server" Visible="false" EnableTheming="false" />
     
     
