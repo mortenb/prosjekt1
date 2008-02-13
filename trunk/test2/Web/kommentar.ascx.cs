@@ -97,7 +97,9 @@ public partial class kommentar : System.Web.UI.UserControl
         Kommentar minKommentar = new Kommentar();
         minKommentar.Dato = DateTime.Now;
 
+        //henter ut alle felter for ny kommentar
         minKommentar.Tekst = this.inputTekst.Text.ToString();
+       
         minKommentar.Tittel = this.inputTittel.Text.ToString();
         minKommentar.Forfatter = this.inputForfatter.Text.ToString();
         minKommentar.InnleggID = int.Parse(this.lblID.Text.ToString());
@@ -105,8 +107,13 @@ public partial class kommentar : System.Web.UI.UserControl
         minKommentar.Nivaa = int.Parse(this.lblNivaa.Text.ToString());
         minKommentar.ID = int.Parse(this.lblKommentarID.Text.ToString());
 
-        if (minKommentar.ID != 0)
+        if (minKommentar.ID != 0) //hvis den skal redigeres
         {
+            string tempTekst = this.inputTekst.Text.ToString();
+            tempTekst += @"
+
+sist endret av " + Page.User.Identity.Name + " " + DateTime.Now ;
+            minKommentar.Tekst = tempTekst;
             KommentarBLL.redigerKommentar(minKommentar.ID, minKommentar.Tekst);
         }
         else
