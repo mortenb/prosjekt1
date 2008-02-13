@@ -70,23 +70,33 @@ public partial class blogg : System.Web.UI.Page
         {   
             //celler for tittel, tekst, rediger, slett og kommenter
             HtmlTableCell tcTittel = new HtmlTableCell();
+            HtmlTableCell tcDato = new HtmlTableCell();
             HtmlTableCell tcTekst = new HtmlTableCell();
             HtmlTableCell tcRediger = new HtmlTableCell();
             HtmlTableCell tcSlett = new HtmlTableCell();
             HtmlTableCell tcKommenter = new HtmlTableCell();
             //rader for ett innlegg:
-            HtmlTableRow tr1 = new HtmlTableRow();
+            HtmlTableRow trTittel = new HtmlTableRow();
+            HtmlTableRow trDato = new HtmlTableRow();
             HtmlTableRow tr2 = new HtmlTableRow();
             HtmlTableRow tr3 = new HtmlTableRow();
             //Få tittel og tekst fra ett innlegg inn i tabellen:
             tcTittel.Controls.Add(new LiteralControl(inn.Tittel));
-            tr1.Controls.Add(tcTittel);
-            Table1.Rows.Add(tr1);
+            trTittel.Controls.Add(tcTittel);
+            Table1.Rows.Add(trTittel);
+
+            //Skrive ut dato på tittel
+            Label lblDato = new Label();
+            lblDato.Text = inn.Dato.ToString();
+            tcDato.Controls.Add(lblDato);
+            trDato.Controls.Add(tcDato);
+            Table1.Rows.Add(trDato);
 
             TextBox tb = new TextBox();
             tb.Text = inn.Tekst;
             tb.ReadOnly = true;
             tb.TextMode = TextBoxMode.MultiLine;
+            tb.CssClass = "x-innlegg-tekstboks";
             tb.Width = 350;
             tb.Height = 150;
             tcTekst.Controls.Add(tb);
@@ -144,6 +154,7 @@ public partial class blogg : System.Web.UI.Page
                 tbKommentarTekst.Height = 150;
                 tbKommentarTekst.ReadOnly = true;
                 tbKommentarTekst.TextMode = TextBoxMode.MultiLine;
+                tbKommentarTekst.CssClass = "x-kommentar-tekstboks";
                 tbKommentarTekst.Text = k.Tekst;
                 tcKommentarTekst.Controls.Add(tbKommentarTekst);
                 trKommentarBody.Controls.Add(tcKommentarTekst);
