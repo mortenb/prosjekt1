@@ -65,21 +65,28 @@ public partial class blogg : System.Web.UI.Page
     protected void PrintInnlegg(List<Innlegg> innlegg)
     {
         //henter alle innlegg i en blogg og lager tabell:
-
+        
         foreach (Innlegg inn in innlegg)
         {   
             //celler for tittel, tekst, rediger, slett og kommenter
             HtmlTableCell tcTittel = new HtmlTableCell();
+            tcTittel.ColSpan = 5;
             HtmlTableCell tcDato = new HtmlTableCell();
+            tcDato.ColSpan = 5;
             HtmlTableCell tcTekst = new HtmlTableCell();
+            tcTekst.ColSpan = 5;
             HtmlTableCell tcRediger = new HtmlTableCell();
             HtmlTableCell tcSlett = new HtmlTableCell();
             HtmlTableCell tcKommenter = new HtmlTableCell();
+            tcKommenter.ColSpan = 3;
+
+            //opprette dummy for kommentarindent
+            
             //rader for ett innlegg:
             HtmlTableRow trTittel = new HtmlTableRow();
             HtmlTableRow trDato = new HtmlTableRow();
-            HtmlTableRow tr2 = new HtmlTableRow();
-            HtmlTableRow tr3 = new HtmlTableRow();
+            HtmlTableRow trTekst = new HtmlTableRow();
+            HtmlTableRow trFooter = new HtmlTableRow();
             //Få tittel og tekst fra ett innlegg inn i tabellen:
             tcTittel.Controls.Add(new LiteralControl(inn.Tittel));
             trTittel.Controls.Add(tcTittel);
@@ -91,13 +98,15 @@ public partial class blogg : System.Web.UI.Page
             tcDato.Controls.Add(lblDato);
             trDato.Controls.Add(tcDato);
             Table1.Rows.Add(trDato);
-
+            
             TextBox tb = new TextBox();
             tb.CssClass = "x-innlegg-tekstboks";
+            string tempTekst = inn.Tekst;
+            tb.Height = Convert.ToInt32(tempTekst.Length * 0.37);
             tb.Text = inn.Tekst;
             tb.ReadOnly = true;
             tb.TextMode = TextBoxMode.MultiLine;
-           
+            
             tcTekst.Controls.Add(tb);
             //hvis bruker har rettigheter, vis rediger og sletteknapp
             //knapp for å kommentere innlegg:
@@ -106,10 +115,12 @@ public partial class blogg : System.Web.UI.Page
             kommenterButton.Text = "kommenter dette innlegget";
             kommenterButton.CommandArgument = inn.ID.ToString();
             kommenterButton.Click += new EventHandler(kommenterButton_onclick);
-
             tcKommenter.Controls.Add(kommenterButton);
+
             if (user.Equals(bloggeier) || User.IsInRole("admin"))
             {
+                
+
                 LinkButton redigerKnapp = new LinkButton();
                 redigerKnapp.Text = "Rediger";
                 redigerKnapp.ID = "redigerKnapp" + inn.ID;
@@ -117,21 +128,24 @@ public partial class blogg : System.Web.UI.Page
 
                 tcKommenter.Controls.Add(new LiteralControl("      "));
                 tcKommenter.Controls.Add(redigerKnapp);
+
                 LinkButton slettKnapp = new LinkButton();
                 slettKnapp.Text = "Slett";
                 slettKnapp.ID = "slettKnapp" + inn.ID;
                 slettKnapp.CommandArgument = inn.ID.ToString();
                 slettKnapp.Click += new EventHandler(slettKnapp_onclick);
+
                 tcKommenter.Controls.Add(new LiteralControl("      "));
                 tcKommenter.Controls.Add(slettKnapp);
             }
             
-            tr2.Controls.Add(tcTekst);
-            tr2.Controls.Add(tcRediger);
-            tr2.Controls.Add(tcSlett);
-            tr3.Controls.Add(tcKommenter);
-            Table1.Rows.Add(tr2);
-            Table1.Rows.Add(tr3);
+            trTekst.Controls.Add(tcTekst);
+            trFooter.Controls.Add(tcKommenter);
+            trFooter.Controls.Add(tcRediger);
+            trFooter.Controls.Add(tcSlett);
+            
+            Table1.Rows.Add(trTekst);
+            Table1.Rows.Add(trFooter);
             
             //hent så alle kommentarer for innlegget, løp gjennom og vis:
             kommentarer = KommentarBLL.getKommentarListe(inn.ID);
@@ -139,15 +153,41 @@ public partial class blogg : System.Web.UI.Page
             {
                 int nivaa = k.Nivaa;
 
-                HtmlTableRow trKommentarOverskrift = new HtmlTableRow();
-                HtmlTableRow trKommentarBody = new HtmlTableRow();
+                HtmlTableCell tcDummyTittel = new HtmlTableCell();
+                tcDummyTittel.ColSpan = 1;
+                tcDummyTittel.Controls.Add(new LiteralControl(""));
+                HtmlTableCell tcDummyDato = new HtmlTableCell();
+                tcDummyDato.ColSpan = 1;
+                tcDummyDato.Controls.Add(new LiteralControl(""));
+                HtmlTableCell tcDummyTekst = new HtmlTableCell();
+                tcDummyTekst.ColSpan = 1;
+                tcDummyTekst.Controls.Add(new LiteralControl(""));
+                HtmlTableCell tcDummyFooter = new HtmlTableCell();
+                tcDummyFooter.ColSpan = 1;
+                tcDummyFooter.Controls.Add(new LiteralControl(""));
+
+
+                HtmlTableRow trKommentarTittel = new HtmlTableRow();
+                trKommentarTittel.Controls.Add(tcDummyTittel);
+                HtmlTableRow trKommentarDato = new HtmlTableRow();
+                trKommentarDato.Controls.Add(tcDummyDato);
+                HtmlTableRow trKommentarTekst = new HtmlTableRow();
+                trKommentarTekst.Controls.Add(tcDummyTekst);
                 HtmlTableRow trKommentarFooter = new HtmlTableRow();
+                trKommentarFooter.Controls.Add(tcDummyFooter);
 
                 HtmlTableCell tcKommentarTittel = new HtmlTableCell(); //Tittel
+                tcKommentarTittel.ColSpan = 4;
+                HtmlTableCell tcKommentarDato = new HtmlTableCell();
+                tcKommentarDato.ColSpan = 4;
                 HtmlTableCell tcKommentarTekst = new HtmlTableCell(); //Tekst
+                tcKommentarTekst.ColSpan = 4;
                 
                 tcKommentarTittel.Controls.Add(new LiteralControl(k.Tittel + " skrevet av " + k.Forfatter));
-                trKommentarOverskrift.Controls.Add(tcKommentarTittel);
+                trKommentarTittel.Controls.Add(tcKommentarTittel);
+                tcKommentarDato.Controls.Add(new LiteralControl(k.Dato.ToString()));
+                trKommentarDato.Controls.Add(tcKommentarDato);
+
                 TextBox tbKommentarTekst = new TextBox();
                 tbKommentarTekst.CssClass = "x-kommentar-tekstboks";
                 tbKommentarTekst.ReadOnly = true;
@@ -155,10 +195,11 @@ public partial class blogg : System.Web.UI.Page
                 
                 tbKommentarTekst.Text = k.Tekst;
                 tcKommentarTekst.Controls.Add(tbKommentarTekst);
-                trKommentarBody.Controls.Add(tcKommentarTekst);
+                trKommentarTekst.Controls.Add(tcKommentarTekst);
                 
-                Table1.Rows.Add(trKommentarOverskrift);
-                Table1.Rows.Add(trKommentarBody);
+                Table1.Rows.Add(trKommentarTittel);
+                Table1.Rows.Add(trKommentarDato);
+                Table1.Rows.Add(trKommentarTekst);
 
                 //sett inn kommenter-knapp på en kommentar:
                 LinkButton kommenterButton2 = new LinkButton();
@@ -167,16 +208,12 @@ public partial class blogg : System.Web.UI.Page
                 kommenterButton2.CommandArgument = k.ID.ToString();
                 kommenterButton2.Click += new EventHandler(kommenterKommentarButton_onclick);
                 HtmlTableCell tcKommentarFoot = new HtmlTableCell();
-                tcKommentarFoot.Controls.Add(kommenterButton2);
-                
-                
+                tcKommentarFoot.ColSpan = 4;
+                tcKommentarFoot.Controls.Add(kommenterButton2);               
 
                 //Hvis bruker har rettigheter, vis slett og rediger-knapper
                 if (user.Equals(bloggeier) || User.IsInRole("admin"))
                 {
-                    
-                    HtmlTableCell tcAdmin1 = new HtmlTableCell();
-                    //HtmlTableCell tcAdmin2 = new HtmlTableCell();
                     LinkButton redigerButton = new LinkButton();
                     redigerButton.ID = "redigerKommentarButton"+k.ID;
                     redigerButton.CommandArgument = k.ID.ToString();
@@ -192,19 +229,12 @@ public partial class blogg : System.Web.UI.Page
                     tcKommentarFoot.Controls.Add(new LiteralControl("   "));
                     tcKommentarFoot.Controls.Add(redigerButton);
                     tcKommentarFoot.Controls.Add(new LiteralControl("   ")); //whitespace mellom knappene
-                    tcKommentarFoot.Controls.Add(slettButton);
-
-                    //trKommentarFooter.Controls.Add(tcAdmin1);
-                    
+                    tcKommentarFoot.Controls.Add(slettButton);                    
                 }
 
                 trKommentarFooter.Controls.Add(tcKommentarFoot);
                 Table1.Rows.Add(trKommentarFooter);
-                
-                
-
-            }
-            
+            }            
         }
     }
     protected void kommenterButton_onclick(object sender, EventArgs e)

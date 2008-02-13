@@ -5,15 +5,12 @@
     font-size: medium;
     font-style: normal;
     font-weight: normal;
-    font-variant: normal;
-    width:750px;
-	margin:20px;
-	padding:20px;
-    
+    font-variant: normal;   
 }
 
-div.container
+.x-container
 {
+	position:relative;
 	font-family: Verdana, Sans-Serif;
 	background-color: #eeeeee;
 	font-family: Verdana;
@@ -21,24 +18,24 @@ div.container
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
-	top:50px;
-	color: black;
+	top:150px;
 	width:750px;
-	margin:20px;
-	padding:20px;
+	margin-left:20px;
 }
 
 .x-innleggstabell
 {
-	background-color:White;
+	background-color:Black;
 	font-family:Verdana;
 	font-size:medium;
+	border-style:solid;
 	
 }
 
 .x-gridview
 {
-	background-color:White;
+	background-color:#eeeeee;
+	border-style:none;
 }
 	
 .x-header
@@ -48,7 +45,7 @@ div.container
 	height:50px;
 	width:750px;	
 	padding:20px;
-	top:0px;
+	top:50px;
 	border-color:Blue;
 	border-style:solid;
     border-width:thin;
@@ -62,30 +59,61 @@ div.container
 	font-weight:bold;
 	font-size:x-small;
 	vertical-align:bottom;
-	right:5%;    
+	left: 700px;
+	top: 80px;    
 }
 
 .x-redigerkommentar
 {
 	position:absolute;
-	position:inherit;
 	height:100px;
 	width:100px;
-	right:1px;
-	background-color: White;
+	top: 150px;
+	left: 650px;
     
+}
+
+.x-redigerkommentar-tekstboks
+{
+	background-color:White;
+	height:139px;
+	width:284px;
 }
 
 .x-kommentar-tekstboks
 {
 	font-family:Verdana;
-	background-color: #CCCCCC;
-	color:#666699;
+	background-color: #eeeeee;
+	font-size:small;
+	font-style:italic;
+	border-style:none;
+	cursor:inherit;
+	width:350px;
+	height:150px;
 }
 
 .x-innlegg-tekstboks
 {
 	font-family:Verdana;
-	background-color: #CCCCCC;
-	color:#666699;	
+	background-color: #eeeeee;
+	font-size:small;
+	border-style:none;
+	cursor:inherit;
+	width:500px;
+	height:150px;
+}
+
+.x-kommentar-tabell
+{
+	border-style:none;
+}
+
+td
+{
+	
+}
+
+tr
+{
+	padding-bottom:10px;
 }
