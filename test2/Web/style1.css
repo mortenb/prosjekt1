@@ -14,8 +14,6 @@
 
 div.container
 {
-
-    background-color: #ccccff;
 	font-family: Verdana, Sans-Serif;
 	background-color: #eeeeee;
 	font-family: Verdana;
@@ -23,6 +21,7 @@ div.container
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
+	top:50px;
 	color: black;
 	width:750px;
 	margin:20px;
@@ -45,9 +44,15 @@ div.container
 .x-header
 {
 	background-color: #ccccff;
+	position:absolute;
 	height:50px;
 	width:750px;	
 	padding:20px;
+	top:0px;
+	border-color:Blue;
+	border-style:solid;
+    border-width:thin;
+    
 }
 
 .x-header-logo
@@ -57,17 +62,30 @@ div.container
 	font-weight:bold;
 	font-size:x-small;
 	vertical-align:bottom;
-	right:5%;
-    
+	right:5%;    
 }
 
 .x-redigerkommentar
 {
 	position:absolute;
-	height=100px;
-	width=100px;
+	position:inherit;
+	height:100px;
+	width:100px;
 	right:1px;
 	background-color: White;
     
 }
-	
+
+.x-kommentar-tekstboks
+{
+	font-family:Verdana;
+	background-color: #CCCCCC;
+	color:#666699;
+}
+
+.x-innlegg-tekstboks
+{
+	font-family:Verdana;
+	background-color: #CCCCCC;
+	color:#666699;	
+}
