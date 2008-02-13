@@ -13,8 +13,7 @@ Tittel:
     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="inputForfatter"
         ErrorMessage="Forfatter må være fylt ut"></asp:RequiredFieldValidator><br />
     Tekst:<br />
-    <asp:TextBox ID="inputTekst" runat="server" Height="139px"
-        Width="284px" TextMode="MultiLine" CssClass="x-kommentar-tekstboks"></asp:TextBox>
+    <asp:TextBox ID="inputTekst" runat="server" TextMode="MultiLine" CssClass="x-redigerkommentar-tekstboks"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="inputTekst"
         ErrorMessage="Du må skrive noe i kommentaren!"></asp:RequiredFieldValidator><br />
     <asp:Button ID="btnLagre" runat="server" OnClick="btnLagre_Click" Text="Lagre" />
