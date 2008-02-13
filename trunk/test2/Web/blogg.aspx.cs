@@ -93,12 +93,11 @@ public partial class blogg : System.Web.UI.Page
             Table1.Rows.Add(trDato);
 
             TextBox tb = new TextBox();
+            tb.CssClass = "x-innlegg-tekstboks";
             tb.Text = inn.Tekst;
             tb.ReadOnly = true;
             tb.TextMode = TextBoxMode.MultiLine;
-            tb.CssClass = "x-innlegg-tekstboks";
-            tb.Width = 350;
-            tb.Height = 150;
+           
             tcTekst.Controls.Add(tb);
             //hvis bruker har rettigheter, vis rediger og sletteknapp
             //knapp for å kommentere innlegg:
@@ -150,11 +149,10 @@ public partial class blogg : System.Web.UI.Page
                 tcKommentarTittel.Controls.Add(new LiteralControl(k.Tittel + " skrevet av " + k.Forfatter));
                 trKommentarOverskrift.Controls.Add(tcKommentarTittel);
                 TextBox tbKommentarTekst = new TextBox();
-                tbKommentarTekst.Width = 350;
-                tbKommentarTekst.Height = 150;
+                tbKommentarTekst.CssClass = "x-kommentar-tekstboks";
                 tbKommentarTekst.ReadOnly = true;
                 tbKommentarTekst.TextMode = TextBoxMode.MultiLine;
-                tbKommentarTekst.CssClass = "x-kommentar-tekstboks";
+                
                 tbKommentarTekst.Text = k.Tekst;
                 tcKommentarTekst.Controls.Add(tbKommentarTekst);
                 trKommentarBody.Controls.Add(tcKommentarTekst);
