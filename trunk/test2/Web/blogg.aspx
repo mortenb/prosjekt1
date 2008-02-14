@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="blogg.aspx.cs" Inherits="blogg" MasterPageFile="~/master.master" Title="Blogg" Trace="true"%>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="blogg.aspx.cs" Inherits="blogg" MasterPageFile="~/master.master" Title="Blogg" %>
 
 <%@ MasterType TypeName="master" %>
 <%@ Register TagPrefix="nyKommentar" TagName="nyKommentarBox" Src="~/kommentar.ascx" %>
