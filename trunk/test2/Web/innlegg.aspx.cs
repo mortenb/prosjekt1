@@ -45,8 +45,9 @@ public partial class innlegg : System.Web.UI.Page
             {
 
                 bloggeier = BlogBLL.getBlog(inn.ForeldreID).Eier.Trim();
-                Tittelfelt.Text = Server.HtmlEncode(inn.Tittel);
-                Innleggstekst.Text = Server.HtmlEncode(inn.Tekst);
+                Tittelfelt.Text = inn.Tittel;
+                Tittelfelt.ReadOnly = true;
+                Innleggstekst.Text = inn.Tekst;
                 lblEier.Text = bloggeier;
                 LblInnleggID.Text = inn.ID.ToString();
                 Datofelt.Text = inn.Dato.ToString();
@@ -116,7 +117,7 @@ sist endret av " + Page.User.Identity.Name + " " + DateTime.Now;
             else
             {
                 InnleggBLL.nyttInnlegg(innleggNy);
-                Response.Write("Lager nytt innlegg)");
+                //Response.Write("Lager nytt innlegg)");
             }
 
         }
