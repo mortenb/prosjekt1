@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/master.master" AutoEventWireup="true" CodeFile="innlegg.aspx.cs" Inherits="innlegg" Title="Skriv/rediger innlegg" Trace="true"%>
+<%@ Page Language="C#" MasterPageFile="~/master.master" AutoEventWireup="true" CodeFile="innlegg.aspx.cs" Inherits="innlegg" Title="Skriv/rediger innlegg" %>
 
 <%@ MasterType TypeName="master" %>
 
