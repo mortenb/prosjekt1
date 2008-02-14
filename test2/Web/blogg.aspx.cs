@@ -78,7 +78,7 @@ public partial class blogg : System.Web.UI.Page
             HtmlTableCell tcRediger = new HtmlTableCell();
             HtmlTableCell tcSlett = new HtmlTableCell();
             HtmlTableCell tcKommenter = new HtmlTableCell();
-            tcKommenter.ColSpan = 8;
+            tcKommenter.ColSpan = 10;
 
             //opprette dummy for kommentarindent
             
@@ -133,7 +133,7 @@ public partial class blogg : System.Web.UI.Page
                 redigerKnapp.ID = "redigerKnapp" + inn.ID;
                 redigerKnapp.PostBackUrl = "~/innlegg.aspx?ID=" + inn.ID;
 
-                tcKommenter.Controls.Add(new LiteralControl("      "));
+                tcKommenter.Controls.Add(new LiteralControl("     "));
                 tcKommenter.Controls.Add(redigerKnapp);
 
                 LinkButton slettKnapp = new LinkButton();
@@ -160,18 +160,19 @@ public partial class blogg : System.Web.UI.Page
             {
                 int nivaa = k.Nivaa;
 
+                //Må opprette fire dummyer, fordi den ikke vil ha én
                 HtmlTableCell tcDummyTittel = new HtmlTableCell();
                 tcDummyTittel.ColSpan = 1;
-                tcDummyTittel.Controls.Add(new LiteralControl(""));
+                tcDummyTittel.Controls.Add(new LiteralControl("<div class='x-kommentar-dummy'></div>"));
                 HtmlTableCell tcDummyDato = new HtmlTableCell();
                 tcDummyDato.ColSpan = 1;
-                tcDummyDato.Controls.Add(new LiteralControl(""));
+                tcDummyDato.Controls.Add(new LiteralControl("<div class='x-kommentar-dummy'></div>"));
                 HtmlTableCell tcDummyTekst = new HtmlTableCell();
                 tcDummyTekst.ColSpan = 1;
-                tcDummyTekst.Controls.Add(new LiteralControl(""));
+                tcDummyTekst.Controls.Add(new LiteralControl("<div class='x-kommentar-dummy'></div>"));
                 HtmlTableCell tcDummyFooter = new HtmlTableCell();
                 tcDummyFooter.ColSpan = 1;
-                tcDummyFooter.Controls.Add(new LiteralControl(""));
+                tcDummyFooter.Controls.Add(new LiteralControl("<div class='x-kommentar-dummy'></div>"));
 
 
                 HtmlTableRow trKommentarTittel = new HtmlTableRow();
