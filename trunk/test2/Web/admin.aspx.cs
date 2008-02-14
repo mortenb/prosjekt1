@@ -26,7 +26,7 @@ public partial class test : System.Web.UI.Page
         string eier = CreateUserWizard1.UserName.ToString();
         Roles.AddUserToRole(eier, "blogger");
         string tittel = eier + " sin blogg";
-        Response.Write(tittel);
+        //Response.Write(tittel);
         Blog b = new Blog();
         b.Eier = eier;
         b.Tittel = tittel;
