@@ -70,15 +70,15 @@ public partial class blogg : System.Web.UI.Page
         {   
             //celler for tittel, tekst, rediger, slett og kommenter
             HtmlTableCell tcTittel = new HtmlTableCell();
-            tcTittel.ColSpan = 5;
+            tcTittel.ColSpan = 10;
             HtmlTableCell tcDato = new HtmlTableCell();
-            tcDato.ColSpan = 5;
+            tcDato.ColSpan = 10;
             HtmlTableCell tcTekst = new HtmlTableCell();
-            tcTekst.ColSpan = 5;
+            tcTekst.ColSpan = 10;
             HtmlTableCell tcRediger = new HtmlTableCell();
             HtmlTableCell tcSlett = new HtmlTableCell();
             HtmlTableCell tcKommenter = new HtmlTableCell();
-            tcKommenter.ColSpan = 3;
+            tcKommenter.ColSpan = 8;
 
             //opprette dummy for kommentarindent
             
@@ -102,7 +102,7 @@ public partial class blogg : System.Web.UI.Page
             TextBox tb = new TextBox();
             tb.CssClass = "x-innlegg-tekstboks";
             string tempTekst = inn.Tekst;
-            if (tempTekst.Length > 100)
+            if (tempTekst.Length > 120)
             {
                 tb.Height = Convert.ToInt32(tempTekst.Length * 0.5);
             }
@@ -180,11 +180,11 @@ public partial class blogg : System.Web.UI.Page
                 trKommentarFooter.Controls.Add(tcDummyFooter);
 
                 HtmlTableCell tcKommentarTittel = new HtmlTableCell(); //Tittel
-                tcKommentarTittel.ColSpan = 4;
+                tcKommentarTittel.ColSpan = 8;
                 HtmlTableCell tcKommentarDato = new HtmlTableCell();
-                tcKommentarDato.ColSpan = 4;
+                tcKommentarDato.ColSpan = 8;
                 HtmlTableCell tcKommentarTekst = new HtmlTableCell(); //Tekst
-                tcKommentarTekst.ColSpan = 4;
+                tcKommentarTekst.ColSpan = 8;
                 
                 tcKommentarTittel.Controls.Add(new LiteralControl(k.Tittel + " skrevet av " + k.Forfatter));
                 trKommentarTittel.Controls.Add(tcKommentarTittel);
@@ -210,8 +210,9 @@ public partial class blogg : System.Web.UI.Page
                 kommenterButton2.Text = "kommenter";
                 kommenterButton2.CommandArgument = k.ID.ToString();
                 kommenterButton2.Click += new EventHandler(kommenterKommentarButton_onclick);
+
                 HtmlTableCell tcKommentarFoot = new HtmlTableCell();
-                tcKommentarFoot.ColSpan = 4;
+                tcKommentarFoot.ColSpan = 8;
                 tcKommentarFoot.Controls.Add(kommenterButton2);               
 
                 //Hvis bruker har rettigheter, vis slett og rediger-knapper
@@ -349,7 +350,6 @@ public partial class blogg : System.Web.UI.Page
         {
             LinkButton hvilken = (LinkButton)sender;
             int id = int.Parse(hvilken.CommandArgument);
-
 
             //Kaller slettInnlegg med boolean "er pålogget bruker lik bloggeier?")
             KommentarBLL.slettKommentar(id, paaloggetBrukerErEierAvBloggen);
