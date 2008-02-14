@@ -13,7 +13,6 @@
         <tr>
           <td>Forfatter:</td>
           <td><asp:TextBox ID="inputForfatter" runat="server" Text=""></asp:TextBox></td>
-        
         </tr>
         <tr>
             <td>Tekst:</td>

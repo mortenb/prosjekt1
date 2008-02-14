@@ -102,11 +102,14 @@ public partial class blogg : System.Web.UI.Page
             TextBox tb = new TextBox();
             tb.CssClass = "x-innlegg-tekstboks";
             string tempTekst = inn.Tekst;
-            tb.Height = Convert.ToInt32(tempTekst.Length * 0.37);
-            tb.Text = inn.Tekst;
+            if (tempTekst.Length > 100)
+            {
+                tb.Height = Convert.ToInt32(tempTekst.Length * 0.5);
+            }
+            tb.Text = tempTekst;
             tb.ReadOnly = true;
             tb.TextMode = TextBoxMode.MultiLine;
-            
+
             tcTekst.Controls.Add(tb);
             //hvis bruker har rettigheter, vis rediger og sletteknapp
             //knapp for å kommentere innlegg:
