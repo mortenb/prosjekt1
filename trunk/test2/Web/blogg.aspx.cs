@@ -107,7 +107,7 @@ public partial class blogg : System.Web.UI.Page
                 int tempHeight = Convert.ToInt32(tempTekst.Length * 0.35);
                 if (tempHeight > 150)
                 {
-                    tb.Height = Convert.ToInt32(tempTekst.Length * 0.35);
+                    tb.Height = tempHeight;
                 }
             }
             tb.Text = tempTekst;
