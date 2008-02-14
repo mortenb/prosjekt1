@@ -104,7 +104,11 @@ public partial class blogg : System.Web.UI.Page
             string tempTekst = inn.Tekst;
             if (tempTekst.Length > 120)
             {
-                tb.Height = Convert.ToInt32(tempTekst.Length * 0.5);
+                int tempHeight = Convert.ToInt32(tempTekst.Length * 0.35);
+                if (tempHeight > 150)
+                {
+                    tb.Height = Convert.ToInt32(tempTekst.Length * 0.35);
+                }
             }
             tb.Text = tempTekst;
             tb.ReadOnly = true;
