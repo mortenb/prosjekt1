@@ -68,20 +68,20 @@ public partial class kommentar : System.Web.UI.UserControl
         
         if (finnes.ID != 0)
         {
-            this.inputForfatter.Text = Server.HtmlEncode(finnes.Forfatter.ToString());
-            this.inputTekst.Text = Server.HtmlEncode(finnes.Tekst.ToString());
-            this.inputTittel.Text = "RE:" + Server.HtmlEncode(finnes.Tittel.ToString());
+            this.inputForfatter.Text = finnes.Forfatter.ToString();
+            this.inputTekst.Text = finnes.Tekst.ToString();
+            this.inputTittel.Text = "RE:" + finnes.Tittel.ToString();
         }
         else if (Page.User.Identity.IsAuthenticated)
         {
 
             this.inputForfatter.Text = Page.User.Identity.Name;
             this.inputForfatter.ReadOnly = true;
-            this.inputTittel.Text = "RE: " + Server.HtmlEncode(InnleggBLL.getInnlegg(_innleggID).Tittel);
+            this.inputTittel.Text = "RE: " + InnleggBLL.getInnlegg(_innleggID).Tittel;
         }
         else //brukeren er anonym
         {
-            this.inputTittel.Text = "RE: " + Server.HtmlEncode(InnleggBLL.getInnlegg(_innleggID).Tittel);
+            this.inputTittel.Text = "RE: " +InnleggBLL.getInnlegg(_innleggID).Tittel;
             this.inputForfatter.Text = "Anonym Feiging";
         }
         this.lblKommentarID.Text = finnes.ID.ToString();
