@@ -88,7 +88,7 @@ public partial class blogg : System.Web.UI.Page
             HtmlTableRow trTekst = new HtmlTableRow();
             HtmlTableRow trFooter = new HtmlTableRow();
             //Få tittel og tekst fra ett innlegg inn i tabellen:
-            tcTittel.Controls.Add(new LiteralControl(inn.Tittel));
+            tcTittel.Controls.Add(new LiteralControl(Server.HtmlEncode(inn.Tittel)));
             trTittel.Controls.Add(tcTittel);
             Table1.Rows.Add(trTittel);
 
@@ -186,7 +186,7 @@ public partial class blogg : System.Web.UI.Page
                 HtmlTableCell tcKommentarTekst = new HtmlTableCell(); //Tekst
                 tcKommentarTekst.ColSpan = 8;
                 
-                tcKommentarTittel.Controls.Add(new LiteralControl(k.Tittel + " skrevet av " + k.Forfatter));
+                tcKommentarTittel.Controls.Add(new LiteralControl(Server.HtmlEncode(k.Tittel) + " skrevet av " + Server.HtmlEncode(k.Forfatter)));
                 trKommentarTittel.Controls.Add(tcKommentarTittel);
                 tcKommentarDato.Controls.Add(new LiteralControl(k.Dato.ToString()));
                 trKommentarDato.Controls.Add(tcKommentarDato);
