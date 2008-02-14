@@ -5,7 +5,7 @@
     <div>
         <br />
     Hvilken blogg vil du inn på?&nbsp;
-    <asp:GridView CssClass="x-gridview" ID="GridView_blogger" runat="server" AutoGenerateColumns="false">
+    <asp:GridView CssClass="x-gridview" ID="GridView_blogger" runat="server" AutoGenerateColumns="false" GridLines="None" ShowHeader="False">
         <Columns>
                 <asp:HyperLinkField  DataTextField="tittel" DataNavigateUrlFields="eier" DataNavigateUrlFormatString="~/blogg.aspx?blog={0}" />
             </Columns>
