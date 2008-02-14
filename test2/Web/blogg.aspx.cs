@@ -191,9 +191,9 @@ public partial class blogg : System.Web.UI.Page
                 HtmlTableCell tcKommentarTekst = new HtmlTableCell(); //Tekst
                 tcKommentarTekst.ColSpan = 8;
                 
-                tcKommentarTittel.Controls.Add(new LiteralControl("<div class='x-kommentar-tekst'>" + Server.HtmlEncode(k.Tittel) + " skrevet av " + Server.HtmlEncode(k.Forfatter) + "</div>"));
+                tcKommentarTittel.Controls.Add(new LiteralControl("<div class='x-kommentar-tekst'>" + Server.HtmlEncode(k.Tittel) + "</div>"));
                 trKommentarTittel.Controls.Add(tcKommentarTittel);
-                tcKommentarDato.Controls.Add(new LiteralControl("<div class='x-kommentar-tekst'>" + k.Dato.ToString() + "</div>"));
+                tcKommentarDato.Controls.Add(new LiteralControl("<div class='x-kommentar-tekst'>" + k.Dato.ToString() + " - " + Server.HtmlEncode(k.Forfatter) + "</div>"));
                 trKommentarDato.Controls.Add(tcKommentarDato);
 
                 TextBox tbKommentarTekst = new TextBox();

@@ -41,7 +41,7 @@
 .x-header
 {
 	background-color: #ccccff;
-	position:absolute;
+	position:relative;
 	height:50px;
 	width:750px;	
 	padding:20px;
