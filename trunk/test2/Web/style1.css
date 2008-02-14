@@ -2,7 +2,7 @@
 {
     background-color: #eeeeee;
     font-family: Verdana;
-    font-size: 9px;
+    font-size: 10px;
     line-height:1.5;
     font-style: normal;
     font-weight: normal;
@@ -15,7 +15,6 @@
 	font-family: Verdana, Sans-Serif;
 	background-color: #eeeeee;
 	font-family: Verdana;
-	font-size: 9px;
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
@@ -85,7 +84,7 @@
 	font-family:Verdana;
 	background-color: #eeeeee;
 	font-style:italic;
-	font-size: 9px;
+	font-size: 10px;
 	border-style:none;
 	cursor:inherit;
 	width:350px;
@@ -97,7 +96,7 @@
 	font-family:Verdana;
 	background-color: #eeeeee;
 	border-style:none;
-	font-size: 9px;
+	font-size: 10px;
 	cursor:inherit;
 	width:500px;
 	height:150px;
