@@ -40,12 +40,21 @@ public partial class innlegg : System.Web.UI.Page
         if (innleggID > 0)
         {
             inn = DOTNETPROSJEKT1.BLL.InnleggBLL.getInnlegg(innleggID);
-            bloggeier = BlogBLL.getBlog(inn.ForeldreID).Eier.Trim();
-            Tittelfelt.Text = inn.Tittel;
-            Innleggstekst.Text = inn.Tekst;
-            lblEier.Text = bloggeier;
-            LblInnleggID.Text = inn.ID.ToString();
-            Datofelt.Text = inn.Dato.ToString();
+            //Sjekk om innlegget vi leter etter, finnes:
+            if(int.Parse(inn.ID.ToString()) != 0 ) 
+            {
+
+                bloggeier = BlogBLL.getBlog(inn.ForeldreID).Eier.Trim();
+                Tittelfelt.Text = Server.HtmlEncode(inn.Tittel);
+                Innleggstekst.Text = Server.HtmlEncode(inn.Tekst);
+                lblEier.Text = bloggeier;
+                LblInnleggID.Text = inn.ID.ToString();
+                Datofelt.Text = inn.Dato.ToString();
+            }
+            else
+            {
+                Response.Redirect("index.aspx");
+            }
             if (  !( bruker.Equals(bloggeier) || User.IsInRole("Admin") ) )
                 Response.Redirect("~/blogg.aspx?=" + bloggeier);
         }
