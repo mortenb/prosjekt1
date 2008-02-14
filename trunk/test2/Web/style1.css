@@ -96,11 +96,9 @@
 {
 	font-family:Verdana;
 	background-color: #eeeeee;
-	font-size:small;
 	border-style:none;
 	cursor:inherit;
 	width:500px;
-	height:150px;
 }
 
 .x-kommentar-tabell
@@ -108,12 +106,12 @@
 	border-style:none;
 }
 
-td
+p
 {
-	
+	width:500px;
 }
 
-tr
+pre
 {
-	padding-bottom:10px;
+	width:20;
 }
