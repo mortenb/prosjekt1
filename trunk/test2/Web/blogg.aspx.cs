@@ -88,7 +88,7 @@ public partial class blogg : System.Web.UI.Page
             HtmlTableRow trTekst = new HtmlTableRow();
             HtmlTableRow trFooter = new HtmlTableRow();
             //Få tittel og tekst fra ett innlegg inn i tabellen:
-            tcTittel.Controls.Add(new LiteralControl(Server.HtmlEncode(inn.Tittel)));
+            tcTittel.Controls.Add(new LiteralControl("<h3>" + Server.HtmlEncode(inn.Tittel) + "</h3>"));
             trTittel.Controls.Add(tcTittel);
             Table1.Rows.Add(trTittel);
 
@@ -104,7 +104,7 @@ public partial class blogg : System.Web.UI.Page
             string tempTekst = inn.Tekst;
             if (tempTekst.Length > 120)
             {
-                int tempHeight = Convert.ToInt32(tempTekst.Length * 0.35);
+                int tempHeight = Convert.ToInt32(tempTekst.Length * 0.25);
                 if (tempHeight > 150)
                 {
                     tb.Height = tempHeight;
@@ -191,9 +191,9 @@ public partial class blogg : System.Web.UI.Page
                 HtmlTableCell tcKommentarTekst = new HtmlTableCell(); //Tekst
                 tcKommentarTekst.ColSpan = 8;
                 
-                tcKommentarTittel.Controls.Add(new LiteralControl(Server.HtmlEncode(k.Tittel) + " skrevet av " + Server.HtmlEncode(k.Forfatter)));
+                tcKommentarTittel.Controls.Add(new LiteralControl("<div class='x-kommentar-tekst'>" + Server.HtmlEncode(k.Tittel) + " skrevet av " + Server.HtmlEncode(k.Forfatter) + "</div>"));
                 trKommentarTittel.Controls.Add(tcKommentarTittel);
-                tcKommentarDato.Controls.Add(new LiteralControl(k.Dato.ToString()));
+                tcKommentarDato.Controls.Add(new LiteralControl("<div class='x-kommentar-tekst'>" + k.Dato.ToString() + "</div>"));
                 trKommentarDato.Controls.Add(tcKommentarDato);
 
                 TextBox tbKommentarTekst = new TextBox();
