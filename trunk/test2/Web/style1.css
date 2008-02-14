@@ -99,19 +99,10 @@
 	border-style:none;
 	cursor:inherit;
 	width:500px;
+	height:150px;
 }
 
 .x-kommentar-tabell
 {
 	border-style:none;
-}
-
-p
-{
-	width:500px;
-}
-
-pre
-{
-	width:20;
 }
