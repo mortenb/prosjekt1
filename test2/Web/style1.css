@@ -116,3 +116,13 @@
 {
 	font-style:italic;
 }
+
+.x-redigerinnlegg-textarea
+{
+	font-family:Verdana;
+}
+
+.x-redigertittel-textarea
+{
+	font-weight:bolder;
+}
