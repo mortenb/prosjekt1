@@ -29,7 +29,6 @@
 	font-family:Verdana;
 	font-size:medium;
 	border-style:solid;
-	
 }
 
 .x-gridview
@@ -76,6 +75,7 @@
 .x-redigerkommentar-tekstboks
 {
 	background-color:White;
+	font-family:Verdana;
 	height:139px;
 	width:284px;
 }
@@ -105,4 +105,9 @@
 .x-kommentar-tabell
 {
 	border-style:none;
+}
+
+.x-kommentar-dummy
+{
+	width:20px;
 }
