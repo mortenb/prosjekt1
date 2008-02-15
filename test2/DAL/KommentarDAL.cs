@@ -15,8 +15,8 @@ namespace DOTNETPROSJEKT1.DAL
             //Metode for å legge til en kommentar
             //Gjør klar sql-streng
             string query = @"
-                                INSERT INTO kommentar (innleggID, nivaa, tittel, dato, tekst, forfatter) 
-                                VALUES ( @innleggID, @nivaa, @tittel, @dato, @tekst, @forfatter)
+                                INSERT INTO kommentar (innleggID, foreldreID, tittel, dato, tekst, forfatter) 
+                                VALUES ( @innleggID, @foreldreID, @tittel, @dato, @tekst, @forfatter)
                             ";
 
             using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
@@ -27,7 +27,7 @@ namespace DOTNETPROSJEKT1.DAL
                     //Legger til verdier i sql-strengen
                  //   myCommand.Parameters.AddWithValue("@id", kommentar.ForeldreID);
                     myCommand.Parameters.AddWithValue("@innleggID", kommentar.InnleggID);
-                    myCommand.Parameters.AddWithValue("@nivaa", kommentar.Nivaa);
+                    myCommand.Parameters.AddWithValue("@foreldreID", kommentar.ForeldreID);
                     myCommand.Parameters.AddWithValue("@tittel", kommentar.Tittel);
                     myCommand.Parameters.AddWithValue("@dato", kommentar.Dato);
                     myCommand.Parameters.AddWithValue("@tekst", kommentar.Tekst);
@@ -152,7 +152,7 @@ namespace DOTNETPROSJEKT1.DAL
             //Gjør klar sql-streng
             string query = @"
                                 SELECT kommentar.*
-                                FROM kommentar where kommentar.innleggID = @innleggID order by nivaa, id
+                                FROM kommentar where kommentar.innleggID = @innleggID order by foreldreID, id
                             ";
             
 
@@ -208,9 +208,9 @@ namespace DOTNETPROSJEKT1.DAL
             {
                 kommentar.InnleggID = (int)reader["innleggID"];
             }
-            if (reader["nivaa"] != DBNull.Value)
+            if (reader["foreldreID"] != DBNull.Value)
             {
-                kommentar.Nivaa = (int)reader["nivaa"];
+                kommentar.ForeldreID = (int)reader["foreldreID"];
             }
             
             if (reader["tittel"] != DBNull.Value)

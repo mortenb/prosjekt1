@@ -23,18 +23,6 @@ namespace DOTNETPROSJEKT1.Model
             get { return _innleggID; }
             set { _innleggID = value; }
         }
-        private int _nivaa;
-        public int Nivaa
-        {
-            get
-            {
-                return _nivaa;
-            }
-            set
-            {
-                _nivaa = value;
-            }
-        }
 
         
     }

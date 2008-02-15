@@ -47,9 +47,13 @@ public partial class kommentar : System.Web.UI.UserControl
     public int ForeldreID
     {
         get { return _foreldreID; }
-        set { _foreldreID = value; } 
+        set {
+            _foreldreID = value;
+            this.lblForeldreID.Text = _foreldreID.ToString();
+        } 
     }
-
+    
+    /*
     private int _nivaa;
     public int Nivaa
     {
@@ -60,6 +64,7 @@ public partial class kommentar : System.Web.UI.UserControl
             this.lblNivaa.Text = _nivaa.ToString();
         } //øker med en i forhold til foreldre-nivået.
     }
+    */
 
     protected void Page_PreRender(object sender, EventArgs e)
     {
@@ -104,7 +109,7 @@ public partial class kommentar : System.Web.UI.UserControl
         minKommentar.Forfatter = this.inputForfatter.Text.ToString();
         minKommentar.InnleggID = int.Parse(this.lblID.Text.ToString());
         minKommentar.ForeldreID = minKommentar.InnleggID;
-        minKommentar.Nivaa = int.Parse(this.lblNivaa.Text.ToString());
+        minKommentar.ForeldreID = int.Parse(this.lblForeldreID.Text.ToString());
         minKommentar.ID = int.Parse(this.lblKommentarID.Text.ToString());
 
         if (minKommentar.ID != 0) //hvis den skal redigeres

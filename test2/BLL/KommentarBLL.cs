@@ -35,6 +35,7 @@ namespace DOTNETPROSJEKT1.BLL
         {
             KommentarDAL.redigerKommentar(kommentarID, tekst);
         }
+
         public static Kommentar getKommentar(int kommentarID)
         {
             return DOTNETPROSJEKT1.DAL.KommentarDAL.getKommentar(kommentarID);
