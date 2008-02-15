@@ -57,6 +57,8 @@ public partial class blogg : System.Web.UI.Page
                 Trace.Warn("Kunne ikke opprette liste over innlegg: " + ex.Message);
             }
 
+            Label1.Text = "Velkommen til " + bloggeier + " sin blogg!";
+
             PrintInnlegg(listeoverinnlegg);
         }
     }
