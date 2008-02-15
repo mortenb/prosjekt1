@@ -221,22 +221,27 @@ public partial class blogg : System.Web.UI.Page
                 tcKommentarFoot.Controls.Add(kommenterButton2);               
 
                 //Hvis bruker har rettigheter, vis slett og rediger-knapper
-                if (user.Equals(bloggeier) || User.IsInRole("admin"))
+                //Rediger knapp for annen pålogget bruker er også nødvendig
+                if (User.Identity.Name.Equals(k.Forfatter) || user.Equals(bloggeier) || User.IsInRole("admin"))
                 {
                     LinkButton redigerButton = new LinkButton();
-                    redigerButton.ID = "redigerKommentarButton"+k.ID;
+                    redigerButton.ID = "redigerKommentarButton" + k.ID;
                     redigerButton.CommandArgument = k.ID.ToString();
                     redigerButton.Text = "rediger";
                     redigerButton.Click += new EventHandler(RedigerKommentarKnapp_onclick);
+                    tcKommentarFoot.Controls.Add(new LiteralControl("   "));
+                    tcKommentarFoot.Controls.Add(redigerButton);
+                }
 
+                if (user.Equals(bloggeier) || User.IsInRole("admin"))
+                {
                     LinkButton slettButton = new LinkButton();
                     slettButton.ID = "slettKommentarButton" + k.ID;
                     slettButton.CommandArgument = k.ID.ToString();
                     slettButton.Text = "slett";
                     slettButton.Click += new EventHandler(slettKommentarButton_onclick);
 
-                    tcKommentarFoot.Controls.Add(new LiteralControl("   "));
-                    tcKommentarFoot.Controls.Add(redigerButton);
+                    
                     tcKommentarFoot.Controls.Add(new LiteralControl("   ")); //whitespace mellom knappene
                     tcKommentarFoot.Controls.Add(slettButton);                    
                 }
@@ -255,8 +260,7 @@ public partial class blogg : System.Web.UI.Page
             //nivaa = 0; //teller fra 0. Et innlegg har nivå 0
             this.nykommentar1.ForeldreID = id; //førsøker dette istedet.. 
             this.nykommentar1.InnleggID = id;
-           
-            this.nykommentar1.ForeldreID = id;
+            this.nykommentar1.Eier = bloggeier;
             this.nykommentar1.Visible = true;
 
 

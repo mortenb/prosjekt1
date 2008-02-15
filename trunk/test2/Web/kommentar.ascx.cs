@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
+using System.Collections.Specialized;
 
 using DOTNETPROSJEKT1.BLL;
 using DOTNETPROSJEKT1.Model;
@@ -51,6 +52,16 @@ public partial class kommentar : System.Web.UI.UserControl
             _foreldreID = value;
             this.lblForeldreID.Text = _foreldreID.ToString();
         } 
+    }
+
+    private string _eier;
+    public string Eier
+    {
+        get { return _eier; }
+        set { 
+            _eier = value;
+            this.lblEier.Text = _eier;
+        }
     }
     
     /*
@@ -115,9 +126,16 @@ public partial class kommentar : System.Web.UI.UserControl
         if (minKommentar.ID != 0) //hvis den skal redigeres
         {
             string tempTekst = this.inputTekst.Text.ToString();
+            string redigerer = minKommentar.Forfatter;
+  
+            if (Page.User.IsInRole("admin") && !(redigerer.Equals(lblEier.Text)))
+            {
+                redigerer = "tulla";
+            }
+            
             tempTekst += @"
 
-sist endret av " + Page.User.Identity.Name + " " + DateTime.Now ;
+sist endret av " + redigerer + " " + DateTime.Now ;
             minKommentar.Tekst = tempTekst;
             KommentarBLL.redigerKommentar(minKommentar.ID, minKommentar.Tekst);
         }
