@@ -4,7 +4,8 @@
 
     <asp:Label ID="lblID" runat="server" Text="" Visible="false"></asp:Label>
     <asp:Label ID="lblForeldreID" runat="server" Text="" Visible="false"></asp:Label>
-      <asp:Label ID="lblKommentarID" runat="server" Text="" Visible="false"></asp:Label>
+    <asp:Label ID="lblKommentarID" runat="server" Text="" Visible="false"></asp:Label>
+    <asp:Label ID="lblEier" runat="server" Text="" Visible="false"></asp:Label>
     <table id="Table1" runat="server">
        <tr>
             <td>Tittel:</td>

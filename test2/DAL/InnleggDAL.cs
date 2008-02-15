@@ -210,6 +210,7 @@ namespace DOTNETPROSJEKT1.DAL
                                 SELECT *
                                 FROM innlegg
                                 WHERE bloggID = @bloggID
+                                ORDER BY id DESC
                             ";
 
             //Opprettet liste som skal returneres
