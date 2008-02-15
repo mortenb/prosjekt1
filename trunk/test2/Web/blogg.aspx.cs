@@ -100,7 +100,7 @@ public partial class blogg : System.Web.UI.Page
             Table1.Rows.Add(trDato);
             
             TextBox tb = new TextBox();
-            tb.CssClass = "x-innlegg-tekstboks";
+            tb.CssClass = "x-innlegg-tekstboks";            
             string tempTekst = inn.Tekst;
             if (tempTekst.Length > 120)
             {
@@ -113,8 +113,8 @@ public partial class blogg : System.Web.UI.Page
             tb.Text = tempTekst;
             tb.ReadOnly = true;
             tb.TextMode = TextBoxMode.MultiLine;
-
             tcTekst.Controls.Add(tb);
+            
             //hvis bruker har rettigheter, vis rediger og sletteknapp
             //knapp for å kommentere innlegg:
             LinkButton kommenterButton = new LinkButton();
@@ -158,7 +158,7 @@ public partial class blogg : System.Web.UI.Page
             kommentarer = KommentarBLL.getKommentarListe(inn.ID);
             foreach ( Kommentar k in kommentarer)
             {
-                int nivaa = k.Nivaa;
+                int nivaa = k.ForeldreID;
 
                 //Må opprette fire dummyer, fordi den ikke vil ha én
                 HtmlTableCell tcDummyTittel = new HtmlTableCell();
@@ -253,7 +253,7 @@ public partial class blogg : System.Web.UI.Page
             LinkButton hvilken = (LinkButton) sender;
             int id = int.Parse(hvilken.CommandArgument);
             //nivaa = 0; //teller fra 0. Et innlegg har nivå 0
-            this.nykommentar1.Nivaa = id; //førsøker dette istedet.. 
+            this.nykommentar1.ForeldreID = id; //førsøker dette istedet.. 
             this.nykommentar1.InnleggID = id;
            
             this.nykommentar1.ForeldreID = id;
@@ -274,14 +274,14 @@ public partial class blogg : System.Web.UI.Page
         try
         {
 
-            int nivaa;
+            int foreldreID;
             LinkButton hvilken = (LinkButton)sender;
             int id = int.Parse(hvilken.CommandArgument);
             Kommentar k = KommentarBLL.getKommentar(id);
             if (k != null)
             {
-                nivaa = k.ID; 
-                this.nykommentar1.Nivaa = nivaa;
+                foreldreID = k.ID; 
+                this.nykommentar1.ForeldreID = foreldreID;
                 this.nykommentar1.InnleggID = k.InnleggID;
 
                 this.nykommentar1.ForeldreID = id;
@@ -307,8 +307,8 @@ public partial class blogg : System.Web.UI.Page
             int id = int.Parse(hvilken.CommandArgument);
             Kommentar k = KommentarBLL.getKommentar(id);
             
-                int nivaa = k.Nivaa;
-                this.nykommentar1.Nivaa = nivaa;
+                int foreldreID = k.ForeldreID;
+                this.nykommentar1.ForeldreID = foreldreID;
                 this.nykommentar1.KommentarID = k.ID;
                 this.nykommentar1.InnleggID = k.InnleggID;                
                 this.nykommentar1.Visible = true;
