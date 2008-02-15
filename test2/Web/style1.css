@@ -119,9 +119,13 @@
 .x-redigerinnlegg-textarea
 {
 	font-family:Verdana;
+	font-size:inherit;
+	font-weight:bolder;
 }
 
 .x-redigertittel-textarea
 {
+	font-family:Verdana;
+	font-size:inherit;
 	font-weight:bolder;
 }
