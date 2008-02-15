@@ -130,7 +130,7 @@ public partial class kommentar : System.Web.UI.UserControl
   
             if (Page.User.IsInRole("admin") && !(redigerer.Equals(lblEier.Text)))
             {
-                redigerer = "tulla";
+                redigerer = "admin";
             }
             
             tempTekst += @"
