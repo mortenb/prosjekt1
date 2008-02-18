@@ -34,7 +34,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlogBLL.cs" />
-    <Compile Include="BrukerBLL.cs" />
     <Compile Include="InnleggBLL.cs" />
     <Compile Include="KommentarBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

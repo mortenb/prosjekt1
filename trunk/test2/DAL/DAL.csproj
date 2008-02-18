@@ -35,7 +35,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlogDAL.cs" />
-    <Compile Include="BrukerDAL.cs" />
     <Compile Include="InnleggDAL.cs" />
     <Compile Include="KommentarDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
