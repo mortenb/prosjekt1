@@ -21,9 +21,10 @@ public partial class editRoles : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!User.IsInRole("admin"))
-            Response.Redirect("index.aspx");
+            Response.Redirect("index.aspx"); //kaster alle andre enn admin tilbake til index.
         if(! IsPostBack)
         {
+            //første gang siden blir åpnet lista på siden bli oppdatert med alle brukerne til bloggers
             users = Membership.GetAllUsers();
             this.listUsers.DataSource = users;
             this.listUsers.DataBind();
@@ -41,17 +42,18 @@ public partial class editRoles : System.Web.UI.Page
     {
         if (listUsers.SelectedItem != null)
         {
+            //oppdaterer brukeren med rollen 'admin' til view
             selectedUser = this.listUsers.SelectedItem.Value;
             roles = Roles.GetRolesForUser(selectedUser);
-            this.checkbox1.Checked = Roles.IsUserInRole(selectedUser, "admin");
-
-           
+            this.checkbox1.Checked = Roles.IsUserInRole(selectedUser, "admin");           
         }
     }
+
     protected void toggleAdmin(object sender, EventArgs e)
     {
         if (listUsers.SelectedItem != null)
         {
+            //kjører denne metoden for å oppdatere brukeren med rollen 'admin' eller ei
             selectedUser = this.listUsers.SelectedItem.Value;
             roles = Roles.GetRolesForUser(selectedUser);
             //User selected = Membership.GetUser(selectedUser);

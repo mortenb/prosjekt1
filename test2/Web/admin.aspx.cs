@@ -15,10 +15,8 @@ public partial class test : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!User.IsInRole("Admin"))
+        if (!User.IsInRole("Admin")) //hvis brukeren ikke er admin, skal han vekk
             Response.Redirect("index.aspx");
-        GridView1.DataSource = DOTNETPROSJEKT1.BLL.BlogBLL.getBlogger();
-        GridView1.DataBind();
     }
 
     protected void CreateUserWizard1_CreatedUser1(object sender, EventArgs e)
@@ -32,6 +30,7 @@ public partial class test : System.Web.UI.Page
         b.Tittel = tittel;
         if (DOTNETPROSJEKT1.BLL.BlogBLL.nyBlog(b) == -1)
         {
+            //går hit hvis bloggen ikke kunne opprettes
             Response.Write("Crap!");
         }
     }
@@ -43,9 +42,5 @@ public partial class test : System.Web.UI.Page
         Response.Write(tittel + "<br/>");
         Page.Response.Redirect(Page.Request.Url.AbsoluteUri);
         Page.Response.End();
-    }
-    protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
     }
 }

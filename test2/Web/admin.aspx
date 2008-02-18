@@ -102,30 +102,5 @@
         </asp:CreateUserWizard>
        
         </asp:Panel>
-        <br />
-        
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
-            SelectCommand="SELECT * FROM [blogg]" DeleteCommand="DELETE FROM [blogg] WHERE [id] = @id" InsertCommand="INSERT INTO [blogg] ([eier], [tittel]) VALUES (@eier, @tittel)" UpdateCommand="UPDATE [blogg] SET [eier] = @eier, [tittel] = @tittel WHERE [id] = @id">
-            <DeleteParameters>
-                <asp:Parameter Name="id" Type="Int32" />
-            </DeleteParameters>
-            <UpdateParameters>
-                <asp:Parameter Name="eier" Type="String" />
-                <asp:Parameter Name="tittel" Type="String" />
-                <asp:Parameter Name="id" Type="Int32" />
-            </UpdateParameters>
-            <InsertParameters>
-                <asp:Parameter Name="eier" Type="String" />
-                <asp:Parameter Name="tittel" Type="String" />
-            </InsertParameters>
-        </asp:SqlDataSource>
-    
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
-            <Columns>
-                <asp:BoundField DataField="eier" HeaderText="eier" SortExpression="eier" />
-                <asp:BoundField DataField="tittel" HeaderText="tittel" SortExpression="tittel" />
-                <asp:CheckBoxField HeaderText="Admin"  />
-                <asp:ButtonField Text="Slett" />
-            </Columns>
-        </asp:GridView>
+    &nbsp;<br />
 </asp:Content>

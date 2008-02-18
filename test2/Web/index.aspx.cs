@@ -17,6 +17,7 @@ public partial class _Default : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            //første gang siden blir åpnet, skal gridview'et fylles med blogger.
             GridView_blogger_Databind();
         }
     }

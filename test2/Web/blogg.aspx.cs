@@ -242,7 +242,6 @@ public partial class blogg : System.Web.UI.Page
                     slettButton.CommandArgument = k.ID.ToString();
                     slettButton.Text = "slett";
                     slettButton.Click += new EventHandler(slettKommentarButton_onclick);
-
                     
                     tcKommentarFoot.Controls.Add(new LiteralControl("   ")); //whitespace mellom knappene
                     tcKommentarFoot.Controls.Add(slettButton);                    
@@ -264,8 +263,6 @@ public partial class blogg : System.Web.UI.Page
             this.nykommentar1.InnleggID = id;
             this.nykommentar1.Eier = bloggeier;
             this.nykommentar1.Visible = true;
-
-
         }
         catch (Exception ex)
         {
@@ -306,29 +303,21 @@ public partial class blogg : System.Web.UI.Page
     {
         try
         {
-
-
             //int nivaa;
             LinkButton hvilken = (LinkButton)sender;
             int id = int.Parse(hvilken.CommandArgument);
             Kommentar k = KommentarBLL.getKommentar(id);
             
-                int foreldreID = k.ForeldreID;
-                this.nykommentar1.ForeldreID = foreldreID;
-                this.nykommentar1.KommentarID = k.ID;
-                this.nykommentar1.InnleggID = k.InnleggID;                
-                this.nykommentar1.Visible = true;
-            
-
-
+            int foreldreID = k.ForeldreID;
+            this.nykommentar1.ForeldreID = foreldreID;
+            this.nykommentar1.KommentarID = k.ID;
+            this.nykommentar1.InnleggID = k.InnleggID;                
+            this.nykommentar1.Visible = true;    
         }
         catch (Exception ex)
         {
             Trace.Warn(ex.Message);
-        }
-
-
-        
+        }        
     }
 
     protected void slettKnapp_onclick(object sender, EventArgs e)
@@ -338,21 +327,18 @@ public partial class blogg : System.Web.UI.Page
             LinkButton hvilken = (LinkButton)sender;
             int id = int.Parse(hvilken.CommandArgument);
 
-            
-                //Kaller slettInnlegg med boolean "er pålogget bruker lik bloggeier?")
-                InnleggBLL.slettInnlegg(id, user.ToString() == bloggeier);
-                //må her også slette tilhørende kommentarer..Eller gjøres dette av db?
-                Trace.Write("slettet innlegg " + id);
-                Page.Response.Redirect(Page.Request.Url.AbsoluteUri);
-                Page.Response.End();
+            //Kaller slettInnlegg med boolean "er pålogget bruker lik bloggeier?")
+            InnleggBLL.slettInnlegg(id, user.ToString() == bloggeier);
+            //må her også slette tilhørende kommentarer..Eller gjøres dette av db?
+            Trace.Write("slettet innlegg " + id);
+            Page.Response.Redirect(Page.Request.Url.AbsoluteUri);
+            Page.Response.End();
             
         }
         catch (Exception ex)
         {
             Trace.Write(ex.Message);
-
         }
-
     }
 
     protected void slettKommentarButton_onclick(object sender, EventArgs e)
@@ -368,7 +354,6 @@ public partial class blogg : System.Web.UI.Page
             Trace.Write("slettet kommentar " + id);
             Page.Response.Redirect(Page.Request.Url.AbsoluteUri);
             Page.Response.End();
-
         }
         catch (Exception ex)
         {

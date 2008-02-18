@@ -63,19 +63,6 @@ public partial class kommentar : System.Web.UI.UserControl
             this.lblEier.Text = _eier;
         }
     }
-    
-    /*
-    private int _nivaa;
-    public int Nivaa
-    {
-        get { return _nivaa; }
-        set {
-            _nivaa = value;
-            //_nivaa = value +1;
-            this.lblNivaa.Text = _nivaa.ToString();
-        } //øker med en i forhold til foreldre-nivået.
-    }
-    */
 
     protected void Page_PreRender(object sender, EventArgs e)
     {
@@ -101,7 +88,6 @@ public partial class kommentar : System.Web.UI.UserControl
             this.inputForfatter.Text = "Anonym Feiging";
         }
         this.lblKommentarID.Text = finnes.ID.ToString();
-
     }
 
     protected void Page_Load(object sender, EventArgs e)
