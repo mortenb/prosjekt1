@@ -6,20 +6,22 @@ namespace Modell
 {
     public class Anmeldelse : Nyhet
     {
-
+        private int _anmeldelse;
+        
         public Anmeldelse()
         {
             throw new System.NotImplementedException();
         }
 
-        private int anmeldelse
+        public int _anmeldelse
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _anmeldelse;
             }
             set
             {
+                _anmeldelse = value;
             }
         }
     }

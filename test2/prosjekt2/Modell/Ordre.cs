@@ -6,41 +6,48 @@ namespace Modell
 {
     public class Ordre
     {
+        private int _ordreID;
+        private DateTime _ordreDato;
+        private List<OrdreLinje> ordrelinjer;
+
         public Ordre()
         {
             throw new System.NotImplementedException();
         }
     
-        private int _ordreID
+        public int _ordreID
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _ordreID;
             }
             set
             {
+                _ordreID = value;
             }
         }
 
-        private DateTime _ordreDato
+        public DateTime _ordreDato
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _ordreDato;
             }
             set
             {
+                _ordreDato = value;
             }
         }
 
-        private List<OrdreLinje> _listOrdreLinje
+        public List<OrdreLinje> _listOrdreLinje
         {
             get
             {
-                throw new System.NotImplementedException();
+                return ordrelinjer;
             }
             set
             {
+                ordrelinjer = value;
             }
         }
     }
