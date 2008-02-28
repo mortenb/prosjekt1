@@ -35,6 +35,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="IAnmeldelseBLL.cs" />
+    <Compile Include="INyhetBLL.cs" />
+    <Compile Include="IOrdreBLL.cs" />
+    <Compile Include="IProduktBLL.cs" />
+    <Compile Include="IProduktKategoriBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

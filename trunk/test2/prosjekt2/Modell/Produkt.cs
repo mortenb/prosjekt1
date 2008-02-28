@@ -19,7 +19,7 @@ namespace Modell
             throw new System.NotImplementedException();
         }
 
-        public int _produktID
+        public int ProduktID
         {
             get
             {
@@ -31,7 +31,7 @@ namespace Modell
             }
         }
 
-        public string _tittel
+        public string Tittel
         {
             get
             {
@@ -43,7 +43,7 @@ namespace Modell
             }
         }
 
-       public static int _antallPaaLager
+       public static int AntallPaaLager
         {
             get
             {
@@ -55,7 +55,7 @@ namespace Modell
             }
         }
 
-        public string _beskrivelse
+        public string Beskrivelse
         {
             get
             {
@@ -67,7 +67,7 @@ namespace Modell
             }
         }
 
-        public string _bildeURL
+        public string BildeURL
         {
             get
             {
@@ -79,7 +79,7 @@ namespace Modell
             }
         }
 
-        public int _pris
+        public int Pris
         {
             get
             {
@@ -91,7 +91,7 @@ namespace Modell
             }
         }
 
-        public int _produktkategoriID
+        public int ProduktkategoriID
         {
             get
             {

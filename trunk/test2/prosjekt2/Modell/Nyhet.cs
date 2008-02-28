@@ -15,7 +15,7 @@ namespace Modell
             throw new System.NotImplementedException();
         }
 
-        public int _nyhetsID
+        public int NyhetsID
         {
             get
             {
@@ -27,7 +27,7 @@ namespace Modell
             }
         }
 
-        public string _tittel
+        public string Tittel
         {
             get
             {
@@ -39,7 +39,7 @@ namespace Modell
             }
         }
 
-        public string _tekst
+        public string Tekst
         {
             get
             {
