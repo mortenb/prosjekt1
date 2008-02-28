@@ -15,7 +15,7 @@ namespace Modell
             throw new System.NotImplementedException();
         }
     
-        public int _ordrelinjeID
+        public int OrdrelinjeID
         {
             get
             {
@@ -27,7 +27,7 @@ namespace Modell
             }
         }
 
-        public int _produktID
+        public int ProduktID
         {
             get
             {
@@ -39,7 +39,7 @@ namespace Modell
             }
         }
 
-        public int _antall
+        public int Antall
         {
             get
             {

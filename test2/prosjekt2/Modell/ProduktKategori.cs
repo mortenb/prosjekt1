@@ -14,7 +14,7 @@ namespace Modell
             throw new System.NotImplementedException();
         }
 
-        public int _produktkategoriID
+        public int ProduktkategoriID
         {
             get
             {
@@ -26,7 +26,7 @@ namespace Modell
             }
         }
 
-        private string _navn
+        private string Navn
         {
             get
             {

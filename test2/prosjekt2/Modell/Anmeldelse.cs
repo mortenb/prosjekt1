@@ -6,22 +6,22 @@ namespace Modell
 {
     public class Anmeldelse : Nyhet
     {
-        private int _anmeldelse;
+        private int _karakter;
         
         public Anmeldelse()
         {
             throw new System.NotImplementedException();
         }
 
-        public int _anmeldelse
+        public int Karakter
         {
             get
             {
-                return _anmeldelse;
+                return _karakter;
             }
             set
             {
-                _anmeldelse = value;
+                _karakter = value;
             }
         }
     }

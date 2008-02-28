@@ -35,6 +35,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="IAnmeldelseDAL.cs" />
+    <Compile Include="INyhetDAL.cs" />
+    <Compile Include="IOrdreDAL.cs" />
+    <Compile Include="IProduktDAL.cs" />
+    <Compile Include="IProduktkategoriDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

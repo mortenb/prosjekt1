@@ -15,7 +15,7 @@ namespace Modell
             throw new System.NotImplementedException();
         }
     
-        public int _ordreID
+        public int OrdreID
         {
             get
             {
@@ -27,7 +27,7 @@ namespace Modell
             }
         }
 
-        public DateTime _ordreDato
+        public DateTime OrdreDato
         {
             get
             {
@@ -39,7 +39,7 @@ namespace Modell
             }
         }
 
-        public List<OrdreLinje> _listOrdreLinje
+        public List<OrdreLinje> ListOrdreLinje
         {
             get
             {
