@@ -6,20 +6,23 @@ namespace Modell
 {
     public class ProduktKategori
     {
+        private int _produktkategoriID;
+        private string _navn;
 
         public ProduktKategori()
         {
             throw new System.NotImplementedException();
         }
 
-        private int _produktkategoriID
+        public int _produktkategoriID
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _produktkategoriID;
             }
             set
             {
+                _produktkategoriID = value;
             }
         }
 
@@ -27,10 +30,11 @@ namespace Modell
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _navn;
             }
             set
             {
+                _navn = value;
             }
         }
     }

@@ -6,86 +6,100 @@ namespace Modell
 {
     public class Produkt
     {
+        private int _produktID;
+        private string _tittel;
+        private static int _antallPaaLager;
+        private string _beskrivelse;
+        private string _bildeURL;
+        private int _pris;
+        private int _produktkategoriID;
 
         public Produkt()
         {
             throw new System.NotImplementedException();
         }
 
-        private int _produktID
+        public int _produktID
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _produktID;
             }
             set
             {
+                _produktID = value;
             }
         }
 
-        private string _tittel
+        public string _tittel
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _tittel;
             }
             set
             {
+                _tittel = value;
             }
         }
 
-        private static int _antallPaaLager
+       public static int _antallPaaLager
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _antallPaaLager;
             }
             set
             {
+                _antallPaaLager = value;
             }
         }
 
-        private string _beskrivelse
+        public string _beskrivelse
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _beskrivelse;
             }
             set
             {
+                _beskrivelse = value;
             }
         }
 
-        private string _bildeURL
+        public string _bildeURL
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _bildeURL;
             }
             set
             {
+                _bildeURL = value;
             }
         }
 
-        private int _pris
+        public int _pris
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _pris;
             }
             set
             {
+                _pris = value;
             }
         }
 
-        private int _produktkategoriID
+        public int _produktkategoriID
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _produktkategoriID;
             }
             set
             {
+                _produktkategoriID = value;
             }
         }
     }

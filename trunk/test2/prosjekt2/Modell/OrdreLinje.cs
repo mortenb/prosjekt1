@@ -6,41 +6,48 @@ namespace Modell
 {
     public class OrdreLinje
     {
+        private int _ordrelinjeID;
+        private int _produktID;
+        private int _antall;
+
         public OrdreLinje()
         {
             throw new System.NotImplementedException();
         }
     
-        private int _ordrelinjeID
+        public int _ordrelinjeID
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _ordrelinjeID;
             }
             set
             {
+                _ordrelinjeID = value;
             }
         }
 
-        private int _produktID
+        public int _produktID
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _produktID;
             }
             set
             {
+                _produktID = value;
             }
         }
 
-        private int _antall
+        public int _antall
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _antall;
             }
             set
             {
+                _antall = value;
             }
         }
     }
