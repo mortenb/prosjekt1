@@ -6,42 +6,48 @@ namespace Modell
 {
     public class Nyhet
     {
+        private int _nyhetsID;
+        private string _tittel;
+        private string _tekst;
 
         public Nyhet()
         {
             throw new System.NotImplementedException();
         }
 
-        private int _nyhetsID
+        public int _nyhetsID
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _nyhetsID;
             }
             set
             {
+                _nyhetsID = value;
             }
         }
 
-        private string _tittel
+        public string _tittel
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _tittel;
             }
             set
             {
+                _tittel = value;
             }
         }
 
-        private string _tekst
+        public string _tekst
         {
             get
             {
-                throw new System.NotImplementedException();
+                return _tekst;
             }
             set
             {
+                _tekst = value;
             }
         }
     }
