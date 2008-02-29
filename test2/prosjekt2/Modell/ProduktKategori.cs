@@ -26,7 +26,7 @@ namespace Prosjekt2.Modell
             }
         }
 
-        private string Navn
+        public string Navn
         {
             get
             {

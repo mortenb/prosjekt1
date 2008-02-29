@@ -24,5 +24,13 @@ namespace Prosjekt2.Modell
                 _karakter = value;
             }
         }
+
+        private int _produktID;
+
+        public int ProduktID
+        {
+            get { return _produktID; }
+            set { this._produktID = value; }
+        }
     }
 }
