@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Modell;
-namespace IBLL
+using Prosjekt2.Modell;
+
+namespace Prosjekt2.IBLL
 {
     public interface IProduktBLL
     {

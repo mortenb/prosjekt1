@@ -4,26 +4,26 @@ using System.Text;
 
 namespace DAL
 {
-    public class NyhetDAL : Prosjekt2.IDAL.INyhetDAL
+    public class ProduktDAL : Prosjekt2.IDAL.IProduktDAL
     {
-        #region INyhetDAL Members
+        #region IProduktDAL Members
 
-        public List<Prosjekt2.Modell.Nyhet> getNyheter()
+        public List<Prosjekt2.Modell.Produkt> getProdukter()
         {
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public Prosjekt2.Modell.Nyhet getNyhet()
+        public List<Prosjekt2.Modell.Produkt> getProduktTilbud()
         {
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public void nyNyhet(Prosjekt2.Modell.Nyhet n)
+        public void nyttProdukt(Prosjekt2.Modell.Produkt p)
         {
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public void endreNyhet(Prosjekt2.Modell.Nyhet n)
+        public void endreProdukt(Prosjekt2.Modell.Produkt p)
         {
             throw new Exception("The method or operation is not implemented.");
         }

@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Modell;
-namespace IBLL
+using Prosjekt2.Modell;
+
+namespace Prosjekt2.IBLL
 {
-    public interface IProduktKategoriBLL
+    public interface IProduktkategoriBLL
     {
-        void nyProduktkategori(ProduktKategori pk);
-        void endreProduktkategori(ProduktKategori pk);
+        void nyProduktkategori(Produktkategori pk);
+        void endreProduktkategori(Produktkategori pk);
     }
 }

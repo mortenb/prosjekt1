@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Reflection;
 using System.Text;
-using IBLL;
+using Prosjekt2.IBLL;
 
-namespace IBLL
+namespace Prosjekt2.IBLL
 {
     public class BLLLoader
     {
@@ -18,10 +18,10 @@ namespace IBLL
         /// Creates and returns an instance of the UserBLL implementation.
         /// </summary>
         /// <returns></returns>
-        public static IAnmeldelsesBLL GetAnmeldesesBLL()
+        public static IAnmeldelseBLL GetAnmeldeseBLL()
         {
             string className = string.Format("{0}.AnmeldelsesBLL", path);
-            return (IAnmeldelsesBLL)Assembly.Load(path).CreateInstance(className);
+            return (IAnmeldelseBLL)Assembly.Load(path).CreateInstance(className);
         }
 
         public static INyhetBLL GetNyhetBLL()
@@ -42,10 +42,10 @@ namespace IBLL
             return (IProduktBLL)Assembly.Load(path).CreateInstance(className);
         }
 
-        public static IProduktKategoriBLL GetProduktKategoriBLL()
+        public static IProduktkategoriBLL GetProduktkategoriBLL()
         {
-            string className = string.Format("{0}.ProduktKategoriBLL", path);
-            return (IProduktKategoriBLL)Assembly.Load(path).CreateInstance(className);
+            string className = string.Format("{0}.ProduktkategoriBLL", path);
+            return (IProduktkategoriBLL)Assembly.Load(path).CreateInstance(className);
         }
     }
 }

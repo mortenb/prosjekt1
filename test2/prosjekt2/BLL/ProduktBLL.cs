@@ -2,28 +2,28 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DAL
+namespace BLL
 {
-    public class NyhetDAL : Prosjekt2.IDAL.INyhetDAL
+    public class ProduktBLL : Prosjekt2.IBLL.IProduktBLL
     {
-        #region INyhetDAL Members
+        #region IProduktBLL Members
 
-        public List<Prosjekt2.Modell.Nyhet> getNyheter()
+        public List<Prosjekt2.Modell.Produkt> getProdukter()
         {
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public Prosjekt2.Modell.Nyhet getNyhet()
+        public List<Prosjekt2.Modell.Produkt> getProduktTilbud()
         {
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public void nyNyhet(Prosjekt2.Modell.Nyhet n)
+        public void nyttProdukt(Prosjekt2.Modell.Produkt p)
         {
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public void endreNyhet(Prosjekt2.Modell.Nyhet n)
+        public void endreProdukt(Prosjekt2.Modell.Produkt p)
         {
             throw new Exception("The method or operation is not implemented.");
         }

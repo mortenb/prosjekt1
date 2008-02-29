@@ -36,6 +36,9 @@
   <ItemGroup>
     <Compile Include="AnmeldelsesDAL.cs" />
     <Compile Include="NyhetDAL.cs" />
+    <Compile Include="OrdreDAL.cs" />
+    <Compile Include="ProduktDAL.cs" />
+    <Compile Include="ProduktkategoriDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

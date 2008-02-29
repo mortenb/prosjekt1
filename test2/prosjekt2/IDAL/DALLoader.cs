@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Reflection;
 using System.Text;
 
-namespace IDAL
+namespace Prosjekt2.IDAL
 {
     public class DALLoader
     {
@@ -12,8 +12,8 @@ namespace IDAL
 
         public static IAnmeldelseDAL getUserDAL()
         {
-            string className = string.Format("{0}.IAnmeldelsesDAL", path);
-            return (IAnmeldelsesDAL)Assembly.Load(path).CreateInstance(className);
+            string className = string.Format("{0}.IAnmeldelseDAL", path);
+            return (IAnmeldelseDAL)Assembly.Load(path).CreateInstance(className);
         }
 
         public static INyhetDAL getNyhetDAL()
@@ -34,10 +34,10 @@ namespace IDAL
             return (IProduktDAL)Assembly.Load(path).CreateInstance(className);
         }
 
-        public static IProduktKategoriDAL getProduktKategoriDAL()
+        public static IProduktkategoriDAL getProduktKategoriDAL()
         {
             string className = string.Format("{0}.IProduktKategoriDAL", path);
-            return (IProduktKategoriDAL)Assembly.Load(path).CreateInstance(className);
+            return (IProduktkategoriDAL)Assembly.Load(path).CreateInstance(className);
         }
 
 
