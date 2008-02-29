@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Prosjekt2.IDAL;
 
-namespace Prosjekt2.DAL
+namespace BLL
 {
-    public class AnmeldelsesDAL : Prosjekt2.IDAL.IAnmeldelseDAL
+    public class AnmeldelseBLL : Prosjekt2.IBLL.IAnmeldelseBLL
     {
-        #region IAnmeldelseDAL Members
+        #region IAnmeldelseBLL Members
 
         public List<Prosjekt2.Modell.Anmeldelse> getAnmeldelser(int produktID)
         {

@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Modell;
-namespace IDAL
+using Prosjekt2.Modell;
+
+namespace Prosjekt2.IDAL
 {
     public interface IOrdreDAL
     {

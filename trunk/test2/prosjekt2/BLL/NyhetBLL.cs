@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DAL
+namespace BLL
 {
-    public class NyhetDAL : Prosjekt2.IDAL.INyhetDAL
+    public class NyhetBLL : Prosjekt2.IBLL.INyhetBLL
     {
-        #region INyhetDAL Members
+        #region INyhetBLL Members
 
         public List<Prosjekt2.Modell.Nyhet> getNyheter()
         {

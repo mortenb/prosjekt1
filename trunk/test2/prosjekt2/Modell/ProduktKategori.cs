@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Modell
+namespace Prosjekt2.Modell
 {
-    public class ProduktKategori
+    public class Produktkategori
     {
         private int _produktkategoriID;
         private string _navn;
 
-        public ProduktKategori()
+        public Produktkategori()
         {
             throw new System.NotImplementedException();
         }

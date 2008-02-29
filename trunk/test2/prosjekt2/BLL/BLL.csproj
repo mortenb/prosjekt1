@@ -33,6 +33,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnmeldelseBLL.cs" />
+    <Compile Include="NyhetBLL.cs" />
+    <Compile Include="OrdreBLL.cs" />
+    <Compile Include="ProduktBLL.cs" />
+    <Compile Include="ProduktkategoriBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +53,9 @@
       <Project>{EDECEB9A-7C73-48B8-946B-8C019335D9A2}</Project>
       <Name>Modell</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

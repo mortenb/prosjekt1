@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Modell
+namespace Prosjekt2.Modell
 {
     public class Produkt
     {

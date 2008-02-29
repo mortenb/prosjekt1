@@ -4,26 +4,21 @@ using System.Text;
 
 namespace DAL
 {
-    public class NyhetDAL : Prosjekt2.IDAL.INyhetDAL
+    public class OrdreDAL : Prosjekt2.IDAL.IOrdreDAL
     {
-        #region INyhetDAL Members
+        #region IOrdreDAL Members
 
-        public List<Prosjekt2.Modell.Nyhet> getNyheter()
+        public void LeggTilOrdrelinje(Prosjekt2.Modell.OrdreLinje ol)
         {
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public Prosjekt2.Modell.Nyhet getNyhet()
+        public Prosjekt2.Modell.Ordre getOrdre()
         {
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public void nyNyhet(Prosjekt2.Modell.Nyhet n)
-        {
-            throw new Exception("The method or operation is not implemented.");
-        }
-
-        public void endreNyhet(Prosjekt2.Modell.Nyhet n)
+        public void nyOrdre(Prosjekt2.Modell.Ordre o)
         {
             throw new Exception("The method or operation is not implemented.");
         }

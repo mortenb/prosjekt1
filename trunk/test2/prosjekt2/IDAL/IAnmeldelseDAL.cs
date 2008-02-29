@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Modell;
+using Prosjekt2.Modell;
 
-namespace IDAL
+namespace Prosjekt2.IDAL
 {
     public interface IAnmeldelseDAL
     {
