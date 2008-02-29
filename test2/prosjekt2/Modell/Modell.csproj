@@ -34,7 +34,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Anmeldelse.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Nyhet.cs" />
     <Compile Include="Ordre.cs" />
     <Compile Include="OrdreLinje.cs" />
