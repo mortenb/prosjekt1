@@ -34,7 +34,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DALLoader.cs" />
     <Compile Include="IAnmeldelseDAL.cs" />
     <Compile Include="INyhetDAL.cs" />
     <Compile Include="IOrdreDAL.cs" />
