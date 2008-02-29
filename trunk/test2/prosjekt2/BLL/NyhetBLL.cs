@@ -13,7 +13,7 @@ namespace BLL
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public Prosjekt2.Modell.Nyhet getNyhet()
+        public Prosjekt2.Modell.Nyhet getNyhet(int nyhetID)
         {
             throw new Exception("The method or operation is not implemented.");
         }

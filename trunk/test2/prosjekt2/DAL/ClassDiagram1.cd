@@ -5,35 +5,35 @@
     <Position X="0.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <FileName>AnmeldelsesDAL.cs</FileName>
-      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DAL.NyhetDAL">
+  <Class Name="Prosjekt2.DAL.NyhetDAL">
     <Position X="2.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <FileName>NyhetDAL.cs</FileName>
-      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAIAAEAAA=</HashCode>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAQAAAAIAAAAAAIAAEAAA=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DAL.OrdreDAL">
+  <Class Name="Prosjekt2.DAL.OrdreDAL">
     <Position X="4.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <FileName>OrdreDAL.cs</FileName>
-      <HashCode>AAAAAAAAFAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAFAAAAAAAAAAAAAAAAAAAAAACAACAAAAAAAA=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DAL.ProduktDAL">
+  <Class Name="Prosjekt2.DAL.ProduktDAL">
     <Position X="6" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <FileName>ProduktDAL.cs</FileName>
-      <HashCode>AAAAAAAAAAIAAAAAAAAQAAAAAAACAAACAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAIAAAAAAAAQAAAAAQACAAACAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DAL.ProduktkategoriDAL">
+  <Class Name="Prosjekt2.DAL.ProduktkategoriDAL">
     <Position X="0.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <FileName>ProduktkategoriDAL.cs</FileName>

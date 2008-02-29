@@ -9,7 +9,7 @@ namespace Prosjekt2.IBLL
     {
         List<Nyhet> getNyheter();
 
-        Nyhet getNyhet();
+        Nyhet getNyhet(int nyhetID);
 
         void nyNyhet(Nyhet n);
 
