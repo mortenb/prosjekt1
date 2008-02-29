@@ -5,7 +5,7 @@ using Modell;
 
 namespace IBLL
 {
-    interface IAnmeldelseBLL
+    public interface IAnmeldelseBLL
     {
         List<Anmeldelse> getAnmeldelser(int produktID);
     }

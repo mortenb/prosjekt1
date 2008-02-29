@@ -5,7 +5,7 @@ using Modell;
 
 namespace IBLL
 {
-    interface INyhetBLL
+    public interface INyhetBLL
     {
         List<Nyhet> getNyheter();
 

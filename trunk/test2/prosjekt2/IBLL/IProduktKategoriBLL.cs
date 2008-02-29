@@ -4,7 +4,7 @@ using System.Text;
 using Modell;
 namespace IBLL
 {
-    interface IProduktKategoriBLL
+    public interface IProduktKategoriBLL
     {
         void nyProduktkategori(ProduktKategori pk);
         void endreProduktkategori(ProduktKategori pk);

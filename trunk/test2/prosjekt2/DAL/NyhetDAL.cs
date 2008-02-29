@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DAL
 {
-    public class Class1
+    public class NyhetDAL
     {
     }
 }
