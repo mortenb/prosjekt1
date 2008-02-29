@@ -5,7 +5,7 @@ using Modell;
 
 namespace IBLL
 {
-    interface IOrdreBLL
+    public interface IOrdreBLL
     {
         void LeggTilOrdrelinje(OrdreLinje ol);
         Ordre getOrdre();

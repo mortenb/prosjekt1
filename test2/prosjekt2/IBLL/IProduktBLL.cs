@@ -4,7 +4,7 @@ using System.Text;
 using Modell;
 namespace IBLL
 {
-    interface IProduktBLL
+    public interface IProduktBLL
     {
 
         List<Produkt> getProdukter();

@@ -5,7 +5,7 @@ using Modell;
 
 namespace IDAL
 {
-    interface IProduktDAL
+    public interface IProduktDAL
     {
 
         List<Produkt> getProdukter();

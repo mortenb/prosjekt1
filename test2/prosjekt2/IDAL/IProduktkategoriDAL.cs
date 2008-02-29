@@ -5,7 +5,7 @@ using Modell;
 
 namespace IDAL
 {
-    interface IProduktkategoriDAL
+    public interface IProduktkategoriDAL
     {
         void nyProduktkategori(ProduktKategori pk);
         void endreProduktkategori(ProduktKategori pk);

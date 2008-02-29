@@ -4,7 +4,7 @@ using System.Text;
 using Modell;
 namespace IDAL
 {
-    interface IOrdreDAL
+    public interface IOrdreDAL
     {
         void LeggTilOrdrelinje(OrdreLinje ol);
         Ordre getOrdre();

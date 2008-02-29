@@ -5,7 +5,7 @@ using Modell;
 
 namespace IDAL
 {
-    interface INyhetDAL
+    public interface INyhetDAL
     {
         List<Nyhet> getNyheter();
 
