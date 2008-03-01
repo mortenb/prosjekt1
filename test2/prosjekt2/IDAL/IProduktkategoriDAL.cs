@@ -10,5 +10,8 @@ namespace Prosjekt2.IDAL
         void nyProduktkategori(Produktkategori pk);
 
         void endreProduktkategori(Produktkategori pk);
+
+        List<Produktkategori> getProduktkategorier();
+
     }
 }

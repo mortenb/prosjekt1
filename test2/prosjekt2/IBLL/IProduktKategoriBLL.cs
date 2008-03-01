@@ -9,5 +9,7 @@ namespace Prosjekt2.IBLL
     {
         void nyProduktkategori(Produktkategori pk);
         void endreProduktkategori(Produktkategori pk);
+
+        List<Produktkategori> getProduktkategorier();
     }
 }
