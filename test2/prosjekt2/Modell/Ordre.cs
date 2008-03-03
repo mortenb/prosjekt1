@@ -8,7 +8,7 @@ namespace Prosjekt2.Modell
     {
         private int _ordreID;
         private DateTime _ordreDato;
-        private List<OrdreLinje> ordrelinjer;
+        
 
         public Ordre()
         {
@@ -39,16 +39,6 @@ namespace Prosjekt2.Modell
             }
         }
 
-        public List<OrdreLinje> ListOrdreLinje
-        {
-            get
-            {
-                return ordrelinjer;
-            }
-            set
-            {
-                ordrelinjer = value;
-            }
-        }
+        
     }
 }

@@ -4,13 +4,13 @@ using System.Text;
 
 namespace Prosjekt2.Modell
 {
-    public class OrdreLinje
+    public class Ordrelinje
     {
         private int _ordrelinjeID;
         private int _produktID;
         private int _antall;
 
-        public OrdreLinje()
+        public Ordrelinje()
         {
             throw new System.NotImplementedException();
         }
