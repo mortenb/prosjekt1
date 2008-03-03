@@ -26,6 +26,10 @@ namespace BLL
             throw new Exception("The method or operation is not implemented.");
         }
 
+        public void slettOrdre(int ordreID)
+        {
+            ordreDAL.slettOrdre(ordreID);
+        }
         #endregion
     }
 }

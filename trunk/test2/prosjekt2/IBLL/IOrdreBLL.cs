@@ -9,5 +9,6 @@ namespace Prosjekt2.IBLL
     {
         Ordre getOrdre(int ordreID);
         void nyOrdre(Ordre o);
+        void slettOrdre(int ordreID);
     }
 }
