@@ -1,30 +1,41 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Prosjekt2.IDAL;
+using Prosjekt2.IBLL;
+using Prosjekt2.Modell;
 
 namespace BLL
 {
-    public class NyhetBLL : Prosjekt2.IBLL.INyhetBLL
+    public class NyhetBLL : INyhetBLL
     {
         #region INyhetBLL Members
 
-        public List<Prosjekt2.Modell.Nyhet> getNyheter()
+        private INyhetDAL nyhetDAL = DALLoader.getNyhetDAL();
+
+        public List<Nyhet> getNyheter()
         {
+            List<Nyhet> nyheter = nyhetDAL.getNyheter();
+            //throw new Exception("The method or operation is not implemented.");
+            return nyheter;
+        }
+
+        public Nyhet getNyhet(int nyhetID)
+        {
+            Nyhet nyhet = nyhetDAL.getNyhet(nyhetID);
+            //throw new Exception("The method or operation is not implemented.");
+            return nyhet;
+        }
+
+        public void nyNyhet(Nyhet n)
+        {
+            nyhetDAL.nyNyhet(n);
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public Prosjekt2.Modell.Nyhet getNyhet(int nyhetID)
+        public void endreNyhet(Nyhet n)
         {
-            throw new Exception("The method or operation is not implemented.");
-        }
-
-        public void nyNyhet(Prosjekt2.Modell.Nyhet n)
-        {
-            throw new Exception("The method or operation is not implemented.");
-        }
-
-        public void endreNyhet(Prosjekt2.Modell.Nyhet n)
-        {
+            nyhetDAL.endreNyhet(n);
             throw new Exception("The method or operation is not implemented.");
         }
 

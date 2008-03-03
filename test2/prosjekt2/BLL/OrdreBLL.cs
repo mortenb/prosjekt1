@@ -1,25 +1,28 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Prosjekt2.IDAL;
+using Prosjekt2.IBLL;
+using Prosjekt2.Modell;
 
 namespace BLL
 {
-    public class OrdreBLL : Prosjekt2.IBLL.IOrdreBLL
+    public class OrdreBLL : IOrdreBLL
     {
         #region IOrdreBLL Members
 
-        public void LeggTilOrdrelinje(Prosjekt2.Modell.OrdreLinje ol)
+        private IOrdreDAL ordreDAL = DALLoader.getOrdreDAL();
+
+        public Ordre getOrdre(int ordreID)
         {
-            throw new Exception("The method or operation is not implemented.");
+            Ordre ordre = ordreDAL.getOrdre(ordreID);
+            return ordre;
+            //throw new Exception("The method or operation is not implemented.");
         }
 
-        public Prosjekt2.Modell.Ordre getOrdre()
+        public void nyOrdre(Ordre o)
         {
-            throw new Exception("The method or operation is not implemented.");
-        }
-
-        public void nyOrdre(Prosjekt2.Modell.Ordre o)
-        {
+            ordreDAL.nyOrdre(o);
             throw new Exception("The method or operation is not implemented.");
         }
 
