@@ -16,17 +16,82 @@ namespace Prosjekt2.DAL
 
         public Ordre getOrdre(int ordreID)
         {
-            throw new Exception("The method or operation is not implemented.");
+            string query = @"Select * from Ordre where id = @id";
+            Ordre o = new Ordre();
+            using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString))
+            {
+                myConnection.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myConnection))
+                {
+                    //Legge til nyhetID i spørringen
+                    myCommand.Parameters.AddWithValue("@id", ordreID);
+
+                    // Note we can not use "using" on the reader because of the call to GetUserFromSqlReader
+                    SqlDataReader reader = myCommand.ExecuteReader();
+                    try
+                    {
+                        while (reader.Read())
+                        {
+                            o = GetOrdreFraSqlReader(ref reader);
+                        }
+                    }
+                    /*
+                     * No catch block, let exceptions be handles in the higher layers.
+                     */
+                    finally
+                    {
+                        if (reader != null)
+                        {
+                            reader.Close(); /* No using on reader, we must close. */
+                        }
+                    }
+                }
+            }
+            return o;
         }
 
         public void nyOrdre(Ordre o)
         {
-            throw new Exception("The method or operation is not implemented.");
+            string query = @"Insert into Ordre (dato) values (@dato)";
+            using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString))
+            {
+                myConnection.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myConnection))
+                {
+                    //Legge til nyhetID i spørringen
+                    myCommand.Parameters.AddWithValue("@dato", o.OrdreDato);
+
+                    // Note we can not use "using" on the reader because of the call to GetUserFromSqlReader
+                    try
+                    {
+                        int result = myCommand.ExecuteNonQuery();
+                    }
+                    finally
+                    {
+
+                    }
+                }
+            }
+
         }
 
         public void slettOrdre(int ordreID)
         {
-            throw new Exception("The method or operation is not implemented.");
+            string query = @"Delete * from Ordre WHERE id = @id";
+            using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString))
+            {
+                myConnection.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myConnection))
+                {
+                    //Legge til nyhetID i spørringen
+                    myCommand.Parameters.AddWithValue("@id", ordreID);
+
+                    // Note we can not use "using" on the reader because of the call to GetUserFromSqlReader
+                    int result = myCommand.ExecuteNonQuery();
+
+                   
+                }
+            }
         }
 
         private Ordre GetOrdreFraSqlReader(ref SqlDataReader reader) // Ref to avoid large copys in memory.
