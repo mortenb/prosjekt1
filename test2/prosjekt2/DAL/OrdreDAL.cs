@@ -13,10 +13,6 @@ namespace Prosjekt2.DAL
     {
         #region IOrdreDAL Members
 
-        public void LeggTilOrdrelinje(OrdreLinje ol)
-        {
-            throw new Exception("The method or operation is not implemented.");
-        }
 
         public Ordre getOrdre(int ordreID)
         {
