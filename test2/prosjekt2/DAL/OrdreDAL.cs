@@ -9,21 +9,21 @@ using Prosjekt2.IDAL;
 
 namespace Prosjekt2.DAL
 {
-    public class OrdreDAL : Prosjekt2.IDAL.IOrdreDAL
+    public class OrdreDAL : IOrdreDAL
     {
         #region IOrdreDAL Members
 
-        public void LeggTilOrdrelinje(Prosjekt2.Modell.OrdreLinje ol)
+        public void LeggTilOrdrelinje(OrdreLinje ol)
         {
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public Prosjekt2.Modell.Ordre getOrdre()
+        public Ordre getOrdre(int ordreID)
         {
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public void nyOrdre(Prosjekt2.Modell.Ordre o)
+        public void nyOrdre(Ordre o)
         {
             throw new Exception("The method or operation is not implemented.");
         }

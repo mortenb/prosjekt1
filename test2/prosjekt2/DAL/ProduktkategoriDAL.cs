@@ -9,11 +9,11 @@ using Prosjekt2.IDAL;
 
 namespace Prosjekt2.DAL
 {
-    public class ProduktkategoriDAL : Prosjekt2.IDAL.IProduktkategoriDAL
+    public class ProduktkategoriDAL : IProduktkategoriDAL
     {
         #region IProduktkategoriDAL Members
 
-        public void nyProduktkategori(Prosjekt2.Modell.Produktkategori pk)
+        public void nyProduktkategori(Produktkategori pk)
         {
             string query = @"
                                 INSERT INTO ProduktKategori (id, navn) VALUES (@id, @navn)
@@ -43,7 +43,7 @@ namespace Prosjekt2.DAL
             }
         }
 
-        public void endreProduktkategori(Prosjekt2.Modell.Produktkategori pk)
+        public void endreProduktkategori(Produktkategori pk)
         {
             string query = @"
                                 UPDATE ProduktKategori 

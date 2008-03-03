@@ -9,11 +9,11 @@ using Prosjekt2.IDAL;
 
 namespace Prosjekt2.DAL
 {
-    public class ProduktDAL : Prosjekt2.IDAL.IProduktDAL
+    public class ProduktDAL : IProduktDAL
     {
         #region IProduktDAL Members
 
-        public List<Prosjekt2.Modell.Produkt> getProdukter()
+        public List<Produkt> getProdukter()
         {
             string query = @"
                                 SELECT *
@@ -51,13 +51,13 @@ namespace Prosjekt2.DAL
             return prod;
         }
 
-        public List<Prosjekt2.Modell.Produkt> getProduktTilbud()
+        public List<Produkt> getProduktTilbud()
         {
             //Denne må fortsatt stå på TODO-lista
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public void nyttProdukt(Prosjekt2.Modell.Produkt p)
+        public void nyttProdukt(Produkt p)
         {
             //Hva gjør vi med antallPaaLager ?
             string query = @"
@@ -93,7 +93,7 @@ namespace Prosjekt2.DAL
             }
         }
 
-        public void endreProdukt(Prosjekt2.Modell.Produkt p)
+        public void endreProdukt(Produkt p)
         {
             string query = @"
                                 UPDATE Produkt 
