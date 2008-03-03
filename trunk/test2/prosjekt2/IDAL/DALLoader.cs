@@ -10,7 +10,7 @@ namespace Prosjekt2.IDAL
     {
         private static readonly string path = ConfigurationManager.AppSettings["DALAssemblyNamespace"];
 
-        public static IAnmeldelseDAL getUserDAL()
+        public static IAnmeldelseDAL getAnmeldelseDAL()
         {
             string className = string.Format("{0}.IAnmeldelseDAL", path);
             return (IAnmeldelseDAL)Assembly.Load(path).CreateInstance(className);
