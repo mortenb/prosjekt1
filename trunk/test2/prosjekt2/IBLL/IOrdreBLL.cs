@@ -7,8 +7,7 @@ namespace Prosjekt2.IBLL
 {
     public interface IOrdreBLL
     {
-        void LeggTilOrdrelinje(OrdreLinje ol);
-        Ordre getOrdre();
+        Ordre getOrdre(int ordreID);
         void nyOrdre(Ordre o);
     }
 }

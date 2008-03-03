@@ -1,31 +1,42 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Prosjekt2.IDAL;
+using Prosjekt2.IBLL;
+using Prosjekt2.Modell;
 
 namespace BLL
 {
-    public class ProduktBLL : Prosjekt2.IBLL.IProduktBLL
+    public class ProduktBLL : IProduktBLL
     {
         #region IProduktBLL Members
 
-        public List<Prosjekt2.Modell.Produkt> getProdukter()
+        private IProduktDAL produktDAL = DALLoader.getProduktDAL();
+
+        public List<Produkt> getProdukter()
         {
-            throw new Exception("The method or operation is not implemented.");
+            List<Produkt> produkter = produktDAL.getProdukter();
+            return produkter;
+            //throw new Exception("The method or operation is not implemented.");
         }
 
-        public List<Prosjekt2.Modell.Produkt> getProduktTilbud()
+        public List<Produkt> getProduktTilbud()
         {
-            throw new Exception("The method or operation is not implemented.");
+            List<Produkt> tilbudsprodukter = produktDAL.getProduktTilbud();
+            return tilbudsprodukter;
+            //throw new Exception("The method or operation is not implemented.");
         }
 
-        public void nyttProdukt(Prosjekt2.Modell.Produkt p)
+        public void nyttProdukt(Produkt p)
         {
-            throw new Exception("The method or operation is not implemented.");
+            produktDAL.nyttProdukt(p);
+            //throw new Exception("The method or operation is not implemented.");
         }
 
-        public void endreProdukt(Prosjekt2.Modell.Produkt p)
+        public void endreProdukt(Produkt p)
         {
-            throw new Exception("The method or operation is not implemented.");
+            produktDAL.endreProdukt(p);
+            //throw new Exception("The method or operation is not implemented.");
         }
 
         #endregion
