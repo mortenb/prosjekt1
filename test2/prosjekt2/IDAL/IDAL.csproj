@@ -38,6 +38,7 @@
     <Compile Include="IAnmeldelseDAL.cs" />
     <Compile Include="INyhetDAL.cs" />
     <Compile Include="IOrdreDAL.cs" />
+    <Compile Include="IOrdrelinjeDAL.cs" />
     <Compile Include="IProduktDAL.cs" />
     <Compile Include="IProduktkategoriDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
