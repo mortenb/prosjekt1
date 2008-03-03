@@ -36,6 +36,7 @@
     <Compile Include="AnmeldelseBLL.cs" />
     <Compile Include="NyhetBLL.cs" />
     <Compile Include="OrdreBLL.cs" />
+    <Compile Include="OrdrelinjeBLL.cs" />
     <Compile Include="ProduktBLL.cs" />
     <Compile Include="ProduktkategoriBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -38,6 +38,7 @@
     <Compile Include="IAnmeldelseBLL.cs" />
     <Compile Include="INyhetBLL.cs" />
     <Compile Include="IOrdreBLL.cs" />
+    <Compile Include="IOrdrelinjeBLL.cs" />
     <Compile Include="IProduktBLL.cs" />
     <Compile Include="IProduktKategoriBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
