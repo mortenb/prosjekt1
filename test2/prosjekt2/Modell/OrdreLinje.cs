@@ -9,6 +9,7 @@ namespace Prosjekt2.Modell
         private int _ordrelinjeID;
         private int _produktID;
         private int _antall;
+        private int _ordreID;
 
         public Ordrelinje()
         {
@@ -24,6 +25,18 @@ namespace Prosjekt2.Modell
             set
             {
                 _ordrelinjeID = value;
+            }
+        }
+
+        public int OrdreID
+        {
+            get
+            {
+                return _ordreID;
+            }
+            set
+            {
+                _ordreID = value;
             }
         }
 
