@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Reflection;
 using System.Text;
 using Prosjekt2.IBLL;
+using Prosjekt2.Modell;
 
 namespace Prosjekt2.IBLL
 {
@@ -20,7 +21,7 @@ namespace Prosjekt2.IBLL
         /// <returns></returns>
         public static IAnmeldelseBLL GetAnmeldeseBLL()
         {
-            string className = string.Format("{0}.AnmeldelsesBLL", path);
+            string className = string.Format("{0}.AnmeldelseBLL", path);
             return (IAnmeldelseBLL)Assembly.Load(path).CreateInstance(className);
         }
 
