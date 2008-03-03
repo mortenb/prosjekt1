@@ -4,7 +4,6 @@ using System.Text;
 using Prosjekt2.IDAL;
 using Prosjekt2.IBLL;
 using Prosjekt2.Modell;
-using IBLL;
 
 namespace BLL
 {
