@@ -10,11 +10,11 @@ using Prosjekt2.IDAL;
 
 namespace Prosjekt2.DAL
 {
-    public class AnmeldelsesDAL : Prosjekt2.IDAL.IAnmeldelseDAL
+    public class AnmeldelsesDAL : IAnmeldelseDAL
     {
         #region IAnmeldelseDAL Members
 
-        public List<Prosjekt2.Modell.Anmeldelse> getAnmeldelser(int produktID)
+        public List<Anmeldelse> getAnmeldelser(int produktID)
         {
             //TODO: Implementere med produktID
             string query = @"

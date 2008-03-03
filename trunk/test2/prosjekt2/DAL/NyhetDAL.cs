@@ -9,11 +9,11 @@ using Prosjekt2.IDAL;
 
 namespace Prosjekt2.DAL
 {
-    public class NyhetDAL : Prosjekt2.IDAL.INyhetDAL
+    public class NyhetDAL : INyhetDAL
     {
         #region INyhetDAL Members
 
-        public List<Prosjekt2.Modell.Nyhet> getNyheter()
+        public List<Nyhet> getNyheter()
         {
             string query = @"
                                 SELECT *
@@ -50,7 +50,7 @@ namespace Prosjekt2.DAL
             return nyheter;
         }
 
-        public Prosjekt2.Modell.Nyhet getNyhet(int nyhetID)
+        public Nyhet getNyhet(int nyhetID)
         {
             string query = @"
                                 SELECT *
@@ -121,7 +121,7 @@ namespace Prosjekt2.DAL
             }
         }
 
-        public void endreNyhet(Prosjekt2.Modell.Nyhet n)
+        public void endreNyhet(Nyhet n)
         {
             //Veldig usikker på kommende sqlspørringsyntaks
             //Vennligst sjekk dette ut så fort som mulig
