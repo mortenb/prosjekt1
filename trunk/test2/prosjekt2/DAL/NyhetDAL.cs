@@ -91,7 +91,7 @@ namespace Prosjekt2.DAL
             return nyhet;
         }
 
-        public void nyNyhet(Prosjekt2.Modell.Nyhet n)
+        public void nyNyhet(Nyhet n)
         {
             string query = @"
                                 INSERT INTO Nyhet (id, tittel, tekst) VALUES (@id, @tittel, @tekst)

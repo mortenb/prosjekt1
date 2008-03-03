@@ -24,6 +24,11 @@ namespace Prosjekt2.DAL
             throw new Exception("The method or operation is not implemented.");
         }
 
+        public void slettOrdre(int ordreID)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
         private Ordre GetOrdreFraSqlReader(ref SqlDataReader reader) // Ref to avoid large copys in memory.
         {
             Ordre ord = new Ordre();
