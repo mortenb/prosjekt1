@@ -28,6 +28,12 @@ namespace Prosjekt2.IDAL
             return (IOrdreDAL)Assembly.Load(path).CreateInstance(className);
         }
 
+        public static IOrdrelinjeDAL getOrdrelinjeDAL()
+        {
+            string className = string.Format("{0}.IOrdrelinjeDAL", path);
+            return (IOrdrelinjeDAL)Assembly.Load(path).CreateInstance(className);
+        }
+
         public static IProduktDAL getProduktDAL()
         {
             string className = string.Format("{0}.IProduktDAL", path);
