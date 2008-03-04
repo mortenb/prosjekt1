@@ -5,9 +5,9 @@ using Prosjekt2.IDAL;
 using Prosjekt2.IBLL;
 using Prosjekt2.Modell;
 
-namespace BLL
+namespace Prosjekt2.BLL
 {
-    public class OrdrelinjeBLL : IBLL.IOrdrelinjeBLL
+    public class OrdrelinjeBLL : Prosjekt2.IBLL.IOrdrelinjeBLL
     {
         #region IOrdrelinjeBLL Members
 
