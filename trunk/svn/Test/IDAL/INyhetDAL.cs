@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Prosjekt2.Modell;
-
+//dette er en kommentar for å sjekke svn. MB :)
 namespace Prosjekt2.IDAL
 {
     public interface INyhetDAL
