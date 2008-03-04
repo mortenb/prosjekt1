@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Reflection;
 using System.Text;
 using Prosjekt2.IBLL;
-using Prosjekt2.Modell;
 
 namespace Prosjekt2.IBLL
 {
@@ -19,14 +18,22 @@ namespace Prosjekt2.IBLL
         /// Creates and returns an instance of the UserBLL implementation.
         /// </summary>
         /// <returns></returns>
-        public static IAnmeldelseBLL GetAnmeldeseBLL()
+        public static IAnmeldelseBLL GetAnmeldelseBLL()
         {
             string className = string.Format("{0}.AnmeldelseBLL", path);
             return (IAnmeldelseBLL)Assembly.Load(path).CreateInstance(className);
         }
 
+        public static IAnmeldelseBLL GetAnmeldelseBLLTester()
+        {
+            string className = "AnmeldelseBLL";
+            string path2 = "BLL";
+            return (IAnmeldelseBLL)Assembly.Load(path2).CreateInstance(className);
+        }
+
         public static INyhetBLL GetNyhetBLL()
         {
+            //string.Format();
             string className = string.Format("{0}.NyhetBLL", path);
             return (INyhetBLL)Assembly.Load(path).CreateInstance(className);
         }
