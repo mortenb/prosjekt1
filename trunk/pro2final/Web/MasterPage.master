@@ -13,7 +13,10 @@
         <h1>Komplett dot no</h1>
             <p>
                 <asp:LoginStatus ID="LoginStatus1" runat="server" LoginText="Logg inn" LogoutText="Logg ut" />
-                &nbsp;</p>
+                &nbsp;&nbsp;
+                <asp:HyperLink ID="hyperlink1" runat="server" NavigateUrl="profil.aspx">Din profil</asp:HyperLink>
+                &nbsp;&nbsp;
+            </p>
         </div>
         <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
         </asp:contentplaceholder>
