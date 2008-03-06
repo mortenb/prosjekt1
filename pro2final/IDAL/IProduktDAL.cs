@@ -15,5 +15,7 @@ namespace myApp.IDAL
         void nyttProdukt(Produkt p);
 
         void endreProdukt(Produkt p);
+
+        Produkt getProdukt(int produktID);
     }
 }

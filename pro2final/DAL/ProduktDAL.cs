@@ -53,6 +53,50 @@ namespace myApp.DAL
             return prod;
         }
 
+        public Produkt getProdukt(int produktID)
+        {
+            Produkt p = new Produkt();
+            string query = @"
+                                SELECT *
+                                FROM Produkt where id = @id
+                            ";
+            using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString))
+            {
+                myConnection.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myConnection))
+                {
+                    myCommand.Parameters.AddWithValue("@id", produktID);
+                     
+                    SqlDataReader reader = myCommand.ExecuteReader();
+
+                    try
+                    {
+                        while (reader.Read() )
+                        {
+                            p = GetProduktFraSqlReader(ref reader);
+                        }
+                    }
+                    /*
+                     * No catch block, let exceptions be handles in the higher layers.
+                     */
+                    finally
+                    {
+                        if (reader != null)
+                        {
+                            reader.Close(); /* No using on reader, we must close. */
+                        }
+                        
+                        }
+
+                    }
+
+                    
+                  
+                }
+                return p;
+           
+        }
+
         public List<Produkt> getProduktTilbud()
         {
             //Denne må fortsatt stå på TODO-lista
