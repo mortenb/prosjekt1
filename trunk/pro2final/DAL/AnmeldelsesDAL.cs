@@ -84,7 +84,7 @@ namespace myApp.DAL
 
                     try
                     {
-                        anm = GetAnmeldelseFraSqlReader(ref reader));
+                        anm = GetAnmeldelseFraSqlReader(ref reader);
                     }
                     /*
                      * No catch block, let exceptions be handles in the higher layers.

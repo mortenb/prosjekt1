@@ -24,6 +24,7 @@ public partial class _Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //Trenger en variabel som holder querystringen - den vil være en int
+
         if (Request.QueryString.Count == 0)
         {
             Page_VisTilbud();
@@ -32,6 +33,7 @@ public partial class _Default : System.Web.UI.Page
         {
             Page_VisVarerFraKategori();
         }
+
                 
 
         //Trenger å sjekke om det er noe i querystringen
@@ -51,6 +53,13 @@ public partial class _Default : System.Web.UI.Page
             pkID = Convert.ToInt32(queryStrings[0]);
             pk = produktBLL.getProdukter(pkID);
 
+            foreach (Produkt listeProdukt in pk)
+            {
+                produkt uc1 = (produkt)Page.LoadControl("produkt.ascx");
+                uc1.ProduktID = listeProdukt.ProduktID;
+                PlaceHolder1.Controls.Add(uc1);
+            }
+
             //GridView1.DataSource = pk;
             //GridView1.DataBind();
         }
@@ -65,18 +74,5 @@ public partial class _Default : System.Web.UI.Page
     protected void Page_VisTilbud()
     { //Denne metoden skal vise tilbud med en gang siden åpnes
 
-    }
-    protected void btnBestillVare_Click(object sender, EventArgs e)
-    {
-        Label produktIDLabel =  (Label)FormView1.FindControl("ProduktIDLabel");
-        int produktID = Convert.ToInt32(produktIDLabel.Text);
-        TextBox tbAntall = (TextBox)FormView1.FindControl("TextBox1");
-        int antall = Convert.ToInt32(tbAntall.Text);
-
-        Ordrelinje ol = new Ordrelinje();
-        ol.Antall = antall;
-        ol.ProduktID = produktID;
-
-        Profile.HANDLEKURV.leggTilVareIHandlevogn(ol);
     }
 }
