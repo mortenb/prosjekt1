@@ -1,5 +1,6 @@
 <%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="profil.aspx.cs" Inherits="profil" Title="Untitled Page" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> 
+ 
     Her kan du endre dine personlige data<br />
     <br />
     <table style="width: 179px; height: 119px">
@@ -46,6 +47,17 @@
     <asp:Label ID="LabelOppdatert" runat="server"></asp:Label><br />
     <asp:GridView ID="GridView1" runat="server" >
     </asp:GridView>
+    <br />
+    Her kan du velge utseende på web-siden:<br />
+    <table>
+        <tr>
+            <td style="width: 161px">
+                <asp:Button ID="Button2" runat="server" OnClick="Set_Theme" Text="Nice" />
+                <asp:Button ID="Button3" runat="server" OnClick="Set_Theme" Text="Green" />
+                <asp:Button ID="Button4" runat="server" OnClick="Set_Theme" Text="Matrix" /></td>
+        </tr>
+    </table>
+    <br />
     
 </asp:Content>
 
