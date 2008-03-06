@@ -59,6 +59,48 @@ namespace myApp.DAL
             return anm;
         }
 
+        public Anmeldelse getAnmeldelse(int anmID)
+        {
+            //TODO: Implementere med produktID
+            string query = @"
+                                SELECT *
+                                FROM Anmeldelse
+                                WHERE id = @id
+                            ";
+
+            Anmeldelse anm = new Anmeldelse();
+            using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString))
+            {
+                myConnection.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myConnection))
+                {
+                    //Legger til produktID i spørringen
+                    myCommand.Parameters.AddWithValue("@id", anmID);
+
+                    // Note we can not use "using" on the reader because of the call to GetUserFromSqlReader
+                    SqlDataReader reader = myCommand.ExecuteReader();
+
+
+
+                    try
+                    {
+                        anm = GetAnmeldelseFraSqlReader(ref reader));
+                    }
+                    /*
+                     * No catch block, let exceptions be handles in the higher layers.
+                     */
+                    finally
+                    {
+                        if (reader != null)
+                        {
+                            reader.Close(); /* No using on reader, we must close. */
+                        }
+                    }
+                }
+            }
+            return anm;
+        }
+
         private Anmeldelse GetAnmeldelseFraSqlReader(ref SqlDataReader reader) // Ref to avoid large copys in memory.
         {
             Anmeldelse anm = new Anmeldelse();
