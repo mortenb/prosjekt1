@@ -97,7 +97,7 @@ namespace myApp.DAL
                         }
                     }
                     /*
-                     * No catch block, let exceptions be handles in the higher layers.
+                     * No catch block, let exceptions be handled in the higher layers.
                      */
                     finally
                     {
