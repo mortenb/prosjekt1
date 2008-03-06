@@ -43,7 +43,7 @@ namespace myApp.Model
             }
         }
 
-       public static int AntallPaaLager
+       public int AntallPaaLager
         {
             get
             {

@@ -8,7 +8,7 @@ namespace myApp.IDAL
     public interface IProduktDAL
     {
 
-        List<Produkt> getProdukter();
+        List<Produkt> getProdukter(int produktkategoriID);
 
         List<Produkt> getProduktTilbud();
 

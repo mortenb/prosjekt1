@@ -8,7 +8,7 @@ namespace myApp.IBLL
     public interface IProduktBLL
     {
 
-        List<Produkt> getProdukter();
+        List<Produkt> getProdukter(int produktkategoriID);
 
         List<Produkt> getProduktTilbud();
 
