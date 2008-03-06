@@ -15,8 +15,8 @@
                 <asp:LoginStatus ID="LoginStatus1" runat="server" LoginText="Logg inn" LogoutText="Logg ut" />
                 &nbsp;&nbsp;
                 <asp:HyperLink ID="hyperlink1" runat="server" NavigateUrl="profil.aspx">Din profil</asp:HyperLink>
-                &nbsp;&nbsp;
-            </p>
+                &nbsp;&nbsp;&nbsp;
+                <asp:HyperLink ID="HyperLinkHandlevogn" runat="server" NavigateUrl="handlevogn.aspx">Handlevogn</asp:HyperLink></p>
         </div>
         <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
         </asp:contentplaceholder>
