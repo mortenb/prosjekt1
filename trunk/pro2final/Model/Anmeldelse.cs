@@ -10,7 +10,7 @@ namespace myApp.Model
         
         public Anmeldelse()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public int Karakter

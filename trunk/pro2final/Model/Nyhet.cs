@@ -12,7 +12,7 @@ namespace myApp.Model
 
         public Nyhet()
         {
-            //throw new System.NotImplementedException();
+            
         }
 
         public int NyhetsID

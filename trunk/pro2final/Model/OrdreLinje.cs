@@ -13,7 +13,7 @@ namespace myApp.Model
 
         public Ordrelinje()
         {
-            //sthrow new System.NotImplementedException();
+            
         }
     
         public int OrdrelinjeID

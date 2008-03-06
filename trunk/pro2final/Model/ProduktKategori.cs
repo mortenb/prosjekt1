@@ -9,10 +9,7 @@ namespace myApp.Model
         private int _produktkategoriID;
         private string _navn;
 
-        public Produktkategori()
-        {
-            throw new System.NotImplementedException();
-        }
+        public Produktkategori() { }
 
         public int ProduktkategoriID
         {
