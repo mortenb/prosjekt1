@@ -13,7 +13,7 @@ namespace myApp.Model
 
         public Ordrelinje()
         {
-            
+
         }
     
         public int OrdrelinjeID
