@@ -20,6 +20,11 @@ namespace myApp.BLL
             //throw new Exception("The method or operation is not implemented.");
         }
 
+        public Produkt getProdukt(int produktID)
+        {
+            return produktDAL.getProdukt(produktID);
+        }
+
         public List<Produkt> getProduktTilbud()
         {
             List<Produkt> tilbudsprodukter = produktDAL.getProduktTilbud();
