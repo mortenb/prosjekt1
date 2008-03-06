@@ -20,11 +20,7 @@ namespace myApp.IDAL
         /// Creates and returns an instance of the UserDAL implementation.
         /// </summary>
         /// <returns></returns>
-        public static IUserDAL GetUserDAL()
-        {
-            string className = string.Format("{0}.UserDAL2", path);
-            return (IUserDAL)Assembly.Load(path).CreateInstance(className);
-        }
+      
 
         public static IAnmeldelseDAL getAnmeldelseDAL()
         {

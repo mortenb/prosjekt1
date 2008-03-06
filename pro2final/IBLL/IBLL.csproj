@@ -41,7 +41,6 @@
     <Compile Include="IOrdrelinjeBLL.cs" />
     <Compile Include="IProduktBLL.cs" />
     <Compile Include="IProduktKategoriBLL.cs" />
-    <Compile Include="IUserBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
