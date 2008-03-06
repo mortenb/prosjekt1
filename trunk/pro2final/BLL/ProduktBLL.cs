@@ -13,9 +13,9 @@ namespace myApp.BLL
 
         private IProduktDAL produktDAL = DALLoader.getProduktDAL();
 
-        public List<Produkt> getProdukter()
+        public List<Produkt> getProdukter(int produktkategoriID)
         {
-            List<Produkt> produkter = produktDAL.getProdukter();
+            List<Produkt> produkter = produktDAL.getProdukter(produktkategoriID);
             return produkter;
             //throw new Exception("The method or operation is not implemented.");
         }

@@ -13,11 +13,12 @@ namespace myApp.DAL
     {
         #region IProduktDAL Members
 
-        public List<Produkt> getProdukter()
+        public List<Produkt> getProdukter(int produktkategoriID)
         {
             string query = @"
                                 SELECT *
                                 FROM Produkt
+                                WHERE FKproduktKategori = @produktkategoriID
                             ";
 
             List<Produkt> prod = new List<Produkt>();
@@ -27,6 +28,7 @@ namespace myApp.DAL
                 using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                 {
                     // Note we can not use "using" on the reader because of the call to GetUserFromSqlReader
+                    myCommand.Parameters.AddWithValue("@produktkategoriID", produktkategoriID);
                     SqlDataReader reader = myCommand.ExecuteReader();
 
                     try
