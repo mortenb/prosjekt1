@@ -13,10 +13,28 @@
         <h1>Komplett dot no</h1>
             <p>
                 <asp:LoginStatus ID="LoginStatus1" runat="server" LoginText="Logg inn" LogoutText="Logg ut" />
-                &nbsp;&nbsp;
-                <asp:HyperLink ID="hyperlink1" runat="server" NavigateUrl="profil.aspx">Din profil</asp:HyperLink>
-                &nbsp;&nbsp;&nbsp;
-                <asp:HyperLink ID="HyperLinkHandlevogn" runat="server" NavigateUrl="handlevogn.aspx">Handlevogn</asp:HyperLink></p>
+                &nbsp;&nbsp;&nbsp; &nbsp;<asp:LoginView ID="LoginView1" runat="server">
+                    <RoleGroups>
+                        <asp:RoleGroup Roles="kunde">
+                            <ContentTemplate>
+                                <asp:HyperLink ID="hyperlink1" runat="server" NavigateUrl="profil.aspx">Din profil</asp:HyperLink>
+                                <asp:HyperLink ID="HyperLinkHandlevogn" runat="server" NavigateUrl="handlevogn.aspx">Handlevogn</asp:HyperLink>
+                            </ContentTemplate>
+                        </asp:RoleGroup>
+                        <asp:RoleGroup Roles="admin">
+                            <ContentTemplate>
+                                <asp:HyperLink ID="hyperlink1" runat="server" NavigateUrl="profil.aspx">Din profil</asp:HyperLink>
+                                &nbsp;<asp:HyperLink
+                                    ID="Admin" runat="server" NavigateUrl="~/adminMain.aspx">Administratorside</asp:HyperLink>
+                            </ContentTemplate>
+                        </asp:RoleGroup>
+                    </RoleGroups>
+                    <AnonymousTemplate>
+                        <asp:HyperLink ID="HyperLinkHandlevogn" runat="server" NavigateUrl="handlevogn.aspx">Handlevogn</asp:HyperLink>
+                    </AnonymousTemplate>
+                </asp:LoginView>
+                &nbsp; &nbsp; &nbsp;&nbsp;
+            </p>
         </div>
         <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
         </asp:contentplaceholder>
