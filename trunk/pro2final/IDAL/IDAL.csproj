@@ -41,7 +41,6 @@
     <Compile Include="IOrdrelinjeDAL.cs" />
     <Compile Include="IProduktDAL.cs" />
     <Compile Include="IProduktkategoriDAL.cs" />
-    <Compile Include="IUserDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

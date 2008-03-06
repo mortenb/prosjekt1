@@ -18,11 +18,7 @@ namespace myApp.IBLL
         /// Creates and returns an instance of the UserBLL implementation.
         /// </summary>
         /// <returns></returns>
-        public static IUserBLL GetUserBLL()
-        {
-            string className = string.Format("{0}.UserBLL", path);
-            return (IUserBLL)Assembly.Load(path).CreateInstance(className);
-        }
+       
 
         public static IAnmeldelseBLL GetAnmeldelseBLL()
         {
