@@ -35,10 +35,19 @@ public partial class kategori : System.Web.UI.UserControl
         try
         {
             List<Produktkategori> GridView1_liste = pkBLL.getProduktkategorier();
-            
+
+            /*
+            //Neste foreach løkke er kun til for debugging
+            //Må fjernes senere
+            foreach (Produktkategori listeObjekt in GridView1_liste)
+            {
+                Response.Write(listeObjekt.Navn + " id:" + listeObjekt.ProduktkategoriID + "<br>");
+            }
+            */
+
             if (GridView1_liste.Count > 0)
             {
-                GridView1.DataSource = pkBLL.getProduktkategorier();
+                GridView1.DataSource = GridView1_liste;
                 GridView1.DataBind();
             }
             else
