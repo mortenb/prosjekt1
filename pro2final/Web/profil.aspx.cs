@@ -14,6 +14,14 @@ using myApp.Model;
 
 public partial class profil : System.Web.UI.Page
 {
+
+    protected void Page_PreInit(object sender, EventArgs e)
+    {
+        if (!Profile.IsAnonymous)
+        {
+            Page.Theme = Profile.Theme;
+        }
+    }
     protected void Page_Load(object sender, EventArgs e)
     {
         Profile.HANDLEKURV = new Handlevogn();
@@ -74,5 +82,22 @@ public partial class profil : System.Web.UI.Page
 
         }
     }
-    
+
+    protected void Set_Theme(object sender, EventArgs e)
+    {
+        Button btn = (Button)sender;
+        if (btn.Text == "Matrix")
+        {
+            Profile.Theme = "Matrix";
+        }
+        else if (btn.Text == "Green")
+        {
+            Profile.Theme = "Green";
+        }
+        else if (btn.Text == "Nice")
+        {
+            Profile.Theme = "Nice";
+        }
+        Response.Redirect("~/profil.aspx");
+    }
 }
