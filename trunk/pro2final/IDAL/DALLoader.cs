@@ -52,9 +52,9 @@ namespace myApp.IDAL
             return (IProduktDAL)Assembly.Load(path).CreateInstance(className);
         }
 
-        public static IProduktkategoriDAL getProduktKategoriDAL()
+        public static IProduktkategoriDAL getProduktkategoriDAL()
         {
-            string className = string.Format("{0}.ProduktKategoriDAL", path);
+            string className = string.Format("{0}.ProduktkategoriDAL", path);
             return (IProduktkategoriDAL)Assembly.Load(path).CreateInstance(className);
         }
 
