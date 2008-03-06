@@ -16,7 +16,7 @@ namespace myApp.Model
 
         public Produkt()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public int ProduktID

@@ -12,7 +12,7 @@ namespace myApp.Model
 
         public Ordre()
         {
-            throw new System.NotImplementedException();
+            
         }
     
         public int OrdreID
