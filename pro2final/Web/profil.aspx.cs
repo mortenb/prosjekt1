@@ -16,6 +16,8 @@ public partial class profil : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Profile.HANDLEKURV = new Handlevogn();
+        List<Ordrelinje> ordre = Profile.HANDLEKURV.Handleliste;
         if (!IsPostBack)
         {
             if (Profile.UserName != null && Profile.IsAnonymous == false)
@@ -26,15 +28,19 @@ public partial class profil : System.Web.UI.Page
                 this.TextBoxPoststed.Text = Profile.poststed;
                 this.TextBoxPostnummer.Text = Profile.postnummer;
                 this.TextBoxTlf.Text = Profile.telefon;
-
-                if (Profile.HANDLEKURV != null)
+                
+                if ( ordre != null)
                 {
                     //NameValueConfigurationCollection ne = new NameValueConfigurationCollection();
 
-                    foreach (Ordrelinje ol in Profile.HANDLEKURV.Handleliste)
+                    foreach (Ordrelinje ol in ordre)
                     {
-                        Response.Write("Varenummer: " + ol.ProduktID + "Antall: " + ol.Antall + "<br />");
+                        Trace.Write("Varenummer: " + ol.ProduktID + "Antall: " + ol.Antall + "<br />");
                     }
+                }
+                else
+                {
+                    Trace.Write("Handlekurven er tom");
                 }
             }
         }
@@ -54,16 +60,16 @@ public partial class profil : System.Web.UI.Page
             Profile.postnummer = this.TextBoxPostnummer.Text;
             Profile.telefon = this.TextBoxTlf.Text;
             this.LabelOppdatert.Text = "Din profil er oppdatert!";
-            Profile.HANDLEKURV = new Handlevogn();
+            
 
-            List<Ordrelinje> handleliste = new List<Ordrelinje>();
+            //List<Ordrelinje> handleliste = new List<Ordrelinje>();
             Ordrelinje testOL = new Ordrelinje();
             testOL.Antall = 2;
             testOL.ProduktID = 12;
-            handleliste.Add(testOL);
+            Profile.HANDLEKURV.leggTilVareIHandlevogn(testOL);
             
             //Profile.HANDLEKURV;
-            Profile.HANDLEKURV.Handleliste = handleliste;
+            //Profile.HANDLEKURV.Handleliste = handleliste;
             
 
         }
