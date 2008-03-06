@@ -2,6 +2,7 @@
 
 <script runat="server">
     //metode for å flytte innholdet i anonym profil til innlogget profil:
+    
     void Profile_MigrateAnonymous(object sender, ProfileMigrateEventArgs e)
     {
         ProfileCommon anonymousProfile = Profile.GetProfile(e.AnonymousID);
