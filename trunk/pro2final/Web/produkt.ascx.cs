@@ -16,7 +16,8 @@ public partial class produkt : System.Web.UI.UserControl
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        if (ProduktID == 0)
+            this.Visible = false;
     }
 
     public int ProduktID
