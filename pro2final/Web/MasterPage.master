@@ -9,8 +9,12 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <div style="width: 100%; height: 100px">
+        <div style="width: 100%; height: 150px">
         <h1>Komplett dot no</h1>
+        <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+        <asp:SiteMapPath ID="SiteMapPath1" runat="server">
+            </asp:SiteMapPath>
+        
             <p>
                 <asp:LoginStatus ID="LoginStatus1" runat="server" LoginText="Logg inn" LogoutText="Logg ut" />
                 &nbsp;&nbsp;&nbsp; &nbsp;<asp:LoginView ID="LoginView1" runat="server">
@@ -33,7 +37,6 @@
                         <asp:HyperLink ID="HyperLinkHandlevogn" runat="server" NavigateUrl="handlevogn.aspx">Handlevogn</asp:HyperLink>
                     </AnonymousTemplate>
                 </asp:LoginView>
-                &nbsp; &nbsp; &nbsp;&nbsp;
             </p>
         </div>
         <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
