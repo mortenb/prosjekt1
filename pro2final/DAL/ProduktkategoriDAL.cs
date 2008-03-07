@@ -16,7 +16,7 @@ namespace myApp.DAL
         public void nyProduktkategori(Produktkategori pk)
         {
             string query = @"
-                                INSERT INTO ProduktKategori (id, navn) VALUES (@id, @navn)
+                                INSERT INTO ProduktKategori (navn) VALUES (@navn)
                             ";
 
             using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString))
@@ -24,7 +24,6 @@ namespace myApp.DAL
                 myConnection.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                 {
-                    myCommand.Parameters.AddWithValue("@id", pk.ProduktkategoriID);
                     myCommand.Parameters.AddWithValue("@navn", pk.Navn);
                     
 
@@ -56,7 +55,7 @@ namespace myApp.DAL
                 myConnection.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                 {
-                    myCommand.Parameters.AddWithValue("@id", pk.ProduktkategoriID);
+                    myCommand.Parameters.AddWithValue("@produktKategoriID", pk.ProduktkategoriID);
                     myCommand.Parameters.AddWithValue("@navn", pk.Navn);                    
 
                     int result = myCommand.ExecuteNonQuery();

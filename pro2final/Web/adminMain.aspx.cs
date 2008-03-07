@@ -15,7 +15,8 @@ using System.Collections.Generic;
 
 public partial class adminMain : System.Web.UI.Page
 {
-    IProduktkategoriBLL pkBLL = BLLLoader.GetProduktkategoriBLL();
+    //IProduktkategoriBLL pkBLL = BLLLoader.GetProduktkategoriBLL();
+    IProduktBLL pBLL = BLLLoader.GetProduktBLL();
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -23,14 +24,31 @@ public partial class adminMain : System.Web.UI.Page
         {
             Response.Redirect("~/Default.aspx");
         }
-        getKategorier();
+        
+        if (!IsPostBack)
+        {
+            foreach (View v in Oppgaveview.Views)
+            {
+                Oppgavevelger.Items.Add(new ListItem(v.ID, Oppgaveview.Views.IndexOf(v).ToString()));
+            }
+    
+        }    
     }
 
-    public List<Produktkategori> testkilde()
+    private void getProdukter(int pkID)
     {
-        return pkBLL.getProduktkategorier();
+        List<Produkt> produktliste = pBLL.getProdukter(pkID);
+
+        if (produktliste.Count > 0)
+        {
+            
+        }
+        else
+        { 
+        }
     }
-    private void getKategorier()
+
+ /*   private void getKategorier()
     {
         KatListe.Items.Clear();
         try
@@ -38,16 +56,18 @@ public partial class adminMain : System.Web.UI.Page
             List<Produktkategori> kategoriliste = pkBLL.getProduktkategorier();
 
             if (kategoriliste.Count > 0)
-            {   
-                foreach (Produktkategori pk in kategoriliste)
-                    KatListe.Items.Add(new ListItem(pk.Navn, pk.ProduktkategoriID.ToString()));
+            {
+                KatListe.DataSource = kategoriliste;
+                KatListe.DataBind();
+                KatListe2.DataSource = kategoriliste;
+                KatListe2.DataBind();
             }
             else
                 KatListe.Items.Add("ingen kategorier er opprettet.");
         }
         catch (Exception ex)
         {
-            Trace.Warn("DB'en tryna - kategori.ascx.cs");
+            Trace.Warn("DB'en tryna - adminMain.ascx.cs");
             Trace.Warn(ex.Message);
         }
 
@@ -72,16 +92,26 @@ public partial class adminMain : System.Web.UI.Page
         else RequiredFieldValidator1.IsValid = false;
     }
 
-    protected void SlettKat_Click(object sender, EventArgs e)
-    {
-
-        
-        Response.Write(sender.ToString() +" "+ e.ToString());
-    }
     protected void KatListe_SelectedIndexChanged(object sender, EventArgs e)
     {
         Response.Write(sender.ToString() + " " + e.ToString());
-
+        KatNavn.Text = KatListe.SelectedItem.Text;
  
+    }
+    protected void KatListe2_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+    protected void Slett_Click(object sender, EventArgs e)
+    {
+
+        //this.KatNavn.Text = this.KatListe.SelectedItem.Text;
+        Response.Write(this.KatListe.SelectedValue.ToString());
+
+    }
+  * */
+    protected void Oppgavevelger_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Oppgaveview.ActiveViewIndex = Convert.ToInt32(Oppgavevelger.SelectedValue);
     }
 }
