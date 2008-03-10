@@ -35,30 +35,74 @@ public class Handlevogn
 
         public void slettHandleliste()
         {
-            _handleliste = null;
+            _handleliste.Clear();
         }
+
+    private bool finnes(int produktID)
+    {
+        foreach (Ordrelinje ordre in this._handleliste)
+        {
+            if (ordre.ProduktID == produktID)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
         public void leggTilVareIHandlevogn(Ordrelinje ol)
         {
-            _handleliste.Add(ol);
+            if (!finnes(ol.ProduktID)) //Sjekk om produktet ligger i handlevognen
+            {
+                _handleliste.Add(ol);
+            }
         }
+
+    public void endreAntall(int nyttAntall, int produktID)
+    {
+        if(finnes(produktID))
+        {
+            if (nyttAntall > 0)
+            {
+                foreach (Ordrelinje ordre in this._handleliste)
+                {
+                    if (ordre.ProduktID == produktID)
+                    {
+                        ordre.Antall = nyttAntall;
+                    }
+                }
+            }
+        }
+    }
 
         public void slettVareFraHandlevogn(int produktID)
         {
-            foreach (Ordrelinje ordre in _handleliste)
+            foreach( Ordrelinje ordre in this._handleliste )
             {
                 if (ordre.ProduktID == produktID)
                 {
                     _handleliste.Remove(ordre);
+                    break;
                 }
             }
         }
+
+    public int beregnTotalSum()
+    {
+        int total = 0;
+        foreach (minOrdre ordre in lagOrdreliste())
+        {
+            total += ordre.Sum;
+        }
+        return total;
+    }
 
         
 
     public int antallVarer()
     {
-        return _handleliste.Count;
+        
+        return _handleliste.Count; //Må dele på 2 i tillegg, fordi ordrelinje har 2 elementer?? :S
     }
 
     public List<minOrdre> lagOrdreliste()
@@ -107,6 +151,28 @@ public class Handlevogn
     
      
     
+} //end handlevogn
+
+//Denne gjør at vi kan sette handlekurv deklarativt i web-siden
+//Stjålet fra http://www.pluralsight.com/blogs/fritz/archive/2005/10/24/15874.aspx
+
+public static class ProfileBinder
+{
+    public static List<minOrdre> lagOrdreliste()
+    {
+        return ((ProfileCommon)HttpContext.Current.Profile).HANDLEKURV.lagOrdreliste();
+    }
+
+    public static void slettVareFraHandlevogn(int produktID)
+    {
+        ((ProfileCommon)HttpContext.Current.Profile).HANDLEKURV.slettVareFraHandlevogn(produktID);
+    }
+
+    public static void endreAntall(int Antall, int produktID)
+    {
+        ((ProfileCommon)HttpContext.Current.Profile).HANDLEKURV.endreAntall(Antall, produktID);
+    }
+
 }
 
 public class minOrdre
