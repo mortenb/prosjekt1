@@ -18,22 +18,30 @@ public partial class _Default : System.Web.UI.Page
     private int pkID;
     private List<Produkt> pk;
 
+    private nyheter uc2;
+
     IProduktkategoriBLL pkBLL = BLLLoader.GetProduktkategoriBLL();
     IProduktBLL produktBLL = BLLLoader.GetProduktBLL();
 
     protected void Page_Load(object sender, EventArgs e)
     {
         //Trenger en variabel som holder querystringen - den vil være en int
+        uc2 = (nyheter)Page.LoadControl("nyheter.ascx");
 
         if (Request.QueryString.Count == 0)
         {
+            uc2.Synlig = true;
             Page_VisTilbud();
+            
         }
         else
         {
+            uc2.Synlig = false;
             Page_VisVarerFraKategori();
+            
         }
 
+        
                 
 
         //Trenger å sjekke om det er noe i querystringen
@@ -53,11 +61,15 @@ public partial class _Default : System.Web.UI.Page
             pkID = Convert.ToInt32(queryStrings[0]);
             pk = produktBLL.getProdukter(pkID);
 
+            lblProduktID.Text = pkID.ToString();
+            
+
             foreach (Produkt listeProdukt in pk)
             {
                 produkt uc1 = (produkt)Page.LoadControl("produkt.ascx");
                 uc1.ProduktID = listeProdukt.ProduktID;
-                PlaceHolder1.Controls.Add(uc1);
+                uc1.ID = "produkt" + listeProdukt.ProduktID;
+                PlaceHolder1.Controls.Add(uc1);                
             }
 
             //GridView1.DataSource = pk;
@@ -68,11 +80,15 @@ public partial class _Default : System.Web.UI.Page
             Trace.Warn("Klarte ikke hente produkter fra database");
             Trace.Warn(ex.Message);
         }
-
     }
 
     protected void Page_VisTilbud()
     { //Denne metoden skal vise tilbud med en gang siden åpnes
 
+    }
+
+    protected void kategori_Load(object sender, EventArgs e)
+    {
+        
     }
 }

@@ -1,5 +1,6 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="produkt.ascx.cs" Inherits="produkt" %>
-<asp:FormView ID="FormView1" runat="server" DataSourceID="ProduktLeverandoer">
+
+<asp:FormView ID="FormView1" runat="server" DataSourceID="ProduktLeverandoer" Height="269px" Width="260px">
     <ItemTemplate>
         AntallPaaLager:
         <asp:Label ID="AntallPaaLagerLabel" runat="server" Text='<%# Bind("AntallPaaLager") %>'>
@@ -19,12 +20,13 @@
         BildeURL:
         <asp:Label ID="BildeURLLabel" runat="server" Text='<%# Bind("BildeURL") %>'></asp:Label><br />
         <br />
-        Antall vil du bestille:<br />
+        Antall vil du bestille:<br />        
         <asp:TextBox ID="tbAntall" runat="server"></asp:TextBox><br />
         <br />
-        <asp:LinkButton ID="btnLeggIHandlekurv" runat="server" OnClick="btnLeggIHandlekurv_Click">Legg i handlekurv</asp:LinkButton><br />
+        <asp:LinkButton ID="btnLeggIHandlekurv" runat="server" OnClick="btnLeggIHandlekurv_Click">Legg til i handlekurv</asp:LinkButton>
     </ItemTemplate>
 </asp:FormView>
+&nbsp;
 <asp:Label ID="lblProduktID" runat="server" Visible="False"></asp:Label>
 <asp:ObjectDataSource ID="ProduktLeverandoer" runat="server" SelectMethod="getProdukt" TypeName="myApp.BLL.ProduktBLL" >
     <SelectParameters>
