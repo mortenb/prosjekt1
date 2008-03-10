@@ -1,22 +1,24 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="produktadmin.ascx.cs"
     Inherits="produktadmin" %>
-<asp:Table ID="Table1" runat="server" Width="582px">
+<asp:Table ID="Listetabell" runat="server" Width="582px">
     <asp:TableRow runat="server">
         <asp:TableCell runat="server">
-            Produktkategori:<br/>
+            Velg produktkategori:<br/>
             <asp:ListBox ID="PKListe" DataTextField="Navn" DataValueField="ProduktkategoriID"
                 runat="server" AutoPostBack="True" OnSelectedIndexChanged="PKListe_SelectedIndexChanged">
             </asp:ListBox>
         </asp:TableCell>
-        <asp:TableCell runat="server">
-            Produkt:<br />
+        <asp:TableCell ID="ProdValg" Visible="false" runat="server">
+            Velg produkt for endring:<br />
             <asp:ListBox ID="Produktliste" DataTextField="Tittel" DataValueField="ProduktID"
                 runat="server" AutoPostBack="True" OnSelectedIndexChanged="Produktliste_SelectedIndexChanged"></asp:ListBox><br />
         </asp:TableCell>
     </asp:TableRow>
+    </asp:Table>
+    <asp:Table ID="Produkttabell" visible="false" runat="server">
     <asp:TableRow runat="server">
         <asp:TableCell runat="server">
-                Produktnavn
+                Produktnavn:
         </asp:TableCell>
         <asp:TableCell runat="server">
             <asp:TextBox ID="Tittel" runat="server" ValidationGroup="ObligFelt"></asp:TextBox>
@@ -43,8 +45,8 @@
         <asp:TableCell runat="server">
             <asp:TextBox ID="Lagerstatus" runat="server" ValidationGroup="ObligFelt"></asp:TextBox>
             <asp:RequiredFieldValidator ID="AntallValidator" runat="server" ErrorMessage="Antall på lager m&#229; fylles ut med heltall"
-                ValidationGroup="ObligFelt" ControlToValidate="Tittel"></asp:RequiredFieldValidator>
+                ValidationGroup="ObligFelt" ControlToValidate="Lagerstatus"></asp:RequiredFieldValidator>
         </asp:TableCell>
     </asp:TableRow>
 </asp:Table>
-<asp:Button ID="Send" runat="server" Text="Lagre produkt" ValidationGroup="ObligFelt" OnClick="Send_Click" />
+<asp:Button ID="Send" runat="server" Text="Lagre produkt" ValidationGroup="ObligFelt" OnClick="Send_Click" Visible="False" />
