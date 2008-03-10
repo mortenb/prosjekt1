@@ -94,7 +94,7 @@ namespace myApp.DAL
         public void nyNyhet(Nyhet n)
         {
             string query = @"
-                                INSERT INTO Nyhet (id, tittel, tekst) VALUES (@id, @tittel, @tekst)
+                                INSERT INTO Nyhet (tittel, tekst) VALUES (@tittel, @tekst)
                             ";
 
             using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString))
@@ -102,7 +102,7 @@ namespace myApp.DAL
                 myConnection.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                 {
-                    myCommand.Parameters.AddWithValue("@id", n.NyhetsID);
+                    
                     myCommand.Parameters.AddWithValue("@tittel", n.Tittel);
                     myCommand.Parameters.AddWithValue("@tekst", n.Tekst);
 
