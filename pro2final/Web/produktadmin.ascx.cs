@@ -76,7 +76,9 @@ public partial class produktadmin : System.Web.UI.UserControl
     protected void PKListe_SelectedIndexChanged(object sender, EventArgs e)
     {
         int pkID = Convert.ToInt32(PKListe.SelectedValue.ToString());
+        reset();
         getProdukter(pkID);
+
     }
 
     protected void Produktliste_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,6 +94,16 @@ public partial class produktadmin : System.Web.UI.UserControl
             this.Lagerstatus.Text = p.AntallPaaLager.ToString();
         }
     }
+
+    private void reset()
+    {
+        this.Tittel.Text = "";
+        this.Beskrivelse.Text = "";
+        this.Lagerstatus.Text = "";
+        this.Pris.Text = "";
+        Produktliste.SelectedIndex = -1;
+    }
+
     protected void Send_Click(object sender, EventArgs e)
     {
         Produkt p = new Produkt();
@@ -156,12 +168,9 @@ public partial class produktadmin : System.Web.UI.UserControl
             else
                 pBLL.nyttProdukt(p);
 
-            this.Tittel.Text = "";
-            this.Beskrivelse.Text = "";
-            this.Lagerstatus.Text = "";
-            this.Pris.Text = "";
+            reset();
+            PKListe.SelectedIndex = -1;
             getProdukter(PKID);
         }
     }
 }
-
