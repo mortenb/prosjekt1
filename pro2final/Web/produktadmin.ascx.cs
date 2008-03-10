@@ -28,7 +28,6 @@ public partial class produktadmin : System.Web.UI.UserControl
 
     private void getKategorier()
     {
-        //PKListe.Items.Clear();
         try
         {
             List<Produktkategori> kategoriliste = pkBLL.getProduktkategorier();
@@ -51,7 +50,6 @@ public partial class produktadmin : System.Web.UI.UserControl
     private void getProdukter(int pkID)
     {
         Produktliste.Items.Clear();
-        Produktliste.Visible = true;
         try
         {
             List<Produkt> produkter = pBLL.getProdukter((pkID));
@@ -78,7 +76,9 @@ public partial class produktadmin : System.Web.UI.UserControl
         int pkID = Convert.ToInt32(PKListe.SelectedValue.ToString());
         reset();
         getProdukter(pkID);
-
+        Send.Visible= true;
+        Produkttabell.Visible = true;
+        ProdValg.Visible = true;
     }
 
     protected void Produktliste_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,7 +101,11 @@ public partial class produktadmin : System.Web.UI.UserControl
         this.Beskrivelse.Text = "";
         this.Lagerstatus.Text = "";
         this.Pris.Text = "";
-        Produktliste.SelectedIndex = -1;
+        Send.Visible = false;
+        Produkttabell.Visible = false;
+        ProdValg.Visible = false;
+        Produktliste.Items.Clear();
+        Produktliste.Items.Add(new ListItem("Velg kategori", "0", false));
     }
 
     protected void Send_Click(object sender, EventArgs e)
@@ -170,7 +174,6 @@ public partial class produktadmin : System.Web.UI.UserControl
 
             reset();
             PKListe.SelectedIndex = -1;
-            getProdukter(PKID);
         }
     }
 }
