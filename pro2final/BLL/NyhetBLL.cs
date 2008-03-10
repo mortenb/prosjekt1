@@ -30,7 +30,6 @@ namespace myApp.BLL
         public void nyNyhet(Nyhet n)
         {
             nyhetDAL.nyNyhet(n);
-            throw new Exception("The method or operation is not implemented.");
         }
 
         public void endreNyhet(Nyhet n)
