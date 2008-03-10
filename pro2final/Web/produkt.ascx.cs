@@ -29,16 +29,17 @@ public partial class produkt : System.Web.UI.UserControl
             lblProduktID.Text = Convert.ToString(_produktID);
         }
     }
+
     protected void btnLeggIHandlekurv_Click(object sender, EventArgs e)
     {
-        Label produktIDLabel = (Label)FormView1.FindControl("ProduktIDLabel");
-        int produktID = Convert.ToInt32(produktIDLabel.Text);
-        TextBox tbAntall = (TextBox)FormView1.FindControl("tbAntall");
-        int antall = Convert.ToInt32(tbAntall.Text);
+        Response.Write(sender.ToString() + " " + e.ToString());
+
+        TextBox tbAntall = (TextBox)this.FormView1.FindControl("tbAntall");
+        int antallTilBestilling = Convert.ToInt32(tbAntall.Text);      
 
         Ordrelinje ol = new Ordrelinje();
-        ol.Antall = antall;
-        ol.ProduktID = produktID;
+        ol.Antall = antallTilBestilling;
+        ol.ProduktID = this.ProduktID;
 
         Profile.HANDLEKURV.leggTilVareIHandlevogn(ol);
     }
