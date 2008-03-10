@@ -1,9 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="produkt.ascx.cs" Inherits="produkt" %>
 
-<%@ Register Src="~/anmeldelse.ascx" TagName="anm" TagPrefix="uc1" %>
-
-<%@ Reference Control="~/kategori.ascx" %>
-
 <asp:FormView ID="FormView1" runat="server" DataSourceID="ProduktLeverandoer" Height="269px" Width="260px">
     <ItemTemplate>
         AntallPaaLager:
