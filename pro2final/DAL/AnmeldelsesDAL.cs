@@ -10,7 +10,7 @@ using myApp.IDAL;
 
 namespace myApp.DAL
 {
-    public class AnmeldelsesDAL : IAnmeldelseDAL
+    public class AnmeldelseDAL : IAnmeldelseDAL
     {
         #region IAnmeldelseDAL Members
 

@@ -8,5 +8,7 @@ namespace myApp.IDAL
     public interface IAnmeldelseDAL
     {
         List<Anmeldelse> getAnmeldelser(int produktID);
+
+        Anmeldelse getAnmeldelse(int anmID);
     }
 }

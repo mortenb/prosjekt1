@@ -8,5 +8,7 @@ namespace myApp.IBLL
     public interface IAnmeldelseBLL
     {
         List<Anmeldelse> getAnmeldelser(int produktID);
+
+        Anmeldelse getAnmeldelse(int anmID);
     }
 }

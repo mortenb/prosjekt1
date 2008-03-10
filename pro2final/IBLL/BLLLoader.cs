@@ -23,7 +23,8 @@ namespace myApp.IBLL
         public static IAnmeldelseBLL GetAnmeldelseBLL()
         {
             string className = string.Format("{0}.AnmeldelseBLL", path);
-            return (IAnmeldelseBLL)Assembly.Load(path).CreateInstance(className);
+            IAnmeldelseBLL ianm = (IAnmeldelseBLL)Assembly.Load(path).CreateInstance(className);
+            return ianm;
         }
 
         public static IAnmeldelseBLL GetAnmeldelseBLLTester()
