@@ -8,7 +8,7 @@ namespace myApp.Model
     {
         private int _ordreID;
         private DateTime _ordreDato;
-        
+        private string _brukernavn;
 
         public Ordre()
         {
@@ -38,6 +38,19 @@ namespace myApp.Model
                 _ordreDato = value;
             }
         }
+
+        public string Brukernavn
+        {
+            get
+            {
+                return _brukernavn;
+            }
+            set
+            {
+                _brukernavn = value;
+            }
+        }
+
 
         
     }
