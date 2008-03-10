@@ -52,7 +52,7 @@ namespace myApp.DAL
 
         public void nyOrdre(Ordre o)
         {
-            string query = @"Insert into Ordre (dato) values (@dato)";
+            string query = @"Insert into Ordre (dato, brukernavn) values (@dato, @brukernavn)";
             using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString))
             {
                 myConnection.Open();
@@ -60,7 +60,7 @@ namespace myApp.DAL
                 {
                     //Legge til nyhetID i spørringen
                     myCommand.Parameters.AddWithValue("@dato", o.OrdreDato);
-
+                    myCommand.Parameters.AddWithValue("@brukernavn", o.Brukernavn);
                     // Note we can not use "using" on the reader because of the call to GetUserFromSqlReader
                     try
                     {
@@ -106,6 +106,11 @@ namespace myApp.DAL
             if (reader["dato"] != DBNull.Value)
             {
                 ord.OrdreDato = (DateTime)reader["dato"];
+            }
+
+            if (reader["brukernavn"] != DBNull.Value)
+            {
+                ord.Brukernavn = (string)reader["brukernavn"];
             }
 
             return ord;
