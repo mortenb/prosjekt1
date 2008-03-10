@@ -107,8 +107,8 @@ namespace myApp.DAL
         {
             //Hva gjør vi med antallPaaLager ?
             string query = @"
-                                INSERT INTO Produkt (id, tittel, beskrivelse, bildeURL, pris, FKproduktKategori) 
-                                VALUES (@id, @tittel, @beskrivelse, @bildeURL, @pris, @FKproduktKategori)
+                                INSERT INTO Produkt ( tittel, antallPaaLager, beskrivelse, bildeURL, pris, FKproduktKategori) 
+                                VALUES ( @tittel, @AntallPaaLager, @beskrivelse, @bildeURL, @pris, @FKproduktKategori)
                             ";
 
             using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString))
@@ -116,14 +116,12 @@ namespace myApp.DAL
                 myConnection.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                 {
-                    myCommand.Parameters.AddWithValue("@id", p.ProduktID);
                     myCommand.Parameters.AddWithValue("@tittel", p.Tittel);
                     myCommand.Parameters.AddWithValue("@beskrivelse", p.Beskrivelse);
                     myCommand.Parameters.AddWithValue("@bildeURL", p.BildeURL);
                     myCommand.Parameters.AddWithValue("@pris", p.Pris);
                     myCommand.Parameters.AddWithValue("@FKproduktKategori", p.ProduktkategoriID);
-                  
-
+                    myCommand.Parameters.AddWithValue("@AntallPaaLager", p.AntallPaaLager);                 
                     int result = myCommand.ExecuteNonQuery();
 
                     if (result == 1)
@@ -143,7 +141,7 @@ namespace myApp.DAL
         {
             string query = @"
                                 UPDATE Produkt 
-                                SET tittel=@tittel,beskrivelse=@beskrivelse,bildeURL=@bildeURL,pris=@pris,FKproduktKategori=@FKproduktKategori
+                                SET tittel=@tittel,antallPaaLager=@AntallPaaLager,beskrivelse=@beskrivelse,bildeURL=@bildeURL,pris=@pris,FKproduktKategori=@FKproduktKategori
                                 WHERE id=@produktID
                             ";
 
@@ -158,13 +156,14 @@ namespace myApp.DAL
                     myCommand.Parameters.AddWithValue("@bildeURL", p.BildeURL);
                     myCommand.Parameters.AddWithValue("@pris", p.Pris);
                     myCommand.Parameters.AddWithValue("FKproduktKategori", p.ProduktkategoriID);
-                    
+                    myCommand.Parameters.AddWithValue("@AntallPaaLager", p.AntallPaaLager);                 
+                  
                     int result = myCommand.ExecuteNonQuery();
 
                     if (result == 1)
                     {
-                        myCommand.CommandText = "SELECT @@IDENTITY";
-                        p.ProduktID = Convert.ToInt32(myCommand.ExecuteScalar());
+                       // myCommand.CommandText = "SELECT @@IDENTITY";
+                       //p.ProduktID = Convert.ToInt32(myCommand.ExecuteScalar());
                     }
                     else
                     {
