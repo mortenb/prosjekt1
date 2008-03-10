@@ -13,17 +13,23 @@ public partial class nyheter : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!(_synlig))
+        if (!(Synlig))
         {
             this.Visible = false;
         }
     }
+ 
 
     private bool _synlig;
 
     public bool Synlig
     {
         get { return _synlig; }
-        set { _synlig = value; }
+        set 
+        { 
+            _synlig = value;
+            lblSynlig.Text = Convert.ToString(value);
+        
+        }
     }
 }
