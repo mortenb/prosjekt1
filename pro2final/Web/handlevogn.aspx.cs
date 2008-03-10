@@ -11,46 +11,46 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using myApp.Model;
 using myApp.IBLL;
-
-public partial class handlevogn : System.Web.UI.Page
+public partial class DefaultTestHandlevogn : System.Web.UI.Page
 {
 
     protected void Page_Load(object sender, EventArgs e)
     {
-       
-            IProduktBLL prodBLL = BLLLoader.GetProduktBLL();
-            Ordrelinje ol = new Ordrelinje();
-            ol.Antall = 2;
-            ol.ProduktID = 1;
 
-            Ordrelinje ol2 = new Ordrelinje();
-            ol2.Antall = 3;
-            ol2.ProduktID = 2;
+        oppdaterSumFelt();
 
-            Profile.HANDLEKURV.leggTilVareIHandlevogn(ol);
-            Profile.HANDLEKURV.leggTilVareIHandlevogn(ol2);
-            int antallVarer = Profile.HANDLEKURV.antallVarer();
-            Trace.Warn("Antall VARER I HANDLEKURV: " + antallVarer);
-            
-        
 
-        //GridView1_slettLinje();
-        
     }
 
-    private void GridView1_slettLinje()
+
+    protected void GridView1_RowUpdated(object sender, GridViewUpdatedEventArgs e)
     {
-        //this.GridView1.FindControl
+        oppdaterSumFelt();
     }
 
-    protected void Button2_Click(object sender, EventArgs e)
+    protected void GridView1_UpdateCommand(object sender, EventArgs e)
     {
-
+        oppdaterSumFelt();
     }
-    protected void Button1_Click(object sender, EventArgs e)
+
+
+    protected void LinkButtonSlettHandlekurv_Click(object sender, EventArgs e)
     {
-        Profile.HANDLEKURV.slettHandleliste();
-
+        this.Profile.HANDLEKURV.slettHandleliste();
+        oppdaterSumFelt();
+        this.GridView1.DataBind();
     }
-    
+
+    protected void oppdaterSumFelt()
+    {
+        this.lblSum.Text = Profile.HANDLEKURV.beregnTotalSum().ToString();
+    }
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        oppdaterSumFelt();
+    }
+    protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e)
+    {
+        oppdaterSumFelt();
+    }
 }
