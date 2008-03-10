@@ -21,11 +21,6 @@ public partial class _Default : System.Web.UI.Page
     IProduktkategoriBLL pkBLL = BLLLoader.GetProduktkategoriBLL();
     IProduktBLL produktBLL = BLLLoader.GetProduktBLL();
 
-    protected void Page_Prerender(object sender, EventArgs e)
-    {
-
-    }
-
     protected void Page_Load(object sender, EventArgs e)
     {
         //Trenger en variabel som holder querystringen - den vil være en int
@@ -63,13 +58,15 @@ public partial class _Default : System.Web.UI.Page
             pk = produktBLL.getProdukter(pkID);
 
             lblProduktID.Text = pkID.ToString();
+            List<Anmeldelse> anmListe;
 
             foreach (Produkt listeProdukt in pk)
             {
                 produkt uc1 = (produkt)Page.LoadControl("produkt.ascx");
-                uc1.ProduktID = listeProdukt.ProduktID;
-                uc1.ID = "produkt" + listeProdukt.ProduktID;
-                PlaceHolder1.Controls.Add(uc1);                
+                int ID = listeProdukt.ProduktID;
+                uc1.ProduktID = ID;
+                uc1.ID = "produkt" + ID;
+                PlaceHolder1.Controls.Add(uc1);
             }
 
             //GridView1.DataSource = pk;

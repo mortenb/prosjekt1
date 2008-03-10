@@ -10,9 +10,12 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
 using myApp.Model;
+using myApp.IBLL;
+using System.Collections.Generic;
 
 public partial class produkt : System.Web.UI.UserControl
 {
+
     private int _produktID;
 
     protected void Page_Load(object sender, EventArgs e)

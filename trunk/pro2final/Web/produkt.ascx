@@ -1,5 +1,9 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="produkt.ascx.cs" Inherits="produkt" %>
 
+<%@ Register Src="~/anmeldelse.ascx" TagName="anm" TagPrefix="uc1" %>
+
+<%@ Reference Control="~/kategori.ascx" %>
+
 <asp:FormView ID="FormView1" runat="server" DataSourceID="ProduktLeverandoer" Height="269px" Width="260px">
     <ItemTemplate>
         AntallPaaLager:
@@ -26,7 +30,31 @@
         <asp:LinkButton ID="btnLeggIHandlekurv" runat="server" OnClick="btnLeggIHandlekurv_Click">Legg til i handlekurv</asp:LinkButton>
     </ItemTemplate>
 </asp:FormView>
-&nbsp;
+<asp:DataList ID="DataList1" runat="server" DataSourceID="AnmeldelseLeverandoer">
+    <ItemTemplate>
+        <br />
+        Tittel:
+        <asp:Label ID="TittelLabel" runat="server" Text='<%# Eval("Tittel") %>'></asp:Label><br />
+        Tekst:
+        <asp:Label ID="TekstLabel" runat="server" Text='<%# Eval("Tekst") %>'></asp:Label><br />
+        Karakter:
+        <asp:Label ID="KarakterLabel" runat="server" Text='<%# Eval("Karakter") %>'></asp:Label><br />
+        <br />
+    </ItemTemplate>
+    <HeaderTemplate>
+        Tilbakemeldinger<br />
+    </HeaderTemplate>
+    <FooterTemplate>
+        -----------------------------------<br />
+    </FooterTemplate>
+</asp:DataList><asp:ObjectDataSource ID="AnmeldelseLeverandoer" runat="server" SelectMethod="getAnmeldelser"
+    TypeName="myApp.BLL.AnmeldelseBLL">
+    <SelectParameters>
+        <asp:ControlParameter ControlID="lblProduktID" Name="produktID" PropertyName="Text"
+            Type="Int32" />
+    </SelectParameters>
+</asp:ObjectDataSource>
+
 <asp:Label ID="lblProduktID" runat="server" Visible="False"></asp:Label>
 <asp:ObjectDataSource ID="ProduktLeverandoer" runat="server" SelectMethod="getProdukt" TypeName="myApp.BLL.ProduktBLL" >
     <SelectParameters>
@@ -34,3 +62,4 @@
             PropertyName="Text" Type="Int32" />
     </SelectParameters>
 </asp:ObjectDataSource>
+

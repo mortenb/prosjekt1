@@ -25,7 +25,8 @@ namespace myApp.IDAL
         public static IAnmeldelseDAL getAnmeldelseDAL()
         {
             string className = string.Format("{0}.AnmeldelseDAL", path);
-            return (IAnmeldelseDAL)Assembly.Load(path).CreateInstance(className);
+            IAnmeldelseDAL ianm = (IAnmeldelseDAL)Assembly.Load(path).CreateInstance(className);
+            return ianm;
         }
 
         public static INyhetDAL getNyhetDAL()
@@ -49,7 +50,8 @@ namespace myApp.IDAL
         public static IProduktDAL getProduktDAL()
         {
             string className = string.Format("{0}.ProduktDAL", path);
-            return (IProduktDAL)Assembly.Load(path).CreateInstance(className);
+            IProduktDAL ipd = (IProduktDAL)Assembly.Load(path).CreateInstance(className);
+            return ipd;
         }
 
         public static IProduktkategoriDAL getProduktkategoriDAL()

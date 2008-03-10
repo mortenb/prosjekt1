@@ -4,7 +4,7 @@
 
 <%@ Register Src="~/produkt.ascx" TagName="pro" TagPrefix="uc1" %>
 
-<%@ Reference Control = "produkt.ascx" %>
+<%@ Reference Control="~/produkt.ascx" %>
 
  <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
      &nbsp;<uc1:kat ID="kategori" runat="server" OnLoad="kategori_Load" ></uc1:kat>

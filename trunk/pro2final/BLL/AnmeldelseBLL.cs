@@ -16,7 +16,16 @@ namespace myApp.BLL
         public List<Anmeldelse> getAnmeldelser(int produktID)
         {
             List<Anmeldelse> anmeldelser = anmeldelseDAL.getAnmeldelser(produktID);
-            throw new Exception("The method or operation is not implemented.");
+            //throw new Exception("The method or operation is not implemented.");
+            return anmeldelser;
+        
+        }
+
+        public Anmeldelse getAnmeldelse(int anmID)
+        {
+            Anmeldelse anm = anmeldelseDAL.getAnmeldelse(anmID);
+
+            return anm;
         }
 
         #endregion
