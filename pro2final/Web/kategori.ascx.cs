@@ -49,6 +49,7 @@ public partial class kategori : System.Web.UI.UserControl
             {
                 GridView1.DataSource = GridView1_liste;
                 GridView1.DataBind();
+                
             }
             else
             {

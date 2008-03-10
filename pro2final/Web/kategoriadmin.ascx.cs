@@ -34,8 +34,6 @@ public partial class kategoriadmin : System.Web.UI.UserControl
             {
                 KatListe.DataSource = kategoriliste;
                 KatListe.DataBind();
-               // KatListe2.DataSource = kategoriliste;
-               // KatListe2.DataBind();
             }
             else
                 KatListe.Items.Add("ingen kategorier er opprettet.");
@@ -75,7 +73,6 @@ public partial class kategoriadmin : System.Web.UI.UserControl
 
     protected void KatListe_SelectedIndexChanged(object sender, EventArgs e)
     {
-        //Response.Write("kroduktkatID: "+KatListe.SelectedValue.ToString());
         KatNavn.Text = KatListe.SelectedItem.Text;
         RedigerKategori.Text = "Endre kategori";
         PkIDlabel.Visible = true;
