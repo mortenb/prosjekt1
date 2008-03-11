@@ -40,10 +40,9 @@ public partial class kategoriadmin : System.Web.UI.UserControl
         }
         catch (Exception ex)
         {
-            Trace.Warn("DB'en tryna - adminMain.ascx.cs");
+            Trace.Warn("DB'en tryna - kategoriadmin.ascx.cs: "+ex.Message);
             Trace.Warn(ex.Message);
         }
-
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -61,8 +60,6 @@ public partial class kategoriadmin : System.Web.UI.UserControl
                 pkat.ProduktkategoriID = Convert.ToInt32(PkIDlabel.Text);
                 Response.Write("ID: " + pkat.ProduktkategoriID.ToString());
                 pkBLL.endreProduktkategori(pkat);
-                //PkIDlabel.Text="";
-                //PkIDlabel.Visible=false;
             }
             KatNavn.Text = "";
             RedigerKategori.Text = "Legg til kategori";
@@ -75,8 +72,6 @@ public partial class kategoriadmin : System.Web.UI.UserControl
     {
         KatNavn.Text = KatListe.SelectedItem.Text;
         RedigerKategori.Text = "Endre kategori";
-        PkIDlabel.Visible = true;
-        PkTxt.Visible = true;
         PkIDlabel.Text = KatListe.SelectedValue.ToString();
     }
 
