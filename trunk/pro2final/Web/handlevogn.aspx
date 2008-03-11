@@ -30,7 +30,7 @@
     <br />
     &nbsp; &nbsp;
     <asp:LinkButton ID="LinkButtonSlettHandlekurv" runat="server" OnClick="LinkButtonSlettHandlekurv_Click">Tøm handlekurv</asp:LinkButton>
-    &nbsp; &nbsp; &nbsp;<asp:LinkButton ID="LinkButtonKasse" runat="server">Gå til kassen</asp:LinkButton><br />
+    &nbsp; &nbsp; &nbsp;<asp:LinkButton ID="LinkButtonKasse" runat="server" OnClick="LinkButtonKasse_Click">Gå til kassen</asp:LinkButton><br />
     &nbsp; &nbsp;&nbsp;<br />
     <br />
    

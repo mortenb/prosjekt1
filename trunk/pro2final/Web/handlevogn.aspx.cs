@@ -11,6 +11,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using myApp.Model;
 using myApp.IBLL;
+
 public partial class handlevogn : System.Web.UI.Page
 {
 
@@ -45,12 +46,22 @@ public partial class handlevogn : System.Web.UI.Page
     {
         this.lblSum.Text = Profile.HANDLEKURV.beregnTotalSum().ToString();
     }
+
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
         oppdaterSumFelt();
     }
+
     protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e)
     {
         oppdaterSumFelt();
+    }
+
+    protected void LinkButtonKasse_Click(object sender, EventArgs e)
+    {
+        //Må sjekke om man er logget inn
+        //
+        //Må redirecte riktig
+        
     }
 }
