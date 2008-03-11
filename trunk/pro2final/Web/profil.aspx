@@ -1,5 +1,45 @@
 <%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="profil.aspx.cs" Inherits="profil" Title="Untitled Page" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> 
+    <asp:WebPartManager ID="WebPartManager1" runat="server">
+    </asp:WebPartManager>
+    &nbsp;
+    <br />
+    <table style="width: 349px; height: 90px">
+        <tr>
+            <td rowspan="3" style="width: 274px">
+                <asp:WebPartZone ID="WebPartZone1" runat="server" HeaderText="Din Profil">
+                    <ZoneTemplate>
+                        <asp:Label ID="Label1" runat="server" Text="Profildata" Height="106px" Width="163px"></asp:Label>
+                        <asp:TextBox ID="TextBox1" runat="server" Height="29px"></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                    </ZoneTemplate>
+                </asp:WebPartZone>
+            </td>
+            <td rowspan="3" style="width: 217px">
+                <asp:WebPartZone ID="WebPartZone2" runat="server" HeaderText="Nye produkter">
+                    <ZoneTemplate>
+                        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                    </ZoneTemplate>
+                </asp:WebPartZone>
+            </td>
+            <td rowspan="3" style="width: 391px">
+                <asp:WebPartZone ID="WebPartZone3" runat="server" HeaderText="Anmeld produkt">
+                    <ZoneTemplate>
+                        <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+                    </ZoneTemplate>
+                </asp:WebPartZone>
+            </td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+        </tr>
+    </table>
+    <br />
  
     Her kan du endre dine personlige data<br />
     <br />
