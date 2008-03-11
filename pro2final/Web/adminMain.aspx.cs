@@ -22,26 +22,30 @@ public partial class adminMain : System.Web.UI.Page
         {
             Response.Redirect("~/Default.aspx");
         }
-        
+
         if (!IsPostBack)
         {
             foreach (View v in Oppgaveview.Views)
             {
                 Oppgavevelger.Items.Add(new ListItem(v.ID, Oppgaveview.Views.IndexOf(v).ToString()));
             }
-    
-        }    
+
+        }
     }
 
     protected void Oppgavevelger_SelectedIndexChanged(object sender, EventArgs e)
     {
         Oppgaveview.ActiveViewIndex = Convert.ToInt32(Oppgavevelger.SelectedValue);
     }
+
     protected void Send_Click(object sender, EventArgs e)
     {
         Nyhet n = new Nyhet();
         n.Tittel = this.Overskrift.Text;
         n.Tekst = this.Tekst.Text;
         nBLL.nyNyhet(n);
+        n.Tittel = "";
+        n.Tekst = "";
+
     }
 }
