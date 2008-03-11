@@ -24,6 +24,8 @@ public partial class profil : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
+
+
         Profile.HANDLEKURV = new Handlevogn();
         List<Ordrelinje> ordre = Profile.HANDLEKURV.Handleliste;
         if (!IsPostBack)
