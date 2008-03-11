@@ -12,10 +12,16 @@ namespace myApp.IDAL
 
         List<Produkt> getProduktTilbud();
 
+        List<Produkt> getKjoepteProdukter(string brukernavn);
+
+        Produkt getNyesteProduktAvKategori(string brukernavn);
+
         void nyttProdukt(Produkt p);
 
         void endreProdukt(Produkt p);
 
         Produkt getProdukt(int produktID);
+
+
     }
 }

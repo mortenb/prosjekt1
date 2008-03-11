@@ -53,7 +53,7 @@ namespace myApp.DAL
         public List<Ordrelinje> getOrdrelinjer(int ordreID)
         {
             List<Ordrelinje> ordrelinjer = new List<Ordrelinje>();
-            string query = @"Select * from ordrelinjer where FKOrdreID = @id";
+            string query = @"Select * from OrdreLinje where FKOrdreID = @id";
             using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString))
             {
                 myConnection.Open();
@@ -84,6 +84,46 @@ namespace myApp.DAL
                 }
             }
             return ordrelinjer;
+        }
+
+        public List<Ordrelinje> getOrdrelinjerFraBrukernavn(string brukernavn)
+        {
+            List<Ordrelinje> ordrelinjer = new List<Ordrelinje>();
+            string query = @"   SELECT          OrdreLinje.id, OrdreLinje.antall, OrdreLinje.produktID, OrdreLinje.FKOrdreID
+                                FROM            OrdreLinje 
+                                INNER JOIN      Ordre ON OrdreLinje.id = Ordre.id
+                                WHERE           (Ordre.brukernavn = @brukernavn)";
+            using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString))
+            {
+                myConnection.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myConnection))
+                {
+                    //Legge til nyhetID i spørringen
+                    myCommand.Parameters.AddWithValue("@brukernavn", brukernavn);
+
+                    // Note we can not use "using" on the reader because of the call to GetUserFromSqlReader
+                    SqlDataReader reader = myCommand.ExecuteReader();
+                    try
+                    {
+                        while (reader.Read())
+                        {
+                            ordrelinjer.Add(getOrdrelinjeFraSqlReader(ref reader));
+                        }
+                    }
+                    /*
+                     * No catch block, let exceptions be handles in the higher layers.
+                     */
+                    finally
+                    {
+                        if (reader != null)
+                        {
+                            reader.Close(); /* No using on reader, we must close. */
+                        }
+                    }
+                }
+            }
+            return ordrelinjer;
+           
         }
 
         public void slettOrdrelinje(int ordrelinjeID)
@@ -134,6 +174,8 @@ namespace myApp.DAL
                 }
             }
         }
+
+        
 
         private Ordrelinje getOrdrelinjeFraSqlReader(ref SqlDataReader reader)
         { 
