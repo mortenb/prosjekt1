@@ -34,6 +34,11 @@ namespace myApp.BLL
         {
             ordrelinjeDAL.slettOrdrelinje(ordrelinjeID);
         }
+
+        public List<Ordrelinje> getOrdrelinjerFraBrukernavn(string brukernavn)
+        {
+            return ordrelinjeDAL.getOrdrelinjerFraBrukernavn(brukernavn);
+        }
         #endregion
     }
 }

@@ -14,5 +14,9 @@ namespace myApp.IBLL
         void slettOrdrelinje(int ordrelinjeID);
 
         void nyOrdrelinje(Ordrelinje ol);
+
+        List<Ordrelinje> getOrdrelinjerFraBrukernavn(string brukernavn);
+
+
     }
 }

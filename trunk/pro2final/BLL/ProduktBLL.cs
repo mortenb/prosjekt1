@@ -12,6 +12,8 @@ namespace myApp.BLL
         #region IProduktBLL Members
 
         private IProduktDAL produktDAL = DALLoader.getProduktDAL();
+        private IOrdreDAL ordreDAL = DALLoader.getOrdreDAL();
+        private IOrdrelinjeDAL ordrelinjeDAL = DALLoader.getOrdrelinjeDAL();
 
         public List<Produkt> getProdukter(int produktkategoriID)
         {
@@ -42,6 +44,25 @@ namespace myApp.BLL
         {
             produktDAL.endreProdukt(p);
             //throw new Exception("The method or operation is not implemented.");
+        }
+
+        public Produkt getNyesteProduktFraPK(string brukernavn)
+        {
+            //Hente produktkategoriID ved hjelp av brukernavn
+            //Dette må hentes fra ordre
+
+            List<Produkt> lstKjoepteProdukter = produktDAL.getKjoepteProdukter(brukernavn);
+
+            foreach (Produkt listeProdukt in lstKjoepteProdukter)
+            {
+                
+            }
+            Produkt prod = produktDAL.getNyesteProduktAvKategori(brukernavn);
+
+
+            return prod;
+
+            //Hente produkt fra produktDAL
         }
 
         #endregion

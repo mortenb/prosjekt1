@@ -94,6 +94,13 @@ namespace myApp.DAL
             }
         }
 
+        
+
+        public int getProduktkategoriIDFraOrdre(string brukernavn)
+        {
+            return -1;
+        }
+
         private Ordre GetOrdreFraSqlReader(ref SqlDataReader reader) // Ref to avoid large copys in memory.
         {
             Ordre ord = new Ordre();
