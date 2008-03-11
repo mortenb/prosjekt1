@@ -1,5 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="profil.aspx.cs" Inherits="profil" Title="Untitled Page" %>
 
+<%@ Register Src="nyesteprodukt.ascx" TagName="nyesteprodukt" TagPrefix="uc2" %>
+
 <%@ Register Src="~/profildata.ascx" TagName="prof" TagPrefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> 
@@ -17,11 +19,11 @@
                     </ZoneTemplate>
                 </asp:WebPartZone>
             </td>
-            <td style="width: 100px" valign="top">
+            <td style="width: 55px" valign="top">
                 <asp:WebPartZone ID="NyesteProdukter" runat="server" HeaderText="Nyeste produkter"
                     Width="241px">
                     <ZoneTemplate>
-                        <asp:Label ID="Label2" runat="server" Height="253px" Text="Label" Width="3px"></asp:Label>
+                        <uc2:nyesteprodukt ID="Nyesteprodukt1" runat="server" />
                     </ZoneTemplate>
                 </asp:WebPartZone>
             </td>
