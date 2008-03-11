@@ -62,8 +62,8 @@ namespace myApp.DAL
 
                     if (result == 1)
                     {
-                        myCommand.CommandText = "SELECT @@IDENTITY";
-                        pk.ProduktkategoriID = Convert.ToInt32(myCommand.ExecuteScalar());
+                        //myCommand.CommandText = "SELECT @@IDENTITY";
+                        //pk.ProduktkategoriID = Convert.ToInt32(myCommand.ExecuteScalar());
                     }
                     else
                     {
