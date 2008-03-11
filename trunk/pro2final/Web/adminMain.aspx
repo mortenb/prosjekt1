@@ -24,13 +24,15 @@
             <asp:View ID="Nyheter" runat="server">
                 <asp:Label ID="OverskriftLabel" runat="server">Overskrift</asp:Label>
                 <br />
-                <asp:TextBox ID="Overskrift" runat="server"></asp:TextBox>
-                <br />
+                <asp:TextBox ID="Overskrift" runat="server" CausesValidation="True"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="Overskrift"
+                    ErrorMessage="Feltet kan ikke være tomt!" ValidationGroup="NyhetVal"></asp:RequiredFieldValidator><br />
                 <asp:Label ID="TekstLabel" runat="server">Tekst</asp:Label>
                 <br />
                 <asp:TextBox ID="Tekst" runat="server" TextMode="MultiLine"></asp:TextBox>
-                <br />
-                <asp:Button ID="Send" runat="server" Text="Send" />
+                <asp:RequiredFieldValidator ID="NyhetTekstVal" runat="server" ControlToValidate="Tekst"
+                    ErrorMessage="Feltet kan ikke være tomt!" ValidationGroup="NyhetVal"></asp:RequiredFieldValidator><br />
+                <asp:Button ID="Send" runat="server" Text="Send" OnClick="Send_Click" ValidationGroup="NyhetVal" />
             </asp:View>
             <asp:View ID="Varer" runat="server">
                <uc4:proadm ID="produktadm" runat="server" Visible="true" />

@@ -10,25 +10,30 @@
     <form id="form1" runat="server">
     <div>
         <div style="width: 100%; height: 150px">
-        <h1>Komplett dot no</h1>
+        <h1>
+            <asp:HyperLink ID="Hjem" runat="server" NavigateUrl="~/Default.aspx">Komplett dot no</asp:HyperLink>&nbsp;</h1>
         <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
         <asp:SiteMapPath ID="SiteMapPath1" runat="server">
             </asp:SiteMapPath>
         
             <p>
                 <asp:LoginStatus ID="LoginStatus1" runat="server" LoginText="Logg inn" LogoutText="Logg ut" />
-                &nbsp;&nbsp;&nbsp; &nbsp;<asp:LoginView ID="LoginView1" runat="server">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:HyperLink ID="NyhetLnk" runat="server" NavigateUrl="~/nyheter.aspx">Nyheter</asp:HyperLink>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <asp:LoginView ID="LoginView1" runat="server">
                     <RoleGroups>
                         <asp:RoleGroup Roles="kunde">
                             <ContentTemplate>
-                                <asp:HyperLink ID="hyperlink1" runat="server" NavigateUrl="profil.aspx">Din profil</asp:HyperLink>
+                                <asp:HyperLink ID="hyperlink1" runat="server" NavigateUrl="profil.aspx">Din profil</asp:HyperLink>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:HyperLink ID="HyperLinkHandlevogn" runat="server" NavigateUrl="handlevogn.aspx">Handlevogn</asp:HyperLink>
                             </ContentTemplate>
                         </asp:RoleGroup>
                         <asp:RoleGroup Roles="admin">
                             <ContentTemplate>
                                 <asp:HyperLink ID="hyperlink1" runat="server" NavigateUrl="profil.aspx">Din profil</asp:HyperLink>
-                                &nbsp;<asp:HyperLink
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:HyperLink
                                     ID="Admin" runat="server" NavigateUrl="~/adminMain.aspx">Administratorside</asp:HyperLink>
                             </ContentTemplate>
                         </asp:RoleGroup>
@@ -37,6 +42,7 @@
                         <asp:HyperLink ID="HyperLinkHandlevogn" runat="server" NavigateUrl="handlevogn.aspx">Handlevogn</asp:HyperLink>
                     </AnonymousTemplate>
                 </asp:LoginView>
+                &nbsp;
             </p>
         </div>
         <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
