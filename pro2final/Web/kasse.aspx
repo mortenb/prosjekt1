@@ -1,16 +1,11 @@
 <%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="kasse.aspx.cs" Inherits="kasse" Title="Untitled Page" %>
+
+<%@ Register Src="profildata.ascx" TagName="profildata" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:LoginView ID="LoginView1" runat="server">
+    <asp:LoginView ID="LoginView1" runat="server" >
         <LoggedInTemplate>
             Vennligst sjekk at dine data stemmer:<br />
-            Navn:
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label><br />
-            Adresse:
-            <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label><br />
-            Telefon:
-            <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label><br />
-            Mail:
-            <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label><br />
+            &nbsp;<uc1:profildata ID="Profildata1" runat="server" />
             <br />
             Velg betalingsform:<br />
             <br />

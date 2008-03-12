@@ -236,22 +236,22 @@ namespace myApp.DAL
                     myCommand.Parameters.AddWithValue("@produktID", p.ProduktID);
                     myCommand.Parameters.AddWithValue("@tittel", p.Tittel);
                     myCommand.Parameters.AddWithValue("@beskrivelse", p.Beskrivelse);
-                    myCommand.Parameters.AddWithValue("@bildeURL", p.BildeURL);
+                    myCommand.Parameters.AddWithValue("@bildeURL", ""); //Har ikke bilder
                     myCommand.Parameters.AddWithValue("@pris", p.Pris);
-                    myCommand.Parameters.AddWithValue("FKproduktKategori", p.ProduktkategoriID);
+                    myCommand.Parameters.AddWithValue("@FKproduktKategori", p.ProduktkategoriID);
                     myCommand.Parameters.AddWithValue("@AntallPaaLager", p.AntallPaaLager);                 
                   
                     int result = myCommand.ExecuteNonQuery();
 
-                    if (result == 1)
-                    {
-                       // myCommand.CommandText = "SELECT @@IDENTITY";
-                       //p.ProduktID = Convert.ToInt32(myCommand.ExecuteScalar());
-                    }
-                    else
-                    {
-                        throw new ApplicationException("Klarte ikke opprette nyhet!");
-                    }
+                    //if (result == 1)
+                    //{
+                    //    myCommand.CommandText = "SELECT @@IDENTITY";
+                    //    //p.ProduktID = Convert.ToInt32(myCommand.ExecuteScalar());
+                    //}
+                    //else
+                    //{
+                    //    throw new ApplicationException("Klarte ikke endre produkt");
+                    //}
                 }
             }
         }
@@ -288,6 +288,11 @@ namespace myApp.DAL
             if (reader["FKproduktKategori"] != DBNull.Value)
             {
                 produkt.ProduktkategoriID = (int)reader["FKproduktKategori"];
+            }
+
+            if (reader["antallPaaLager"] != DBNull.Value)
+            {
+                produkt.AntallPaaLager = (int)reader["antallPaaLager"];
             }
 
             return produkt;
