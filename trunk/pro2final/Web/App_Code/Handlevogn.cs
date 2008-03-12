@@ -36,6 +36,7 @@ public class Handlevogn
         public void slettHandleliste()
         {
             _handleliste.Clear();
+            
         }
 
     private bool finnes(int produktID)
@@ -77,14 +78,21 @@ public class Handlevogn
 
         public void slettVareFraHandlevogn(int produktID)
         {
-            foreach( Ordrelinje ordre in this._handleliste )
+            
+            Ordrelinje ol = new Ordrelinje(); 
+            foreach( Ordrelinje ordre in this.Handleliste )
             {
+                
                 if (ordre.ProduktID == produktID)
                 {
-                    _handleliste.Remove(ordre);
+                    ol = ordre;
                     break;
+                   // _handleliste.RemoveAt(teller);
+                   // _handleliste.Remove(ordre);
+                   
                 }
             }
+            _handleliste.Remove(ol);
         }
 
     public int beregnTotalSum()
