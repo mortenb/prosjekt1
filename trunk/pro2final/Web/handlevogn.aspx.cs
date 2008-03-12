@@ -52,16 +52,28 @@ public partial class handlevogn : System.Web.UI.Page
         oppdaterSumFelt();
     }
 
+    
+
     protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e)
     {
-        oppdaterSumFelt();
+        
+        
+        
+        //Response.Write(e.Values[1].ToString());
+        
     }
 
     protected void LinkButtonKasse_Click(object sender, EventArgs e)
     {
-        //Må sjekke om man er logget inn
-        //
-        //Må redirecte riktig
+        Response.Redirect("kasse.aspx");
         
+    }
+    protected void GridView1_RowDelete(object sender, GridViewDeleteEventArgs e)
+    {
+        Response.Write(e.Keys[0].ToString());
+        int varenummer = Int32.Parse(e.Keys[0].ToString());
+        this.Profile.HANDLEKURV.slettVareFraHandlevogn(varenummer);
+        oppdaterSumFelt();
+        Profile.Save();
     }
 }

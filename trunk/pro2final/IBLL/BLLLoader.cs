@@ -47,6 +47,12 @@ namespace myApp.IBLL
             return (IOrdreBLL)Assembly.Load(path).CreateInstance(className);
         }
 
+        public static IOrdrelinjeBLL GetOrdrelinjeBLL()
+        {
+            string className = string.Format("{0}.OrdrelinjeBLL", path);
+            return (IOrdrelinjeBLL)Assembly.Load(path).CreateInstance(className);
+        }
+
         public static IProduktBLL GetProduktBLL()
         {
             string className = string.Format("{0}.ProduktBLL", path);
