@@ -57,7 +57,17 @@ namespace myApp.BLL
             {
                 
             }
-            Produkt prod = produktDAL.getNyesteProduktAvKategori(brukernavn);
+            Produkt prod;
+
+            try
+            {
+                prod = produktDAL.getNyesteProduktAvKategori(brukernavn);
+            }
+            catch (Exception ex)
+            {
+                
+                return null;
+            }
 
 
             return prod;
