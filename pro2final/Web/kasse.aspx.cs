@@ -24,6 +24,7 @@ public partial class kasse : System.Web.UI.Page
         List<minOrdre> moLst = Profile.HANDLEKURV.lagOrdreliste();
         IOrdreBLL ordreBLL = BLLLoader.GetOrdreBLL();
         IOrdrelinjeBLL olBLL = BLLLoader.GetOrdrelinjeBLL();
+        IProduktBLL produktBLL = BLLLoader.GetProduktBLL();
 
         try
         {
@@ -38,7 +39,13 @@ public partial class kasse : System.Web.UI.Page
                 ol.OrdreID = ordreID;
                 ol.ProduktID = mo.ProduktID;
 
+
                 olBLL.nyOrdrelinje(ol);  //putt inn i databasen
+
+                Produkt p = produktBLL.getProdukt(ol.ProduktID); //oppdater antall på lager
+                p.AntallPaaLager = p.AntallPaaLager - ol.Antall;
+                produktBLL.endreProdukt(p);
+                
             }
 
         }
