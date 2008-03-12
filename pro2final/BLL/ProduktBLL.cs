@@ -65,6 +65,13 @@ namespace myApp.BLL
             //Hente produkt fra produktDAL
         }
 
+        public List<Produkt> getKjoepteProdukter(string brukernavn)
+        {
+            List<Produkt> lstKjoepteProdukter = produktDAL.getKjoepteProdukter(brukernavn);
+
+            return lstKjoepteProdukter;
+        }
+
         #endregion
     }
 }
