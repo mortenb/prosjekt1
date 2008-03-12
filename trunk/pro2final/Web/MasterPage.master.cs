@@ -11,6 +11,14 @@ using System.Web.UI.HtmlControls;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
+    protected void Page_PreInit(object sender, EventArgs e)
+    {
+        if (!Profile.IsAnonymous)
+        {
+            Page.Theme = Profile.Theme;
+        }
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
