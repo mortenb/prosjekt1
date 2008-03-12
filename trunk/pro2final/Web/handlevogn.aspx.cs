@@ -45,11 +45,13 @@ public partial class handlevogn : System.Web.UI.Page
     protected void oppdaterSumFelt()
     {
         this.lblSum.Text = Profile.HANDLEKURV.beregnTotalSum().ToString();
+        Response.Cookies.Clear(); //Fjerne kaker, slik at systemet ikke husker gammelt rask.
     }
 
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
         oppdaterSumFelt();
+        
     }
 
     
