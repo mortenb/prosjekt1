@@ -97,41 +97,42 @@ namespace myApp.DAL
         public Produkt getNyesteProduktAvKategori(string brukernavn)
         {
             //Denne metoden henter de 10 nyeste produktene i en produktkategori
-            string query = @"
-                                SELECT Produkt.FKproduktKategori, count(Produkt.*) as produktAntall 
-                                FROM Produkt, Ordre, OrdreLinje 
-                                WHERE (SELECT OrdreLinje.produktID FROM OrdreLinje WHERE FKOrdreID IN (SELECT id FROM Ordre WHERE brukernavn = @brukernavn))
-                                GROUP BY FKproduktKategori 
-                                ORDER BY produktAntall 
-                                DESC LIMIT 1
-                            ";
+//            string query = @"
+//                                SELECT Produkt.FKproduktKategori, count(Produkt.*) as produktAntall 
+//                                FROM Produkt, Ordre, OrdreLinje 
+//                                WHERE (SELECT OrdreLinje.produktID FROM OrdreLinje WHERE FKOrdreID IN (SELECT id FROM Ordre WHERE brukernavn = @brukernavn))
+//                                GROUP BY FKproduktKategori 
+//                                ORDER BY produktAntall 
+//                                DESC LIMIT 1
+//                            ";
 
-            Produkt prod = new Produkt();
-            using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString))
-            {
-                myConnection.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myConnection))
-                {
-                    // Note we can not use "using" on the reader because of the call to GetUserFromSqlReader
-                    myCommand.Parameters.AddWithValue("@brukernavn", brukernavn);
-                    SqlDataReader reader = myCommand.ExecuteReader();
+//            Produkt prod = new Produkt();
+//            using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString))
+//            {
+//                myConnection.Open();
+//                using (SqlCommand myCommand = new SqlCommand(query, myConnection))
+//                {
+//                    // Note we can not use "using" on the reader because of the call to GetUserFromSqlReader
+//                    myCommand.Parameters.AddWithValue("@brukernavn", brukernavn);
+//                    SqlDataReader reader = myCommand.ExecuteReader();
 
-                    try
-                    {
-                            prod = GetProduktFraSqlReader(ref reader);                    }
-                    /*
-                     * No catch block, let exceptions be handles in the higher layers.
-                     */
-                    finally
-                    {
-                        if (reader != null)
-                        {
-                            reader.Close(); /* No using on reader, we must close. */
-                        }
-                    }
-                }
-            }
-            return prod;
+//                    try
+//                    {
+//                            prod = GetProduktFraSqlReader(ref reader);                    }
+//                    /*
+//                     * No catch block, let exceptions be handles in the higher layers.
+//                     */
+//                    finally
+//                    {
+//                        if (reader != null)
+//                        {
+//                            reader.Close(); /* No using on reader, we must close. */
+//                        }
+//                    }
+//                }
+//            }
+//            return prod;
+            return null;
         }
 
         public Produkt getProdukt(int produktID)
