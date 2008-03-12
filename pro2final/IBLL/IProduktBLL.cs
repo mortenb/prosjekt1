@@ -17,5 +17,7 @@ namespace myApp.IBLL
         void endreProdukt(Produkt p);
 
         Produkt getProdukt(int produktID);
+
+        List<Produkt> getKjoepteProdukter(string brukernavn);
     }
 }

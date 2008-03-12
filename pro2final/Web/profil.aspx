@@ -11,16 +11,17 @@
     &nbsp;&nbsp;
     <table style="width: 100%; height: 100%">
         <tr>
-            <td style="width: 100px" valign="top">
-                <asp:WebPartZone ID="ProfilData" runat="server" HeaderText="Her kan du lagre profildata">
+            <td style="width: 57px" valign="top">
+                <asp:WebPartZone ID="wpzProfilData" runat="server" HeaderText="Her kan du lagre profildata">
                     <ZoneTemplate>
                         <uc1:prof id="Prof1" runat="server">
                         </uc1:prof>
                     </ZoneTemplate>
                 </asp:WebPartZone>
+                &nbsp;
             </td>
             <td style="width: 55px" valign="top">
-                <asp:WebPartZone ID="NyesteProdukter" runat="server" HeaderText="Nyeste produkter"
+                <asp:WebPartZone ID="wpzNyesteProdukter" runat="server" HeaderText="Nyeste produkter"
                     Width="241px">
                     <ZoneTemplate>
                         <uc2:nyesteprodukt ID="Nyesteprodukt1" runat="server" />
@@ -28,50 +29,35 @@
                 </asp:WebPartZone>
             </td>
             <td style="width: 100px" valign="top">
+                <asp:WebPartZone ID="wpzKjoepteProdukter" runat="server">
+                
+                    <ZoneTemplate>
+                    <%-- 
+                        <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False"
+                            DataSourceID="KjoepteProdukterLeverandoer">
+                            <Columns>
+                                <asp:BoundField DataField="AntallPaaLager" HeaderText="AntallPaaLager" SortExpression="AntallPaaLager" />
+                                <asp:BoundField DataField="ProduktkategoriID" HeaderText="ProduktkategoriID" SortExpression="ProduktkategoriID" />
+                                <asp:BoundField DataField="Tittel" HeaderText="Tittel" SortExpression="Tittel" />
+                                <asp:BoundField DataField="Beskrivelse" HeaderText="Beskrivelse" SortExpression="Beskrivelse" />
+                                <asp:BoundField DataField="ProduktID" HeaderText="ProduktID" SortExpression="ProduktID" />
+                                <asp:BoundField DataField="Pris" HeaderText="Pris" SortExpression="Pris" />
+                                <asp:BoundField DataField="BildeURL" HeaderText="BildeURL" SortExpression="BildeURL" />
+                            </Columns>
+                        </asp:GridView>
+                        <asp:ObjectDataSource ID="KjoepteProdukterLeverandoer" runat="server" SelectMethod="getKjoepteProdukter"
+                            TypeName="myApp.BLL.ProduktBLL">
+                            <SelectParameters>
+                                <asp:Parameter DefaultValue="testfaen" Name="brukernavn" Type="String" />
+                            </SelectParameters>
+                        </asp:ObjectDataSource>
+                        --%>
+                    </ZoneTemplate>
+                    
+                </asp:WebPartZone>
             </td>
         </tr>
     </table>
-    <table style="width: 179px; height: 119px">
-        <tr>
-            <td>
-                Fornavn:</td>
-            <td style="width: 83px">
-                <asp:TextBox ID="TextBoxFornavn" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox></td>
-        </tr>
-        <tr>
-            <td>
-                Etternavn</td>
-            <td style="width: 83px">
-                <asp:TextBox ID="TextBoxEtternavn" runat="server"></asp:TextBox></td>
-        </tr>
-        <tr>
-            <td>
-                Gateadresse</td>
-            <td style="width: 83px">
-                <asp:TextBox ID="TextBoxAdresse" runat="server"></asp:TextBox></td>
-        </tr>
-        <tr>
-            <td>
-                Postnummer</td>
-            <td style="width: 83px">
-                <asp:TextBox ID="TextBoxPostnummer" runat="server"></asp:TextBox></td>
-        </tr>
-        <tr>
-            <td>
-                Poststed</td>
-            <td style="width: 83px">
-                <asp:TextBox ID="TextBoxPoststed" runat="server"></asp:TextBox></td>
-        </tr>
-        <tr>
-            <td>
-                Telefon</td>
-            <td style="width: 83px">
-                <asp:TextBox ID="TextBoxTlf" runat="server"></asp:TextBox></td>
-        </tr>
-    </table>
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-    
-    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Lagre" />
     <br />
     <br />
     <asp:Label ID="LabelOppdatert" runat="server"></asp:Label><br />
@@ -88,6 +74,27 @@
         </tr>
     </table>
     <br />
+    <br />
+    &nbsp;<asp:GridView ID="GridView3" runat="server" AllowPaging="True" AutoGenerateColumns="False"
+                            DataSourceID="ObjectDataSource1">
+        <Columns>
+            <asp:BoundField DataField="AntallPaaLager" HeaderText="AntallPaaLager" SortExpression="AntallPaaLager" />
+            <asp:BoundField DataField="ProduktkategoriID" HeaderText="ProduktkategoriID" SortExpression="ProduktkategoriID" />
+            <asp:BoundField DataField="Tittel" HeaderText="Tittel" SortExpression="Tittel" />
+            <asp:BoundField DataField="Beskrivelse" HeaderText="Beskrivelse" SortExpression="Beskrivelse" />
+            <asp:BoundField DataField="ProduktID" HeaderText="ProduktID" SortExpression="ProduktID" />
+            <asp:BoundField DataField="Pris" HeaderText="Pris" SortExpression="Pris" />
+            <asp:BoundField DataField="BildeURL" HeaderText="BildeURL" SortExpression="BildeURL" />
+        </Columns>
+    </asp:GridView>
+    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="getKjoepteProdukter"
+                            TypeName="myApp.BLL.ProduktBLL" >
+        <SelectParameters>
+            <asp:ControlParameter ControlID="lblBrukernavn" DefaultValue="testfaen" Name="brukernavn"
+                PropertyName="Text" Type="String" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
+    <asp:Label ID="lblBrukernavn" runat="server" Visible="False"></asp:Label><br />
     
 </asp:Content>
 

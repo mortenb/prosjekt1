@@ -31,61 +31,10 @@ public partial class profil : System.Web.UI.Page
         Response.Write(Profile.UserName);
         Profile.HANDLEKURV = new Handlevogn();
         List<Ordrelinje> ordre = Profile.HANDLEKURV.Handleliste;
-        if (!IsPostBack)
-        {
-            if (Profile.UserName != null && Profile.IsAnonymous == false)
-            {
-                this.TextBoxFornavn.Text = Profile.fornavn;
-                this.TextBoxEtternavn.Text = Profile.etternavn;
-                this.TextBoxAdresse.Text = Profile.gateadresse;
-                this.TextBoxPoststed.Text = Profile.poststed;
-                this.TextBoxPostnummer.Text = Profile.postnummer;
-                this.TextBoxTlf.Text = Profile.telefon;
-                
-                if ( ordre != null)
-                {
-                    //NameValueConfigurationCollection ne = new NameValueConfigurationCollection();
-
-                    foreach (Ordrelinje ol in ordre)
-                    {
-                        Trace.Write("Varenummer: " + ol.ProduktID + "Antall: " + ol.Antall + "<br />");
-                    }
-                }
-                else
-                {
-                    Trace.Write("Handlekurven er tom");
-                }
-            }
-        }
     }
     protected void TextBox1_TextChanged(object sender, EventArgs e)
     {
      
-    }
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        if (Profile.IsAnonymous == false)
-        {
-            Profile.fornavn = this.TextBoxFornavn.Text;
-            Profile.etternavn = this.TextBoxEtternavn.Text;
-            Profile.gateadresse = this.TextBoxAdresse.Text;
-            Profile.poststed = this.TextBoxPoststed.Text;
-            Profile.postnummer = this.TextBoxPostnummer.Text;
-            Profile.telefon = this.TextBoxTlf.Text;
-            this.LabelOppdatert.Text = "Din profil er oppdatert!";
-            
-
-            //List<Ordrelinje> handleliste = new List<Ordrelinje>();
-            Ordrelinje testOL = new Ordrelinje();
-            testOL.Antall = 2;
-            testOL.ProduktID = 12;
-            Profile.HANDLEKURV.leggTilVareIHandlevogn(testOL);
-            
-            //Profile.HANDLEKURV;
-            //Profile.HANDLEKURV.Handleliste = handleliste;
-            
-
-        }
     }
 
     protected void Set_Theme(object sender, EventArgs e)
@@ -104,5 +53,22 @@ public partial class profil : System.Web.UI.Page
             Profile.Theme = "Nice";
         }
         Response.Redirect("~/profil.aspx");
+    }
+
+    private string _brukernavn;
+
+    public string Brukernavn
+    {
+        get { return _brukernavn; }
+        set 
+        { 
+            this._brukernavn = value;
+            lblBrukernavn.Text = value;
+        }
+    }
+
+    protected void ObjectDataSource1_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+    {
+
     }
 }
