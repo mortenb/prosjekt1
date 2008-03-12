@@ -12,7 +12,7 @@
         <div class="x-admindiv">
             Velg hva du vil administrere:<br/>
             <asp:DropDownList ID="Oppgavevelger" runat="server" AutoPostBack="True" OnSelectedIndexChanged="Oppgavevelger_SelectedIndexChanged"
-                Width="214px">
+                Width="250px">
                 <asp:ListItem Value="-1" Text=""></asp:ListItem>
             </asp:DropDownList>
         </div>

@@ -14,7 +14,6 @@ public partial class NyKunde : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
 
     protected void CreateUserWizard1_CreatedUser(object sender, EventArgs e)
@@ -33,5 +32,20 @@ public partial class NyKunde : System.Web.UI.Page
         SmtpClient smc = new SmtpClient();
         smc.EnableSsl= true;
         smc.Send(m);
+    }
+
+    protected void CreateUserWizard1_OpprettProfil(object sender, EventArgs e)
+    {
+        if (Profile.IsAnonymous == false)
+        {
+            Profile.fornavn =  this.TextBoxFornavn.Text;
+            Profile.etternavn = this.TextBoxEtternavn.Text;
+            Profile.gateadresse = this.TextBoxAdresse.Text;
+            Profile.poststed = this.TextBoxPoststed.Text;
+            Profile.postnummer = this.TextBoxPostnummer.Text;
+            Profile.telefon = this.TextBoxTlf.Text;
+            Profile.Theme = Page.Theme;
+            Profile.Save();
+        }
     }
 }
