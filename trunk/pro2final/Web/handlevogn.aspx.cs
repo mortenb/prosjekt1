@@ -15,6 +15,14 @@ using myApp.IBLL;
 public partial class handlevogn : System.Web.UI.Page
 {
 
+    protected void Page_PreInit(object sender, EventArgs e)
+    {
+        if (!Profile.IsAnonymous)
+        {
+            Page.Theme = Profile.Theme; //sett theme
+        }
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
