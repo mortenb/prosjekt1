@@ -17,9 +17,8 @@
             Faktura<br />
             <asp:RadioButton ID="RadioButton1" runat="server" /><br />
             <br />
-            Kredittkort<br />
-            <asp:RadioButton ID="RadioButton2" runat="server" /><br />
             <br />
+            <asp:Button ID="Button_kjop" runat="server" OnClick="Button_kjop_Click" Text="Bekreft kjøp" /><br />
         </LoggedInTemplate>
         <AnonymousTemplate>
             Vennligst <a href="login.aspx">logg inn</a> for å gjennomføre kjøpet.<br />
@@ -30,5 +29,6 @@
             &nbsp; &nbsp;
         </AnonymousTemplate>
     </asp:LoginView>
+    <asp:Label ID="LabelFeil" runat="server"></asp:Label>
 </asp:Content>
 

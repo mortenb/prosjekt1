@@ -50,7 +50,7 @@ namespace myApp.DAL
             return o;
         }
 
-        public void nyOrdre(Ordre o)
+        public int nyOrdre(Ordre o)
         {
             string query = @"Insert into Ordre (dato, brukernavn) values (@dato, @brukernavn)";
             using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString))
@@ -62,14 +62,20 @@ namespace myApp.DAL
                     myCommand.Parameters.AddWithValue("@dato", o.OrdreDato);
                     myCommand.Parameters.AddWithValue("@brukernavn", o.Brukernavn);
                     // Note we can not use "using" on the reader because of the call to GetUserFromSqlReader
-                    try
-                    {
+                    
                         int result = myCommand.ExecuteNonQuery();
-                    }
-                    finally
-                    {
-
-                    }
+                        if (result == 1)
+                        {
+                            myCommand.CommandText = "SELECT @@IDENTITY";
+                            int id = Convert.ToInt32(myCommand.ExecuteScalar());
+                            return id;
+                        }
+                        else
+                        {
+                            throw new ApplicationException("Klarte ikke opprette nyhet!");
+                        }
+                    
+                    
                 }
             }
 

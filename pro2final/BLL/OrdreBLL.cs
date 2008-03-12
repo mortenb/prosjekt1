@@ -20,10 +20,10 @@ namespace myApp.BLL
             //throw new Exception("The method or operation is not implemented.");
         }
 
-        public void nyOrdre(Ordre o)
+        public int nyOrdre(Ordre o)
         {
-            ordreDAL.nyOrdre(o);
-            throw new Exception("The method or operation is not implemented.");
+            return ordreDAL.nyOrdre(o);
+            
         }
 
         public void slettOrdre(int ordreID)

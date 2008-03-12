@@ -8,7 +8,7 @@ namespace myApp.IBLL
     public interface IOrdreBLL
     {
         Ordre getOrdre(int ordreID);
-        void nyOrdre(Ordre o);
+        int nyOrdre(Ordre o);
         void slettOrdre(int ordreID);
     }
 }
