@@ -28,6 +28,11 @@ namespace myApp.BLL
             return anm;
         }
 
+        public void nyAnmeldelse(Anmeldelse anm)
+        {
+            anmeldelseDAL.nyAnmeldelse(anm);
+        }
+
         #endregion
     }
 }

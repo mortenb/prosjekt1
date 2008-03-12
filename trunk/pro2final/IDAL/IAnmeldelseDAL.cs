@@ -10,5 +10,7 @@ namespace myApp.IDAL
         List<Anmeldelse> getAnmeldelser(int produktID);
 
         Anmeldelse getAnmeldelse(int anmID);
+
+        void nyAnmeldelse(Anmeldelse anm);
     }
 }

@@ -11,9 +11,11 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using myApp.Model;
+using myApp.IBLL;
 
 public partial class profil : System.Web.UI.Page
 {
+    IAnmeldelseBLL anmBLL = (IAnmeldelseBLL)BLLLoader.GetAnmeldelseBLL();
 
     protected void Page_PreInit(object sender, EventArgs e)
     {
@@ -26,15 +28,12 @@ public partial class profil : System.Web.UI.Page
             Page.Theme = Profile.Theme;
         }
     }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Write(Profile.UserName);
         Profile.HANDLEKURV = new Handlevogn();
         List<Ordrelinje> ordre = Profile.HANDLEKURV.Handleliste;
-    }
-    protected void TextBox1_TextChanged(object sender, EventArgs e)
-    {
-     
     }
 
     protected void Set_Theme(object sender, EventArgs e)
@@ -55,27 +54,25 @@ public partial class profil : System.Web.UI.Page
         Response.Redirect("~/profil.aspx");
     }
 
-    private string _brukernavn;
 
-    public string Brukernavn
-    {
-        get { return _brukernavn; }
-        set 
-        { 
-            this._brukernavn = value;
-            lblBrukernavn.Text = value;
-        }
-    }
 
-    protected void ObjectDataSource1_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
-    {
 
-    }
-    protected void Prof1_Load(object sender, EventArgs e)
+    protected void lbAnmeldLeggTil_Click(object sender, EventArgs e)
     {
+        Anmeldelse anm = new Anmeldelse();
+        anm.ProduktID = Convert.ToInt32(lblAnmeldProduktID.Text);
+        anm.Tittel = tbAnmeldTittel.Text;
+        anm.Tekst = tbAnmeldTekst.Text;
+        anm.Karakter = Convert.ToInt32(ddlAnmeldKarakter.SelectedValue);
+
+        anmBLL.nyAnmeldelse(anm);
+
+        lblAnmeldOppdatert.Text = "Anmeldelsen er lagret!";
+       
+
 
     }
-    protected void GridView3_SelectedIndexChanged(object sender, EventArgs e)
+    protected void tbAnmeldTekst_TextChanged(object sender, EventArgs e)
     {
 
     }

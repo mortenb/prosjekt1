@@ -14,7 +14,7 @@
             <td style="width: 57px" valign="top">
                 <asp:WebPartZone ID="wpzProfilData" runat="server" HeaderText="Her kan du lagre profildata">
                     <ZoneTemplate>
-                        <uc1:prof title="Profildata" id="Prof1" runat="server" OnLoad="Prof1_Load">
+                        <uc1:prof title="Profildata" id="Prof1" runat="server" >
                         </uc1:prof>
                     </ZoneTemplate>
                     <CloseVerb Visible="False" />
@@ -35,32 +35,47 @@
                 </asp:WebPartZone>
             </td>
             <td style="width: 100px" valign="top">
-                <asp:WebPartZone ID="wpzKjoepteProdukter" runat="server">
-                
-                    <ZoneTemplate>
+                <asp:WebPartZone ID="wpzKjoepteProdukter" runat="server">      
+                     <ZoneTemplate>
                         <asp:GridView title="Kjøpte produkter" ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False"
-                            DataSourceID="ObjectDataSource1">
+                            DataSourceID="ObjectDataSource1" DataKeyNames="ProduktID" EnableViewState="False" PageSize="5" >
                             <Columns>
+                                <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="ProduktID" HeaderText="Varenummer" SortExpression="ProduktID" />
                                 <asp:BoundField DataField="Tittel" HeaderText="Tittel" SortExpression="Tittel" />
                                 <asp:BoundField DataField="Beskrivelse" HeaderText="Beskrivelse" SortExpression="Beskrivelse" />
+                                <asp:ButtonField CommandName="btnAnmeld" Text="Anmeld dette produktet" />
                             </Columns>
                         </asp:GridView>
                     </ZoneTemplate>
                     <CloseVerb Visible="False" />
                     <MinimizeVerb Text="Minimer" />
-                    <RestoreVerb Text="Gjenopprett" />
-                    
+                    <RestoreVerb Text="Gjenopprett" />                   
                 </asp:WebPartZone>
             </td>
         </tr>
     </table>
-    <br />
-    <br />
-    <asp:Label ID="LabelOppdatert" runat="server"></asp:Label><br />
-    <asp:GridView ID="GridView1" runat="server" >
-    </asp:GridView>
-    <br />
+    <asp:Panel ID="Panel1" runat="server" Height="231px" Visible="False" Width="251px">
+        <asp:Label ID="lblAnmeldProduktID" runat="server" Height="18px" Width="95px"></asp:Label><br />
+        Tittel:<br />
+        &nbsp;<asp:TextBox ID="tbAnmeldTittel" runat="server"></asp:TextBox><br />
+        Tekst:<br />
+        <asp:TextBox ID="tbAnmeldTekst" runat="server"
+            TextMode="MultiLine" OnTextChanged="tbAnmeldTekst_TextChanged"></asp:TextBox>
+        <br />
+        Karakter:<br />
+        <asp:DropDownList ID="ddlAnmeldKarakter" runat="server">
+            <asp:ListItem>1</asp:ListItem>
+            <asp:ListItem>2</asp:ListItem>
+            <asp:ListItem>3</asp:ListItem>
+            <asp:ListItem>4</asp:ListItem>
+            <asp:ListItem>5</asp:ListItem>
+        </asp:DropDownList><br />
+        <asp:LinkButton ID="lbAnmeldLeggTil" runat="server" Height="16px" Width="67px" OnClick="lbAnmeldLeggTil_Click">Legg til anmeldelse</asp:LinkButton>
+        <br />
+        <asp:Label ID="lblAnmeldOppdatert" runat="server"></asp:Label></asp:Panel>
+    &nbsp;<br />
+    &nbsp;<br />
     Her kan du velge utseende på web-siden:<br />
     <table>
         <tr>
@@ -72,26 +87,14 @@
     </table>
     <br />
     <br />
-    &nbsp;<asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False"
-                            DataSourceID="ObjectDataSource1" OnSelectedIndexChanged="GridView3_SelectedIndexChanged">
-        <Columns>
-            <asp:BoundField DataField="AntallPaaLager" HeaderText="AntallPaaLager" SortExpression="AntallPaaLager" />
-            <asp:BoundField DataField="ProduktkategoriID" HeaderText="ProduktkategoriID" SortExpression="ProduktkategoriID" />
-            <asp:BoundField DataField="Tittel" HeaderText="Tittel" SortExpression="Tittel" />
-            <asp:BoundField DataField="Beskrivelse" HeaderText="Beskrivelse" SortExpression="Beskrivelse" />
-            <asp:BoundField DataField="ProduktID" HeaderText="ProduktID" SortExpression="ProduktID" />
-            <asp:BoundField DataField="Pris" HeaderText="Pris" SortExpression="Pris" />
-            <asp:BoundField DataField="BildeURL" HeaderText="BildeURL" SortExpression="BildeURL" />
-        </Columns>
-    </asp:GridView>
+    
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="getKjoepteProdukter"
-                            TypeName="myApp.BLL.ProduktBLL" >
+                            TypeName="myApp.BLL.ProduktBLL">
         <SelectParameters>
-            <asp:ControlParameter ControlID="lblBrukernavn" DefaultValue="testfaen" Name="brukernavn"
-                PropertyName="Text" Type="String" />
+            <asp:ProfileParameter DefaultValue="0" Name="brukernavn" PropertyName="UserName"
+                Type="String" />
         </SelectParameters>
     </asp:ObjectDataSource>
-    <asp:Label ID="lblBrukernavn" runat="server" Visible="False"></asp:Label><br />
     
 </asp:Content>
 
