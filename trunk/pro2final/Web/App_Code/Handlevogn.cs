@@ -93,6 +93,8 @@ public class Handlevogn
                 }
             }
             _handleliste.Remove(ol);
+           // int teller = _handleliste.Count;
+           // int a = 0;
         }
 
     public int beregnTotalSum()
