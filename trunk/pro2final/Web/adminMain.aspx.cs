@@ -16,6 +16,13 @@ using System.Collections.Generic;
 public partial class adminMain : System.Web.UI.Page
 {
     INyhetBLL nBLL = BLLLoader.GetNyhetBLL();
+    protected void Page_PreInit(object sender, EventArgs e)
+    {
+        if (!Profile.IsAnonymous)
+        {
+            Page.Theme = Profile.Theme;
+        }
+    }
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!User.IsInRole("admin"))
