@@ -14,7 +14,7 @@
             <td style="width: 57px" valign="top">
                 <asp:WebPartZone ID="wpzProfilData" runat="server" HeaderText="Her kan du lagre profildata">
                     <ZoneTemplate>
-                        <uc1:prof id="Prof1" runat="server">
+                        <uc1:prof id="Prof1" runat="server" OnLoad="Prof1_Load">
                         </uc1:prof>
                     </ZoneTemplate>
                 </asp:WebPartZone>

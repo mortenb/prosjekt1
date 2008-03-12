@@ -71,4 +71,8 @@ public partial class profil : System.Web.UI.Page
     {
 
     }
+    protected void Prof1_Load(object sender, EventArgs e)
+    {
+
+    }
 }
