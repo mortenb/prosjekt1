@@ -21,6 +21,14 @@ public partial class _Default : System.Web.UI.Page
     IProduktkategoriBLL pkBLL = BLLLoader.GetProduktkategoriBLL();
     IProduktBLL produktBLL = BLLLoader.GetProduktBLL();
 
+    protected void Page_PreInit(object sender, EventArgs e)
+    {
+        if (!Profile.IsAnonymous)
+        {
+            Page.Theme = Profile.Theme; //sett theme
+        }
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         //Trenger en variabel som holder querystringen - den vil være en int
