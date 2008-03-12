@@ -51,4 +51,8 @@ public partial class produkt : System.Web.UI.UserControl
     {
 
     }
+    protected void DataList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }
