@@ -101,6 +101,39 @@ namespace myApp.DAL
             return anm;
         }
 
+        public void nyAnmeldelse(Anmeldelse anm)
+        {
+            string query = @"
+                                INSERT INTO Anmeldelse (tittel,tekst,karakter,produktID) VALUES (@tittel, @tekst, @karakter, @produktID)
+                            ";
+
+            using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString))
+            {
+                myConnection.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myConnection))
+                {
+
+                    myCommand.Parameters.AddWithValue("@tittel", anm.Tittel);
+                    myCommand.Parameters.AddWithValue("@tekst", anm.Tekst);
+                    myCommand.Parameters.AddWithValue("@karakter", anm.Karakter);
+                    myCommand.Parameters.AddWithValue("@produktID", anm.ProduktID);
+
+                    int result = myCommand.ExecuteNonQuery();
+
+                    if (result == 1)
+                    {
+                        //Dette er strengt tatt ikke nødvendig, siden vi ikke skal returnere objektet
+                        myCommand.CommandText = "SELECT @@IDENTITY";
+                        anm.NyhetsID = Convert.ToInt32(myCommand.ExecuteScalar());
+                    }
+                    else
+                    {
+                        throw new ApplicationException("Klarte ikke opprette nyhet!");
+                    }
+                }
+            }
+        }
+
         private Anmeldelse GetAnmeldelseFraSqlReader(ref SqlDataReader reader) // Ref to avoid large copys in memory.
         {
             Anmeldelse anm = new Anmeldelse();

@@ -10,5 +10,7 @@ namespace myApp.IBLL
         List<Anmeldelse> getAnmeldelser(int produktID);
 
         Anmeldelse getAnmeldelse(int anmID);
+
+        void nyAnmeldelse(Anmeldelse anm);
     }
 }
