@@ -36,7 +36,7 @@ public partial class produkt : System.Web.UI.UserControl
 
     protected void btnLeggIHandlekurv_Click(object sender, EventArgs e)
     {
-        Response.Write(sender.ToString() + " " + e.ToString());
+        //Response.Write(sender.ToString() + " " + e.ToString());
 
         TextBox tbAntall = (TextBox)this.FormView1.FindControl("tbAntall");
         int antallTilBestilling = Convert.ToInt32(tbAntall.Text);      
@@ -46,5 +46,9 @@ public partial class produkt : System.Web.UI.UserControl
         ol.ProduktID = this.ProduktID;
 
         Profile.HANDLEKURV.leggTilVareIHandlevogn(ol);
+    }
+    protected void FormView1_PageIndexChanging(object sender, FormViewPageEventArgs e)
+    {
+
     }
 }
