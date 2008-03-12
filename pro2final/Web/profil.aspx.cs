@@ -75,4 +75,8 @@ public partial class profil : System.Web.UI.Page
     {
 
     }
+    protected void GridView3_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }
