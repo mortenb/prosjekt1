@@ -5,15 +5,25 @@
     
     
 }
-.Oppgavediv
-{
-	position:absolute;
-	top:200px;
-	left:200px;
-}
-.adminmeny
+.hovedinnhold
 {
 	position:absolute;
 	top:180px;
 	left:200px;
 }
+.x-produktadmin
+{
+	padding-top:20px;
+}
+.x-prodcelle
+{
+	vertical-align:top;
+	text-align:left;
+	width:200px;
+}
+.x-admindiv
+{
+	padding:10px;
+}
+
+
