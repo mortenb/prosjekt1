@@ -14,9 +14,12 @@
             <td style="width: 57px" valign="top">
                 <asp:WebPartZone ID="wpzProfilData" runat="server" HeaderText="Her kan du lagre profildata">
                     <ZoneTemplate>
-                        <uc1:prof id="Prof1" runat="server" OnLoad="Prof1_Load">
+                        <uc1:prof title="Profildata" id="Prof1" runat="server" OnLoad="Prof1_Load">
                         </uc1:prof>
                     </ZoneTemplate>
+                    <CloseVerb Visible="False" />
+                    <MinimizeVerb Text="Minimer" />
+                    <RestoreVerb Text="Gjenopprett" />
                 </asp:WebPartZone>
                 &nbsp;
             </td>
@@ -24,35 +27,29 @@
                 <asp:WebPartZone ID="wpzNyesteProdukter" runat="server" HeaderText="Nyeste produkter"
                     Width="241px">
                     <ZoneTemplate>
-                        <uc2:nyesteprodukt ID="Nyesteprodukt1" runat="server" />
+                        <uc2:nyesteprodukt title="Nyeste produkt" ID="Nyesteprodukt1" runat="server" />
                     </ZoneTemplate>
+                    <CloseVerb Visible="False" />
+                    <MinimizeVerb Text="Minimer" />
+                    <RestoreVerb Text="Gjenopprett" />
                 </asp:WebPartZone>
             </td>
             <td style="width: 100px" valign="top">
                 <asp:WebPartZone ID="wpzKjoepteProdukter" runat="server">
                 
                     <ZoneTemplate>
-                    <%-- 
-                        <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False"
-                            DataSourceID="KjoepteProdukterLeverandoer">
+                        <asp:GridView title="Kjøpte produkter" ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False"
+                            DataSourceID="ObjectDataSource1">
                             <Columns>
-                                <asp:BoundField DataField="AntallPaaLager" HeaderText="AntallPaaLager" SortExpression="AntallPaaLager" />
-                                <asp:BoundField DataField="ProduktkategoriID" HeaderText="ProduktkategoriID" SortExpression="ProduktkategoriID" />
+                                <asp:BoundField DataField="ProduktID" HeaderText="Varenummer" SortExpression="ProduktID" />
                                 <asp:BoundField DataField="Tittel" HeaderText="Tittel" SortExpression="Tittel" />
                                 <asp:BoundField DataField="Beskrivelse" HeaderText="Beskrivelse" SortExpression="Beskrivelse" />
-                                <asp:BoundField DataField="ProduktID" HeaderText="ProduktID" SortExpression="ProduktID" />
-                                <asp:BoundField DataField="Pris" HeaderText="Pris" SortExpression="Pris" />
-                                <asp:BoundField DataField="BildeURL" HeaderText="BildeURL" SortExpression="BildeURL" />
                             </Columns>
                         </asp:GridView>
-                        <asp:ObjectDataSource ID="KjoepteProdukterLeverandoer" runat="server" SelectMethod="getKjoepteProdukter"
-                            TypeName="myApp.BLL.ProduktBLL">
-                            <SelectParameters>
-                                <asp:Parameter DefaultValue="testfaen" Name="brukernavn" Type="String" />
-                            </SelectParameters>
-                        </asp:ObjectDataSource>
-                        --%>
                     </ZoneTemplate>
+                    <CloseVerb Visible="False" />
+                    <MinimizeVerb Text="Minimer" />
+                    <RestoreVerb Text="Gjenopprett" />
                     
                 </asp:WebPartZone>
             </td>
@@ -75,8 +72,8 @@
     </table>
     <br />
     <br />
-    &nbsp;<asp:GridView ID="GridView3" runat="server" AllowPaging="True" AutoGenerateColumns="False"
-                            DataSourceID="ObjectDataSource1">
+    &nbsp;<asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False"
+                            DataSourceID="ObjectDataSource1" OnSelectedIndexChanged="GridView3_SelectedIndexChanged">
         <Columns>
             <asp:BoundField DataField="AntallPaaLager" HeaderText="AntallPaaLager" SortExpression="AntallPaaLager" />
             <asp:BoundField DataField="ProduktkategoriID" HeaderText="ProduktkategoriID" SortExpression="ProduktkategoriID" />
