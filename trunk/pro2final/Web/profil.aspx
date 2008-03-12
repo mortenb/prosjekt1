@@ -38,30 +38,48 @@
                 <asp:WebPartZone ID="wpzKjoepteProdukter" runat="server">      
                      <ZoneTemplate>
                         <asp:GridView title="Kjøpte produkter" ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False"
-                            DataSourceID="ObjectDataSource1" DataKeyNames="ProduktID" EnableViewState="False" PageSize="5" >
+                            DataSourceID="ObjectDataSource1" DataKeyNames="ProduktID" EnableViewState="False" PageSize="5" OnSelectedIndexChanged="GridView2_Select" OnSelectedIndexChanging="GridView2_SelectedIndexChanging" >
+                            
                             <Columns>
-                                <asp:CommandField ShowSelectButton="True" />
                                 <asp:BoundField DataField="ProduktID" HeaderText="Varenummer" SortExpression="ProduktID" />
                                 <asp:BoundField DataField="Tittel" HeaderText="Tittel" SortExpression="Tittel" />
                                 <asp:BoundField DataField="Beskrivelse" HeaderText="Beskrivelse" SortExpression="Beskrivelse" />
-                                <asp:ButtonField CommandName="btnAnmeld" Text="Anmeld dette produktet" />
+                                <asp:HyperLinkField  DataTextField="ProduktID" DataNavigateUrlFields="ProduktID" DataNavigateUrlFormatString="~/profil.aspx?anm={0}" Text="Anmeld dette produktet" DataTextFormatString="Anmeld produkt" />
                             </Columns>
+                            
+                            <EmptyDataTemplate>
+                                Du har ikke kjøpt noen varer.
+                                <br />
+                                <br />
+                                Er du fattig eller?<br />
+                                <br />
+                                Få deg en jobb.<br />
+                                <br />
+                                Kjøp varer.<br />
+                                <br />
+                                Bli lykkelig.
+                            </EmptyDataTemplate>
                         </asp:GridView>
                     </ZoneTemplate>
                     <CloseVerb Visible="False" />
                     <MinimizeVerb Text="Minimer" />
                     <RestoreVerb Text="Gjenopprett" />                   
                 </asp:WebPartZone>
-            </td>
-        </tr>
-    </table>
-    <asp:Panel ID="Panel1" runat="server" Height="231px" Visible="False" Width="251px">
-        <asp:Label ID="lblAnmeldProduktID" runat="server" Height="18px" Width="95px"></asp:Label><br />
+                <asp:WebPartZone ID="wpzAnmeldProdukt" runat="server">
+                    <CloseVerb Visible="False" />
+                    <MinimizeVerb Enabled="False" Text="Minim" />
+                    <RestoreVerb Enabled="False" />
+                    <ZoneTemplate>
+    <asp:Panel title="Anmeld produktet" ID="pnlAnmeld" runat="server" Height="231px" Visible="False" Width="251px">
+        <asp:Label ID="lblAnmeldProduktID" runat="server" Height="18px" Width="95px" Visible="False"></asp:Label>
+        <br />
+        <asp:Label ID="lblAnmeldProduktTittel" runat="server"></asp:Label>
+        <br />
         Tittel:<br />
-        &nbsp;<asp:TextBox ID="tbAnmeldTittel" runat="server"></asp:TextBox><br />
+        &nbsp;<asp:TextBox ID="tbAnmeldTittel" runat="server" OnTextChanged="tbAnmeldTittel_TextChanged" Width="240px"></asp:TextBox><br />
         Tekst:<br />
         <asp:TextBox ID="tbAnmeldTekst" runat="server"
-            TextMode="MultiLine" OnTextChanged="tbAnmeldTekst_TextChanged"></asp:TextBox>
+            TextMode="MultiLine" OnTextChanged="tbAnmeldTekst_TextChanged" Height="138px" Width="240px"></asp:TextBox>
         <br />
         Karakter:<br />
         <asp:DropDownList ID="ddlAnmeldKarakter" runat="server">
@@ -74,7 +92,12 @@
         <asp:LinkButton ID="lbAnmeldLeggTil" runat="server" Height="16px" Width="67px" OnClick="lbAnmeldLeggTil_Click">Legg til anmeldelse</asp:LinkButton>
         <br />
         <asp:Label ID="lblAnmeldOppdatert" runat="server"></asp:Label></asp:Panel>
-    &nbsp;<br />
+                    </ZoneTemplate>
+                </asp:WebPartZone>
+            </td>
+        </tr>
+    </table>
+    &nbsp;&nbsp;<br />
     &nbsp;<br />
     Her kan du velge utseende på web-siden:<br />
     <table>
