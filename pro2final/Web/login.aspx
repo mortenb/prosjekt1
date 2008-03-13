@@ -5,11 +5,11 @@
     <div>
         <asp:Login ID="Login1" DestinationPageUrl="~/Default.aspx" runat="server" FailureText="Innloggingen feilet. Vennligst prøv igjen."
             LoginButtonText="Logg inn" PasswordLabelText="Passord:" RememberMeText="Husk meg neste gang."
-            TitleText="Innlogging" UserNameLabelText="Brukernavn:">
+            TitleText="Innlogging" UserNameLabelText="Brukernavn:" PasswordRequiredErrorMessage="Passord må oppgis" ToolTip="Logg deg inn her." UserNameRequiredErrorMessage="Brukernavn må oppgis">
         </asp:Login>
-        <asp:HyperLink ID="Registrer" runat="server" NavigateUrl="~/NyKunde.aspx">Ny kunde</asp:HyperLink>
+        <asp:HyperLink ID="Registrer" runat="server" NavigateUrl="~/NyKunde.aspx" ToolTip="Register deg som kunde.">Ny kunde</asp:HyperLink>
         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Glemt passordet?</asp:LinkButton><br />
+        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" ToolTip="Trykk her for å gjenopprette passordet ditt.">Glemt passordet?</asp:LinkButton><br />
         <asp:PasswordRecovery ID="PasswordRecovery1" runat="server" AnswerLabelText="Svar:"
             AnswerRequiredErrorMessage="Svar må oppgis" GeneralFailureText="Noe gikk galt under forsøket på å hente passordet."
             QuestionFailureText="Svaret kunne ikke verifiseres. Vennligst prøv igjen" QuestionInstructionText="Svar på følgende spørsmål for å få tilgang til pasordet ditt "
@@ -18,7 +18,7 @@
             UserNameInstructionText="Oppgi ditt brukernavn" UserNameLabelText="Brukernavn:"
             UserNameRequiredErrorMessage="Brukernavn må oppgis" UserNameTitleText="Har du glemt passordet?"
             OnSendingMail="PasswordRecovery1_SendingMail"
-            Visible="False" MailDefinition-Subject="Ditt Passord til webshoppen">
+            Visible="False" MailDefinition-Subject="Ditt Passord til webshoppen" ToolTip="Fyll inn informasjon for å få gjenopprettet passordet ditt.">
             <QuestionTemplate>
                 <table border="0" cellpadding="1" cellspacing="0" style="border-collapse: collapse">
                     <tr>
@@ -71,6 +71,8 @@
                     </tr>
                 </table>
             </QuestionTemplate>
+            <MailDefinition Subject="Ditt Passord til webshoppen">
+            </MailDefinition>
         </asp:PasswordRecovery>
     </div>
 </asp:Content>

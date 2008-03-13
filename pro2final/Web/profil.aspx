@@ -8,7 +8,6 @@
     <asp:WebPartManager ID="WebPartManager1" runat="server">
     </asp:WebPartManager>
     <br />
-    &nbsp;&nbsp;
     <table style="width: 100%; height: 100%">
         <tr>
             <td style="width: 57px" valign="top">
