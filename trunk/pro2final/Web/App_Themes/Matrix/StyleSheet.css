@@ -42,3 +42,8 @@ a:hover
 	padding:10px;
 }
 
+.overskrift
+{
+    text-decoration:underline;
+    font-size:large;
+}
