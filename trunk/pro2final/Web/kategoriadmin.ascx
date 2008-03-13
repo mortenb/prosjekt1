@@ -3,8 +3,7 @@
 <div>
     &nbsp;
     <asp:Label ID="PkIDlabel" runat="server" Visible="False"></asp:Label><br />
-    <asp:TextBox ID="KatNavn" runat="server" CausesValidation="True" ValidationGroup="ValiderNy"
-        OnTextChanged="KatNavn_TextChanged"></asp:TextBox>
+    <asp:TextBox ID="KatNavn" runat="server" CausesValidation="True" ValidationGroup="ValiderNy"></asp:TextBox>
     <asp:Button ID="RedigerKategori" runat="server" OnClientClick="Button1_Click" EnableViewState="False"
         OnClick="Button1_Click" Text="Legg til kategori" ValidationGroup="ValiderNy" />
     <br />

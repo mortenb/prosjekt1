@@ -23,6 +23,8 @@ public partial class kategoriadmin : System.Web.UI.UserControl
             getKategorier();
     }
 
+    // Henter kategorier fra databasen og binder til kategoriliste i GUI
+    // Oppretter ev. et ListItem som sier at ingen kategorier er opprettet
     private void getKategorier()
     {
         KatListe.Items.Clear();
@@ -45,6 +47,8 @@ public partial class kategoriadmin : System.Web.UI.UserControl
         }
     }
 
+    // Henter data fra editorfeltene og sender endringer til databasen.
+    // Sjkekker om kategorinavnet er i bruk og gir isåfall melding via validatoren.
     protected void Button1_Click(object sender, EventArgs e)
     {
         Produktkategori pkat = new Produktkategori();
@@ -58,7 +62,6 @@ public partial class kategoriadmin : System.Web.UI.UserControl
             else
             {
                 pkat.ProduktkategoriID = Convert.ToInt32(PkIDlabel.Text);
-                Response.Write("ID: " + pkat.ProduktkategoriID.ToString());
                 pkBLL.endreProduktkategori(pkat);
             }
             KatNavn.Text = "";
@@ -68,15 +71,12 @@ public partial class kategoriadmin : System.Web.UI.UserControl
         else RequiredFieldValidator1.IsValid = false;
     }
 
+    // Henter teksten fra nedtrekkslista og legger i editorfeltet.
+    // Endrer samtidig teksten på submitknappen til 'Endre kategori'.
     protected void KatListe_SelectedIndexChanged(object sender, EventArgs e)
     {
         KatNavn.Text = KatListe.SelectedItem.Text;
         RedigerKategori.Text = "Endre kategori";
         PkIDlabel.Text = KatListe.SelectedValue.ToString();
-    }
-
-    protected void KatNavn_TextChanged(object sender, EventArgs e)
-    {
-        this.RedigerKategori.Enabled = true;
     }
 }
