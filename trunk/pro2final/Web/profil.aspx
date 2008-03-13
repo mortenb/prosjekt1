@@ -101,11 +101,10 @@
     &nbsp;<br />
     Her kan du velge utseende på web-siden:<br />
     <table>
-        <tr>
-            <td style="width: 161px">
-                <asp:Button ID="Button2" runat="server" OnClick="Set_Theme" Text="Nice" />
-                <asp:Button ID="Button3" runat="server" OnClick="Set_Theme" Text="Green" />
-                <asp:Button ID="Button4" runat="server" OnClick="Set_Theme" Text="Matrix" /></td>
+        <tr>        
+             <td><asp:Button ID="Button2" runat="server" OnClick="Set_Theme" Text="Nice" /></td>
+             <td><asp:Button ID="Button3" runat="server" OnClick="Set_Theme" Text="Green" /></td>
+             <td><asp:Button ID="Button4" runat="server" OnClick="Set_Theme" Text="Matrix" /></td>
         </tr>
     </table>
     <br />
