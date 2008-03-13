@@ -9,9 +9,9 @@
     <div class="hovedinnhold">
     <asp:DataList ID="DataList1" runat="server" DataSourceID="ObjectDataSource1">
         <ItemTemplate>
-            Tittel:
-            <asp:Label ID="TittelLabel" runat="server" Text='<%# Eval("Tittel") %>'></asp:Label><br />
-            Tekst:
+            
+            <asp:Label cssClass="overskrift" ID="TittelLabel" runat="server" Text='<%# Eval("Tittel") %>'></asp:Label><br />
+           
             <asp:Label ID="TekstLabel" runat="server" Text='<%# Eval("Tekst") %>'></asp:Label><br />
             <br />
         </ItemTemplate>
