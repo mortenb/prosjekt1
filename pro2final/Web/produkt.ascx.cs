@@ -15,6 +15,7 @@ using System.Collections.Generic;
 
 public partial class produkt : System.Web.UI.UserControl
 {
+    private IProduktBLL produktBLL = BLLLoader.GetProduktBLL();
 
     private int _produktID;
 
@@ -22,6 +23,10 @@ public partial class produkt : System.Web.UI.UserControl
     {
         if (ProduktID == 0)
             this.Visible = false;
+        else
+        {
+            
+        }
     }
 
     public int ProduktID
@@ -54,5 +59,29 @@ public partial class produkt : System.Web.UI.UserControl
     protected void DataList1_SelectedIndexChanged(object sender, EventArgs e)
     {
 
+    }
+    protected void tbAntall_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+    protected void tbAntall_DataBinding(object sender, EventArgs e)
+    {
+        TextBox tb = (TextBox)sender;
+        tb.Text = "1";
+    }
+    protected void DataList1_DataBinding(object sender, EventArgs e)
+    {
+
+    }
+    protected void rvProduktAntall_DataBinding(object sender, EventArgs e)
+    {
+        //RangeValidator rv = (RangeValidator)sender;
+        //rv.ID = "rv" + ProduktID;
+        //rv.MaximumValue = produktBLL.getProdukt(ProduktID).AntallPaaLager;
+    }
+    protected void RegularExpressionValidator1_DataBinding(object sender, EventArgs e)
+    {
+        RegularExpressionValidator rev = (RegularExpressionValidator)sender;
+        rev.ID = "revAntall" + ProduktID;
     }
 }
