@@ -1,6 +1,6 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="produkt.ascx.cs" Inherits="produkt" %>
 
-<asp:FormView ID="FormView1" runat="server" DataSourceID="ProduktLeverandoer" Height="269px" Width="500px" OnPageIndexChanging="FormView1_PageIndexChanging">
+<asp:FormView ID="FormView1" runat="server" DataSourceID="ProduktLeverandoer" Height="269px" Width="500px" >
     <ItemTemplate>
         <br />
         Beskrivelse:
@@ -15,12 +15,12 @@
         </asp:Label><br />
         <br />
         Antall du vil bestille:<br />        
-        <asp:TextBox ID="tbAntall" runat="server" OnDataBinding="tbAntall_DataBinding" OnTextChanged="tbAntall_TextChanged"></asp:TextBox><br />
+        <asp:TextBox ID="tbAntall" runat="server" OnDataBinding="tbAntall_DataBinding" ></asp:TextBox><br />
         &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
             ControlToValidate="tbAntall" ErrorMessage="Du må taste inn et tall" OnDataBinding="RegularExpressionValidator1_DataBinding"
             ValidationExpression="\d+" Display="Static" ></asp:RegularExpressionValidator><br />
         <br />
-        <asp:LinkButton ID="btnLeggIHandlekurv" runat="server" OnClick="btnLeggIHandlekurv_Click">Legg til i handlekurv</asp:LinkButton>
+        <asp:LinkButton ID="btnLeggIHandlekurv" runat="server" OnClick="btnLeggIHandlekurv_Click" OnDataBinding="btnLeggIHandlekurv_DataBinding">Legg til i handlekurv</asp:LinkButton>
     </ItemTemplate>
     <HeaderTemplate>
         <br />
@@ -31,7 +31,7 @@
 </asp:FormView>
 &nbsp;
 <br />
-<asp:DataList title="<-------- Tilbakemeldinger ----->" ID="DataList1" runat="server" DataSourceID="AnmeldelseLeverandoer" OnSelectedIndexChanged="DataList1_SelectedIndexChanged" Width="500px" OnDataBinding="DataList1_DataBinding">
+<asp:DataList title="<-------- Tilbakemeldinger ----->" ID="DataList1" runat="server" DataSourceID="AnmeldelseLeverandoer" Width="500px" >
     <ItemTemplate>
         <br />
         Tittel:

@@ -52,36 +52,23 @@ public partial class produkt : System.Web.UI.UserControl
 
         Profile.HANDLEKURV.leggTilVareIHandlevogn(ol);
     }
-    protected void FormView1_PageIndexChanging(object sender, FormViewPageEventArgs e)
-    {
-
-    }
-    protected void DataList1_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
-    protected void tbAntall_TextChanged(object sender, EventArgs e)
-    {
-
-    }
+    
     protected void tbAntall_DataBinding(object sender, EventArgs e)
     {
         TextBox tb = (TextBox)sender;
         tb.Text = "1";
     }
-    protected void DataList1_DataBinding(object sender, EventArgs e)
-    {
-
-    }
-    protected void rvProduktAntall_DataBinding(object sender, EventArgs e)
-    {
-        //RangeValidator rv = (RangeValidator)sender;
-        //rv.ID = "rv" + ProduktID;
-        //rv.MaximumValue = produktBLL.getProdukt(ProduktID).AntallPaaLager;
-    }
+    
+    
     protected void RegularExpressionValidator1_DataBinding(object sender, EventArgs e)
     {
         RegularExpressionValidator rev = (RegularExpressionValidator)sender;
         rev.ID = "revAntall" + ProduktID;
+    }
+    protected void btnLeggIHandlekurv_DataBinding(object sender, EventArgs e)
+    {
+        LinkButton lb = (LinkButton)sender;
+
+       lb.ID = "lbLeggIHandlekurv" + ProduktID;
     }
 }
