@@ -14,14 +14,13 @@ using myApp.IBLL;
 
 
 /// <summary>
-/// Summary description for Handlevogn
+/// Handlevognen som brukes i Profile.
+/// Inneholder en handleliste med Ordrelinjer.
 /// </summary>
 public class Handlevogn
 {
         private List<Ordrelinje> _handleliste;
         private IProduktBLL prodBLL = BLLLoader.GetProduktBLL();
-
-        //private List<minOrdre> lstMo;
 
         public Handlevogn() { _handleliste = new List<Ordrelinje>(); }
 
@@ -112,7 +111,7 @@ public class Handlevogn
     public int antallVarer()
     {
         
-        return _handleliste.Count; //Må dele på 2 i tillegg, fordi ordrelinje har 2 elementer?? :S
+        return _handleliste.Count; 
     }
 
     public List<minOrdre> lagOrdreliste()
@@ -135,35 +134,13 @@ public class Handlevogn
         return lstMo;
     }
 
-    /*public List<minOrdre> visProdukter(List<Ordrelinje> lol)
-    {
-        List<Produkt> produkter = new List<Produkt>();
-        foreach (Ordrelinje ol in _handleliste)
-        {
-           Produkt p = prodBLL.getProdukt(ol.ProduktID);
-           if (p != null)
-            {
-                
-               produkter.Add(p);
-           }
-
-        }
-        List<minOrdre> mineOrdre = new List<minOrdre>();
-        foreach (Produkt p in produkter)
-        {
-            minOrdre temp = new minOrdre();
-            temp.Varenavn = p.Tittel;
-            //temp.Antall = lol.
-        }
-        
-    }
-    */
+   
     
      
     
 } //end handlevogn
 
-//Denne gjør at vi kan sette handlekurv deklarativt i web-siden
+//Denne gjør at vi kan sette handlekurv deklarativt i design-mode
 //Stjålet fra http://www.pluralsight.com/blogs/fritz/archive/2005/10/24/15874.aspx
 
 public static class ProfileBinder
@@ -189,9 +166,6 @@ public class minOrdre
 {
     //Denne klassen brukes til å koble informasjon fra flere objekter
     //For at GUI skal få pene visninger 
-    //using myApp.Model;
-    // using myApp.IBLL;
-
 
     private string varenavn;
     private int antall;
@@ -231,30 +205,6 @@ public class minOrdre
         get { return pris; }
         set { pris = value; }
     }
-
-    /*public List<minOrdre> getOrdre( List<Ordrelinje> listOL )
-    {
-        List<minOrdre> mineOrdre = new List<minOrdre>();
-
-        foreach (Ordrelinje ol in listOL)
-        {
-            minOrdre ordre = new minOrdre();
-            
-
-            //Produkt temp = prodBLL.getProdukt(ol.ProduktID);
-            if (temp != null)
-            {
-                ordre.antall = ol.Antall;
-                ordre.varenavn = temp.Tittel;
-                ordre.sum = temp.Pris * ordre.antall;
-                //ordre.prodBLL = null;
-            }
-            mineOrdre.Add(ordre);
-        }
-        return mineOrdre;
-
-
-    }*/
 
 
 }
