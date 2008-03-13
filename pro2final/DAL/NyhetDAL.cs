@@ -17,7 +17,7 @@ namespace myApp.DAL
         {
             string query = @"
                                 SELECT *
-                                FROM Nyhet
+                                FROM Nyhet Order by id DESC
                             ";
 
             List<Nyhet> nyheter = new List<Nyhet>();
