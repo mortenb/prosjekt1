@@ -26,6 +26,8 @@ public partial class produktadmin : System.Web.UI.UserControl
         }
     }
 
+    // Henter kategorier fra databasen og binder til kategoriliste i GUI
+    // Oppretter ev. et ListItem som sier at ingen kategorier er opprettet
     private void getKategorier()
     {
         try
@@ -47,6 +49,8 @@ public partial class produktadmin : System.Web.UI.UserControl
         }
     }
 
+    // Henter produkter fra databasen og binder til kategoriliste i GUI
+    // Oppretter ev. et ListItem som sier at ingen produkterer er opprettet
     private void getProdukter(int pkID)
     {
         Produktliste.Items.Clear();
@@ -71,6 +75,8 @@ public partial class produktadmin : System.Web.UI.UserControl
         }
     }
 
+    // Fyller inn produktlista med brodukter tilhørende valgt kategori.
+    // Gjør produktliste og editorfelt synlige.
     protected void PKListe_SelectedIndexChanged(object sender, EventArgs e)
     {
         int pkID = Convert.ToInt32(PKListe.SelectedValue.ToString());
@@ -81,6 +87,7 @@ public partial class produktadmin : System.Web.UI.UserControl
         ProdValg.Visible = true;
     }
 
+    // Fyller inn produktdata fra produktdatabasen i editorfeltene
     protected void Produktliste_SelectedIndexChanged(object sender, EventArgs e)
     {
         Produkt p = new Produkt();
@@ -95,6 +102,7 @@ public partial class produktadmin : System.Web.UI.UserControl
         }
     }
 
+    // Nullstiller skjemaet.
     private void reset()
     {
         this.Tittel.Text = "";
@@ -108,6 +116,9 @@ public partial class produktadmin : System.Web.UI.UserControl
         Produktliste.Items.Add(new ListItem("Velg kategori", "0", false));
     }
 
+    /* Henter endringer fra GUI og sender endringene til databasen.
+     * Dersom felter som krever int ikke er utfylt korrekt,
+     * blir feltets validatro satt til false og ingen endringer sendt. */
     protected void Send_Click(object sender, EventArgs e)
     {
         Produkt p = new Produkt();
@@ -172,6 +183,7 @@ public partial class produktadmin : System.Web.UI.UserControl
             else
                 pBLL.nyttProdukt(p);
 
+            // Nullstiller valg:
             reset();
             PKListe.SelectedIndex = -1;
         }

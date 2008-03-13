@@ -40,11 +40,13 @@ public partial class adminMain : System.Web.UI.Page
         }
     }
 
+    // Bytter view
     protected void Oppgavevelger_SelectedIndexChanged(object sender, EventArgs e)
     {
         Oppgaveview.ActiveViewIndex = Convert.ToInt32(Oppgavevelger.SelectedValue);
     }
 
+    // Oppretter nyhet og resetter tekstfeltene.
     protected void Send_Click(object sender, EventArgs e)
     {
         Nyhet n = new Nyhet();

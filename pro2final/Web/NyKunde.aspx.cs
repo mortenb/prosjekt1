@@ -16,24 +16,14 @@ public partial class NyKunde : System.Web.UI.Page
     {
     }
 
+    // Oppretter selve brukeren og legger data i databasen
     protected void CreateUserWizard1_CreatedUser(object sender, EventArgs e)
     {
         string kunde = CreateUserWizard1.UserName.ToString();
         Roles.AddUserToRole(kunde, "kunde");
-        MailAddress from = new MailAddress("webpro2gr1@gmail.com");
-        MailAddress recipient = new MailAddress("webpro2gr1@gmail.com");
-        MailMessage m = new MailMessage(from, recipient);
-        m.Body = "Din konto er registrert!\n\nBrukernavn:"+
-            kunde +"\nPassord: " +CreateUserWizard1.Password +
-            "\n\nRegistrert e-postadresse: " +CreateUserWizard1.Email +
-            "\n\nMed hilsen Webshopteamet.";
-        m.Subject = "Registreringsbekreftelse";
- 
-        SmtpClient smc = new SmtpClient();
-        smc.EnableSsl= true;
-        smc.Send(m);
     }
 
+    // Henter kundedata fra skjema og legger i brukerens profil
     protected void CreateUserWizard1_OpprettProfil(object sender, EventArgs e)
     {
         if (Profile.IsAnonymous == false)
@@ -46,6 +36,28 @@ public partial class NyKunde : System.Web.UI.Page
             Profile.telefon = this.TextBoxTlf.Text;
             Profile.Theme = Page.Theme;
             Profile.Save();
+            SendRegMail();
         }
+    }
+
+    // Sender mail med registreringsbekreftgelse.
+    protected void SendRegMail()
+    {
+        SmtpClient smc = new SmtpClient();
+        MailAddress from = new MailAddress("webpro2gr1@gmail.com");
+        //MailAddress recipient = new MailAddress(CreateUserWizard1.Email.ToString());
+        MailAddress recipient = new MailAddress("webpro2gr1@gmail.com");
+        MailMessage m = new MailMessage(from, recipient);
+        m.Body = "Din konto er registrert!\n\nBrukernavn:" +
+            CreateUserWizard1.UserName.ToString() + 
+            "\n\nRegistrert e-postadresse: " + CreateUserWizard1.Email +
+            "\n\nRegistrerte personopplysninger:\nNavn: " + Profile.fornavn +
+            " " + Profile.etternavn + "\nAdresse: " + Profile.gateadresse +
+            "\nPostnr./-sted: " + Profile.postnummer + " " + Profile.poststed +
+            "\nTelefonnr: " + Profile.telefon + "\n\nMed hilsen Webshopteamet.";
+        m.Subject = "Registreringsbekreftelse";
+
+        smc.EnableSsl = true;
+        smc.Send(m);
     }
 }
