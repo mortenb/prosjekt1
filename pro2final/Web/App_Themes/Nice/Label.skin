@@ -14,6 +14,6 @@ Default skin template. The following skins are provided as examples only.
 <asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
 --%>
 <asp:Label Runat="server"
-    Forecolor="Blue" Font-size="Large"
+    Forecolor="Navy" Font-size="Medium"
     Font-Bold="True" Font-Italic="True" />
     

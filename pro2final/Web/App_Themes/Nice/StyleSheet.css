@@ -1,8 +1,8 @@
 ﻿body 
 {
     background-color:Silver;
-    color:White;
-    font-family:Verdana;
+    color:#333333;
+    font-family:Verdana,arial;
     font-size:small;
 }
 a:link 
@@ -27,6 +27,7 @@ a:hover
 	position:absolute;
 	top:150px;
 	left:200px;
+	width:700px;
 }
 .x-produktadmin
 {
