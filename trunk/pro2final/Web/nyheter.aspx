@@ -6,6 +6,7 @@
 
 <uc1:kat ID="kategori" runat="server" />
     &nbsp;
+    <div class="hovedinnhold">
     <asp:DataList ID="DataList1" runat="server" DataSourceID="ObjectDataSource1">
         <ItemTemplate>
             Tittel:
@@ -17,5 +18,5 @@
     </asp:DataList>
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="getNyheter"
         TypeName="myApp.BLL.NyhetBLL"></asp:ObjectDataSource>
-
+    </div>
 </asp:Content>
