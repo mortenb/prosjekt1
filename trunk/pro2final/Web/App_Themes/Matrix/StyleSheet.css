@@ -20,10 +20,15 @@ a:hover
 	color:Red;
 	text-decoration:underline;
 }
+.x-grid-kat
+{
+	position:absolute;
+	top:120px;
+}
 .hovedinnhold
 {
 	position:absolute;
-	top:150px;
+	top:120px;
 	left:200px;
 	width:700px;
 }

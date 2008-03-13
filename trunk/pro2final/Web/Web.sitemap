@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="~/Default.aspx" title="Startsiden"  description="Startside">
-    <siteMapNode url="~/handlevogn.aspx" title="Handlevogn"  description="Handlevogn" >
-      <siteMapNode url="~/kasse.aspx" title="Kasse" description="Kassen" />
+      <siteMapNode url="~/sitemap.aspx" title="Sidekart"  description="Oversikt over webshoppen" />
+      <siteMapNode url="~/handlevogn.aspx" title="Handlevogn"  description="Handlevogn" >
+        <siteMapNode url="~/kasse.aspx" title="Kasse" description="Kassen" />
+      </siteMapNode>
+      <siteMapNode url="~/profil.aspx" title="Profilen din!" description="profilsiden" />
+      <siteMapNode url="~/NyKunde.aspx" title="Ny kunde"  description="Lar deg registrere deg som kunde" />
+      <siteMapNode url="~/nyheter.aspx" title="Nyheter" description="Siste nytt" />
+      <siteMapNode url="~/login.aspx" title="Logg inn" description="Innlogging" />
     </siteMapNode>
-    <siteMapNode url="~/profil.aspx" title="Profilen din!" description="profilsiden" />
-    <siteMapNode url="~/NyKunde.aspx" title="Ny kunde"  description="Lar deg registrere deg som kunde" />
-    <siteMapNode url="~/nyheter.aspx" title="Nyheter" description="Siste nytt" />
-    <siteMapNode url="~/login.aspx" title="Logg inn" description="Innlogging" />
-  </siteMapNode>
 </siteMap>
