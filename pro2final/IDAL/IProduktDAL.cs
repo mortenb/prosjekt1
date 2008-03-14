@@ -14,7 +14,7 @@ namespace myApp.IDAL
 
         List<Produkt> getKjoepteProdukter(string brukernavn);
 
-        Produkt getNyesteProduktAvKategori(string brukernavn);
+        Produkt getNyesteProduktAvKategori(int pkID);
 
         void nyttProdukt(Produkt p);
 

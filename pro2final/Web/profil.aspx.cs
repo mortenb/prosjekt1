@@ -19,6 +19,23 @@ public partial class profil : System.Web.UI.Page
 
     IProduktBLL prodBLL = (IProduktBLL)BLLLoader.GetProduktBLL();
 
+    IProduktkategoriBLL pkBLL = (IProduktkategoriBLL)BLLLoader.GetProduktkategoriBLL();
+
+    private int _nyesteProduktID;
+
+    //int for å holde på produktkategoriid'en som brukeren har kjøpt flest kategorier i.
+    private int pkFlest;
+
+    //liste over alle kjøpte produkter til brukeren
+    private List<Produkt> lstKjoepteProdukter;
+    private List<Produktkategori> lstProduktKategorier;
+
+    //hashtabell over produktkategorier og hvor mange produkter i hver av dem
+    private Hashtable hshPKAntall;
+
+
+
+
     protected void Page_PreInit(object sender, EventArgs e)
     {
         if (Profile.IsAnonymous)
@@ -28,6 +45,7 @@ public partial class profil : System.Web.UI.Page
         if (!Profile.IsAnonymous)
         {
             Page.Theme = Profile.Theme;
+
         }
     }
 
@@ -37,6 +55,8 @@ public partial class profil : System.Web.UI.Page
         Profile.HANDLEKURV = new Handlevogn();
         List<Ordrelinje> ordre = Profile.HANDLEKURV.Handleliste;
 
+        kalkulerNyesteProdukt();
+
         if (Request.QueryString.Count > 0)
         {
             pnlAnmeld.Visible = true;
@@ -44,6 +64,60 @@ public partial class profil : System.Web.UI.Page
             lblAnmeldProduktTittel.Text = prodBLL.getProdukt(Convert.ToInt32(prodID)).Tittel;
             lblAnmeldProduktID.Text = prodID;
         }
+    }
+
+
+    private void kalkulerNyesteProdukt()
+    {
+        //Beregner nyeste produkt ut i fra tidligere kjøpte produkter
+        //Denne metoden kan kanskje flyttes over til BLL?
+        //Denne metoden tar ikke høyde for at man har kjøpt like mange produkter i to kategorier. 
+        //Kjører bare ut den første han finner
+        //Få alle kjøpte produkter
+        lstKjoepteProdukter = prodBLL.getKjoepteProdukter(Profile.UserName);
+        lstProduktKategorier = pkBLL.getProduktkategorier();
+        //Opprett hashtabell
+        hshPKAntall = new Hashtable();
+
+        //integer som holder på hvor mange ganger en produktkategori har truffet
+        int treff = 0;
+        int temp = 0;
+        int result = 0;
+
+        Produktkategori produktK = new Produktkategori();
+
+        foreach (Produktkategori listePK in lstProduktKategorier)
+        {
+            hshPKAntall.Add(listePK, 0);
+
+            foreach (Produkt listeProdukt in lstKjoepteProdukter)
+            {
+
+                int pk = listeProdukt.ProduktkategoriID;
+
+                if (listePK.ProduktkategoriID == pk)
+                {
+                    hshPKAntall[listePK] = ++treff;
+                }
+
+            }
+            result = Convert.ToInt32(hshPKAntall[listePK]);
+            if (result > temp)
+            {
+                temp = result;
+                produktK = listePK;
+            }
+            treff = 0;
+        }
+
+        int pkID = produktK.ProduktkategoriID;
+
+
+
+        Produkt prod = prodBLL.getNyesteProduktAvKategori(pkID);
+
+        this.lblNyesteProduktID.Text = prod.ProduktID.ToString();
+
     }
 
     protected void Set_Theme(object sender, EventArgs e)
@@ -63,9 +137,6 @@ public partial class profil : System.Web.UI.Page
         }
         Response.Redirect("~/profil.aspx");
     }
-
-
-
 
     protected void lbAnmeldLeggTil_Click(object sender, EventArgs e)
     {
