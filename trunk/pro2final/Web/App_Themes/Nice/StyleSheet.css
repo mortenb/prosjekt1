@@ -23,13 +23,13 @@ a:hover
 }
 .x-grid-kat
 {
-	position:relative;
-	top:20px;
+	position:absolute;
+	top:150px;
 }
 .hovedinnhold
 {
 	position:absolute;
-	top:120px;
+	top:150px;
 	left:200px;
 	width:700px;
 }

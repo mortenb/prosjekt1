@@ -34,13 +34,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Anmeldelse.cs" />
-    <Compile Include="Handlevogn.cs" />
     <Compile Include="Nyhet.cs" />
     <Compile Include="Ordre.cs" />
     <Compile Include="OrdreLinje.cs" />
     <Compile Include="Produkt.cs" />
     <Compile Include="ProduktKategori.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="produkt.ascx.cs" Inherits="produkt" %>
+        <asp:Label ID="LabelLagtIHandlevogn" runat="server"></asp:Label><br />
 
 <asp:FormView ID="FormView1" runat="server" DataSourceID="ProduktLeverandoer" Height="269px" Width="500px" >
     <ItemTemplate>
@@ -20,7 +21,9 @@
             ControlToValidate="tbAntall" ErrorMessage="Du må taste inn et tall" OnDataBinding="RegularExpressionValidator1_DataBinding"
             ValidationExpression="\d+" Display="Static" ></asp:RegularExpressionValidator><br />
         <br />
-        <asp:LinkButton ID="btnLeggIHandlekurv" runat="server" OnClick="btnLeggIHandlekurv_Click" OnDataBinding="btnLeggIHandlekurv_DataBinding">Legg til i handlekurv</asp:LinkButton>
+        &nbsp;<br />
+        <asp:Button ID="ButtonLeggTil" runat="server" OnCommand="btnLeggIHandlekurv_Click"
+            OnDataBinding="btn_leggTil_DataBinding" Text="Legg til i handlekurv" /><br />
     </ItemTemplate>
     <HeaderTemplate>
         <br />

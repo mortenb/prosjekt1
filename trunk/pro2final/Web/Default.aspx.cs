@@ -46,18 +46,13 @@ public partial class _Default : System.Web.UI.Page
         }
 
         
-                
-
-        //Trenger å sjekke om det er noe i querystringen
-
-        //
+               
     }
 
 
     protected void Page_VisVarerFraKategori()
     { //Denne metoden skal vise varer i tilhørende kategori
-        //Skal dette opprettes som en dynamisk tabell slik som før?
-        //Nei, vi prøver oss med en gridview og styler litt
+        
 
         queryStrings = Request.QueryString.GetValues(0);
         try
@@ -66,7 +61,7 @@ public partial class _Default : System.Web.UI.Page
             pk = produktBLL.getProdukter(pkID);
 
             lblProduktID.Text = pkID.ToString();
-            List<Anmeldelse> anmListe;
+            //List<Anmeldelse> anmListe;
 
             foreach (Produkt listeProdukt in pk)
             {
@@ -77,8 +72,6 @@ public partial class _Default : System.Web.UI.Page
                 PlaceHolder1.Controls.Add(uc1);
             }
 
-            //GridView1.DataSource = pk;
-            //GridView1.DataBind();
         }
         catch (Exception ex)
         {
@@ -92,8 +85,5 @@ public partial class _Default : System.Web.UI.Page
 
     }
 
-    protected void kategori_Load(object sender, EventArgs e)
-    {
-        
-    }
+    
 }

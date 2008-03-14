@@ -21,6 +21,14 @@ public partial class kasse : System.Web.UI.Page
         
     }
 
+    protected void Page_PreInit(object sender, EventArgs e)
+    {
+        if (!Profile.IsAnonymous)
+        {
+            Page.Theme = Profile.Theme;
+        }
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         //Trace.Write(Profile.UserName);
@@ -64,7 +72,7 @@ public partial class kasse : System.Web.UI.Page
                 catch (Exception produktException)
                 {
                     this.LabelFeil.Text = "Kunne ikke oppdatere basen";
-                    Response.Write("OOPS");
+                    Response.Write(produktException.Message);
                 }
                 
                 this.LabelFeil.Text = "Kjøpet er gjennomført. Du vil straks motta en bekreftelse på mail ";
@@ -90,6 +98,7 @@ public partial class kasse : System.Web.UI.Page
 
     private void sendBekreftelseMail(int ordreID)
     {
+        //Vi sender kun mail til oss selv, for å ikke lage så mye støy...
         MailAddress from = new MailAddress("webpro2gr1@gmail.com");
         MailAddress recipient = new MailAddress("webpro2gr1@gmail.com");
         MailMessage m = new MailMessage(from, recipient);
