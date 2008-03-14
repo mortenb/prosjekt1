@@ -94,33 +94,37 @@ namespace myApp.DAL
             return produkter;
         }
 
-        public Produkt getNyesteProduktAvKategori(string brukernavn)
+        public Produkt getNyesteProduktAvKategori(int pkID)
         {
             //Denne metoden henter det nyeste produktet i en produktkategori
             //Spørringen er ødelagt, så dette må fikses på senere
             //brukernavn bør kanskje egentlig være produktkategori
+            //Antar at spørringen automatisk er sortert etter ID
             string query = @"
-                                SELECT Produkt.FKproduktKategori, count(Produkt.*) as produktAntall 
-                                FROM Produkt, Ordre, OrdreLinje 
-                                WHERE (SELECT OrdreLinje.produktID FROM OrdreLinje WHERE FKOrdreID IN (SELECT id FROM Ordre WHERE brukernavn = @brukernavn))
-                                GROUP BY FKproduktKategori 
-                                ORDER BY produktAntall 
-                                DESC LIMIT 1
+                                SELECT TOP (1) *
+                                FROM Produkt
+                                WHERE FKproduktKategori = @pkID
+                                ORDER BY id DESC
                             ";
 
             Produkt prod = new Produkt();
+
             using (SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString))
             {
                 myConnection.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myConnection))
                 {
                     // Note we can not use "using" on the reader because of the call to GetUserFromSqlReader
-                    myCommand.Parameters.AddWithValue("@brukernavn", brukernavn);
+                    myCommand.Parameters.AddWithValue("@pkID", pkID);
+
                     SqlDataReader reader = myCommand.ExecuteReader();
 
                     try
                     {
-                            prod = GetProduktFraSqlReader(ref reader);                    }
+                        while (reader.Read())
+                            prod = GetProduktFraSqlReader(ref reader);
+
+                    }
                     /*
                      * No catch block, let exceptions be handles in the higher layers.
                      */
@@ -133,7 +137,7 @@ namespace myApp.DAL
                     }
                 }
             }
-            return null;
+            return prod;
         }
 
         public Produkt getProdukt(int produktID)

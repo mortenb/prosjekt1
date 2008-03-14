@@ -19,5 +19,7 @@ namespace myApp.IBLL
         Produkt getProdukt(int produktID);
 
         List<Produkt> getKjoepteProdukter(string brukernavn);
+
+        Produkt getNyesteProduktAvKategori(int pkID);
     }
 }

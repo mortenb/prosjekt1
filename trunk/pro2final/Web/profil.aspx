@@ -26,12 +26,33 @@
                 <asp:WebPartZone ID="wpzNyesteProdukter" runat="server" HeaderText="Nyeste produkter"
                     Width="241px">
                     <ZoneTemplate>
-                        <uc2:nyesteprodukt title="Nyeste produkt" ID="Nyesteprodukt1" runat="server" />
+                        <asp:FormView title="Nyeste produkt" ID="FormView1" runat="server" DataSourceID="NyesteProduktLeverandoer">
+                            <ItemTemplate>
+                                AntallPaaLager:
+                                <asp:Label ID="AntallPaaLagerLabel" runat="server" Text='<%# Bind("AntallPaaLager") %>'>
+                                </asp:Label><br />
+                                ProduktkategoriID:
+                                <asp:Label ID="ProduktkategoriIDLabel" runat="server" Text='<%# Bind("ProduktkategoriID") %>'>
+                                </asp:Label><br />
+                                Tittel:
+                                <asp:Label ID="TittelLabel" runat="server" Text='<%# Bind("Tittel") %>'></asp:Label><br />
+                                Beskrivelse:
+                                <asp:Label ID="BeskrivelseLabel" runat="server" Text='<%# Bind("Beskrivelse") %>'>
+                                </asp:Label><br />
+                                ProduktID:
+                                <asp:Label ID="ProduktIDLabel" runat="server" Text='<%# Bind("ProduktID") %>'></asp:Label><br />
+                                Pris:
+                                <asp:Label ID="PrisLabel" runat="server" Text='<%# Bind("Pris") %>'></asp:Label><br />
+                                BildeURL:
+                                <asp:Label ID="BildeURLLabel" runat="server" Text='<%# Bind("BildeURL") %>'></asp:Label><br />
+                            </ItemTemplate>                            
+                        </asp:FormView>
                     </ZoneTemplate>
                     <CloseVerb Visible="False" />
                     <MinimizeVerb Text="Minimer" />
                     <RestoreVerb Text="Gjenopprett" />
                 </asp:WebPartZone>
+                <asp:Label ID="lblNyesteProduktID" runat="server" Visible="False"></asp:Label>
             </td>
             <td style="width: 100px" valign="top">
                 <asp:WebPartZone ID="wpzKjoepteProdukter" runat="server">      
@@ -116,6 +137,12 @@
                 Type="String" />
         </SelectParameters>
     </asp:ObjectDataSource>
-    
+    <asp:ObjectDataSource ID="NyesteProduktLeverandoer" runat="server" SelectMethod="getProdukt"
+        TypeName="myApp.BLL.ProduktBLL">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="lblNyesteProduktID" DefaultValue="0" Name="produktID"
+                PropertyName="Text" Type="Int32" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
 </asp:Content>
 

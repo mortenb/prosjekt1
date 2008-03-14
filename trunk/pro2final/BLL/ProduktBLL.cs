@@ -51,28 +51,30 @@ namespace myApp.BLL
             //Hente produktkategoriID ved hjelp av brukernavn
             //Dette må hentes fra ordre
 
-            List<Produkt> lstKjoepteProdukter = produktDAL.getKjoepteProdukter(brukernavn);
+            //List<Produkt> lstKjoepteProdukter = produktDAL.getKjoepteProdukter(brukernavn);
 
-            foreach (Produkt listeProdukt in lstKjoepteProdukter)
-            {
+            //foreach (Produkt listeProdukt in lstKjoepteProdukter)
+            //{
                 
-            }
-            Produkt prod;
+            //}
+            //Produkt prod;
 
-            try
-            {
-                prod = produktDAL.getNyesteProduktAvKategori(brukernavn);
-            }
-            catch (Exception ex)
-            {
+            //try
+            //{
+            //    prod = produktDAL.getNyesteProduktAvKategori(brukernavn);
+            //}
+            //catch (Exception ex)
+            //{
                 
-                return null;
-            }
+            //    return null;
+            //}
 
 
-            return prod;
+            //return prod;
 
             //Hente produkt fra produktDAL
+
+            return null;
         }
 
         public List<Produkt> getKjoepteProdukter(string brukernavn)
@@ -80,6 +82,11 @@ namespace myApp.BLL
             List<Produkt> lstKjoepteProdukter = produktDAL.getKjoepteProdukter(brukernavn);
 
             return lstKjoepteProdukter;
+        }
+
+        public Produkt getNyesteProduktAvKategori(int pkID)
+        {
+            return produktDAL.getNyesteProduktAvKategori(pkID);
         }
 
         #endregion
