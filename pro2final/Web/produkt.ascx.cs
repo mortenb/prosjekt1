@@ -49,8 +49,18 @@ public partial class produkt : System.Web.UI.UserControl
         Ordrelinje ol = new Ordrelinje();
         ol.Antall = antallTilBestilling;
         ol.ProduktID = this.ProduktID;
+        Label l = (Label)this.LabelLagtIHandlevogn;
+        try
+        {
+            Profile.HANDLEKURV.leggTilVareIHandlevogn(ol);
+            
+            l.Text = "Lagt til i handlevognen";
+        }
+        catch(Exception ex)
+        {
+            l.Text = "En feil har oppstått. Vennligst prøv igjen senere";
+        }
 
-        Profile.HANDLEKURV.leggTilVareIHandlevogn(ol);
     }
     
     protected void tbAntall_DataBinding(object sender, EventArgs e)
@@ -65,10 +75,16 @@ public partial class produkt : System.Web.UI.UserControl
         RegularExpressionValidator rev = (RegularExpressionValidator)sender;
         rev.ID = "revAntall" + ProduktID;
     }
-    protected void btnLeggIHandlekurv_DataBinding(object sender, EventArgs e)
-    {
-        LinkButton lb = (LinkButton)sender;
+    
 
-       lb.ID = "lbLeggIHandlekurv" + ProduktID;
+    protected void btn_leggTil_DataBinding(object sender, EventArgs e)
+    {
+        Button b = (Button)sender;
+        b.ID = "btn_leggTil" + ProduktID;
     }
+
+   
+
+
+    
 }
