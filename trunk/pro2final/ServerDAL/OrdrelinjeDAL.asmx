@@ -1,1 +1,1 @@
-<%@ WebService Language="C#" CodeBehind="OrdrelinjeDAL.asmx.cs" Class="ServerDAL.OrdrelinjeDAL" %>
+<%@ WebService Language="C#" CodeBehind="OrdrelinjeDAL.cs" Class="ServerDAL.OrdrelinjeDAL" %>
