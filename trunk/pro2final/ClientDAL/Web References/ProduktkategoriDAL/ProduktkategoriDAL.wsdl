@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="nyProduktkategori">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pk" type="tns:Produktkategori" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Produktkategori">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ProduktkategoriID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Navn" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="nyProduktkategoriResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="endreProduktkategori">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pk" type="tns:Produktkategori" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="endreProduktkategoriResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getProduktkategorier">
+        <s:complexType />
+      </s:element>
+      <s:element name="getProduktkategorierResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getProduktkategorierResult" type="tns:ArrayOfProduktkategori" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProduktkategori">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Produktkategori" nillable="true" type="tns:Produktkategori" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="nyProduktkategoriSoapIn">
+    <wsdl:part name="parameters" element="tns:nyProduktkategori" />
+  </wsdl:message>
+  <wsdl:message name="nyProduktkategoriSoapOut">
+    <wsdl:part name="parameters" element="tns:nyProduktkategoriResponse" />
+  </wsdl:message>
+  <wsdl:message name="endreProduktkategoriSoapIn">
+    <wsdl:part name="parameters" element="tns:endreProduktkategori" />
+  </wsdl:message>
+  <wsdl:message name="endreProduktkategoriSoapOut">
+    <wsdl:part name="parameters" element="tns:endreProduktkategoriResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProduktkategorierSoapIn">
+    <wsdl:part name="parameters" element="tns:getProduktkategorier" />
+  </wsdl:message>
+  <wsdl:message name="getProduktkategorierSoapOut">
+    <wsdl:part name="parameters" element="tns:getProduktkategorierResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ProduktkategoriDALSoap">
+    <wsdl:operation name="nyProduktkategori">
+      <wsdl:input message="tns:nyProduktkategoriSoapIn" />
+      <wsdl:output message="tns:nyProduktkategoriSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="endreProduktkategori">
+      <wsdl:input message="tns:endreProduktkategoriSoapIn" />
+      <wsdl:output message="tns:endreProduktkategoriSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getProduktkategorier">
+      <wsdl:input message="tns:getProduktkategorierSoapIn" />
+      <wsdl:output message="tns:getProduktkategorierSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProduktkategoriDALSoap" type="tns:ProduktkategoriDALSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="nyProduktkategori">
+      <soap:operation soapAction="http://tempuri.org/nyProduktkategori" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="endreProduktkategori">
+      <soap:operation soapAction="http://tempuri.org/endreProduktkategori" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProduktkategorier">
+      <soap:operation soapAction="http://tempuri.org/getProduktkategorier" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ProduktkategoriDALSoap12" type="tns:ProduktkategoriDALSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="nyProduktkategori">
+      <soap12:operation soapAction="http://tempuri.org/nyProduktkategori" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="endreProduktkategori">
+      <soap12:operation soapAction="http://tempuri.org/endreProduktkategori" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProduktkategorier">
+      <soap12:operation soapAction="http://tempuri.org/getProduktkategorier" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProduktkategoriDAL">
+    <wsdl:port name="ProduktkategoriDALSoap" binding="tns:ProduktkategoriDALSoap">
+      <soap:address location="http://localhost:3302/ServerDAL/ProduktkategoriDAL.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ProduktkategoriDALSoap12" binding="tns:ProduktkategoriDALSoap12">
+      <soap12:address location="http://localhost:3302/ServerDAL/ProduktkategoriDAL.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getAnmeldelser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="produktID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAnmeldelserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAnmeldelserResult" type="tns:ArrayOfAnmeldelse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnmeldelse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Anmeldelse" nillable="true" type="tns:Anmeldelse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Anmeldelse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Nyhet">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Karakter" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ProduktID" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Nyhet">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="NyhetsID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tittel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tekst" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getAnmeldelse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="anmID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAnmeldelseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAnmeldelseResult" type="tns:Anmeldelse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="nyAnmeldelse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="anm" type="tns:Anmeldelse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="nyAnmeldelseResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getAnmeldelserSoapIn">
+    <wsdl:part name="parameters" element="tns:getAnmeldelser" />
+  </wsdl:message>
+  <wsdl:message name="getAnmeldelserSoapOut">
+    <wsdl:part name="parameters" element="tns:getAnmeldelserResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAnmeldelseSoapIn">
+    <wsdl:part name="parameters" element="tns:getAnmeldelse" />
+  </wsdl:message>
+  <wsdl:message name="getAnmeldelseSoapOut">
+    <wsdl:part name="parameters" element="tns:getAnmeldelseResponse" />
+  </wsdl:message>
+  <wsdl:message name="nyAnmeldelseSoapIn">
+    <wsdl:part name="parameters" element="tns:nyAnmeldelse" />
+  </wsdl:message>
+  <wsdl:message name="nyAnmeldelseSoapOut">
+    <wsdl:part name="parameters" element="tns:nyAnmeldelseResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AnmeldelseDALSoap">
+    <wsdl:operation name="getAnmeldelser">
+      <wsdl:input message="tns:getAnmeldelserSoapIn" />
+      <wsdl:output message="tns:getAnmeldelserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAnmeldelse">
+      <wsdl:input message="tns:getAnmeldelseSoapIn" />
+      <wsdl:output message="tns:getAnmeldelseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="nyAnmeldelse">
+      <wsdl:input message="tns:nyAnmeldelseSoapIn" />
+      <wsdl:output message="tns:nyAnmeldelseSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AnmeldelseDALSoap" type="tns:AnmeldelseDALSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAnmeldelser">
+      <soap:operation soapAction="http://tempuri.org/getAnmeldelser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnmeldelse">
+      <soap:operation soapAction="http://tempuri.org/getAnmeldelse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nyAnmeldelse">
+      <soap:operation soapAction="http://tempuri.org/nyAnmeldelse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AnmeldelseDALSoap12" type="tns:AnmeldelseDALSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAnmeldelser">
+      <soap12:operation soapAction="http://tempuri.org/getAnmeldelser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnmeldelse">
+      <soap12:operation soapAction="http://tempuri.org/getAnmeldelse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nyAnmeldelse">
+      <soap12:operation soapAction="http://tempuri.org/nyAnmeldelse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AnmeldelseDAL">
+    <wsdl:port name="AnmeldelseDALSoap" binding="tns:AnmeldelseDALSoap">
+      <soap:address location="http://localhost:3302/ServerDAL/AnmeldelseDAL.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AnmeldelseDALSoap12" binding="tns:AnmeldelseDALSoap12">
+      <soap12:address location="http://localhost:3302/ServerDAL/AnmeldelseDAL.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
