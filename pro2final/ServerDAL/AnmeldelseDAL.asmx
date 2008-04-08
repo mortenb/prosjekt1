@@ -1,1 +1,1 @@
-<%@ WebService Language="C#" CodeBehind="AnmeldelseDAL.asmx.cs" Class="ServerDAL.AnmeldelseDAL" %>
+<%@ WebService Language="C#" CodeBehind="AnmeldelseDAL.cs" Class="ServerDAL.AnmeldelseDAL" %>
