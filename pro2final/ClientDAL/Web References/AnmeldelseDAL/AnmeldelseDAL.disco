@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://localhost:3302/ServerDAL/AnmeldelseDAL.asmx?wsdl" docRef="http://localhost:3302/ServerDAL/AnmeldelseDAL.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://localhost:3302/ServerDAL/AnmeldelseDAL.asmx" xmlns:q1="http://tempuri.org/" binding="q1:AnmeldelseDALSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://localhost:3302/ServerDAL/AnmeldelseDAL.asmx" xmlns:q2="http://tempuri.org/" binding="q2:AnmeldelseDALSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>
