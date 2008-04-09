@@ -37,6 +37,10 @@
   <ItemGroup>
     <Compile Include="AnmeldelseDAL.cs" />
     <Compile Include="NyhetDAL.cs" />
+    <Compile Include="OrdreDAL.cs" />
+    <Compile Include="OrdrelinjeDAL.cs" />
+    <Compile Include="ProduktDAL.cs" />
+    <Compile Include="ProduktkategoriDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -48,22 +52,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="Web References\OrdreDAL\Reference.cs">
+    <Compile Include="Web References\WSOrdreDAL\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="Web References\OrdrelinjeDAL\Reference.cs">
+    <Compile Include="Web References\WSOrdrelinjeDAL\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="Web References\ProduktDAL\Reference.cs">
+    <Compile Include="Web References\WSProduktDAL\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="Web References\ProduktkategoriDAL\Reference.cs">
+    <Compile Include="Web References\WSProduktkategoriDAL\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -98,29 +102,29 @@
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:3302/ServerDAL/OrdreDAL.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\OrdreDAL\</RelPath>
+      <RelPath>Web References\WSOrdreDAL\</RelPath>
       <UpdateFromURL>http://localhost:3302/ServerDAL/OrdreDAL.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>ClientDAL_OrdreDAL_OrdreDAL</CachedSettingsPropName>
+      <CachedSettingsPropName>MyApp_ClientDAL_WSOrdreDAL_OrdreDAL</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:3302/ServerDAL/OrdrelinjeDAL.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\OrdrelinjeDAL\</RelPath>
+      <RelPath>Web References\WSOrdrelinjeDAL\</RelPath>
       <UpdateFromURL>http://localhost:3302/ServerDAL/OrdrelinjeDAL.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>ClientDAL_OrdrelinjeDAL_OrdrelinjeDAL</CachedSettingsPropName>
+      <CachedSettingsPropName>MyApp_ClientDAL_WSOrdrelinjeDAL_OrdrelinjeDAL</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:3302/ServerDAL/ProduktDAL.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\ProduktDAL\</RelPath>
+      <RelPath>Web References\WSProduktDAL\</RelPath>
       <UpdateFromURL>http://localhost:3302/ServerDAL/ProduktDAL.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
@@ -131,7 +135,7 @@
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:3302/ServerDAL/ProduktkategoriDAL.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\ProduktkategoriDAL\</RelPath>
+      <RelPath>Web References\WSProduktkategoriDAL\</RelPath>
       <UpdateFromURL>http://localhost:3302/ServerDAL/ProduktkategoriDAL.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
@@ -153,26 +157,10 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\OrdreDAL\OrdreDAL.disco" />
-    <None Include="Web References\OrdreDAL\OrdreDAL.wsdl" />
-    <None Include="Web References\OrdreDAL\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\OrdrelinjeDAL\OrdrelinjeDAL.disco" />
-    <None Include="Web References\OrdrelinjeDAL\OrdrelinjeDAL.wsdl" />
-    <None Include="Web References\OrdrelinjeDAL\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Web References\WSAnmeldelseDAL\AnmeldelseDAL.wsdl" />
-    <None Include="Web References\ProduktkategoriDAL\ProduktkategoriDAL.disco" />
-    <None Include="Web References\ProduktkategoriDAL\ProduktkategoriDAL.wsdl" />
-    <None Include="Web References\ProduktkategoriDAL\Reference.map">
+    <None Include="Web References\WSProduktkategoriDAL\ProduktkategoriDAL.disco" />
+    <None Include="Web References\WSProduktkategoriDAL\ProduktkategoriDAL.wsdl" />
+    <None Include="Web References\WSProduktkategoriDAL\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -188,23 +176,11 @@
     <None Include="Web References\WSAnmeldelseDAL\Anmeldelse.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\OrdreDAL\Ordre1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\OrdrelinjeDAL\Ordrelinje1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\ProduktDAL\Produkt1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\ProduktDAL\ProduktDAL.disco" />
-    <None Include="Web References\ProduktDAL\ProduktDAL.wsdl" />
-    <None Include="Web References\ProduktDAL\Reference.map">
+    <None Include="Web References\WSProduktDAL\ProduktDAL.disco" />
+    <None Include="Web References\WSProduktDAL\ProduktDAL.wsdl" />
+    <None Include="Web References\WSProduktDAL\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\ProduktkategoriDAL\Produktkategori1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WSNyhetDAL\ServerNyhetDAL.wsdl" />
   </ItemGroup>
@@ -227,6 +203,34 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\WSNyhetDAL\ServerNyhetDAL.disco" />
+    <None Include="Web References\WSProduktDAL\Produkt.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WSProduktkategoriDAL\Produktkategori.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WSOrdreDAL\Ordre.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WSOrdreDAL\OrdreDAL.disco" />
+    <None Include="Web References\WSOrdreDAL\OrdreDAL.wsdl" />
+    <None Include="Web References\WSOrdreDAL\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WSOrdrelinjeDAL\Ordrelinje.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WSOrdrelinjeDAL\OrdrelinjeDAL.disco" />
+    <None Include="Web References\WSOrdrelinjeDAL\OrdrelinjeDAL.wsdl" />
+    <None Include="Web References\WSOrdrelinjeDAL\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

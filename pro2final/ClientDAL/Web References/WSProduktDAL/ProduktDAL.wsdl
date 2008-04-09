@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getProdukter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="produktkategoriID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProdukterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getProdukterResult" type="tns:ArrayOfProdukt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProdukt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Produkt" nillable="true" type="tns:Produkt" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Produkt">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ProduktID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tittel" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AntallPaaLager" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Beskrivelse" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BildeURL" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Pris" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProduktkategoriID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getProdukt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="produktID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProduktResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getProduktResult" type="tns:Produkt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProduktTilbud">
+        <s:complexType />
+      </s:element>
+      <s:element name="getProduktTilbudResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getProduktTilbudResult" type="tns:ArrayOfProdukt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="nyttProdukt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p" type="tns:Produkt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="nyttProduktResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="endreProdukt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p" type="tns:Produkt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="endreProduktResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getNyesteProduktFraPK">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="brukernavn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNyesteProduktFraPKResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getNyesteProduktFraPKResult" type="tns:Produkt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getKjoepteProdukter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="brukernavn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getKjoepteProdukterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getKjoepteProdukterResult" type="tns:ArrayOfProdukt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNyesteProduktAvKategori">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pkID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNyesteProduktAvKategoriResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getNyesteProduktAvKategoriResult" type="tns:Produkt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getProdukterSoapIn">
+    <wsdl:part name="parameters" element="tns:getProdukter" />
+  </wsdl:message>
+  <wsdl:message name="getProdukterSoapOut">
+    <wsdl:part name="parameters" element="tns:getProdukterResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProduktSoapIn">
+    <wsdl:part name="parameters" element="tns:getProdukt" />
+  </wsdl:message>
+  <wsdl:message name="getProduktSoapOut">
+    <wsdl:part name="parameters" element="tns:getProduktResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProduktTilbudSoapIn">
+    <wsdl:part name="parameters" element="tns:getProduktTilbud" />
+  </wsdl:message>
+  <wsdl:message name="getProduktTilbudSoapOut">
+    <wsdl:part name="parameters" element="tns:getProduktTilbudResponse" />
+  </wsdl:message>
+  <wsdl:message name="nyttProduktSoapIn">
+    <wsdl:part name="parameters" element="tns:nyttProdukt" />
+  </wsdl:message>
+  <wsdl:message name="nyttProduktSoapOut">
+    <wsdl:part name="parameters" element="tns:nyttProduktResponse" />
+  </wsdl:message>
+  <wsdl:message name="endreProduktSoapIn">
+    <wsdl:part name="parameters" element="tns:endreProdukt" />
+  </wsdl:message>
+  <wsdl:message name="endreProduktSoapOut">
+    <wsdl:part name="parameters" element="tns:endreProduktResponse" />
+  </wsdl:message>
+  <wsdl:message name="getNyesteProduktFraPKSoapIn">
+    <wsdl:part name="parameters" element="tns:getNyesteProduktFraPK" />
+  </wsdl:message>
+  <wsdl:message name="getNyesteProduktFraPKSoapOut">
+    <wsdl:part name="parameters" element="tns:getNyesteProduktFraPKResponse" />
+  </wsdl:message>
+  <wsdl:message name="getKjoepteProdukterSoapIn">
+    <wsdl:part name="parameters" element="tns:getKjoepteProdukter" />
+  </wsdl:message>
+  <wsdl:message name="getKjoepteProdukterSoapOut">
+    <wsdl:part name="parameters" element="tns:getKjoepteProdukterResponse" />
+  </wsdl:message>
+  <wsdl:message name="getNyesteProduktAvKategoriSoapIn">
+    <wsdl:part name="parameters" element="tns:getNyesteProduktAvKategori" />
+  </wsdl:message>
+  <wsdl:message name="getNyesteProduktAvKategoriSoapOut">
+    <wsdl:part name="parameters" element="tns:getNyesteProduktAvKategoriResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ProduktDALSoap">
+    <wsdl:operation name="getProdukter">
+      <wsdl:input message="tns:getProdukterSoapIn" />
+      <wsdl:output message="tns:getProdukterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getProdukt">
+      <wsdl:input message="tns:getProduktSoapIn" />
+      <wsdl:output message="tns:getProduktSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getProduktTilbud">
+      <wsdl:input message="tns:getProduktTilbudSoapIn" />
+      <wsdl:output message="tns:getProduktTilbudSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="nyttProdukt">
+      <wsdl:input message="tns:nyttProduktSoapIn" />
+      <wsdl:output message="tns:nyttProduktSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="endreProdukt">
+      <wsdl:input message="tns:endreProduktSoapIn" />
+      <wsdl:output message="tns:endreProduktSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getNyesteProduktFraPK">
+      <wsdl:input message="tns:getNyesteProduktFraPKSoapIn" />
+      <wsdl:output message="tns:getNyesteProduktFraPKSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getKjoepteProdukter">
+      <wsdl:input message="tns:getKjoepteProdukterSoapIn" />
+      <wsdl:output message="tns:getKjoepteProdukterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getNyesteProduktAvKategori">
+      <wsdl:input message="tns:getNyesteProduktAvKategoriSoapIn" />
+      <wsdl:output message="tns:getNyesteProduktAvKategoriSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProduktDALSoap" type="tns:ProduktDALSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getProdukter">
+      <soap:operation soapAction="http://tempuri.org/getProdukter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProdukt">
+      <soap:operation soapAction="http://tempuri.org/getProdukt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProduktTilbud">
+      <soap:operation soapAction="http://tempuri.org/getProduktTilbud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nyttProdukt">
+      <soap:operation soapAction="http://tempuri.org/nyttProdukt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="endreProdukt">
+      <soap:operation soapAction="http://tempuri.org/endreProdukt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNyesteProduktFraPK">
+      <soap:operation soapAction="http://tempuri.org/getNyesteProduktFraPK" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getKjoepteProdukter">
+      <soap:operation soapAction="http://tempuri.org/getKjoepteProdukter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNyesteProduktAvKategori">
+      <soap:operation soapAction="http://tempuri.org/getNyesteProduktAvKategori" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ProduktDALSoap12" type="tns:ProduktDALSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getProdukter">
+      <soap12:operation soapAction="http://tempuri.org/getProdukter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProdukt">
+      <soap12:operation soapAction="http://tempuri.org/getProdukt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProduktTilbud">
+      <soap12:operation soapAction="http://tempuri.org/getProduktTilbud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nyttProdukt">
+      <soap12:operation soapAction="http://tempuri.org/nyttProdukt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="endreProdukt">
+      <soap12:operation soapAction="http://tempuri.org/endreProdukt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNyesteProduktFraPK">
+      <soap12:operation soapAction="http://tempuri.org/getNyesteProduktFraPK" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getKjoepteProdukter">
+      <soap12:operation soapAction="http://tempuri.org/getKjoepteProdukter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNyesteProduktAvKategori">
+      <soap12:operation soapAction="http://tempuri.org/getNyesteProduktAvKategori" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProduktDAL">
+    <wsdl:port name="ProduktDALSoap" binding="tns:ProduktDALSoap">
+      <soap:address location="http://localhost:3302/ServerDAL/ProduktDAL.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ProduktDALSoap12" binding="tns:ProduktDALSoap12">
+      <soap12:address location="http://localhost:3302/ServerDAL/ProduktDAL.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

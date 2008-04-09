@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getOrdrelinjer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ordreID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getOrdrelinjerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getOrdrelinjerResult" type="tns:ArrayOfOrdrelinje" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOrdrelinje">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Ordrelinje" nillable="true" type="tns:Ordrelinje" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Ordrelinje">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="OrdrelinjeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OrdreID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProduktID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Antall" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getOrdrelinje">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ordrelinjeID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getOrdrelinjeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getOrdrelinjeResult" type="tns:Ordrelinje" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="nyOrdrelinje">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ol" type="tns:Ordrelinje" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="nyOrdrelinjeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="slettOrdrelinje">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ordrelinjeID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="slettOrdrelinjeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getOrdrelinjerFraBrukernavn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="brukernavn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getOrdrelinjerFraBrukernavnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getOrdrelinjerFraBrukernavnResult" type="tns:ArrayOfOrdrelinje" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getOrdrelinjerSoapIn">
+    <wsdl:part name="parameters" element="tns:getOrdrelinjer" />
+  </wsdl:message>
+  <wsdl:message name="getOrdrelinjerSoapOut">
+    <wsdl:part name="parameters" element="tns:getOrdrelinjerResponse" />
+  </wsdl:message>
+  <wsdl:message name="getOrdrelinjeSoapIn">
+    <wsdl:part name="parameters" element="tns:getOrdrelinje" />
+  </wsdl:message>
+  <wsdl:message name="getOrdrelinjeSoapOut">
+    <wsdl:part name="parameters" element="tns:getOrdrelinjeResponse" />
+  </wsdl:message>
+  <wsdl:message name="nyOrdrelinjeSoapIn">
+    <wsdl:part name="parameters" element="tns:nyOrdrelinje" />
+  </wsdl:message>
+  <wsdl:message name="nyOrdrelinjeSoapOut">
+    <wsdl:part name="parameters" element="tns:nyOrdrelinjeResponse" />
+  </wsdl:message>
+  <wsdl:message name="slettOrdrelinjeSoapIn">
+    <wsdl:part name="parameters" element="tns:slettOrdrelinje" />
+  </wsdl:message>
+  <wsdl:message name="slettOrdrelinjeSoapOut">
+    <wsdl:part name="parameters" element="tns:slettOrdrelinjeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getOrdrelinjerFraBrukernavnSoapIn">
+    <wsdl:part name="parameters" element="tns:getOrdrelinjerFraBrukernavn" />
+  </wsdl:message>
+  <wsdl:message name="getOrdrelinjerFraBrukernavnSoapOut">
+    <wsdl:part name="parameters" element="tns:getOrdrelinjerFraBrukernavnResponse" />
+  </wsdl:message>
+  <wsdl:portType name="OrdrelinjeDALSoap">
+    <wsdl:operation name="getOrdrelinjer">
+      <wsdl:input message="tns:getOrdrelinjerSoapIn" />
+      <wsdl:output message="tns:getOrdrelinjerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getOrdrelinje">
+      <wsdl:input message="tns:getOrdrelinjeSoapIn" />
+      <wsdl:output message="tns:getOrdrelinjeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="nyOrdrelinje">
+      <wsdl:input message="tns:nyOrdrelinjeSoapIn" />
+      <wsdl:output message="tns:nyOrdrelinjeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="slettOrdrelinje">
+      <wsdl:input message="tns:slettOrdrelinjeSoapIn" />
+      <wsdl:output message="tns:slettOrdrelinjeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getOrdrelinjerFraBrukernavn">
+      <wsdl:input message="tns:getOrdrelinjerFraBrukernavnSoapIn" />
+      <wsdl:output message="tns:getOrdrelinjerFraBrukernavnSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OrdrelinjeDALSoap" type="tns:OrdrelinjeDALSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getOrdrelinjer">
+      <soap:operation soapAction="http://tempuri.org/getOrdrelinjer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrdrelinje">
+      <soap:operation soapAction="http://tempuri.org/getOrdrelinje" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nyOrdrelinje">
+      <soap:operation soapAction="http://tempuri.org/nyOrdrelinje" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="slettOrdrelinje">
+      <soap:operation soapAction="http://tempuri.org/slettOrdrelinje" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrdrelinjerFraBrukernavn">
+      <soap:operation soapAction="http://tempuri.org/getOrdrelinjerFraBrukernavn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="OrdrelinjeDALSoap12" type="tns:OrdrelinjeDALSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getOrdrelinjer">
+      <soap12:operation soapAction="http://tempuri.org/getOrdrelinjer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrdrelinje">
+      <soap12:operation soapAction="http://tempuri.org/getOrdrelinje" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nyOrdrelinje">
+      <soap12:operation soapAction="http://tempuri.org/nyOrdrelinje" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="slettOrdrelinje">
+      <soap12:operation soapAction="http://tempuri.org/slettOrdrelinje" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrdrelinjerFraBrukernavn">
+      <soap12:operation soapAction="http://tempuri.org/getOrdrelinjerFraBrukernavn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrdrelinjeDAL">
+    <wsdl:port name="OrdrelinjeDALSoap" binding="tns:OrdrelinjeDALSoap">
+      <soap:address location="http://localhost:3302/ServerDAL/OrdrelinjeDAL.asmx" />
+    </wsdl:port>
+    <wsdl:port name="OrdrelinjeDALSoap12" binding="tns:OrdrelinjeDALSoap12">
+      <soap12:address location="http://localhost:3302/ServerDAL/OrdrelinjeDAL.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
