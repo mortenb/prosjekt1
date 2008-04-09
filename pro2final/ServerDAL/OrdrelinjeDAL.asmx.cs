@@ -16,11 +16,11 @@ namespace ServerDAL
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [ToolboxItem(false)]
-    public class OrdrelinjeDAL : System.Web.Services.WebService
+    public class OrdrelinjeServerDAL : System.Web.Services.WebService
     {
         private myApp.DAL.OrdrelinjeDAL ordrelinjeDAL = new myApp.DAL.OrdrelinjeDAL();
 
-
+        [SoapDocumentMethod(Binding = "OverloadedGetOrdrelinjer")]
         [WebMethod]
         public List<Ordrelinje> getOrdrelinjer(int ordreID)
         {
