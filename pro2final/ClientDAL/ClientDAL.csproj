@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>myApp.ClientDAL</RootNamespace>
-    <AssemblyName>ClientDAL</AssemblyName>
+    <AssemblyName>MyApp.ClientDAL</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,19 +35,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AnmeldelseDAL.cs" />
+    <Compile Include="NyhetDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Web References\AnmeldelseDAL\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-    <Compile Include="Web References\NyhetDAL\Reference.cs">
+    <Compile Include="Web References\WSAnmeldelseDAL\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -72,6 +68,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\WSNyhetDAL\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
@@ -86,7 +87,7 @@
   <ItemGroup>
     <WebReferenceUrl Include="http://localhost:3302/ServerDAL/AnmeldelseDAL.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\AnmeldelseDAL\</RelPath>
+      <RelPath>Web References\WSAnmeldelseDAL\</RelPath>
       <UpdateFromURL>http://localhost:3302/ServerDAL/AnmeldelseDAL.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
@@ -94,17 +95,6 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>ClientDAL_AnmeldelseDAL_AnmeldelseDAL</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:3302/ServerDAL/NyhetDAL.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\NyhetDAL\</RelPath>
-      <UpdateFromURL>http://localhost:3302/ServerDAL/NyhetDAL.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>ClientDAL_NyhetDAL_NyhetDAL</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:3302/ServerDAL/OrdreDAL.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
@@ -150,6 +140,17 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>ClientDAL_ProduktkategoriDAL_ProduktkategoriDAL</CachedSettingsPropName>
     </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:3302/ServerDAL/ServerNyhetDAL.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WSNyhetDAL\</RelPath>
+      <UpdateFromURL>http://localhost:3302/ServerDAL/ServerNyhetDAL.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>MyApp_ClientDAL_WSNyhetDAL_NyhetDAL</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\OrdreDAL\OrdreDAL.disco" />
@@ -168,7 +169,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\AnmeldelseDAL\AnmeldelseDAL.wsdl" />
+    <None Include="Web References\WSAnmeldelseDAL\AnmeldelseDAL.wsdl" />
     <None Include="Web References\ProduktkategoriDAL\ProduktkategoriDAL.disco" />
     <None Include="Web References\ProduktkategoriDAL\ProduktkategoriDAL.wsdl" />
     <None Include="Web References\ProduktkategoriDAL\Reference.map">
@@ -177,25 +178,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\AnmeldelseDAL\AnmeldelseDAL.disco" />
-    <None Include="Web References\AnmeldelseDAL\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\NyhetDAL\NyhetDAL.wsdl" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\NyhetDAL\NyhetDAL.disco" />
-    <None Include="Web References\NyhetDAL\Reference.map">
+    <None Include="Web References\WSAnmeldelseDAL\AnmeldelseDAL.disco" />
+    <None Include="Web References\WSAnmeldelseDAL\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\AnmeldelseDAL\Anmeldelse1.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\NyhetDAL\Nyhet1.datasource">
+    <None Include="Web References\WSAnmeldelseDAL\Anmeldelse.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\OrdreDAL\Ordre1.datasource">
@@ -216,6 +206,7 @@
     <None Include="Web References\ProduktkategoriDAL\Produktkategori1.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\WSNyhetDAL\ServerNyhetDAL.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IDAL\IDAL.csproj">
@@ -226,6 +217,16 @@
       <Project>{3F9CC7F9-BAB7-4F0B-8129-D3A2F3D310F8}</Project>
       <Name>Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WSNyhetDAL\Nyhet.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WSNyhetDAL\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WSNyhetDAL\ServerNyhetDAL.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

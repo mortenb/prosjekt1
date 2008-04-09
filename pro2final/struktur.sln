@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\Web\", "Web\", "{D99DFE5B-A03C-4310-8113-3AD4277351C7}"
 	ProjectSection(WebsiteProperties) = preProject
-		ProjectReferences = "{024BE8BE-AE3D-4AAC-9357-6929CE3B37D3}|MyApp.DAL.dll;{3F9CC7F9-BAB7-4F0B-8129-D3A2F3D310F8}|MyApp.Model.dll;"
+		ProjectReferences = "{024BE8BE-AE3D-4AAC-9357-6929CE3B37D3}|MyApp.DAL.dll;{3F9CC7F9-BAB7-4F0B-8129-D3A2F3D310F8}|MyApp.Model.dll;{287E80F3-F68A-4F11-B80B-EBD279A63ACB}|MyApp.BLL.dll;{F773BF56-566E-43F2-895E-1B750C67DC20}|MyApp.ClientDAL.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Web"
 		Debug.AspNetCompiler.PhysicalPath = "Web\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Web\"
@@ -33,6 +33,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientDAL", "ClientDAL\ClientDAL.csproj", "{F773BF56-566E-43F2-895E-1B750C67DC20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{287E80F3-F68A-4F11-B80B-EBD279A63ACB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{024BE8BE-AE3D-4AAC-9357-6929CE3B37D3} = {024BE8BE-AE3D-4AAC-9357-6929CE3B37D3}
+	EndProjectSection
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\ServerDAL\", "ServerDAL\", "{6A002C7E-A461-4275-84C9-71C507450602}"
 	ProjectSection(WebsiteProperties) = preProject

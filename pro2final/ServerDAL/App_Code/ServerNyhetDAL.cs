@@ -1,3 +1,4 @@
+
 using System;
 using System.Data;
 using System.Web;
@@ -8,7 +9,7 @@ using System.ComponentModel;
 using myApp.Model;
 using System.Collections.Generic;
 
-namespace ServerDAL
+namespace ClientDAL
 {
     /// <summary>
     /// Summary description for NyhetDAL
@@ -16,10 +17,11 @@ namespace ServerDAL
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [ToolboxItem(false)]
-    public class NyhetDAL : System.Web.Services.WebService
+
+    public class ServerNyhetDAL : System.Web.Services.WebService
     {
         private myApp.DAL.NyhetDAL nyhetDAL = new myApp.DAL.NyhetDAL();
-        
+
         [WebMethod]
         public List<Nyhet> getNyheter()
         {
@@ -35,7 +37,7 @@ namespace ServerDAL
             //throw new Exception("The method or operation is not implemented.");
             return nyhet;
         }
-        
+
         [WebMethod]
         public void nyNyhet(Nyhet n)
         {

@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ClientDAL.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="myApp.ClientDAL.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="ClientDAL_OrdreDAL_OrdreDAL" Type="(Web Service URL)" Scope="Application">
@@ -14,11 +14,11 @@
     <Setting Name="ClientDAL_AnmeldelseDAL_AnmeldelseDAL" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:3302/ServerDAL/AnmeldelseDAL.asmx</Value>
     </Setting>
-    <Setting Name="ClientDAL_NyhetDAL_NyhetDAL" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:3302/ServerDAL/NyhetDAL.asmx</Value>
-    </Setting>
     <Setting Name="ClientDAL_ProduktDAL_ProduktDAL" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:3302/ServerDAL/ProduktDAL.asmx</Value>
+    </Setting>
+    <Setting Name="MyApp_ClientDAL_WSNyhetDAL_NyhetDAL" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:3302/ServerDAL/ServerNyhetDAL.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>
