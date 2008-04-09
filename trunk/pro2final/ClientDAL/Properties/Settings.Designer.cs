@@ -66,20 +66,20 @@ namespace myApp.ClientDAL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:3302/ServerDAL/NyhetDAL.asmx")]
-        public string ClientDAL_NyhetDAL_NyhetDAL {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:3302/ServerDAL/ProduktDAL.asmx")]
+        public string ClientDAL_ProduktDAL_ProduktDAL {
             get {
-                return ((string)(this["ClientDAL_NyhetDAL_NyhetDAL"]));
+                return ((string)(this["ClientDAL_ProduktDAL_ProduktDAL"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:3302/ServerDAL/ProduktDAL.asmx")]
-        public string ClientDAL_ProduktDAL_ProduktDAL {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:3302/ServerDAL/ServerNyhetDAL.asmx")]
+        public string MyApp_ClientDAL_WSNyhetDAL_NyhetDAL {
             get {
-                return ((string)(this["ClientDAL_ProduktDAL_ProduktDAL"]));
+                return ((string)(this["MyApp_ClientDAL_WSNyhetDAL_NyhetDAL"]));
             }
         }
     }

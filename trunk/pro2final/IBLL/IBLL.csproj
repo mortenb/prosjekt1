@@ -40,7 +40,9 @@
     <Compile Include="IOrdreBLL.cs" />
     <Compile Include="IOrdrelinjeBLL.cs" />
     <Compile Include="IProduktBLL.cs" />
-    <Compile Include="IProduktKategoriBLL.cs" />
+    <Compile Include="IProduktKategoriBLL.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

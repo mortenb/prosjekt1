@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getNyheter">
+        <s:complexType />
+      </s:element>
+      <s:element name="getNyheterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getNyheterResult" type="tns:ArrayOfNyhet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNyhet">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Nyhet" nillable="true" type="tns:Nyhet" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Nyhet">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="NyhetsID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tittel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tekst" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getNyhet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nyhetID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNyhetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getNyhetResult" type="tns:Nyhet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="nyNyhet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="n" type="tns:Nyhet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="nyNyhetResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="endreNyhet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="n" type="tns:Nyhet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="endreNyhetResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getNyheterSoapIn">
+    <wsdl:part name="parameters" element="tns:getNyheter" />
+  </wsdl:message>
+  <wsdl:message name="getNyheterSoapOut">
+    <wsdl:part name="parameters" element="tns:getNyheterResponse" />
+  </wsdl:message>
+  <wsdl:message name="getNyhetSoapIn">
+    <wsdl:part name="parameters" element="tns:getNyhet" />
+  </wsdl:message>
+  <wsdl:message name="getNyhetSoapOut">
+    <wsdl:part name="parameters" element="tns:getNyhetResponse" />
+  </wsdl:message>
+  <wsdl:message name="nyNyhetSoapIn">
+    <wsdl:part name="parameters" element="tns:nyNyhet" />
+  </wsdl:message>
+  <wsdl:message name="nyNyhetSoapOut">
+    <wsdl:part name="parameters" element="tns:nyNyhetResponse" />
+  </wsdl:message>
+  <wsdl:message name="endreNyhetSoapIn">
+    <wsdl:part name="parameters" element="tns:endreNyhet" />
+  </wsdl:message>
+  <wsdl:message name="endreNyhetSoapOut">
+    <wsdl:part name="parameters" element="tns:endreNyhetResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServerNyhetDALSoap">
+    <wsdl:operation name="getNyheter">
+      <wsdl:input message="tns:getNyheterSoapIn" />
+      <wsdl:output message="tns:getNyheterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getNyhet">
+      <wsdl:input message="tns:getNyhetSoapIn" />
+      <wsdl:output message="tns:getNyhetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="nyNyhet">
+      <wsdl:input message="tns:nyNyhetSoapIn" />
+      <wsdl:output message="tns:nyNyhetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="endreNyhet">
+      <wsdl:input message="tns:endreNyhetSoapIn" />
+      <wsdl:output message="tns:endreNyhetSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServerNyhetDALSoap" type="tns:ServerNyhetDALSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getNyheter">
+      <soap:operation soapAction="http://tempuri.org/getNyheter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNyhet">
+      <soap:operation soapAction="http://tempuri.org/getNyhet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nyNyhet">
+      <soap:operation soapAction="http://tempuri.org/nyNyhet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="endreNyhet">
+      <soap:operation soapAction="http://tempuri.org/endreNyhet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServerNyhetDALSoap12" type="tns:ServerNyhetDALSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getNyheter">
+      <soap12:operation soapAction="http://tempuri.org/getNyheter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNyhet">
+      <soap12:operation soapAction="http://tempuri.org/getNyhet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nyNyhet">
+      <soap12:operation soapAction="http://tempuri.org/nyNyhet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="endreNyhet">
+      <soap12:operation soapAction="http://tempuri.org/endreNyhet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServerNyhetDAL">
+    <wsdl:port name="ServerNyhetDALSoap" binding="tns:ServerNyhetDALSoap">
+      <soap:address location="http://localhost:3302/ServerDAL/ServerNyhetDAL.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServerNyhetDALSoap12" binding="tns:ServerNyhetDALSoap12">
+      <soap12:address location="http://localhost:3302/ServerDAL/ServerNyhetDAL.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
