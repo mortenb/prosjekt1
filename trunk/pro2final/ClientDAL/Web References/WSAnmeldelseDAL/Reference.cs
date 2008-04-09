@@ -20,6 +20,8 @@ namespace myApp.ClientDAL.WSAnmeldelseDAL {
     using System.Web.Services.Protocols;
     using System;
     using System.Xml.Serialization;
+    using System.Collections.Generic;
+    using myApp.Model;
     
     
     /// <remarks/>
@@ -85,10 +87,10 @@ namespace myApp.ClientDAL.WSAnmeldelseDAL {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAnmeldelser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Anmeldelse[] getAnmeldelser(int produktID) {
+        public List<Anmeldelse> getAnmeldelser(int produktID) {
             object[] results = this.Invoke("getAnmeldelser", new object[] {
                         produktID});
-            return ((Anmeldelse[])(results[0]));
+            return ((List<Anmeldelse>)(results[0]));
         }
         
         /// <remarks/>
@@ -187,7 +189,7 @@ namespace myApp.ClientDAL.WSAnmeldelseDAL {
             return false;
         }
     }
-    
+    /*
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.832")]
     [System.SerializableAttribute()]
@@ -220,7 +222,7 @@ namespace myApp.ClientDAL.WSAnmeldelseDAL {
             }
         }
     }
-    
+
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Anmeldelse))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.832")]
@@ -266,7 +268,7 @@ namespace myApp.ClientDAL.WSAnmeldelseDAL {
             }
         }
     }
-    
+    */
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.42")]
     public delegate void getAnmeldelserCompletedEventHandler(object sender, getAnmeldelserCompletedEventArgs e);

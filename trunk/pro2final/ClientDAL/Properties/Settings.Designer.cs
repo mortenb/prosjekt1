@@ -26,26 +26,6 @@ namespace myApp.ClientDAL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:3302/ServerDAL/OrdreDAL.asmx")]
-        public string ClientDAL_OrdreDAL_OrdreDAL {
-            get {
-                return ((string)(this["ClientDAL_OrdreDAL_OrdreDAL"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:3302/ServerDAL/OrdrelinjeDAL.asmx")]
-        public string ClientDAL_OrdrelinjeDAL_OrdrelinjeDAL {
-            get {
-                return ((string)(this["ClientDAL_OrdrelinjeDAL_OrdrelinjeDAL"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:3302/ServerDAL/ProduktkategoriDAL.asmx")]
         public string ClientDAL_ProduktkategoriDAL_ProduktkategoriDAL {
             get {
@@ -80,6 +60,26 @@ namespace myApp.ClientDAL.Properties {
         public string MyApp_ClientDAL_WSNyhetDAL_NyhetDAL {
             get {
                 return ((string)(this["MyApp_ClientDAL_WSNyhetDAL_NyhetDAL"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:3302/ServerDAL/OrdreDAL.asmx")]
+        public string MyApp_ClientDAL_WSOrdreDAL_OrdreDAL {
+            get {
+                return ((string)(this["MyApp_ClientDAL_WSOrdreDAL_OrdreDAL"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:3302/ServerDAL/OrdrelinjeDAL.asmx")]
+        public string MyApp_ClientDAL_WSOrdrelinjeDAL_OrdrelinjeDAL {
+            get {
+                return ((string)(this["MyApp_ClientDAL_WSOrdrelinjeDAL_OrdrelinjeDAL"]));
             }
         }
     }
